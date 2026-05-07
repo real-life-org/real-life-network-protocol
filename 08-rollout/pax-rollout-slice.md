@@ -155,7 +155,7 @@ Dieser Slice implementiert nicht:
 
 ### 4.8 Menschen verifizieren
 
-**Zweck:** Eine reale Begegnung wird als Identitätsbeziehung bestätigt.
+**Zweck:** Eine reale Begegnung wird per QR-Verifikation im Netzwerk festgehalten und als Identitätsbeziehung bestätigt.
 
 **Ablauf:**
 
@@ -166,7 +166,7 @@ Dieser Slice implementiert nicht:
 
 **Output:** Verifizierte Beziehung.
 
-**Norm:** Verifikation bestätigt Begegnung/Identität, nicht globale Vertrauenswürdigkeit.
+**Norm:** Verifikation bestätigt Begegnung/Identität, nicht globale Vertrauenswürdigkeit. Eine Begegnung braucht keine separate `op.encounter.record`-Operation; sobald sie digital festgehalten werden soll, geschieht das durch QR-Verifikation.
 
 ### 4.9 Angebote, Bedürfnisse und Visionen entdecken
 
