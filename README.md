@@ -1,0 +1,77 @@
+# Real Life Network Protocol
+
+Spezifikation fuer dezentrale Gemeinschaftsbildung, Commons und gemeinsames Handeln.
+
+**Status:** Initialer Arbeitsstand  
+**Start:** 2026-05-07  
+**Ziel:** Das soziale Protokoll des Real Life Networks so beschreiben, dass Menschen, Apps und KI-Agenten damit praktisch arbeiten koennen.
+
+---
+
+## Zweck
+
+Dieses Repository ist die Werkbank fuer das Real Life Network Protocol.
+
+Es beschreibt nicht nur Werte oder Kultur, sondern wiederholbare soziale Operationen:
+
+- Menschen kennenlernen, einladen, verifizieren und attestieren
+- Veranstaltungen, Kreise und Rituale hosten
+- Ressourcen teilen und Commons schaffen
+- Projekte, Orte und lokale Strukturen aufbauen
+- bestehende Initiativen verbinden
+- Quests, App-Flows und Agenten-Handlungen daraus ableiten
+
+Das Protokoll soll praezise genug sein, damit es in Apps, Datenmodellen, Playbooks und Agenten umgesetzt werden kann. Gleichzeitig muss es lesbar genug bleiben, dass Menschen es in realen Gemeinschaften anwenden koennen.
+
+## Abgrenzung
+
+| Repository | Rolle |
+|---|---|
+| `real-life-org-docs` | Narrative Orientierung, Handbuch, Organisation, Netzwerktexte |
+| `wot-spec` | Technische Spezifikation fuer Identitaet, Trust, Sync und Conformance |
+| `real-life-stack` | App-/UI-Baukasten und technische Implementierung sozialer Werkzeuge |
+| `real-life-network-protocol` | Soziale Spezifikation fuer Netzwerkaufbau, Quests, Praktiken, Agenten und Rollout |
+
+## Spezifikations-Landkarte
+
+| Bereich | Zweck |
+|---|---|
+| [real-life-network-protocol.md](real-life-network-protocol.md) | Initiale Gesamtspezifikation |
+| [01-principles](01-principles/) | Grundprinzipien und Nicht-Ziele |
+| [02-entities](02-entities/) | Soziale Entitaeten des Netzwerks |
+| [03-social-operations](03-social-operations/) | Kernoperationen des Netzwerkaufbaus |
+| [04-practices-and-rituals](04-practices-and-rituals/) | Wiederkehrende Formate und Rituale |
+| [05-quests](05-quests/) | Freiwillige Einladungen und Benutzerfuehrung |
+| [06-data-model](06-data-model/) | App- und Graphmodell fuer soziale Operationen |
+| [07-agent-protocol](07-agent-protocol/) | Handlungsrahmen fuer KI-Agenten |
+| [08-rollout](08-rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
+| [schemas](schemas/) | Maschinenlesbare Schemata |
+| [playbooks](playbooks/) | Praktische Anleitungen fuer Hosts, Crews und Kreise |
+| [examples](examples/) | Konkrete Beispielablaeufe |
+| [conformance](conformance/) | Pruefbarkeit und Protokoll-Konformitaet |
+
+## Aktueller Arbeitsfokus
+
+Der erste Fokus ist ein praktischer Rollout-Slice fuer Pax/Festival-Kontexte:
+
+1. Pax-MVP-Slice definieren
+2. soziale Operationen auf App-Flows und Datenmodelle mappen
+3. Quest-Katalog v0.1 schreiben
+4. Vernetzungszelt-Playbook erstellen
+5. Agenten-Handlungsrahmen spezifizieren
+
+Siehe [08-rollout/rollout-inventur.md](08-rollout/rollout-inventur.md).
+
+## Arbeitsweise
+
+Dieses Repo folgt einem spec-first Ansatz:
+
+- Jede neue Praxis wird als soziale Operation beschrieben.
+- Jede Operation wird auf Inputs, Ablauf, Outputs, Risiken, naechste Schritte, App-Unterstuetzung, Agenten-Unterstuetzung und Metriken gemappt.
+- Quests sind Einladungen, keine Pflichten.
+- Metriken duerfen Netzwerkaktivitaet sichtbar machen, aber Menschen nicht ranken.
+- Agenten duerfen unterstuetzen, erinnern, verbinden und reflektieren, aber nicht steuern.
+
+## Lizenz
+
+Noch zu entscheiden.
