@@ -173,7 +173,7 @@ Der nächste sinnvolle Schritt ist deshalb kein weiterer großer Visionstext, so
 | Beiträge attestieren | WoT-Attestations, Claims, Profil-Sichtbarkeit | UX für konkrete Beiträge, Akzeptieren/Sichtbarkeit, soziale Leitplanken |
 | Veranstaltungen ausrichten | Kalender-Docs, Event-Typ, Handbuch | Vollständiger Event-Flow, Teilnahme, Nachbereitung, Ritualvorlagen |
 | Kreis starten | Handbuch | Starter-Kit, erste 4 Treffen, App- und Agentenunterstützung |
-| Ressourcen teilen/nachfragen | Handbuch, Profil Offers/Needs, Marketplace-Idee | Resource-/Need-/Offer-Typen, Suche, Pflege, Verfügbarkeit |
+| Ressourcen teilen/nachfragen | Handbuch, Profil-Offer-/Need-Tags, Marketplace-Idee | Resource-/Need-/Offer-Typen, Suche, Pflege, Verfügbarkeit |
 | Commons schaffen | Netzwerktext, Handbuch | Commons-Modell, Hüter/Pflege/Nutzungsregeln, gemeinsame Anschaffung |
 | Projekte starten | Kanban/Tasks, Gruppen/Spaces | Projekt-Typ, Projekt-Start-Quest, Beziehung zu Orten/Ressourcen/Events |
 | Orte gründen/pflegen | Place-Typ, Map-Idee | Echte Map, Ort als sozialer Raum, Pflege-/Owner-Modell |

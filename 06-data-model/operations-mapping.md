@@ -28,6 +28,8 @@ Eine Implementierung dieses Mappings MUSS:
 4. Quests als Einladungen formulieren.
 5. Metriken nur als Netzwerk-Signale verwenden, nicht als Ranking von Menschen.
 6. Agentenvorschläge erklärbar, ablehnbar und kontextbezogen machen.
+7. WoT-Verifikationen und Attestations im kanonischen WoT-Trust-Format verwenden, statt eigene Claim-JSONs zu definieren.
+8. App-seitige Entitäten als generische Real-Life-Stack-Items modellieren, sofern sie keine WoT-Identität oder kein WoT-VC-JWS sind.
 
 ## 3. Operation Index
 
@@ -80,7 +82,7 @@ QR/Link
 
 ## 6. Data Object Catalog
 
-Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie direkt als Item-Typen, als Felder bestehender Typen oder als abgeleitete Views umsetzen.
+Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie direkt als Item-Typen, als Felder bestehender Typen oder als abgeleitete Views umsetzen. Kanonische WoT-Objekte bleiben dabei WoT-Objekte; App-Views dürfen sie anzeigen, aber nicht als alternatives Protokollformat ersetzen.
 
 | Objekt | Zweck | Bestehendes Primitive | Gap / Empfehlung |
 |---|---|---|---|
@@ -88,34 +90,56 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `DeviceState` | lokaler Onboarding-/Installationszustand | App-local storage | lokal, nicht Space-Daten |
 | `SpaceInvite` | Einladung in Pax-Space | WoT space invite | vorhanden/zu stabilisieren |
 | `SpaceMembership` | Mitgliedschaft im Pax-Space | WoT/RLS Group | vorhanden |
-| `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | RLS `profile` | Vision/Region/Sichtbarkeit ergänzen |
-| `VisibilityPreference` | private/space/public/map Sichtbarkeit | teilweise Profil-Feldsichtbarkeit | explizit modellieren |
-| `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` | Profil-/Offer-/Need-Marker klären |
-| `Offer` | etwas, das jemand geben/teilen kann | Profil `offers[]` | P0 als Profilfeld, später eigener Item-Typ |
-| `Need` | etwas, das jemand sucht/braucht | Profil `needs[]` | P0 als Profilfeld, später eigener Item-Typ |
-| `VerificationClaim` | bestätigte Begegnung/Identität | WoT SignedClaim / Attestation | vorhanden |
-| `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | Claim metadata | als Metadaten, kein eigener P0-Typ |
-| `AttestationClaim` | Beitrag/Gabe/Fähigkeit attestieren | WoT SignedClaim / Attestation | P1 für Pax |
-| `Quest` | freiwillige Einladung zu einer Handlung | none / task-like | eigener Typ empfohlen |
-| `FollowUp` | nächster Schritt nach Begegnung/Festival | task/post/event | eigener leichter Typ oder Task |
+| `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | RLS Item `type: "profile"` | Pax-Felder in `data` ergänzen |
+| `VisibilityPreference` | private/space/public/map Sichtbarkeit | RLS `data.visibility` / Connector-Berechtigung | explizit, aber connector-kompatibel modellieren |
+| `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
+| `OfferTag` | etwas, das jemand geben/teilen kann | Profil `data.offers[]` | P0 als einfache Tags wie in der WoT-Demo-App |
+| `NeedTag` | etwas, das jemand sucht/braucht | Profil `data.needs[]` | P0 als einfache Tags wie in der WoT-Demo-App |
+| `VerificationAttestation` | bestätigte Begegnung/Identität | WoT Trust 002 VC-JWS | kanonisch VC-JWS, RLS/SignedClaim nur View |
+| `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
+| `Attestation` | Beitrag/Gabe/Fähigkeit attestieren | WoT Trust 001 VC-JWS | P1 für Pax, kanonisch VC-JWS |
+| `Quest` | freiwillige Einladung zu einer Handlung | RLS generisches Item | `type: "quest"` oder task-kompatible View |
+| `FollowUp` | nächster Schritt nach Begegnung/Festival | RLS generisches Item (`task`, `event`, `post`, `quest`) | leichter Item-Schnitt statt Sonderformat |
 | `MetricEvent` | aggregierbares Netzwerksignal | none | lokal/aggregiert, keine Rankings |
 
-## 7. Minimal Item Types
+## 7. Real-Life-Stack Item Views
+
+Der Real-Life-Stack arbeitet mit generischen Items:
+
+```typescript
+interface Item {
+  id: string
+  type: string
+  createdAt: string
+  createdBy: string
+  schema?: string
+  schemaVersion?: number
+  data: Record<string, unknown>
+  relations?: Relation[]
+}
+```
+
+Die folgenden Beispiele sind deshalb keine neuen Top-Level-Protokollobjekte, sondern Real-Life-Stack-Item-Views. `title`, `description`, `offers`, `needs`, `visibility` und ähnliche Felder leben in `data`.
 
 ### 7.1 `profile`
 
-Pax-v0.1 SOLLTE mit einem erweiterten Profil arbeiten:
+Pax-v0.1 SOLLTE das vorhandene RLS-Profil als generisches Item `type: "profile"` verwenden. Angebote und Bedürfnisse bleiben für P0 einfache Tags im Profil.
 
 ```json
 {
+  "id": "profile:mira",
   "type": "profile",
+  "createdAt": "2026-05-07T10:00:00Z",
+  "createdBy": "did:key:z6Mk...mira",
+  "schema": "rlnp:profile",
+  "schemaVersion": 1,
   "data": {
     "name": "Mira",
-    "avatar": "optional-url",
     "bio": "Ich interessiere mich für Gemeinschaftsgärten.",
+    "avatar": "optional-url",
+    "offers": ["kochen", "moderation", "gartenarbeit"],
+    "needs": ["werkstattzugang", "menschen-in-leipzig"],
     "vision": "Ich will in meiner Region mehr gemeinsame Orte aufbauen.",
-    "offers": ["Kochen", "Moderation", "Gartenarbeit"],
-    "needs": ["Werkstattzugang", "Menschen in Leipzig"],
     "region": "Leipzig",
     "visibility": {
       "profile": "space",
@@ -127,29 +151,42 @@ Pax-v0.1 SOLLTE mit einem erweiterten Profil arbeiten:
 }
 ```
 
+**Normen:**
+
+- `createdBy` MUSS die User-ID/DID des Profilinhabers sein.
+- `offers` und `needs` sind in Pax v0.1 einfache `string[]`-Tags, keine eigenen Items.
+- `vision`, `region` und `visibility` sind Pax-/RLNP-Erweiterungen im `data`-Objekt.
+- Ein Connector DARF `User.displayName` und `User.avatarUrl` aus diesem Profil cachen; der Cache ist nicht die Quelle der Wahrheit.
+
 ### 7.2 `quest`
 
-Quests SOLLTEN als eigene Einladungsobjekte modelliert werden.
+Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector noch keinen eigenen Quest-Renderer hat, DARF er sie task-kompatibel darstellen; die semantische Kennzeichnung erfolgt über `type` und/oder `schema`.
 
 ```json
 {
+  "id": "quest:pax:meet-similar-interest",
   "type": "quest",
+  "createdAt": "2026-05-07T10:05:00Z",
+  "createdBy": "did:key:z6Mk...agent-or-host",
+  "schema": "rlnp:quest",
+  "schemaVersion": 1,
   "data": {
     "title": "Lerne eine Person mit ähnlichem Interesse kennen",
-    "operation": "op.people.discover",
-    "intent": "relationship",
     "description": "Finde jemanden im Pax-Space, dessen Vision dich berührt, und führe ein echtes Gespräch.",
     "status": "suggested",
+    "operation": "op.people.discover",
+    "intent": "relationship",
     "optional": true,
-    "context": {
-      "spaceId": "pax-2026",
-      "source": "agent"
-    },
+    "tags": ["begegnung", "pax-2026"],
     "completion": {
       "kind": "self-confirmed",
       "evidence": "none"
     }
-  }
+  },
+  "relations": [
+    { "predicate": "visibleIn", "target": "space:pax-2026" },
+    { "predicate": "suggestedTo", "target": "global:did:key:z6Mk...mira" }
+  ]
 }
 ```
 
@@ -158,27 +195,23 @@ Quests SOLLTEN als eigene Einladungsobjekte modelliert werden.
 - `optional` MUSS für protokollkonforme Quests wahr sein.
 - `status` DARF NICHT als Leistungsskala verwendet werden.
 - `completion` DARF keine riskanten oder übergriffigen Nachweise verlangen.
+- Quest-Fortschritt ist eine Einladungshilfe, kein Menschen-Score.
 
-### 7.3 `offer` und `need`
+### 7.3 `offer` und `need` als Tags
 
-P0 DARF Angebote und Bedürfnisse als Profilfelder abbilden. Sobald Suche, Verfügbarkeit, Ablaufdatum oder mehrere Owner nötig werden, SOLLTEN sie eigene Items werden.
+Pax v0.1 definiert keine eigenen `offer`- oder `need`-Items. Angebote und Bedürfnisse sind zunächst einfache Tags im Profil, so wie in der WoT-Demo-App.
 
 ```json
 {
-  "type": "offer",
+  "type": "profile",
   "data": {
-    "title": "Ich kann beim Kochen helfen",
-    "description": "Gerne für Gemeinschaftsessen am Abend.",
-    "tags": ["kochen", "essen", "festival"],
-    "availability": "during-pax",
-    "visibility": "space"
-  },
-  "relations": [
-    { "predicate": "offeredBy", "target": "global:did:example:mira" },
-    { "predicate": "visibleIn", "target": "space:pax-2026" }
-  ]
+    "offers": ["kochen", "moderation", "gartenarbeit"],
+    "needs": ["werkstattzugang", "menschen-in-leipzig"]
+  }
 }
 ```
+
+Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablaufdaten, Ressourcenlogik, Reservierung oder Commons-Verwaltung gebraucht werden.
 
 ## 8. Relation Taxonomy
 
@@ -187,56 +220,81 @@ P0 DARF Angebote und Bedürfnisse als Profilfelder abbilden. Sobald Suche, Verf�
 | `memberOf` | Profile/Identity | Space | Person/Agent ist Mitglied eines Spaces |
 | `visibleIn` | Item/Profile | Space | Item ist in einem Space sichtbar |
 | `locatedAt` | Event/Place/Marker | Place | findet an Ort statt |
-| `locatedNear` | Profile/Offer/Need | Place/Region | ungefähre räumliche Nähe |
-| `offeredBy` | Offer | Profile | Angebot gehört zu Person/Agent |
-| `neededBy` | Need | Profile | Bedürfnis gehört zu Person/Agent |
-| `metAt` | VerificationClaim | Event/Place | Ort oder Event der QR-verifizierten Begegnung |
-| `verified` | VerificationClaim | Profile/Identity | bestätigte Identitätsbeziehung |
-| `attests` | AttestationClaim | Profile/Identity | Aussage über Beitrag/Gabe/Fähigkeit |
-| `suggestedTo` | Quest | Profile/Identity | Quest wurde vorgeschlagen |
+| `locatedNear` | Profile / P1 Offer-/Need-Item | Place/Region | ungefähre räumliche Nähe |
+| `offeredBy` | P1 Offer-Item | Profile | Angebot gehört zu Person/Agent |
+| `neededBy` | P1 Need-Item | Profile | Bedürfnis gehört zu Person/Agent |
+| `metAt` | Verification-Attestation-View | Event/Place | Ort oder Event der QR-verifizierten Begegnung |
+| `verified` | Verification-Attestation-View | Profile/Identity | bestätigte Identitätsbeziehung |
+| `attests` | Attestation-View | Profile/Identity/Item | Aussage über Beitrag/Gabe/Fähigkeit |
+| `suggestedTo` | Quest-Item | Profile/Identity | Quest wurde vorgeschlagen |
 | `relatedTo` | Item | Item | allgemeiner Bezug |
-| `followUpFor` | FollowUp | VerificationClaim/Event/Quest | Anschluss an vorherige Erfahrung |
-| `documentedBy` | Event/VerificationClaim/Project | Post/Media | Dokumentation eines Geschehens |
+| `followUpFor` | FollowUp-Item | Verification-Attestation/Event/Quest | Anschluss an vorherige Erfahrung |
+| `documentedBy` | Event/Verification-Attestation/Project | Post/Media | Dokumentation eines Geschehens |
 
 **Norm:** Relationen MÜSSEN beschreiben, was passiert ist oder vorgeschlagen wird. Sie DÜRFEN NICHT implizieren, dass ein Mensch wertvoller ist als ein anderer.
 
 ## 9. Claim Mapping
 
-### 9.1 Verification Claim
+### 9.1 Verification-Attestation
 
 Verifikation bestätigt Begegnung oder Identitätsbeziehung.
 
 Für Pax v0.1 ist QR-Verifikation der Mechanismus, durch den reale Begegnungen im Netzwerk festgehalten werden.
 
-Empfohlene Claim-Form:
+Kanonisch ist dafür die WoT-Trust-002-Verification-Attestation: ein VC-JWS mit `typ: "vc+jwt"`. Der folgende JSON-Block zeigt nur den signierten Payload vor JWS-Serialisierung.
 
 ```json
 {
-  "claim": "physical-meeting",
-  "tags": ["verification", "pax-2026"],
-  "from": "did:example:alice",
-  "to": "did:example:bob",
-  "context": {
-    "spaceId": "pax-2026",
-    "event": "Pax Friedensfestival 2026"
-  }
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://web-of-trust.de/vocab/v1"
+  ],
+  "id": "urn:uuid:ver-<nonce>-<did-suffix>",
+  "type": ["VerifiableCredential", "WotAttestation"],
+  "issuer": "did:key:z6Mk...alice",
+  "credentialSubject": {
+    "id": "did:key:z6Mk...bob",
+    "claim": "in-person verifiziert",
+    "tags": ["verification", "pax-2026"],
+    "context": "Pax Friedensfestival 2026"
+  },
+  "validFrom": "2026-05-07T10:10:00Z",
+  "iss": "did:key:z6Mk...alice",
+  "sub": "did:key:z6Mk...bob",
+  "nbf": 1778148600,
+  "jti": "urn:uuid:ver-<nonce>-<did-suffix>"
 }
 ```
 
-### 9.2 Attestation Claim
+`credentialSubject.tags` und `credentialSubject.context` sind RLNP-/App-Erweiterungen. Implementierungen MÜSSEN den WoT-Trust-Kern auch dann akzeptieren, wenn sie diese Erweiterungen nicht semantisch verstehen. Eine Real-Life-Stack-UI DARF daraus eine vereinfachte `SignedClaim`-/Kontakt-View ableiten; die portable Quelle der Wahrheit bleibt der VC-JWS.
+
+### 9.2 Attestation
 
 Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 
 ```json
 {
-  "claim": "Mira hat beim gemeinsamen Abendessen für die Gruppe gekocht.",
-  "tags": ["attestation", "contribution", "cooking", "pax-2026"],
-  "from": "did:example:jonas",
-  "to": "did:example:mira"
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://web-of-trust.de/vocab/v1"
+  ],
+  "id": "urn:uuid:attestation-id",
+  "type": ["VerifiableCredential", "WotAttestation"],
+  "issuer": "did:key:z6Mk...jonas",
+  "credentialSubject": {
+    "id": "did:key:z6Mk...mira",
+    "claim": "Mira hat beim gemeinsamen Abendessen für die Gruppe gekocht.",
+    "tags": ["attestation", "contribution", "cooking", "pax-2026"]
+  },
+  "validFrom": "2026-05-07T20:00:00Z",
+  "iss": "did:key:z6Mk...jonas",
+  "sub": "did:key:z6Mk...mira",
+  "nbf": 1778184000,
+  "jti": "urn:uuid:attestation-id"
 }
 ```
 
-**Norm:** Attestations SOLLTEN konkret, beobachtbar und kontextbezogen sein.
+**Norm:** Attestations SOLLTEN konkret, beobachtbar und kontextbezogen sein. Sie MÜSSEN als WoT-Trust-001-VC-JWS erzeugt, transportiert und verifiziert werden; vereinfachte App-Objekte sind nur Projektionen.
 
 ## 10. Visibility Model
 
@@ -262,11 +320,11 @@ Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 | Eigene ID erzeugen | `op.identity.create` | keine ID vorhanden | DID vorhanden | Selbstbesitz erklären |
 | Pax-Space beitreten | `op.space.join` | Invite erkannt | Mitgliedschaft aktiv | Sichtbarkeit erklären |
 | Profil ergänzen | `op.profile.create` | leeres Profil | Mindestfelder gesetzt | Formulierungsvorschlag |
-| Angebot eintragen | `op.offer.need.publish` | Profil vorhanden | Offer sichtbar | Beispiele anbieten |
-| Bedürfnis eintragen | `op.offer.need.publish` | Profil vorhanden | Need sichtbar | ermutigen, konkret zu werden |
+| Angebot eintragen | `op.offer.need.publish` | Profil vorhanden | Offer-Tag im Profil sichtbar | Beispiele anbieten |
+| Bedürfnis eintragen | `op.offer.need.publish` | Profil vorhanden | Need-Tag im Profil sichtbar | ermutigen, konkret zu werden |
 | Person kennenlernen | `op.people.discover` | Matching-Signal | Begegnung selbst bestätigt | passende Person vorschlagen |
-| Verifizieren | `op.verification.create` | reale Begegnung | Claim erstellt | QR-Flow erklären |
-| Nächsten Schritt speichern | `op.followup.create` | Begegnung/Match | Follow-up erstellt | lokale Anschlussoption |
+| Verifizieren | `op.verification.create` | reale Begegnung | Verification-Attestation-VC-JWS erstellt | QR-Flow erklären |
+| Nächsten Schritt speichern | `op.followup.create` | Begegnung/Match | Follow-up-Item erstellt | lokale Anschlussoption |
 
 ## 12. Agent Support Contract
 
@@ -302,7 +360,7 @@ Metriken sind Netzwerk-Signale, keine Leistungsbewertung.
 | gestartete App-Sessions | `op.app.open` | Einstiegshürden erkennen | Tracking-Übergriff |
 | erzeugte IDs | `op.identity.create` | Onboarding-Fortschritt | falsche Erfolgsmetrik |
 | Pax-Space-Mitglieder | `op.space.join` | Pilotgröße | Wachstum um jeden Preis |
-| Profile mit Angeboten/Bedürfnissen | `op.offer.need.publish` | Kooperationspotential | Selbstvermarktungsdruck |
+| Profile mit Offer-/Need-Tags | `op.offer.need.publish` | Kooperationspotential | Selbstvermarktungsdruck |
 | Verifikationen | `op.verification.create` | reale Begegnungsdichte | Vertrauensmissverständnis |
 | Follow-ups | `op.followup.create` | Anschlussfähigkeit | soziale Kontrolle |
 | Quests vorgeschlagen/angenommen | `op.quest.suggest` | Benutzerführung verbessern | Gamification-Druck |
@@ -315,15 +373,15 @@ Für Pax v0.1 ist folgender pragmatischer Schnitt ausreichend:
 
 1. `profile` erweitern statt sofort eigene `offer`/`need` Items erzwingen.
 2. `space invite` und `group membership` für Pax-Space nutzen.
-3. `SignedClaim` für Verifikation verwenden.
-4. Quests zunächst als lokale/sichtbare Suggestions abbilden, nicht als hartes Belohnungssystem.
+3. WoT Trust 002 Verification-Attestations als VC-JWS für QR-Verifikation verwenden; `SignedClaim` ist nur eine App-Projection.
+4. Quests als generische RLS-Items oder lokale/sichtbare Suggestions abbilden, nicht als hartes Belohnungssystem.
 5. Map in v0.1 darf eine Listen-/Regionenansicht sein, solange Begegnung und Auffindbarkeit funktionieren.
 6. Metrics nur lokal/aggregiert für Pilot-Lernen verwenden.
 
 ## 15. Open Questions
 
-- Werden `Offer` und `Need` für Pax eigene Items oder Profilfelder?
-- Muss `Quest` bereits ein persistierter Item-Typ sein oder reicht eine abgeleitete Suggestion?
+- Wann wachsen `offers[]` und `needs[]` von Profil-Tags zu eigenen Items?
+- Muss `Quest` in Pax v0.1 bereits ein persistiertes RLS-Item sein oder reicht eine abgeleitete lokale Suggestion?
 - Welche Sichtbarkeitsstufen unterstützt der erste App-Slice wirklich?
 - Wie wird `region` ohne exakte Standortdaten erfasst?
 - Wie werden analoge Kontakte ohne App nachträglich gemappt?

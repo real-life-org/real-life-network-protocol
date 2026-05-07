@@ -202,9 +202,9 @@ Dieser Slice implementiert nicht:
 | 4 | Profil anlegen | Person im Space ansprechbar sein will | Minimalprofil |
 | 5 | Sichtbarkeit setzen | Person gefunden werden will | Map-/Listen-/Profil-Sichtbarkeit |
 | 6 | Menschen kennenlernen | passende Personen oder Interessen sichtbar sind | Begegnung oder Kontakt |
-| 7 | Menschen verifizieren | reale Begegnung stattgefunden hat | Verification Claim |
-| 8 | Angebote/Bedürfnisse teilen | Person beitragen oder fragen will | Offer/Need im Profil oder Space |
-| 9 | Nächsten Schritt finden | genug Kontext für Einladung existiert | Quest, Einladung oder Follow-up |
+| 7 | Menschen verifizieren | reale Begegnung stattgefunden hat | Verification-Attestation als VC-JWS |
+| 8 | Angebote/Bedürfnisse teilen | Person beitragen oder fragen will | Offer-/Need-Tags im Profil |
+| 9 | Nächsten Schritt finden | genug Kontext für Einladung existiert | Quest-Item, Einladung oder Follow-up |
 | 10 | Verbunden bleiben | Festival vorbei ist | Kontakte, regionale Anschlussoption |
 
 ## 6. Operation-to-App-Mapping v0.1
@@ -219,9 +219,9 @@ Das detaillierte Daten- und App-Mapping lebt in [../06-data-model/operations-map
 | Profil anlegen | Profile wizard | profile item | hilft beim Formulieren | Profile mit Mindestfeldern |
 | Sichtbarkeit setzen | Visibility screen | profile visibility, map marker | erklärt Optionen | sichtbare Profile/Marker |
 | Menschen kennenlernen | Map/List/Profile browse | profile, relation hint | schlägt passende Begegnungen vor | neue Kontakte |
-| Verifizieren | QR challenge/scan | verification claim | erklärt Unterschied zu Vertrauen | Verifikationen |
-| Angebote/Bedürfnisse teilen | Profile/Marketplace edit | offer, need, tags | erkennt passende Matches | Offers/Needs |
-| Nächsten Schritt finden | Quest suggestion | quest, relation, event | macht Einladungsvorschläge | angenommene Einladungen |
+| Verifizieren | QR challenge/scan | Verification-Attestation VC-JWS | erklärt Unterschied zu Vertrauen | Verifikationen |
+| Angebote/Bedürfnisse teilen | Profile/Marketplace edit | profile `offers[]`/`needs[]` tags | erkennt passende Matches | Offer-/Need-Tags |
+| Nächsten Schritt finden | Quest suggestion | generisches Quest-Item, relation, event | macht Einladungsvorschläge | angenommene Einladungen |
 | Verbunden bleiben | Follow-up view | contacts, attestations, events | schlägt regionale Anschlussoptionen vor | Follow-ups |
 
 ## 7. Stand-Crew-Unterstützung
