@@ -185,7 +185,7 @@ Der nächste sinnvolle Schritt ist deshalb kein weiterer großer Visionstext, so
 ### P0 — Muss für einen ersten echten Rollout
 
 1. **Pax-MVP-Slice definieren**  
-   Exakt festlegen, welche sozialen Operationen in Pax funktionieren müssen: joinen, Profil anlegen, auf Map sichtbar werden, Menschen verifizieren, Angebote/Bedürfnisse/Visionen sehen, verbunden bleiben.
+   Exakt festlegen, welche sozialen Operationen in Pax funktionieren müssen: App öffnen, lokale ID generieren, Pax-Space joinen, Profil anlegen, auf Map sichtbar werden, Menschen verifizieren, Angebote/Bedürfnisse/Visionen sehen, verbunden bleiben.
 
 2. **Operation-to-App-Mapping schreiben**  
    Für jede P0-Operation: App-Screen, Datenobjekt, Relation, Sichtbarkeit, Agentenhilfe, Erfolgssignal.

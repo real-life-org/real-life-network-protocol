@@ -6,3 +6,4 @@
 - Initiale Gesamtspezifikation aus `real-life-org-docs/netzwerk-protokoll.md` uebernommen.
 - Rollout-Inventur in `08-rollout/rollout-inventur.md` uebernommen.
 - Erste Struktur fuer Prinzipien, Entitaeten, soziale Operationen, Praktiken, Quests, Datenmodell, Agenten, Rollout, Schemas, Playbooks, Beispiele und Conformance angelegt.
+- Pax-Rollout-Slice angelegt und Reihenfolge geklaert: App/Web-App laden, lokale Identitaet erzeugen, dann Pax-Space beitreten.
