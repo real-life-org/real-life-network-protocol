@@ -220,7 +220,7 @@ Das detaillierte Daten- und App-Mapping lebt in [../06-data-model/operations-map
 | Sichtbarkeit setzen | Visibility screen | profile visibility, map marker | erklärt Optionen | sichtbare Profile/Marker |
 | Menschen kennenlernen | Map/List/Profile browse | profile, relation hint | schlägt passende Begegnungen vor | neue Kontakte |
 | Verifizieren | QR challenge/scan | Verification-Attestation VC-JWS | erklärt Unterschied zu Vertrauen | Verifikationen |
-| Angebote/Bedürfnisse teilen | Profile/Marketplace edit | profile `offers[]`/`needs[]` tags | erkennt passende Matches | Offer-/Need-Tags |
+| Angebote/Bedürfnisse teilen | WoT profile edit / spätere RLS profile view | WoT profile `offers[]`/`needs[]`, Ziel: RLS profile tags | erkennt passende Matches | Offer-/Need-Tags |
 | Nächsten Schritt finden | Quest suggestion | generisches Quest-Item, relation, event | macht Einladungsvorschläge | angenommene Einladungen |
 | Verbunden bleiben | Follow-up view | contacts, attestations, events | schlägt regionale Anschlussoptionen vor | Follow-ups |
 

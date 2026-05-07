@@ -90,11 +90,11 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `DeviceState` | lokaler Onboarding-/Installationszustand | App-local storage | lokal, nicht Space-Daten |
 | `SpaceInvite` | Einladung in Pax-Space | WoT space invite | vorhanden/zu stabilisieren |
 | `SpaceMembership` | Mitgliedschaft im Pax-Space | WoT/RLS Group | vorhanden |
-| `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | RLS Item `type: "profile"` | Pax-Felder in `data` ergänzen |
+| `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | WoT Profile / RLS Item-View `type: "profile"` | RLS-Referenz setzt aktuell vor allem Name/Bio/Avatar um; Offers/Needs/Vision/Region/Sichtbarkeit ergänzen |
 | `VisibilityPreference` | private/space/public/map Sichtbarkeit | RLS `data.visibility` / Connector-Berechtigung | explizit, aber connector-kompatibel modellieren |
 | `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
-| `OfferTag` | etwas, das jemand geben/teilen kann | Profil `data.offers[]` | P0 als einfache Tags wie in der WoT-Demo-App |
-| `NeedTag` | etwas, das jemand sucht/braucht | Profil `data.needs[]` | P0 als einfache Tags wie in der WoT-Demo-App |
+| `OfferTag` | etwas, das jemand geben/teilen kann | WoT Profile `offers[]`; Ziel: RLS `data.offers[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
+| `NeedTag` | etwas, das jemand sucht/braucht | WoT Profile `needs[]`; Ziel: RLS `data.needs[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
 | `VerificationAttestation` | bestätigte Begegnung/Identität | WoT Trust 002 VC-JWS | kanonisch VC-JWS, RLS/SignedClaim nur View |
 | `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
 | `Attestation` | Beitrag/Gabe/Fähigkeit attestieren | WoT Trust 001 VC-JWS | P1 für Pax, kanonisch VC-JWS |
@@ -121,9 +121,11 @@ interface Item {
 
 Die folgenden Beispiele sind deshalb keine neuen Top-Level-Protokollobjekte, sondern Real-Life-Stack-Item-Views. `title`, `description`, `offers`, `needs`, `visibility` und ähnliche Felder leben in `data`.
 
+Wichtig für Pax v0.1: Das RLS-`data-interface` kennt Profile als generische Items und `ProfileItemData` enthält optionale `offers`/`needs`. Die aktuelle RLS-Referenz-/WoT-Connector-Projection setzt das eigene Profil aber vor allem mit `name`, `bio` und `avatar` um. Die WoT-App hat `offers` und `needs` bereits als Profilfelder. Eine Pax-Implementierung SOLLTE diese WoT-Profilfelder verwenden und sie in eine RLS-kompatible Profile-Item-View mappen, sobald der Connector sie durchreicht.
+
 ### 7.1 `profile`
 
-Pax-v0.1 SOLLTE das vorhandene RLS-Profil als generisches Item `type: "profile"` verwenden. Angebote und Bedürfnisse bleiben für P0 einfache Tags im Profil.
+Pax-v0.1 SOLLTE Profile als generische Item-View `type: "profile"` behandeln. Angebote und Bedürfnisse bleiben für P0 einfache Tags im Profil; praktisch kommen sie zunächst aus dem WoT-Profil und werden später in der RLS-Profile-View vollständig durchgereicht.
 
 ```json
 {
@@ -155,6 +157,7 @@ Pax-v0.1 SOLLTE das vorhandene RLS-Profil als generisches Item `type: "profile"`
 
 - `createdBy` MUSS die User-ID/DID des Profilinhabers sein.
 - `offers` und `needs` sind in Pax v0.1 einfache `string[]`-Tags, keine eigenen Items.
+- Wenn ein RLS-Connector `offers`/`needs` noch nicht implementiert, MUSS die App das als fehlende Fähigkeit behandeln und darf keine leeren Felder als bewusste Aussage der Person interpretieren.
 - `vision`, `region` und `visibility` sind Pax-/RLNP-Erweiterungen im `data`-Objekt.
 - Ein Connector DARF `User.displayName` und `User.avatarUrl` aus diesem Profil cachen; der Cache ist nicht die Quelle der Wahrheit.
 
@@ -199,7 +202,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 
 ### 7.3 `offer` und `need` als Tags
 
-Pax v0.1 definiert keine eigenen `offer`- oder `need`-Items. Angebote und Bedürfnisse sind zunächst einfache Tags im Profil, so wie in der WoT-Demo-App.
+Pax v0.1 definiert keine eigenen `offer`- oder `need`-Items. Angebote und Bedürfnisse sind zunächst einfache Tags im Profil. In der WoT-App sind sie bereits Teil des Profils; in RLS sind sie Ziel-Felder der Profile-Item-View und müssen in der Referenzimplementierung noch vollständig umgesetzt werden.
 
 ```json
 {

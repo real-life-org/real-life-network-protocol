@@ -56,7 +56,7 @@ Eine Umsetzung ist `rlnp-data@0.1`-konform, wenn sie:
 
 - WoT-Verifikationen und Attestations als WoT-Trust-VC-JWS behandelt, nicht als eigenes RLNP-Claim-JSON,
 - Profile und Quests als generische Real-Life-Stack-Items oder kompatible Item-Views modelliert,
-- Angebote und Bedürfnisse in Pax v0.1 als einfache Profil-Tags behandeln kann,
+- Angebote und Bedürfnisse in Pax v0.1 als einfache Profil-Tags behandeln kann, auch wenn sie zunächst aus dem WoT-Profil kommen und in der RLS-Referenz noch nicht vollständig implementiert sind,
 - vereinfachte `SignedClaim`-, Kontakt- oder UI-Objekte als Projektionen ausweist, nicht als portable Quelle der Wahrheit.
 
 ## Noch offen
