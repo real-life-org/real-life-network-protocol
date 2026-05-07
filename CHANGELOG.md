@@ -7,3 +7,4 @@
 - Rollout-Inventur in `08-rollout/rollout-inventur.md` uebernommen.
 - Erste Struktur fuer Prinzipien, Entitaeten, soziale Operationen, Praktiken, Quests, Datenmodell, Agenten, Rollout, Schemas, Playbooks, Beispiele und Conformance angelegt.
 - Pax-Rollout-Slice angelegt und Reihenfolge geklaert: App/Web-App laden, lokale Identitaet erzeugen, dann Pax-Space beitreten.
+- Operations-Mapping fuer Pax v0.1 angelegt: App-Flows, Datenobjekte, Relationen, Claims, Quests, Agentenhilfe und Metriken.

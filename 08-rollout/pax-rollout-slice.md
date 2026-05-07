@@ -209,6 +209,8 @@ Dieser Slice implementiert nicht:
 
 ## 6. Operation-to-App-Mapping v0.1
 
+Das detaillierte Daten- und App-Mapping lebt in [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md).
+
 | Operation | App-Flow | Datenobjekte | Agentenhilfe | Metrik |
 |---|---|---|---|---|
 | App laden/oeffnen | QR -> Web/App -> Startscreen | none / install state | erklaert Pilot und Einstieg | gestartete Sessions |
