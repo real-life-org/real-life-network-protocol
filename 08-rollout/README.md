@@ -7,6 +7,6 @@ Aktueller Startpunkt:
 - [rollout-inventur.md](rollout-inventur.md)
 - [pax-rollout-slice.md](pax-rollout-slice.md)
 
-Naechster Schritt:
+Nächster Schritt:
 
 - `operations-mapping.md`

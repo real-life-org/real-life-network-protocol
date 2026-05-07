@@ -1,6 +1,6 @@
 # Conformance Kit
 
-Pruefbarkeit fuer Implementierungen, Playbooks, Agenten und Datenmodelle.
+Prüfbarkeit für Implementierungen, Playbooks, Agenten und Datenmodelle.
 
 Noch offen:
 

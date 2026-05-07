@@ -6,6 +6,6 @@ Aktueller Startpunkt:
 
 - [operations-mapping.md](operations-mapping.md)
 
-Naechster Schritt:
+Nächster Schritt:
 
-- Schemata fuer `profile`, `quest`, `offer`, `need`, `visibility` und `follow-up` ableiten.
+- Schemata für `profile`, `quest`, `offer`, `need`, `visibility` und `follow-up` ableiten.

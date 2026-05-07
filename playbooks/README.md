@@ -1,6 +1,6 @@
 # Playbooks
 
-Praktische Anleitungen fuer Menschen, die Formate hosten oder Rollouts tragen.
+Praktische Anleitungen für Menschen, die Formate hosten oder Rollouts tragen.
 
 Geplante Playbooks:
 

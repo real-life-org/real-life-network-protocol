@@ -12,7 +12,7 @@ Soziale Verbindung zwischen Menschen oder zwischen Menschen und Agenten. Beziehu
 
 ## KI-Agent
 
-Nicht-menschliche Entitaet mit eigener erkennbarer Identitaet, die erinnern, dokumentieren, vorschlagen, verbinden, reflektieren und unterstuetzen kann. Ein Agent ersetzt keine menschliche Entscheidung.
+Nicht-menschliche Entität mit eigener erkennbarer Identität, die erinnern, dokumentieren, vorschlagen, verbinden, reflektieren und unterstützen kann. Ein Agent ersetzt keine menschliche Entscheidung.
 
 ## Kreis
 
@@ -24,11 +24,11 @@ Konkreter Anlass, bei dem Menschen zusammenkommen. Beispiele: Essen, Vollmondfeu
 
 ## Ressource
 
-Etwas, das Menschen nutzen oder teilen koennen: Werkzeug, Raum, Fahrzeug, Zelt, Kueche, Faehigkeit, Wissen, Zeit, Geld oder Kontakt.
+Etwas, das Menschen nutzen oder teilen können: Werkzeug, Raum, Fahrzeug, Zelt, Küche, Fähigkeit, Wissen, Zeit, Geld oder Kontakt.
 
 ## Commons
 
-Ressource oder Struktur, die einer Gemeinschaft zur Verfuegung steht und durch Menschen gepflegt wird.
+Ressource oder Struktur, die einer Gemeinschaft zur Verfügung steht und durch Menschen gepflegt wird.
 
 ## Projekt
 
@@ -40,28 +40,28 @@ Physischer Raum, an dem Gemeinschaft wiederkehrend stattfindet oder sich manifes
 
 ## Initiative
 
-Bestehende Gruppe, Gemeinschaft oder Organisation, die eigene Identitaet und Autonomie behaelt und durch Beziehungen mit dem Netzwerk verbunden sein kann.
+Bestehende Gruppe, Gemeinschaft oder Organisation, die eigene Identität und Autonomie behält und durch Beziehungen mit dem Netzwerk verbunden sein kann.
 
 ## Dokumentation
 
-Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Eintraege, Kalender-Eintraege, Erfahrungsberichte, Attestations oder Learnings.
+Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, Kalender-Einträge, Erfahrungsberichte, Attestations oder Learnings.
 
 ## Quest
 
-Vorgeschlagene Handlung, die Netzwerkaufbau unterstuetzen kann. Eine Quest ist immer Einladung, niemals Pflicht.
+Vorgeschlagene Handlung, die Netzwerkaufbau unterstützen kann. Eine Quest ist immer Einladung, niemals Pflicht.
 
 ## Verifikation
 
-Digitale oder analoge Bestaetigung einer realen Begegnung oder Identitaetsbeziehung. Verifikation bedeutet nicht allgemeine Vertrauenswuerdigkeit.
+Digitale oder analoge Bestätigung einer realen Begegnung oder Identitätsbeziehung. Verifikation bedeutet nicht allgemeine Vertrauenswürdigkeit.
 
 ## Attestation
 
-Signierte oder dokumentierte Aussage ueber einen konkreten Beitrag, eine Gabe, eine Faehigkeit oder eine beobachtete Handlung in einem Kontext.
+Signierte oder dokumentierte Aussage über einen konkreten Beitrag, eine Gabe, eine Fähigkeit oder eine beobachtete Handlung in einem Kontext.
 
 ## Space
 
-Digitaler oder sozialer Raum fuer eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Ein Space kann Module, Mitglieder, Inhalte und eigene Identitaet haben.
+Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Ein Space kann Module, Mitglieder, Inhalte und eigene Identität haben.
 
 ## Vernetzungszelt
 
-Temporärer Begegnungs- und Experimentierraum auf Festivals oder Veranstaltungen, in dem Menschen das Netzwerk kennenlernen, Beziehungen knuepfen und Werkzeuge ausprobieren.
+Temporärer Begegnungs- und Experimentierraum auf Festivals oder Veranstaltungen, in dem Menschen das Netzwerk kennenlernen, Beziehungen knüpfen und Werkzeuge ausprobieren.
