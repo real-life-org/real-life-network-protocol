@@ -39,7 +39,7 @@ Eine Umsetzung ist `rlnp-quests@0.1`-konform, wenn sie:
 
 - Quests als freiwillige Handlungseinladungen modelliert,
 - keine Menschen aufgrund abgeschlossener Quests hierarchisiert,
-- globalen Quest-Status von persönlicher oder gruppenbezogener Quest-Teilnahme trennt,
+- globalen Quest-Status von persönlichen QuestRuns trennt,
 - Quest-Autorenschaft, Sichtbarkeit, Completion und Badge-Vergabe nachvollziehbar modelliert,
 - portable Badges als WoT-Attestations oder daraus ableitbare Views behandelt,
 - hostlose Systemquests trotzdem einer erkennbaren System-/Agenten-Identität zuordnet,

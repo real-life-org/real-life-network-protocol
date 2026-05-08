@@ -50,9 +50,9 @@ Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, K
 
 Freiwillige Handlungseinladung zu einer konkreten realen Handlung im Kontext des Netzwerks. Eine Quest ist Teil des Real Life Network Protocols und kann ohne Game existieren.
 
-## Quest-Teilnahme
+## QuestRun
 
-Persönlicher oder gruppenbezogener Fortschritt zu einer Quest. Mehrere Menschen oder Gruppen können dieselbe Quest unabhängig voneinander durchführen. Completion und Verifikation beziehen sich auf eine Quest-Teilnahme, nicht auf die Quest als globale Handlungseinladung.
+Konkrete Durchführung einer Quest durch einen Menschen. Mehrere Menschen können dieselbe Quest unabhängig voneinander durchführen. Completion und Verifikation beziehen sich auf einen QuestRun, nicht auf die Quest als globale Handlungseinladung.
 
 ## Real Life Game
 

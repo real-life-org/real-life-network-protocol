@@ -45,7 +45,7 @@ Die Operationen `op.app.open`, `op.identity.create`, `op.space.join`, `op.profil
 
 Weitere Operationen in diesem Katalog, z.B. `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../03-social-operations](../03-social-operations/) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
 
-## 4. Minimale Quest- und Teilnahme-View
+## 4. Minimale Quest- und QuestRun-View
 
 Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Suggestions abbilden. Persistenz ist für Pax v0.1 optional.
 
@@ -66,24 +66,29 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
 }
 ```
 
-Eine lokale Suggestion oder persönliche Durchführung verweist auf diese Quest:
+Ein QuestRun verweist per Relations auf diese Quest:
 
 ```json
 {
-  "type": "quest-participation",
-  "schema": "rlnp:quest-participation",
+  "type": "quest-run",
+  "schema": "rlnp:quest-run",
   "schemaVersion": 1,
-  "questId": "q.pax.015",
-  "actor": "did:example:alice",
-  "status": "suggested",
-  "completion": {
-    "kind": "self-confirmed",
-    "evidence": "none"
-  }
+  "createdBy": "did:example:alice",
+  "data": {
+    "status": "suggested",
+    "completion": {
+      "kind": "self-confirmed",
+      "evidence": "none"
+    }
+  },
+  "relations": [
+    { "predicate": "runsQuest", "target": "item:q.pax.015" },
+    { "predicate": "actor", "target": "global:did:example:alice" }
+  ]
 }
 ```
 
-**Norm:** Eine Quest-Completion ist ein lokaler Bedienzustand oder eine freiwillige Dokumentation einer konkreten Quest-Teilnahme. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis und kein sozialer Score.
+**Norm:** Eine Quest-Completion ist ein lokaler Bedienzustand oder eine freiwillige Dokumentation eines konkreten QuestRuns. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis und kein sozialer Score.
 
 ## 5. Katalog
 

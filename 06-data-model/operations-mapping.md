@@ -99,6 +99,7 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
 | `Attestation` | Beitrag/Gabe/Fähigkeit attestieren | WoT Trust 001 VC-JWS | P1 für Pax, kanonisch VC-JWS |
 | `Quest` | freiwillige Einladung zu einer Handlung | RLS generisches Item | `type: "quest"` oder task-kompatible View |
+| `QuestRun` | konkrete Durchführung einer Quest durch einen Menschen | RLS generisches Item mit Relations | `type: "quest-run"`; verweist per `runsQuest` auf Quest und per `actor` auf DID/Profile |
 | `FollowUp` | nächster Schritt nach Begegnung/Festival | RLS generisches Item (`task`, `event`, `post`, `quest`) | leichter Item-Schnitt statt Sonderformat |
 | `MetricEvent` | aggregierbares Netzwerksignal | none | lokal/aggregiert, keine Rankings |
 
@@ -176,19 +177,14 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
   "data": {
     "title": "Lerne eine Person mit ähnlichem Interesse kennen",
     "description": "Finde jemanden im Pax-Space, dessen Vision dich berührt, und führe ein echtes Gespräch.",
-    "status": "suggested",
+    "status": "published",
     "operation": "op.people.discover",
     "intent": "relationship",
     "optional": true,
-    "tags": ["begegnung", "pax-2026"],
-    "completion": {
-      "kind": "self-confirmed",
-      "evidence": "none"
-    }
+    "tags": ["begegnung", "pax-2026"]
   },
   "relations": [
-    { "predicate": "visibleIn", "target": "space:pax-2026" },
-    { "predicate": "suggestedTo", "target": "global:did:key:z6Mk...mira" }
+    { "predicate": "visibleIn", "target": "space:pax-2026" }
   ]
 }
 ```
@@ -196,11 +192,41 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 **Normen:**
 
 - `optional` MUSS für protokollkonforme Quests wahr sein.
-- `status` DARF NICHT als Leistungsskala verwendet werden.
-- `completion` DARF keine riskanten oder übergriffigen Nachweise verlangen.
-- Quest-Fortschritt ist eine Einladungshilfe, kein Menschen-Score.
+- Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht persönlichen Fortschritt.
 
-### 7.3 `offer` und `need` als Tags
+### 7.3 `quest-run`
+
+QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Status, Sichtbarkeit, Completion und Verifikation haben können.
+
+```json
+{
+  "id": "quest-run:pax:meet-similar-interest:mira",
+  "type": "quest-run",
+  "createdAt": "2026-05-07T10:06:00Z",
+  "createdBy": "did:key:z6Mk...mira",
+  "schema": "rlnp:quest-run",
+  "schemaVersion": 1,
+  "data": {
+    "status": "suggested",
+    "completion": {
+      "kind": "self-confirmed",
+      "evidence": "none"
+    }
+  },
+  "relations": [
+    { "predicate": "runsQuest", "target": "item:quest:pax:meet-similar-interest" },
+    { "predicate": "actor", "target": "global:did:key:z6Mk...mira" }
+  ]
+}
+```
+
+**Normen:**
+
+- QuestRun-Status DARF NICHT als Leistungsskala verwendet werden.
+- `completion` DARF keine riskanten oder übergriffigen Nachweise verlangen.
+- QuestRuns sind Einladungshilfe und Dokumentation, kein Menschen-Score.
+
+### 7.4 `offer` und `need` als Tags
 
 Pax v0.1 definiert keine eigenen `offer`- oder `need`-Items. Angebote und Bedürfnisse sind zunächst einfache Tags im Profil. In der WoT-App sind sie bereits Teil des Profils; in RLS sind sie Ziel-Felder der Profile-Item-View und müssen in der Referenzimplementierung noch vollständig umgesetzt werden.
 
@@ -229,7 +255,8 @@ Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablau
 | `metAt` | Verification-Attestation-View | Event/Place | Ort oder Event der QR-verifizierten Begegnung |
 | `verified` | Verification-Attestation-View | Profile/Identity | bestätigte Identitätsbeziehung |
 | `attests` | Attestation-View | Profile/Identity/Item | Aussage über Beitrag/Gabe/Fähigkeit |
-| `suggestedTo` | Quest-Item | Profile/Identity | Quest wurde vorgeschlagen |
+| `runsQuest` | QuestRun | Quest | Run gehört zu dieser Quest |
+| `actor` | QuestRun | Profile/Identity | Mensch, der den Run ausführt |
 | `relatedTo` | Item | Item | allgemeiner Bezug |
 | `followUpFor` | FollowUp-Item | Verification-Attestation/Event/Quest | Anschluss an vorherige Erfahrung |
 | `documentedBy` | Event/Verification-Attestation/Project | Post/Media | Dokumentation eines Geschehens |

@@ -10,5 +10,6 @@
 - Operations-Mapping für Pax v0.1 angelegt: App-Flows, Datenobjekte, Relationen, Claims, Quests, Agentenhilfe und Metriken.
 - Quest-Katalog v0.1 mit 40 freiwilligen Einladungen für Pax/Festival, lokale Kreise und App-v0.1-Nutzerführung angelegt.
 - Quest-Mechanik v0.1 angelegt: Quest-Autorenschaft, Host/Systemquests, Sichtbarkeit, Completion, Badges als Attestations, Orts-/Zeitbezug, Forks und klare Abgrenzung zum Game-Repo.
-- Quest-Lebenszyklus in Quest-Status und Quest-Teilnahme getrennt, damit mehrere Menschen dieselbe Quest unabhängig voneinander durchführen können.
+- Quest-Lebenszyklus in Quest-Status und QuestRun getrennt, damit mehrere Menschen dieselbe Quest unabhängig voneinander durchführen können.
+- QuestRun als eigenes RLS-Item mit Relations zur Quest und zum Menschen modelliert.
 - Sichtbarkeit geschärft: Region ist Auffindbarkeits-/Kartenkontext, keine eigene Sichtbarkeitsstufe.

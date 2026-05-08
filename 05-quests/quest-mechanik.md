@@ -17,8 +17,8 @@ Die Quest-Mechanik soll präzise genug sein, damit Apps, Datenmodelle, Playbooks
 - Quests erstellen,
 - Quests vorschlagen,
 - Quests sichtbar machen,
-- Quest-Teilnahmen dokumentieren,
-- Abschlüsse von Quest-Teilnahmen bestätigen,
+- QuestRuns dokumentieren,
+- Abschlüsse von QuestRuns bestätigen,
 - Beiträge als Attestations anerkennen,
 - Quests kopieren oder lokal anpassen.
 
@@ -70,18 +70,18 @@ Eine Quest DARF NICHT:
 - echte Verantwortung durch oberflächliche Punkte ersetzen,
 - private Entwicklung ohne Zustimmung öffentlich machen.
 
-## 4. Quest und Quest-Teilnahme
+## 4. Quest und QuestRun
 
-Eine Quest ist die Handlungseinladung selbst. Mehrere Menschen oder Gruppen können dieselbe Quest unabhängig voneinander sehen, ausblenden, annehmen, durchführen, abschließen oder bestätigt bekommen.
+Eine Quest ist die Handlungseinladung selbst. Mehrere Menschen können dieselbe Quest unabhängig voneinander sehen, ausblenden, annehmen, durchführen, abschließen oder bestätigt bekommen.
 
 Darum MUSS zwischen zwei Ebenen unterschieden werden:
 
 | Ebene | Bedeutung | Beispiel |
 |---|---|---|
 | Quest | Die wiederverwendbare Handlungseinladung. | "Verifiziere eine reale Begegnung per QR." |
-| Quest-Teilnahme | Der persönliche oder gruppenbezogene Fortschritt zu einer Quest. | "Anton hat diese Quest abgeschlossen." |
+| QuestRun | Die konkrete Durchführung einer Quest durch einen Menschen. | "Anton hat diese Quest abgeschlossen." |
 
-Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed` oder `verified` beschreibt immer eine konkrete Quest-Teilnahme, nicht die Quest als solche.
+Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed` oder `verified` beschreibt immer einen konkreten QuestRun, nicht die Quest als solche.
 
 ### 4.1 Quest-Status
 
@@ -94,15 +94,15 @@ Der Quest-Status beschreibt Veröffentlichung und Verwendbarkeit der Handlungsei
 | `paused` | Vorübergehend nicht aktiv vorgeschlagen. |
 | `archived` | Nicht mehr aktiv, bleibt aber dokumentierbar oder forkbar. |
 
-### 4.2 Teilnahme-Status
+### 4.2 QuestRun-Status
 
-Der Teilnahme-Status beschreibt die Beziehung einer Person oder Gruppe zu einer Quest.
+Der QuestRun-Status beschreibt den Fortschritt eines Menschen zu einer Quest.
 
 | Status | Bedeutung |
 |---|---|
-| `suggested` | Einer Person oder Gruppe vorgeschlagen. |
+| `suggested` | Einer Person vorgeschlagen. |
 | `dismissed` | Ausgeblendet oder abgelehnt. |
-| `accepted` | Person oder Gruppe möchte sie angehen. |
+| `accepted` | Person möchte sie angehen. |
 | `in-progress` | Durchführung hat begonnen. |
 | `completed` | Abschluss wurde lokal markiert oder dokumentiert. |
 | `verification-requested` | Bestätigung wurde angefragt, z.B. durch Host, Gruppe oder Dokumentation. |
@@ -111,10 +111,10 @@ Der Teilnahme-Status beschreibt die Beziehung einer Person oder Gruppe zu einer 
 
 Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
 
-- Vorschlag, Annahme, Completion und Verifikation gehören zur Quest-Teilnahme.
+- Vorschlag, Annahme, Completion und Verifikation gehören zum QuestRun.
 - Veröffentlichung, Pausierung und Archivierung gehören zur Quest.
-- Aggregierte Aussagen wie "12 Menschen haben diese Quest abgeschlossen" sind abgeleitete Views aus sichtbaren Teilnahmen oder Attestations.
-- Eine Agenten-Empfehlung DARF eine lokale Quest-Teilnahme oder Suggestion erzeugen, aber nicht den globalen Quest-Status verändern.
+- Aggregierte Aussagen wie "12 Menschen haben diese Quest abgeschlossen" sind abgeleitete Views aus sichtbaren QuestRuns oder Attestations.
+- Eine Agenten-Empfehlung DARF einen lokalen QuestRun oder eine Suggestion erzeugen, aber nicht den globalen Quest-Status verändern.
 
 ## 5. Autorenschaft
 
@@ -205,31 +205,36 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
 }
 ```
 
-Eine persönliche Teilnahme oder lokale Suggestion kann darauf verweisen:
+Ein QuestRun verweist per Relations auf die Quest und den Menschen:
 
 ```json
 {
-  "type": "quest-participation",
-  "schema": "rlnp:quest-participation",
+  "type": "quest-run",
+  "schema": "rlnp:quest-run",
   "schemaVersion": 1,
-  "questId": "quest:pax-find-similar-interest",
-  "actor": "did:example:bob",
-  "status": "suggested",
+  "createdBy": "did:example:bob",
   "visibility": {
     "mode": "private"
   },
-  "completion": {
-    "method": "self-confirmation",
-    "evidence": "none"
-  }
+  "data": {
+    "status": "suggested",
+    "completion": {
+      "method": "self-confirmation",
+      "evidence": "none"
+    }
+  },
+  "relations": [
+    { "predicate": "runsQuest", "target": "item:quest-pax-find-similar-interest" },
+    { "predicate": "actor", "target": "global:did:example:bob" }
+  ]
 }
 ```
 
-Diese Views sind keine abschließende RLS-Schema-Festlegung. Sie beschreiben die Mindestinformationen, die eine App braucht, um Quest-Definition, persönliche Suggestion, Sichtbarkeit und Completion nicht zu vermischen.
+Diese Views sind keine abschließende RLS-Schema-Festlegung. Sie beschreiben die Mindestinformationen, die eine App braucht, um Quest-Definition, QuestRun, Sichtbarkeit und Completion nicht zu vermischen.
 
 ## 10. Completion und Verifikation
 
-Quest-Abschluss meint den Abschluss einer konkreten Quest-Teilnahme. Er kann je nach Quest unterschiedlich belegt werden.
+Quest-Abschluss meint den Abschluss eines konkreten QuestRuns. Er kann je nach Quest unterschiedlich belegt werden.
 
 | Completion-Methode | Bedeutung | Geeignet für |
 |---|---|---|
@@ -246,7 +251,7 @@ Quest-Abschluss meint den Abschluss einer konkreten Quest-Teilnahme. Er kann je 
 - Foto- oder Videodokumentation ist zunächst eine Einladung an andere, den Abschluss zu bestätigen. Sie ist nicht automatisch ein öffentlicher Beweis.
 - Selbstbestätigung ist für private oder niedrigschwellige Quests möglich, aber als Grundlage für öffentliche Badges noch offen.
 - Öffentliche oder portable Anerkennung SOLLTE über Attestations laufen.
-- Completion-Daten gehören zur Quest-Teilnahme und MÜSSEN Sichtbarkeit und Zustimmung respektieren.
+- Completion-Daten gehören zum QuestRun und MÜSSEN Sichtbarkeit und Zustimmung respektieren.
 
 ## 11. Badges und Attestations
 
@@ -294,7 +299,7 @@ Zeitbezug kann bedeuten:
 - wiederkehrender Rhythmus,
 - Bezug zu einer Veranstaltung oder einem Projektabschnitt.
 
-Wenn eine Quest relevante Ortsdaten hat, KANN sie als Karten-Item erscheinen. Die Kartenlogik bleibt eine Real-Life-Stack- oder App-Projektion. Spielbrett-Metaphern und erweiterte Kartenmechaniken gehören in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game).
+Wenn eine Quest oder ein QuestRun relevante Ortsdaten hat, KANN das jeweilige Item auf der Karte erscheinen. Die Kartenlogik bleibt eine Real-Life-Stack- oder App-Projektion. Spielbrett-Metaphern und erweiterte Kartenmechaniken gehören in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game).
 
 Exakte Standortdaten DÜRFEN NICHT Voraussetzung für Teilnahme sein.
 
