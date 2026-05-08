@@ -308,7 +308,7 @@ Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 | `space` | im Pax-Space sichtbar | Angebot, Bedürfnis, Vision |
 | `public` | öffentlich sichtbar | freiwillige Profilseite |
 
-`region` ist kein Visibility-Level. Eine Region beschreibt räumlichen Kontext, Kartenanzeige oder Auffindbarkeit und kann mit Sichtbarkeit kombiniert werden, z.B. `space` + Region "Leipzig" oder `public` + Region "Allgäu". Soll etwas nur für eine regionale Gruppe sichtbar sein, wird dafür ein regionaler Space verwendet.
+`region` ist ein Orts-/Auffindbarkeitsfeld, kein Visibility-Level.
 
 **Normen:**
 

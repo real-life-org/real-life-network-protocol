@@ -72,7 +72,7 @@ Signierte oder dokumentierte Aussage über einen konkreten Beitrag, eine Gabe, e
 
 ## Space
 
-Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Für Sichtbarkeit und Sharing ist `Space` die gemeinsame Ebene für Gruppe, Projekt, Kreis oder Initiative. Ein Space kann Module, Mitglieder, Inhalte und eigene Identität haben.
+Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Ein Space kann Module, Mitglieder, Inhalte und eigene Identität haben.
 
 ## Vernetzungszelt
 
