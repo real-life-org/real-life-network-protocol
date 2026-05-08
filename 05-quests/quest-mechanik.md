@@ -17,8 +17,8 @@ Die Quest-Mechanik soll präzise genug sein, damit Apps, Datenmodelle, Playbooks
 - Quests erstellen,
 - Quests vorschlagen,
 - Quests sichtbar machen,
-- Quest-Abschluss dokumentieren,
-- Abschluss bestätigen,
+- Quest-Teilnahmen dokumentieren,
+- Abschlüsse von Quest-Teilnahmen bestätigen,
 - Beiträge als Attestations anerkennen,
 - Quests kopieren oder lokal anpassen.
 
@@ -70,22 +70,51 @@ Eine Quest DARF NICHT:
 - echte Verantwortung durch oberflächliche Punkte ersetzen,
 - private Entwicklung ohne Zustimmung öffentlich machen.
 
-## 4. Quest-Lebenszyklus
+## 4. Quest und Quest-Teilnahme
 
-Eine Quest kann folgenden Lebenszyklus haben:
+Eine Quest ist die Handlungseinladung selbst. Mehrere Menschen oder Gruppen können dieselbe Quest unabhängig voneinander sehen, ausblenden, annehmen, durchführen, abschließen oder bestätigt bekommen.
+
+Darum MUSS zwischen zwei Ebenen unterschieden werden:
+
+| Ebene | Bedeutung | Beispiel |
+|---|---|---|
+| Quest | Die wiederverwendbare Handlungseinladung. | "Verifiziere eine reale Begegnung per QR." |
+| Quest-Teilnahme | Der persönliche oder gruppenbezogene Fortschritt zu einer Quest. | "Anton hat diese Quest abgeschlossen." |
+
+Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed` oder `verified` beschreibt immer eine konkrete Quest-Teilnahme, nicht die Quest als solche.
+
+### 4.1 Quest-Status
+
+Der Quest-Status beschreibt Veröffentlichung und Verwendbarkeit der Handlungseinladung.
 
 | Status | Bedeutung |
 |---|---|
 | `draft` | Entwurf, zunächst privat. |
 | `published` | Für einen gewählten Kontext sichtbar. |
+| `paused` | Vorübergehend nicht aktiv vorgeschlagen. |
+| `archived` | Nicht mehr aktiv, bleibt aber dokumentierbar oder forkbar. |
+
+### 4.2 Teilnahme-Status
+
+Der Teilnahme-Status beschreibt die Beziehung einer Person oder Gruppe zu einer Quest.
+
+| Status | Bedeutung |
+|---|---|
 | `suggested` | Einer Person oder Gruppe vorgeschlagen. |
+| `dismissed` | Ausgeblendet oder abgelehnt. |
 | `accepted` | Person oder Gruppe möchte sie angehen. |
 | `in-progress` | Durchführung hat begonnen. |
 | `completed` | Abschluss wurde lokal markiert oder dokumentiert. |
+| `verification-requested` | Bestätigung wurde angefragt, z.B. durch Host, Gruppe oder Dokumentation. |
 | `verified` | Abschluss wurde bestätigt, z.B. per QR, Host, Gruppe oder Attestation. |
-| `archived` | Nicht mehr aktiv, bleibt aber dokumentierbar. |
+| `abandoned` | Begonnen, aber bewusst nicht weitergeführt. |
 
-Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt, dass Completion kein Vertrauensbeweis ist.
+Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
+
+- Vorschlag, Annahme, Completion und Verifikation gehören zur Quest-Teilnahme.
+- Veröffentlichung, Pausierung und Archivierung gehören zur Quest.
+- Aggregierte Aussagen wie "12 Menschen haben diese Quest abgeschlossen" sind abgeleitete Views aus sichtbaren Teilnahmen oder Attestations.
+- Eine Agenten-Empfehlung DARF eine lokale Quest-Teilnahme oder Suggestion erzeugen, aber nicht den globalen Quest-Status verändern.
 
 ## 5. Autorenschaft
 
@@ -162,6 +191,7 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
     "mode": "private"
   },
   "createdBy": "did:example:alice",
+  "status": "published",
   "data": {
     "title": "Finde eine Person mit ähnlichem Interesse",
     "description": "Schau dir Profile im Pax-Space an und lade eine Person zu einem echten Gespräch ein.",
@@ -169,24 +199,39 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
     "questType": "personal",
     "phase": "during-event",
     "optional": true,
-    "status": "suggested",
     "tags": ["begegnung", "pax-2026"],
     "context": {
       "spaceId": "pax-2026"
-    },
-    "completion": {
-      "method": "self-confirmation",
-      "evidence": "none"
     }
   }
 }
 ```
 
-Diese View ist keine abschließende RLS-Schema-Festlegung. Sie beschreibt die Mindestinformationen, die eine App für einfache Quest-Vorschläge, Sichtbarkeit und Completion braucht.
+Eine persönliche Teilnahme oder lokale Suggestion kann darauf verweisen:
+
+```json
+{
+  "type": "quest-participation",
+  "schema": "rlnp:quest-participation",
+  "schemaVersion": 1,
+  "questId": "quest:pax-find-similar-interest",
+  "actor": "did:example:bob",
+  "status": "suggested",
+  "visibility": {
+    "mode": "private"
+  },
+  "completion": {
+    "method": "self-confirmation",
+    "evidence": "none"
+  }
+}
+```
+
+Diese Views sind keine abschließende RLS-Schema-Festlegung. Sie beschreiben die Mindestinformationen, die eine App braucht, um Quest-Definition, persönliche Suggestion, Sichtbarkeit und Completion nicht zu vermischen.
 
 ## 10. Completion und Verifikation
 
-Quest-Abschluss kann je nach Quest unterschiedlich belegt werden.
+Quest-Abschluss meint den Abschluss einer konkreten Quest-Teilnahme. Er kann je nach Quest unterschiedlich belegt werden.
 
 | Completion-Methode | Bedeutung | Geeignet für |
 |---|---|---|
@@ -203,7 +248,7 @@ Quest-Abschluss kann je nach Quest unterschiedlich belegt werden.
 - Foto- oder Videodokumentation ist zunächst eine Einladung an andere, den Abschluss zu bestätigen. Sie ist nicht automatisch ein öffentlicher Beweis.
 - Selbstbestätigung ist für private oder niedrigschwellige Quests möglich, aber als Grundlage für öffentliche Badges noch offen.
 - Öffentliche oder portable Anerkennung SOLLTE über Attestations laufen.
-- Completion-Daten MÜSSEN Sichtbarkeit und Zustimmung respektieren.
+- Completion-Daten gehören zur Quest-Teilnahme und MÜSSEN Sichtbarkeit und Zustimmung respektieren.
 
 ## 11. Badges und Attestations
 

@@ -45,7 +45,7 @@ Die Operationen `op.app.open`, `op.identity.create`, `op.space.join`, `op.profil
 
 Weitere Operationen in diesem Katalog, z.B. `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../03-social-operations](../03-social-operations/) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
 
-## 4. Minimale Quest-Item-View
+## 4. Minimale Quest- und Teilnahme-View
 
 Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Suggestions abbilden. Persistenz ist für Pax v0.1 optional.
 
@@ -54,23 +54,36 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
   "type": "quest",
   "schema": "rlnp:quest",
   "schemaVersion": 1,
+  "status": "published",
   "data": {
     "title": "Finde eine Person mit ähnlichem Interesse",
     "description": "Schau dir Profile im Pax-Space an und lade eine Person zu einem echten Gespräch ein.",
     "operation": "op.people.discover",
     "phase": "during-event",
     "optional": true,
-    "status": "suggested",
-    "tags": ["begegnung", "pax-2026"],
-    "completion": {
-      "kind": "self-confirmed",
-      "evidence": "none"
-    }
+    "tags": ["begegnung", "pax-2026"]
   }
 }
 ```
 
-**Norm:** Eine Quest-Completion ist ein lokaler Bedienzustand oder eine freiwillige Dokumentation. Sie ist kein Vertrauensbeweis und kein sozialer Score.
+Eine lokale Suggestion oder persönliche Durchführung verweist auf diese Quest:
+
+```json
+{
+  "type": "quest-participation",
+  "schema": "rlnp:quest-participation",
+  "schemaVersion": 1,
+  "questId": "q.pax.015",
+  "actor": "did:example:alice",
+  "status": "suggested",
+  "completion": {
+    "kind": "self-confirmed",
+    "evidence": "none"
+  }
+}
+```
+
+**Norm:** Eine Quest-Completion ist ein lokaler Bedienzustand oder eine freiwillige Dokumentation einer konkreten Quest-Teilnahme. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis und kein sozialer Score.
 
 ## 5. Katalog
 
