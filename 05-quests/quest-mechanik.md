@@ -172,7 +172,7 @@ Die folgenden Quest-Typen sind im Basisprotokoll erlaubt. Sie sind keine abschli
 | `stewardship` | Pflege von Ort, Ressource oder Commons. | "Bring das Zelt trocken zurück." |
 | `documentation` | Sichtbarmachung dessen, was passiert ist. | "Schreibe einen kurzen Erfahrungsbericht." |
 | `gratitude` | Dank oder Wertschätzung wird ausgedrückt. | "Danke einer Person per Attestation." |
-| `system` | Allgemeine Einladung durch App oder Agent. | "Verifiziere eine reale Begegnung per QR." |
+| `system` | Allgemeine Handlungseinladung durch App oder Agent. | "Verifiziere eine reale Begegnung per QR." |
 
 Erlebnisorientierte Quests, Wanderungen, Klettertage oder Gruppenspiele können im Basisprotokoll als `event`, `group` oder `personal` beschrieben und mit Tags versehen werden. Das Game-Repo kann daraus später Adventures oder andere Spielrahmen ableiten.
 

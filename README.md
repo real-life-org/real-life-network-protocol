@@ -42,7 +42,7 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 | [02-entities](02-entities/) | Soziale Entitäten des Netzwerks |
 | [03-social-operations](03-social-operations/) | Kernoperationen des Netzwerkaufbaus |
 | [04-practices-and-rituals](04-practices-and-rituals/) | Wiederkehrende Formate und Rituale |
-| [05-quests](05-quests/) | Freiwillige Einladungen, Quest-Katalog und Quest-Mechanik |
+| [05-quests](05-quests/) | Freiwillige Handlungseinladungen, Quest-Katalog und Quest-Mechanik |
 | [06-data-model](06-data-model/) | App- und Graphmodell für soziale Operationen |
 | [07-agent-protocol](07-agent-protocol/) | Handlungsrahmen für KI-Agenten |
 | [08-rollout](08-rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
@@ -69,7 +69,7 @@ Dieses Repo folgt einem spec-first Ansatz:
 
 - Jede neue Praxis wird als soziale Operation beschrieben.
 - Jede Operation wird auf Inputs, Ablauf, Outputs, Risiken, nächste Schritte, App-Unterstützung, Agenten-Unterstützung und Metriken gemappt.
-- Quests sind Einladungen, keine Pflichten.
+- Quests sind Handlungseinladungen, keine Pflichten.
 - Metriken dürfen Netzwerkaktivität sichtbar machen, aber Menschen nicht ranken.
 - Agenten dürfen unterstützen, erinnern, verbinden und reflektieren, aber nicht steuern.
 

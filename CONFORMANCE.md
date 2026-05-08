@@ -12,7 +12,7 @@ Eine konforme Umsetzung MUSS:
 4. Menschen nicht ranken oder global bewerten.
 5. Sichtbarkeit, Zustimmung und Kontext respektieren.
 6. lokale Autonomie bewahren.
-7. Quests als Einladungen formulieren.
+7. Quests als Handlungseinladungen formulieren.
 8. KI-Agenten als unterstützend, nicht steuernd behandeln.
 
 ## Profile
