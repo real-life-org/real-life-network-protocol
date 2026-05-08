@@ -60,7 +60,7 @@ Spielerische Gestaltungsschicht auf dem Real Life Network. Das Game nutzt Quests
 
 ## Badge
 
-Sichtbare Anerkennung für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Im Basisprotokoll ist ein portables Badge eine WoT-Attestation oder aus einer WoT-Attestation ableitbar.
+Visuell dargestellte WoT-Attestation für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Die Darstellung kann `emoji`, `color` und `shape` aus der [RLS Display Extension](https://github.com/real-life-org/wot-spec/blob/main/04-rls-extensions/R01-badges.md) verwenden.
 
 ## Verifikation
 

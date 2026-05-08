@@ -249,13 +249,16 @@ Quest-Abschluss meint den Abschluss eines konkreten QuestRuns. Er kann je nach Q
 **Normen:**
 
 - Foto- oder Videodokumentation ist zunächst eine Einladung an andere, den Abschluss zu bestätigen. Sie ist nicht automatisch ein öffentlicher Beweis.
-- Selbstbestätigung ist für private oder niedrigschwellige Quests möglich, aber als Grundlage für öffentliche Badges noch offen.
+- Selbstbestätigung KANN einen QuestRun auf `completed` setzen.
+- Selbstbestätigung erzeugt keine portable Attestation und kein öffentliches Badge.
 - Öffentliche oder portable Anerkennung SOLLTE über Attestations laufen.
 - Completion-Daten gehören zum QuestRun und MÜSSEN Sichtbarkeit und Zustimmung respektieren.
 
-## 11. Badges und Attestations
+## 11. Badges als Attestations
 
-Im Basisprotokoll sind Badges gleichbedeutend mit oder abgeleitet aus Attestations.
+Ein Badge ist eine visuell dargestellte WoT-Attestation.
+
+Die visuelle Darstellung folgt der RLS Display Extension in [real-life-org/wot-spec](https://github.com/real-life-org/wot-spec/blob/main/04-rls-extensions/R01-badges.md), z.B. über `display.emoji`, `display.color` und `display.shape`.
 
 Ein Badge kann ausdrücken:
 
@@ -267,13 +270,19 @@ Ein Badge kann ausdrücken:
 - hat Dank oder Wertschätzung erhalten,
 - hat eine Fähigkeit in einem Kontext gezeigt.
 
-Ein portables Badge MUSS als WoT-Attestation oder aus einer WoT-Attestation ableitbar sein.
+Ein portables Badge MUSS eine WoT-Attestation sein. Eine reine UI-Darstellung ohne signierte Attestation ist kein portables Badge.
 
-Wenn ein Badge automatisch vom System vergeben wird, MUSS klar sein:
+Ein Badge entsteht durch Bestätigung:
 
-- welche System-/Agenten-Identität signiert,
-- welche Regel ausgelöst wurde,
-- welche Daten dafür verwendet wurden,
+- durch eine menschliche Identität,
+- durch eine Agenten-Identität,
+- durch eine System-Identität.
+
+Wenn ein Badge automatisch oder agentisch vergeben wird, MUSS klar sein:
+
+- welche DID signiert,
+- welche Regel ausgelöst wurde (`ruleId`, optional `ruleVersion`),
+- welcher Trigger verwendet wurde,
 - ob das Badge öffentlich, privat oder nur lokal ist.
 
 Ohne erkennbare Signatur ist ein Badge nur ein lokaler UI-Status und keine portable Anerkennung.
@@ -386,9 +395,7 @@ Diese Mechaniken DÜRFEN die Quest-Basis nicht verletzen: Freiwilligkeit, Sichtb
 
 ## 17. Offene Fragen
 
-- Wird `self-confirmation` für öffentliche Badges grundsätzlich ausgeschlossen oder nur als schwächeres Signal markiert?
-- Welche System-/Agenten-DID darf automatische Badges signieren?
-- Wie werden automatische Badge-Regeln auditierbar?
-- Wird `badge` ein eigener Item-Typ, eine Attestation-View oder beides?
 - Welche minimalen Quest-Felder braucht RLS v0.1?
 - Wie werden Quest-Forks im Datenmodell referenziert?
+- Welche System-/Agenten-DIDs dürfen automatische oder agentische Badge-Attestations signieren?
+- Welche Badge-Regeln werden im ersten Pax-/RLN-Kontext gebraucht?

@@ -41,7 +41,8 @@ Eine Umsetzung ist `rlnp-quests@0.1`-konform, wenn sie:
 - keine Menschen aufgrund abgeschlossener Quests hierarchisiert,
 - globalen Quest-Status von persönlichen QuestRuns trennt,
 - Quest-Autorenschaft, Sichtbarkeit, Completion und Badge-Vergabe nachvollziehbar modelliert,
-- portable Badges als WoT-Attestations oder daraus ableitbare Views behandelt,
+- portable Badges als visuell dargestellte WoT-Attestations behandelt,
+- Self-confirmation nicht als portable Badge-Attestation ausgibt,
 - hostlose Systemquests trotzdem einer erkennbaren System-/Agenten-Identität zuordnet,
 - den Zweck jeder Quest auf Beziehung, Commons, lokale Resilienz oder gemeinsames Handeln zurückführt,
 - keine Game-Mechaniken wie XP, Level, Skill-Trees, Avatar-Items, Storylines oder Campaigns als Voraussetzung für Basis-Interoperabilität verlangt.

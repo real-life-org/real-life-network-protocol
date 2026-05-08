@@ -405,14 +405,14 @@ Für Pax v0.1 ist folgender pragmatischer Schnitt ausreichend:
 1. `profile` erweitern statt sofort eigene `offer`/`need` Items erzwingen.
 2. `space invite` und `group membership` für Pax-Space nutzen.
 3. WoT Trust 002 Verification-Attestations als VC-JWS für QR-Verifikation verwenden; `SignedClaim` ist nur eine App-Projection.
-4. Quests als generische RLS-Items oder lokale/sichtbare Suggestions abbilden, nicht als hartes Belohnungssystem.
+4. Handlungseinladungen als lokale/sichtbare Suggestions abbilden; vollwertige `quest`-/`quest-run`-Items sind für Pax v0.1 optional.
 5. Map in v0.1 darf eine Listen-/Regionenansicht sein, solange Begegnung und Auffindbarkeit funktionieren.
 6. Metrics nur lokal/aggregiert für Pilot-Lernen verwenden.
 
 ## 15. Open Questions
 
 - Wann wachsen `offers[]` und `needs[]` von Profil-Tags zu eigenen Items?
-- Muss `Quest` in Pax v0.1 bereits ein persistiertes RLS-Item sein oder reicht eine abgeleitete lokale Suggestion?
+- Welche lokalen Suggestions sollen nach Pax in persistierte `quest`-/`quest-run`-Items überführt werden?
 - Welche Sichtbarkeitsstufen unterstützt der erste App-Slice wirklich?
 - Wie wird `region` ohne exakte Standortdaten erfasst?
 - Wie werden analoge Kontakte ohne App nachträglich gemappt?

@@ -13,3 +13,5 @@
 - Quest-Lebenszyklus in Quest-Status und QuestRun getrennt, damit mehrere Menschen dieselbe Quest unabhängig voneinander durchführen können.
 - QuestRun als eigenes RLS-Item mit Relations zur Quest und zum Menschen modelliert.
 - Sichtbarkeit geschärft: Region ist Auffindbarkeits-/Kartenkontext, keine eigene Sichtbarkeitsstufe.
+- Badges als visuell dargestellte WoT-Attestations präzisiert; Self-confirmation erzeugt keinen portablen Badge.
+- Pax v0.1 auf lokale Handlungseinladungen/Suggestions begrenzt; vollwertige Quest-/QuestRun-Items bleiben optional.
