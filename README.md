@@ -56,7 +56,7 @@ Der erste Fokus ist ein praktischer Rollout-Slice für Pax/Festival-Kontexte:
 
 1. [Pax-MVP-Slice definieren](08-rollout/pax-rollout-slice.md)
 2. [soziale Operationen auf App-Flows und Datenmodelle mappen](06-data-model/operations-mapping.md)
-3. Quest-Katalog v0.1 schreiben
+3. [Quest-Katalog v0.1 schärfen](05-quests/quest-katalog.md)
 4. Vernetzungszelt-Playbook erstellen
 5. Agenten-Handlungsrahmen spezifizieren
 
