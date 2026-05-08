@@ -73,7 +73,7 @@ QR/Link
 | `op.identity.create` | Onboarding: Create Identity | lokale ID erzeugen | bestehende ID verwenden, Recovery-Hinweis lesen | Abbruch -> kein Space-Beitritt |
 | `op.space.join` | Space Invite Screen | Pax-Space beitreten | mehr Info, später entscheiden | Ablehnen -> kein Makel, App bleibt nutzbar |
 | `op.profile.create` | Profile Wizard | Rufname und erste Felder speichern | später ausfüllen, Avatar setzen | Skip -> Profil bleibt minimal/anonym |
-| `op.visibility.set` | Visibility Settings | Space-/Map-Sichtbarkeit wählen | private bleiben, Region statt genauer Ort | keine Sichtbarkeit -> nicht auffindbar |
+| `op.visibility.set` | Visibility Settings | Space-Sichtbarkeit und Karten-/Regionsauffindbarkeit wählen | private bleiben, Region statt genauer Ort | keine Sichtbarkeit -> nicht auffindbar |
 | `op.people.discover` | Map/List/Search | Profil/Eintrag öffnen | filtern, merken, ausblenden | keine Treffer -> Crew/Agent kann analoge Einladung geben |
 | `op.verification.create` | QR Challenge / Scanner | reale Begegnung per QR bestätigen | Gegenverifikation, Ort/Event als Kontext, manuelle Code-Eingabe | Fehler -> später erneut versuchen |
 | `op.offer.need.publish` | Profile or Marketplace Edit | Angebot/Bedürfnis eintragen | Tags, Sichtbarkeit, Ablaufdatum | leer lassen -> kein Druck |
@@ -91,7 +91,7 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `SpaceInvite` | Einladung in Pax-Space | WoT space invite | vorhanden/zu stabilisieren |
 | `SpaceMembership` | Mitgliedschaft im Pax-Space | WoT/RLS Group | vorhanden |
 | `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | WoT Profile / RLS Item-View `type: "profile"` | RLS-Referenz setzt aktuell vor allem Name/Bio/Avatar um; Offers/Needs/Vision/Region/Sichtbarkeit ergänzen |
-| `VisibilityPreference` | private/space/public/map Sichtbarkeit | RLS `data.visibility` / Connector-Berechtigung | explizit, aber connector-kompatibel modellieren |
+| `VisibilityPreference` | private/contacts/space/public Sichtbarkeit; separate Karten-/Regionsauffindbarkeit | RLS `data.visibility` / Connector-Berechtigung | explizit, aber connector-kompatibel modellieren |
 | `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
 | `OfferTag` | etwas, das jemand geben/teilen kann | WoT Profile `offers[]`; Ziel: RLS `data.offers[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
 | `NeedTag` | etwas, das jemand sucht/braucht | WoT Profile `needs[]`; Ziel: RLS `data.needs[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
@@ -307,7 +307,8 @@ Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 | `contacts` | für verifizierte/aktive Kontakte sichtbar | Telefonnummer |
 | `space` | im Pax-Space sichtbar | Angebot, Bedürfnis, Vision |
 | `public` | öffentlich sichtbar | freiwillige Profilseite |
-| `region` | ungefähre räumliche Sichtbarkeit | "Leipzig" statt GPS |
+
+`region` ist kein Visibility-Level. Eine Region beschreibt räumlichen Kontext, Kartenanzeige oder Auffindbarkeit und kann mit Sichtbarkeit kombiniert werden, z.B. `space` + Region "Leipzig" oder `public` + Region "Allgäu". Soll etwas nur für eine regionale Gruppe sichtbar sein, wird dafür ein regionaler Space verwendet.
 
 **Normen:**
 

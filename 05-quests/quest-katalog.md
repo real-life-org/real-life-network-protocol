@@ -107,7 +107,7 @@ Eine lokale Suggestion oder persönliche Durchführung verweist auf diese Quest:
 | `q.pax.009` | Trage ein Angebot als Tag ein. | `op.offer.need.publish` | Profil vorhanden | `offers[]` enthält mindestens einen Tag | Tags bleiben einfache Profilfelder |
 | `q.pax.010` | Trage ein Bedürfnis oder eine Suche als Tag ein. | `op.offer.need.publish` | Profil vorhanden | `needs[]` enthält mindestens einen Tag | Bedürfnis darf offen und unfertig sein |
 | `q.pax.011` | Ergänze eine Vision oder ein Thema, das dich ruft. | `op.profile.create` | Profil vorhanden | Vision/Interesse sichtbar oder privat gespeichert | Kein Missionierungsdruck |
-| `q.pax.012` | Wähle eine grobe Region statt exaktem Standort. | `op.visibility.set` | Person will lokal auffindbar sein | Region oder Festival-Ort gesetzt | Exakte Standortdaten nicht verlangen |
+| `q.pax.012` | Wähle eine grobe Region für lokale Auffindbarkeit. | `op.visibility.set` | Person will lokal auffindbar sein | Region oder Festival-Ort gesetzt | Region ist kein eigener Sichtbarkeitslevel |
 | `q.pax.013` | Prüfe, welche Profilfelder sichtbar sind. | `op.visibility.set` | Profil enthält Daten | Sichtbarkeit bewusst bestätigt | Keine stillen Veröffentlichungen |
 
 ### 5.3 Menschen entdecken und begegnen

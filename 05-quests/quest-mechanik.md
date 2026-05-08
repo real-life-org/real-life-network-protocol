@@ -152,9 +152,11 @@ Danach kann sie sichtbar gemacht werden für:
 - nur mich,
 - einzelne Kontakte,
 - einen Space,
-- eine Gruppe oder ein Projekt,
-- eine Region,
 - öffentlich.
+
+Ein Space ist hier die gemeinsame Sharing-Ebene für Gruppe, Projekt, Kreis oder Initiative. Das Protokoll unterscheidet bei Sichtbarkeit nicht zwischen "in einer Gruppe sichtbar" und "in einem Projekt sichtbar", sondern modelliert beides als Sichtbarkeit in einem Space.
+
+Eine Region ist keine eigene Sichtbarkeitsstufe. Region, Ort oder Karte beschreiben Auffindbarkeit, räumlichen Kontext oder Filterbarkeit. Wenn eine Quest "nur für eine Region" sichtbar sein soll, braucht es entweder einen regionalen Space oder eine öffentliche/Space-Sichtbarkeit mit zusätzlichem Regionsfilter.
 
 Dieses Muster folgt dem Real-Life-Stack-Prinzip, dass Items Sichtbarkeit und Sharing-Kontext haben können. Eine Quest DARF NICHT automatisch öffentlich werden, nur weil sie erstellt wurde.
 
