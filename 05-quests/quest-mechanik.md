@@ -10,7 +10,7 @@
 
 Dieses Dokument beschreibt Quests als Teil des Real Life Network Protocols.
 
-Eine Quest ist eine freiwillige Einladung zu einer realen Handlung. Sie kann in einer App, durch eine Crew, durch einen Host, durch einen lokalen Kreis oder durch einen Agenten vorgeschlagen werden. Sie bleibt immer ablehnbar und darf nicht zu Pflicht, Score oder sozialer Kontrolle werden.
+Eine Quest ist eine freiwillige Handlungseinladung. Sie lädt zu einer konkreten realen Handlung im Kontext des Netzwerks ein. Sie kann in einer App, durch eine Crew, durch einen Host, durch einen lokalen Kreis oder durch einen Agenten vorgeschlagen werden. Sie bleibt immer ablehnbar und darf nicht zu Pflicht, Score oder sozialer Kontrolle werden.
 
 Die Quest-Mechanik soll präzise genug sein, damit Apps, Datenmodelle, Playbooks und Agenten damit arbeiten können:
 
@@ -27,11 +27,11 @@ Die Quest-Mechanik soll präzise genug sein, damit Apps, Datenmodelle, Playbooks
 Sprachlich gilt:
 
 ```text
-Quest = kleinste interoperable reale Einladung im Netzwerkprotokoll.
+Quest = standardisierte freiwillige Handlungseinladung.
 Game  = spielerischer Rahmen, der Quests, Orte, Ressourcen, Rollen und Geschichten verbindet.
 ```
 
-Eine Quest kann ohne Game existieren. Das Game benutzt Quests als kleinste reale Handlungseinheit.
+Eine Quest kann ohne Game existieren. Das Game benutzt Quests als standardisierte Handlungseinheiten.
 
 Dieses Repository definiert nur die Quest-Schicht. Es definiert NICHT:
 

@@ -37,7 +37,7 @@ Eine Umsetzung ist `rlnp-rollout@0.1`-konform, wenn sie:
 
 Eine Umsetzung ist `rlnp-quests@0.1`-konform, wenn sie:
 
-- Quests als freiwillige Einladungen modelliert,
+- Quests als freiwillige Handlungseinladungen modelliert,
 - keine Menschen aufgrund abgeschlossener Quests hierarchisiert,
 - Quest-Autorenschaft, Sichtbarkeit, Completion und Badge-Vergabe nachvollziehbar modelliert,
 - portable Badges als WoT-Attestations oder daraus ableitbare Views behandelt,

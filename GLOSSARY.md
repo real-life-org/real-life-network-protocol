@@ -48,7 +48,7 @@ Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, K
 
 ## Quest
 
-Freiwillige Einladung zu einer realen Handlung, die Netzwerkaufbau unterstützen kann. Eine Quest ist Teil des Real Life Network Protocols und kann ohne Game existieren.
+Freiwillige Handlungseinladung zu einer konkreten realen Handlung im Kontext des Netzwerks. Eine Quest ist Teil des Real Life Network Protocols und kann ohne Game existieren.
 
 ## Real Life Game
 

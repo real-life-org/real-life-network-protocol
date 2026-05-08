@@ -2,13 +2,13 @@
 
 **Status:** Entwurf v0.1
 **Datum:** 2026-05-08
-**Scope:** Erste freiwillige Einladungen für Pax-/Festival-Kontexte, lokale Kreise und App-v0.1-Nutzerführung.
+**Scope:** Erste freiwillige Handlungseinladungen für Pax-/Festival-Kontexte, lokale Kreise und App-v0.1-Nutzerführung.
 
 ---
 
 ## 1. Zweck
 
-Dieser Katalog beschreibt erste Quests als freiwillige Einladungen. Sie sollen Menschen helfen:
+Dieser Katalog beschreibt erste Quests als freiwillige Handlungseinladungen. Sie sollen Menschen helfen:
 
 - die App und ihre eigene Identität zu verstehen,
 - reale Begegnungen wahrscheinlicher zu machen,
