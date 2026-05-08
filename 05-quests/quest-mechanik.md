@@ -287,17 +287,17 @@ Ohne erkennbare Signatur ist ein Badge nur ein lokaler UI-Status und keine porta
 
 ## 12. Orts- und Zeitbezug
 
-Eine Quest KANN Orts- oder Zeitbezug haben.
+Eine Quest und ein QuestRun KÖNNEN jeweils eigenen Orts-, Zeit- oder Kontextbezug haben.
 
-Ortsbezug kann bedeuten:
+Kontext beschreibt, wozu die Handlungseinladung oder Durchführung gehört:
 
-- konkreter Ort,
-- grobe Region,
 - Veranstaltung,
 - Space,
-- Projektort,
+- Projekt,
 - Commons,
-- Route oder Treffpunkt.
+- Ort.
+
+Wenn der Kontext als Item existiert, SOLLTE er per Relation modelliert werden. Einfache Orts- oder Zeitangaben DÜRFEN im Item stehen, wenn kein eigenes Kontext-Item existiert.
 
 Zeitbezug kann bedeuten:
 
@@ -306,7 +306,9 @@ Zeitbezug kann bedeuten:
 - wiederkehrender Rhythmus,
 - Bezug zu einer Veranstaltung oder einem Projektabschnitt.
 
-Wenn eine Quest oder ein QuestRun relevante Ortsdaten hat, KANN das jeweilige Item auf der Karte erscheinen. Die Kartenlogik bleibt eine Real-Life-Stack- oder App-Projektion. Spielbrett-Metaphern und erweiterte Kartenmechaniken gehören in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game).
+Ort, Zeit und Kontext steuern Auffindbarkeit, Karte und Kalender. Sie sind keine Sichtbarkeitsstufen.
+
+Wenn eine Quest oder ein QuestRun relevante Ortsdaten hat, KANN das jeweilige Item auf der Karte erscheinen. Wenn es relevante Zeitdaten hat, KANN es im Kalender erscheinen. Die Karten- und Kalenderlogik bleibt eine Real-Life-Stack- oder App-Projektion. Spielbrett-Metaphern und erweiterte Kartenmechaniken gehören in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game).
 
 Exakte Standortdaten DÜRFEN NICHT Voraussetzung für Teilnahme sein.
 

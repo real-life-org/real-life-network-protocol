@@ -15,3 +15,4 @@
 - Sichtbarkeit geschärft: Region ist Auffindbarkeits-/Kartenkontext, keine eigene Sichtbarkeitsstufe.
 - Badges als visuell dargestellte WoT-Attestations präzisiert; Self-confirmation erzeugt keinen portablen Badge.
 - Pax v0.1 auf lokale Handlungseinladungen/Suggestions begrenzt; vollwertige Quest-/QuestRun-Items bleiben optional.
+- Orts-, Zeit- und Kontextbezug von Quests und QuestRuns geschärft: Kontext bevorzugt per Relation, Ort/Zeit steuern Auffindbarkeit statt Sichtbarkeit.

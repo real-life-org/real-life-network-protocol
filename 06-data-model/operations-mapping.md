@@ -250,6 +250,7 @@ Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablau
 | `visibleIn` | Item/Profile | Space | Item ist in einem Space sichtbar |
 | `locatedAt` | Event/Place/Marker | Place | findet an Ort statt |
 | `locatedNear` | Profile / P1 Offer-/Need-Item | Place/Region | ungefähre räumliche Nähe |
+| `partOf` | Quest/QuestRun/Item | Event/Project/Commons/Space | gehört zu einem Kontext |
 | `offeredBy` | P1 Offer-Item | Profile | Angebot gehört zu Person/Agent |
 | `neededBy` | P1 Need-Item | Profile | Bedürfnis gehört zu Person/Agent |
 | `metAt` | Verification-Attestation-View | Event/Place | Ort oder Event der QR-verifizierten Begegnung |
