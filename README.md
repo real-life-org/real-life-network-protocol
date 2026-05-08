@@ -27,10 +27,10 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 
 | Repository | Rolle |
 |---|---|
-| `real-life-org-docs` | Narrative Orientierung, Handbuch, Organisation, Netzwerktexte |
-| `wot-spec` | Technische Spezifikation für Identität, Trust, Sync und Conformance |
-| `real-life-stack` | App-/UI-Baukasten und technische Implementierung sozialer Werkzeuge |
-| `real-life-network-protocol` | Soziale Spezifikation für Netzwerkaufbau, Quests, Praktiken, Agenten und Rollout |
+| [real-life-org/real-life-org-docs](https://github.com/real-life-org/real-life-org-docs) | Narrative Orientierung, Handbuch, Organisation, Netzwerktexte |
+| [real-life-org/wot-spec](https://github.com/real-life-org/wot-spec) | Technische Spezifikation für Identität, Trust, Sync und Conformance |
+| [real-life-org/real-life-stack](https://github.com/real-life-org/real-life-stack) | App-/UI-Baukasten und technische Implementierung sozialer Werkzeuge |
+| [real-life-org/real-life-network-protocol](https://github.com/real-life-org/real-life-network-protocol) | Soziale Spezifikation für Netzwerkaufbau, Quests, Praktiken, Agenten und Rollout |
 
 ## Spezifikations-Landkarte
 

@@ -42,7 +42,7 @@ Es beschreibt NICHT abschließend:
 - konkrete Story-Kampagnen,
 - vollständige Kinder-/Jugendlichen-Mechaniken.
 
-Diese Elemente gehören in das eigenständige Repo `real-life-game` oder in spätere Game-Design-Konzepte, weil sie starke Anreizwirkungen haben und sorgfältig gestaltet werden müssen.
+Diese Elemente gehören in das eigenständige Repo [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) oder in spätere Game-Design-Konzepte, weil sie starke Anreizwirkungen haben und sorgfältig gestaltet werden müssen.
 
 ## 3. Spielprinzip
 
@@ -291,7 +291,7 @@ Anwendungsfälle mit Kindern und Jugendlichen brauchen ein eigenes Schutz- und B
 
 Dieses Dokument definiert nur die interoperable Basis.
 
-Das Repo `real-life-game` kann darauf aufbauen und erforschen:
+Das Repo [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) kann darauf aufbauen und erforschen:
 
 - XP,
 - Level,
