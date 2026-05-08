@@ -507,6 +507,12 @@ Ein Agent SOLLTE immer als Agent erkennbar sein.
 
 Ein Agent SOLLTE nur aus seinem sichtbaren Teil des Netzwerks handeln. Er kann Teilgraphen verbinden, wenn Menschen oder Gruppen dies bewusst ermöglichen.
 
+### 12.4 Agentische Spec-Arbeit
+
+Agenten können auch am Aufbau der Specs, Software, Playbooks und Rollout-Artefakte mitarbeiten.
+
+Der spezialisierte Arbeitsrahmen dafür liegt im eigenen Repository [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol). Dieses Netzwerkprotokoll beschreibt nur, welche Rolle Agenten im sozialen Netzwerk spielen; das Agent Protocol beschreibt, wie Agenten spec-konform an Software, Tests, Playbooks und Specs arbeiten.
+
 ## 13. Konflikt, Schutz und Verantwortung
 
 Konflikt, Ungleichgewicht und unterschiedliche Beiträge sind normale Prozesse der Gemeinschaftsbildung.

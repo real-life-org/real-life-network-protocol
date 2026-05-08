@@ -32,6 +32,7 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 | [real-life-org/real-life-stack](https://github.com/real-life-org/real-life-stack) | App-/UI-Baukasten und technische Implementierung sozialer Werkzeuge |
 | [real-life-org/real-life-network-protocol](https://github.com/real-life-org/real-life-network-protocol) | Soziale Spezifikation für Netzwerkaufbau, Quests, Praktiken, Agenten und Rollout |
 | [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) | Spielgestaltung auf Basis der Quest-Schicht: Storylines, Adventures, Progression und Game-Mechaniken |
+| [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) | Agenten-Arbeitsprotokoll: Tasks, Runs, Reviews, Human Gates und Feedback in Specs |
 
 ## Spezifikations-Landkarte
 
@@ -44,7 +45,7 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 | [04-practices-and-rituals](04-practices-and-rituals/) | Wiederkehrende Formate und Rituale |
 | [05-quests](05-quests/) | Freiwillige Handlungseinladungen, Quest-Katalog und Quest-Mechanik |
 | [06-data-model](06-data-model/) | App- und Graphmodell für soziale Operationen |
-| [07-agent-protocol](07-agent-protocol/) | Handlungsrahmen für KI-Agenten |
+| [07-agent-protocol](07-agent-protocol/) | Handlungsrahmen für KI-Agenten im Netzwerk |
 | [08-rollout](08-rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
 | [schemas](schemas/) | Maschinenlesbare Schemata |
 | [playbooks](playbooks/) | Praktische Anleitungen für Hosts, Crews und Kreise |
@@ -59,7 +60,7 @@ Der erste Fokus ist ein praktischer Rollout-Slice für Pax/Festival-Kontexte:
 2. [soziale Operationen auf App-Flows und Datenmodelle mappen](06-data-model/operations-mapping.md)
 3. [Quest-Katalog v0.1 und Quest-Mechanik schärfen](05-quests/)
 4. Vernetzungszelt-Playbook erstellen
-5. Agenten-Handlungsrahmen spezifizieren
+5. Agenten-Handlungsrahmen mit [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) verbinden
 
 Siehe [08-rollout/rollout-inventur.md](08-rollout/rollout-inventur.md).
 
@@ -72,6 +73,7 @@ Dieses Repo folgt einem spec-first Ansatz:
 - Quests sind Handlungseinladungen, keine Pflichten.
 - Metriken dürfen Netzwerkaktivität sichtbar machen, aber Menschen nicht ranken.
 - Agenten dürfen unterstützen, erinnern, verbinden und reflektieren, aber nicht steuern.
+- Agentische Spec- und Softwarearbeit wird im [Real Life Agent Protocol](https://github.com/real-life-org/real-life-agent-protocol) beschrieben.
 
 ## Lizenz
 

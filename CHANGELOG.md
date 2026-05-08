@@ -18,3 +18,4 @@
 - Orts-, Zeit- und Kontextbezug von Quests und QuestRuns geschärft: Kontext bevorzugt per Relation, Ort/Zeit steuern Auffindbarkeit statt Sichtbarkeit.
 - Quest-Typen geglättet: keine harte Taxonomie im Basisprotokoll; Klassifizierung läuft über Operationen, Intentionen, Tags und Templates.
 - Minimale RLS-Item-Felder für `quest` und `quest-run` festgezogen und Beispiele auf `data.status`, `data.visibility` und `completion.method` vereinheitlicht.
+- Auf [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) als eigenes Repository für agentische Spec- und Softwarearbeit verwiesen.
