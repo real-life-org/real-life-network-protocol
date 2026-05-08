@@ -22,6 +22,15 @@ Das Spiel setzt auf:
 
 Dieses Dokument beschreibt die Basismechanik, die in das Real Life Network Protocol gehört.
 
+Sprachlich gilt:
+
+```text
+Quest = kleinste interoperable reale Einladung im Netzwerkprotokoll.
+Game  = spielerischer Rahmen, der Quests, Orte, Ressourcen, Rollen und Geschichten verbindet.
+```
+
+Eine Quest kann ohne Game existieren. Das Game benutzt Quests als kleinste reale Handlungseinheit.
+
 Es beschreibt NICHT abschließend:
 
 - XP-Kurven,
@@ -33,7 +42,7 @@ Es beschreibt NICHT abschließend:
 - konkrete Story-Kampagnen,
 - vollständige Kinder-/Jugendlichen-Mechaniken.
 
-Diese Elemente gehören in ein späteres Game-Repo oder Game-Design-Konzept, weil sie starke Anreizwirkungen haben und sorgfältig gestaltet werden müssen.
+Diese Elemente gehören in das eigenständige Repo `real-life-game` oder in spätere Game-Design-Konzepte, weil sie starke Anreizwirkungen haben und sorgfältig gestaltet werden müssen.
 
 ## 3. Spielprinzip
 
@@ -278,11 +287,11 @@ Anwendungsfälle mit Kindern und Jugendlichen brauchen ein eigenes Schutz- und B
 - besondere Regeln für Foto/Video-Dokumentation,
 - klare Verantwortung von Hosts und Institutionen.
 
-## 17. Verhältnis zum späteren Game-Repo
+## 17. Verhältnis zum Game-Repo
 
 Dieses Dokument definiert nur die interoperable Basis.
 
-Ein späteres Real-Life-Game-Repo kann darauf aufbauen und erforschen:
+Das Repo `real-life-game` kann darauf aufbauen und erforschen:
 
 - XP,
 - Level,
