@@ -48,11 +48,11 @@ Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, K
 
 ## Quest
 
-Vorgeschlagene Handlung, die Netzwerkaufbau unterstützen kann. Eine Quest ist immer Einladung, niemals Pflicht.
+Freiwillige Einladung zu einer realen Handlung, die Netzwerkaufbau unterstützen kann. Eine Quest ist Teil des Real Life Network Protocols und kann ohne Game existieren.
 
 ## Real Life Game
 
-Spielerische Ausbaustufe des Real Life Networks. Die reale Welt wird als kooperatives Spielfeld verstanden, in dem Menschen ihr Leben, ihre Beziehungen, Orte, Projekte, Ressourcen und Commons aktiv gestalten.
+Spielerische Gestaltungsschicht auf dem Real Life Network. Das Game nutzt Quests als kleinste reale Handlungseinheit, definiert aber eigene Mechaniken wie Storylines, Adventures, XP, Level oder Rollen. Die Game-Schicht wird in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) beschrieben.
 
 ## Badge
 

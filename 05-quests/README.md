@@ -7,9 +7,9 @@ Quests sind keine Pflichten und kein Ranking-System.
 Aktueller Startpunkt:
 
 - [quest-katalog.md](quest-katalog.md) — erste 40 Einladungen für Pax/Festival-Kontexte, lokale Kreise und App-v0.1-Nutzerführung.
-- [real-life-game-protocol.md](real-life-game-protocol.md) — Grundmechanik des Real Life Game als Ausbaustufe auf WoT, Real Life Stack und Real Life Network Protocol.
+- [quest-mechanik.md](quest-mechanik.md) — interoperable Quest-Schicht: Autorenschaft, Sichtbarkeit, Completion, Verifikation, Badges und Forks.
 
-Sprachlich gilt: Quests sind Teil des Real Life Network Protocol; das Real Life Game ist die spielerische Gestaltungsschicht darüber.
+Sprachlich gilt: Quests sind Teil des Real Life Network Protocol; das Real Life Game ist die spielerische Gestaltungsschicht darüber. Erweiterte Spielmechaniken werden in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) beschrieben.
 
 Nächster Schritt:
 

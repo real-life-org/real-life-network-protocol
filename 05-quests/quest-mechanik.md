@@ -1,26 +1,28 @@
-# Real Life Game Protocol
+# Quest-Mechanik
 
 **Status:** Entwurf v0.1
 **Datum:** 2026-05-08
-**Scope:** Grundmechanik des Real Life Game als Ausbaustufe auf WoT, Real Life Stack und Real Life Network Protocol.
+**Scope:** Interoperable Quest-Schicht des Real Life Network Protocols.
 
 ---
 
 ## 1. Zweck
 
-Das Real Life Game ist eine spielerische Ausbaustufe des Real Life Networks.
+Dieses Dokument beschreibt Quests als Teil des Real Life Network Protocols.
 
-Es begreift die reale Welt und das eigene Leben als kooperatives Spielfeld: Menschen gestalten ihr Leben, ihre Beziehungen, ihre Orte, ihre Projekte und ihre Umgebung aktiv und mit Freude. Veränderung und Verantwortung sollen nicht schwer, moralisch oder bürokratisch wirken, sondern wie eine Einladung zum Spielen.
+Eine Quest ist eine freiwillige Einladung zu einer realen Handlung. Sie kann in einer App, durch eine Crew, durch einen Host, durch einen lokalen Kreis oder durch einen Agenten vorgeschlagen werden. Sie bleibt immer ablehnbar und darf nicht zu Pflicht, Score oder sozialer Kontrolle werden.
 
-Das Spiel setzt auf:
+Die Quest-Mechanik soll präzise genug sein, damit Apps, Datenmodelle, Playbooks und Agenten damit arbeiten können:
 
-- **WoT** für Identität, QR-Verifikation, Kontakte, Attestations und Empfängerprinzip,
-- **Real Life Stack** für App-Shell, Spaces, generische Items, Karte, Kalender, Feed, Profile und Module,
-- **Real Life Network Protocol** für soziale Operationen, Freiwilligkeit, Sichtbarkeit, Commons, Playbooks und Agentenleitplanken.
+- Quests erstellen,
+- Quests vorschlagen,
+- Quests sichtbar machen,
+- Quest-Abschluss dokumentieren,
+- Abschluss bestätigen,
+- Beiträge als Attestations anerkennen,
+- Quests kopieren oder lokal anpassen.
 
-## 2. Abgrenzung
-
-Dieses Dokument beschreibt die Basismechanik, die in das Real Life Network Protocol gehört.
+## 2. Abgrenzung zum Game
 
 Sprachlich gilt:
 
@@ -31,65 +33,61 @@ Game  = spielerischer Rahmen, der Quests, Orte, Ressourcen, Rollen und Geschicht
 
 Eine Quest kann ohne Game existieren. Das Game benutzt Quests als kleinste reale Handlungseinheit.
 
-Es beschreibt NICHT abschließend:
+Dieses Repository definiert nur die Quest-Schicht. Es definiert NICHT:
 
-- XP-Kurven,
-- Levelsysteme,
+- XP,
+- Level,
 - Skill-Trees,
 - Avatar-Items,
-- Drop-Raten,
+- Inventory,
+- Quest-Reihen,
+- Adventures,
+- Storylines,
+- Campaigns,
+- Game Master Tools,
 - Balancing,
-- konkrete Story-Kampagnen,
+- Spielästhetik,
 - vollständige Kinder-/Jugendlichen-Mechaniken.
 
-Diese Elemente gehören in das eigenständige Repo [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) oder in spätere Game-Design-Konzepte, weil sie starke Anreizwirkungen haben und sorgfältig gestaltet werden müssen.
+Diese Themen gehören in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game).
 
-## 3. Spielprinzip
+## 3. Normative Leitplanken
 
-Das Real Life Game folgt dem WinWinWin-Prinzip:
+Eine Quest MUSS:
 
-- **Win für dich:** Du entdeckst und entfaltest deine Potenziale.
-- **Win für uns:** Beziehungen, Gemeinschaften und Projekte werden lebendiger.
-- **Win für die Welt:** Orte, Ressourcen, Commons und Ökosysteme werden gepflegt und gestärkt.
+1. freiwillig sein,
+2. ablehnbar oder ausblendbar sein,
+3. ohne negative Bewertung unvollendet bleiben dürfen,
+4. ihren sozialen Zweck erkennen lassen,
+5. Sichtbarkeit und Zustimmung respektieren,
+6. keine riskanten, beschämenden oder übergriffigen Nachweise verlangen.
 
-Manifestation bedeutet in diesem Kontext: Menschen erschaffen proaktiv aus sich heraus. Eine Idee, ein Bedürfnis, ein Talent oder eine Vision wird zu einer realen Handlung, einem Erlebnis, einem Ort, einer Beziehung, einem Projekt oder einem Commons.
-
-Das Spiel kann man nicht im klassischen Sinn gewinnen. Der Gewinn liegt in wachsender Lebendigkeit, besseren Beziehungen, realen Erfahrungen, sichtbaren Beiträgen, gemeinsamen Strukturen und höherer Lebensqualität.
-
-## 4. Nicht-Ziele
-
-Das Real Life Game DARF NICHT:
+Eine Quest DARF NICHT:
 
 - Menschen global ranken,
 - sozialen Druck erzeugen,
-- Konkurrenz als Hauptmechanik verwenden,
 - Profilfortschritt als Menschenwert darstellen,
 - echte Verantwortung durch oberflächliche Punkte ersetzen,
-- gefährliche, illegale oder altersunangemessene Challenges fördern,
 - private Entwicklung ohne Zustimmung öffentlich machen.
 
-## 5. Quest-Grundmodell
+## 4. Quest-Lebenszyklus
 
-Eine Quest ist eine freiwillige Einladung zu einer realen Handlung.
+Eine Quest kann folgenden Lebenszyklus haben:
 
-Im Real Life Game kann grundsätzlich alles zur Quest werden:
+| Status | Bedeutung |
+|---|---|
+| `draft` | Entwurf, zunächst privat. |
+| `published` | Für einen gewählten Kontext sichtbar. |
+| `suggested` | Einer Person oder Gruppe vorgeschlagen. |
+| `accepted` | Person oder Gruppe möchte sie angehen. |
+| `in-progress` | Durchführung hat begonnen. |
+| `completed` | Abschluss wurde lokal markiert oder dokumentiert. |
+| `verified` | Abschluss wurde bestätigt, z.B. per QR, Host, Gruppe oder Attestation. |
+| `archived` | Nicht mehr aktiv, bleibt aber dokumentierbar. |
 
-- eine kleine persönliche Handlung,
-- gegenseitige Hilfe,
-- Lernen oder Üben,
-- ein gemeinsamer Einsatz an Ort und Zeit,
-- ein Abenteuer,
-- ein Projektauftrag,
-- die Übernahme einer Rolle,
-- der Aufbau oder die Pflege eines Ortes,
-- die Verwaltung einer Ressource,
-- ein Commons-Beitrag,
-- eine Dokumentation,
-- ein Dankeschön.
+Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt, dass Completion kein Vertrauensbeweis ist.
 
-Eine Quest ist immer spielerische Einladung, nicht Pflicht.
-
-## 6. Quest-Autorenschaft
+## 5. Autorenschaft
 
 Jede Quest MUSS einen Autor haben.
 
@@ -102,21 +100,21 @@ Ein Space, Ort, Projekt oder eine Initiative DARF als Kontext oder Herausgeber e
 
 Systemquests können hostlos wirken, sind aber nicht autorlos. Sie werden von einer System-/Agenten-Identität in die Welt gebracht.
 
-## 7. Host und Questmaster
+## 6. Host und Begleitung
 
-Eine Quest KANN einen Host oder Questmaster haben, muss es aber nicht.
+Eine Quest KANN einen Host oder eine begleitende Person haben, muss es aber nicht.
 
 | Fall | Bedeutung |
 |---|---|
 | Host-Quest | Eine Person oder Gruppe begleitet Durchführung und Abschluss. |
-| Systemquest | Die App oder ein Agent schlägt eine allgemeine Handlung vor. |
+| Systemquest | App oder Agent schlägt eine allgemeine Handlung vor. |
 | Offene Quest | Die Quest kann ohne konkreten Host durchgeführt werden. |
 | Gruppenquest | Eine Gruppe trägt die Durchführung gemeinsam. |
 | Projektquest | Die Quest gehört zu einem Projekt oder Commons. |
 
 Auch hostlose Quests brauchen klare Regeln, wie Abschluss und Sichtbarkeit funktionieren.
 
-## 8. Sichtbarkeit und Veröffentlichung
+## 7. Sichtbarkeit und Veröffentlichung
 
 Eine neu erstellte Quest SOLLTE zunächst privat sein.
 
@@ -131,7 +129,7 @@ Danach kann sie sichtbar gemacht werden für:
 
 Dieses Muster folgt dem Real-Life-Stack-Prinzip, dass Items Sichtbarkeit und Sharing-Kontext haben können. Eine Quest DARF NICHT automatisch öffentlich werden, nur weil sie erstellt wurde.
 
-## 9. Quest-Typen
+## 8. Quest-Typen
 
 Die folgenden Quest-Typen sind im Basisprotokoll erlaubt. Sie sind keine abschließende Taxonomie.
 
@@ -140,8 +138,7 @@ Die folgenden Quest-Typen sind im Basisprotokoll erlaubt. Sie sind keine abschli
 | `personal` | Eine Person tut etwas für sich. | "Schreibe auf, was du wirklich lernen willst." |
 | `help` | Eine Person hilft einer anderen. | "Hilf Mira beim Aufbau der Küche." |
 | `group` | Mehrere Menschen tun etwas gemeinsam. | "Kocht zusammen für den Kreis." |
-| `mission` | Gemeinsamer Einsatz an Ort und Zeit. | "Baut am Samstag die Werkbank auf." |
-| `adventure` | Erlebnisorientierte Quest. | "Geht gemeinsam klettern, wandern oder radfahren." |
+| `event` | Handlung ist an eine Veranstaltung gebunden. | "Hilf am Samstag beim Aufbau." |
 | `learning` | Fähigkeit wird geübt oder geteilt. | "Lerne die Grundlagen des Lötens." |
 | `project` | Aufgabe in einem Projekt. | "Erstelle den ersten Beetplan." |
 | `role` | Verantwortung oder Rolle wird übernommen. | "Übernimm für ein Treffen die Moderation." |
@@ -149,6 +146,43 @@ Die folgenden Quest-Typen sind im Basisprotokoll erlaubt. Sie sind keine abschli
 | `documentation` | Sichtbarmachung dessen, was passiert ist. | "Schreibe einen kurzen Erfahrungsbericht." |
 | `gratitude` | Dank oder Wertschätzung wird ausgedrückt. | "Danke einer Person per Attestation." |
 | `system` | Allgemeine Einladung durch App oder Agent. | "Verifiziere eine reale Begegnung per QR." |
+
+Erlebnisorientierte Quests, Wanderungen, Klettertage oder Gruppenspiele können im Basisprotokoll als `event`, `group` oder `personal` beschrieben und mit Tags versehen werden. Das Game-Repo kann daraus später Adventures oder andere Spielrahmen ableiten.
+
+## 9. Minimale Quest-Item-View
+
+Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Suggestions abbilden. Persistenz ist für Pax v0.1 optional.
+
+```json
+{
+  "type": "quest",
+  "schema": "rlnp:quest",
+  "schemaVersion": 1,
+  "visibility": {
+    "mode": "private"
+  },
+  "createdBy": "did:example:alice",
+  "data": {
+    "title": "Finde eine Person mit ähnlichem Interesse",
+    "description": "Schau dir Profile im Pax-Space an und lade eine Person zu einem echten Gespräch ein.",
+    "operation": "op.people.discover",
+    "questType": "personal",
+    "phase": "during-event",
+    "optional": true,
+    "status": "suggested",
+    "tags": ["begegnung", "pax-2026"],
+    "context": {
+      "spaceId": "pax-2026"
+    },
+    "completion": {
+      "method": "self-confirmation",
+      "evidence": "none"
+    }
+  }
+}
+```
+
+Diese View ist keine abschließende RLS-Schema-Festlegung. Sie beschreibt die Mindestinformationen, die eine App für einfache Quest-Vorschläge, Sichtbarkeit und Completion braucht.
 
 ## 10. Completion und Verifikation
 
@@ -196,21 +230,28 @@ Wenn ein Badge automatisch vom System vergeben wird, MUSS klar sein:
 
 Ohne erkennbare Signatur ist ein Badge nur ein lokaler UI-Status und keine portable Anerkennung.
 
-## 12. Karte als Spielbrett
+## 12. Orts- und Zeitbezug
 
-Alles mit Geobezug KANN auf der Karte erscheinen:
+Eine Quest KANN Orts- oder Zeitbezug haben.
 
-- Quests,
-- Abenteuer,
-- Veranstaltungen,
-- Orte,
-- Ressourcen,
+Ortsbezug kann bedeuten:
+
+- konkreter Ort,
+- grobe Region,
+- Veranstaltung,
+- Space,
+- Projektort,
 - Commons,
-- Projekte,
-- Initiativen,
-- sichtbare Profile oder ungefähre Regionen.
+- Route oder Treffpunkt.
 
-Die Karte wird dadurch zum Spielbrett der realen Welt. Ein Item erscheint auf der Karte nicht wegen seines Typs, sondern weil es relevante Ortsdaten oder einen Ortsbezug hat.
+Zeitbezug kann bedeuten:
+
+- konkreter Termin,
+- Zeitraum,
+- wiederkehrender Rhythmus,
+- Bezug zu einer Veranstaltung oder einem Projektabschnitt.
+
+Wenn eine Quest relevante Ortsdaten hat, KANN sie als Karten-Item erscheinen. Die Kartenlogik bleibt eine Real-Life-Stack- oder App-Projektion. Spielbrett-Metaphern und erweiterte Kartenmechaniken gehören in [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game).
 
 Exakte Standortdaten DÜRFEN NICHT Voraussetzung für Teilnahme sein.
 
@@ -235,33 +276,16 @@ Wildkräuterwanderung Alsterpark
   -> Fork: Wildkräuterwanderung Leipzig Auwald
 ```
 
-## 14. Storylines
+## 14. Agentenverhalten
 
-Das Basisprotokoll ist story-neutral.
-
-Ein Real Life Game kann verschiedene Storylines haben:
-
-- Heldenreise,
-- lokale Resilienz,
-- Commons-Aufbau,
-- Macher-/Handwerksreise,
-- Natur- und Abenteuerpfade,
-- Heilung und Beziehung,
-- Festival-Kampagnen,
-- regionale Missionen.
-
-Storylines DÜRFEN Quests rahmen, aber sie DÜRFEN NICHT zur ideologischen Verpflichtung werden.
-
-## 15. KI-Agenten
-
-KI-Agenten sind optional.
+KI-Agenten können Quest-Flows unterstützen.
 
 Sie können:
 
 - Quest-Erstellung unterstützen,
 - Quest-Texte formulieren,
 - passende Quests vorschlagen,
-- Spielleiter oder Hosts unterstützen,
+- Hosts unterstützen,
 - Dokumentation zusammenfassen,
 - Verbindungen zwischen Menschen, Orten, Ressourcen und Projekten erkennen,
 - Reflexionsgespräche führen.
@@ -274,9 +298,9 @@ Sie dürfen nicht:
 - Druck erzeugen,
 - Sichtbarkeit ausweiten, ohne dass der Mensch zustimmt.
 
-## 16. Kinder und Jugendliche
+## 15. Kinder und Jugendliche
 
-Die erste Fassung des Real Life Game ist für Erwachsene gedacht.
+Die erste Fassung dieser Quest-Mechanik ist für erwachsene Nutzungskontexte gedacht.
 
 Anwendungsfälle mit Kindern und Jugendlichen brauchen ein eigenes Schutz- und Begleitmodell. Dazu gehören mindestens:
 
@@ -287,27 +311,32 @@ Anwendungsfälle mit Kindern und Jugendlichen brauchen ein eigenes Schutz- und B
 - besondere Regeln für Foto/Video-Dokumentation,
 - klare Verantwortung von Hosts und Institutionen.
 
-## 17. Verhältnis zum Game-Repo
+## 16. Verhältnis zum Game-Repo
 
-Dieses Dokument definiert nur die interoperable Basis.
+Dieses Dokument definiert nur die interoperable Quest-Basis.
 
 Das Repo [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) kann darauf aufbauen und erforschen:
 
+- Storylines,
+- Adventures,
+- Journeys,
+- Campaigns,
 - XP,
 - Level,
 - Skill-Trees,
 - Avatar-Items,
-- Quest-Reihen,
-- Adventure-Design,
-- Kampagnen,
-- Storywelten,
+- Inventory,
+- Game Modes,
+- Game Master Tools,
+- AI Game Master,
+- World State,
 - Balancing,
 - UI/UX,
 - konkrete Spielinhalte.
 
-Diese Mechaniken DÜRFEN das Basisprotokoll nicht verletzen: Freiwilligkeit, Sichtbarkeit, Zustimmung, kein Ranking von Menschen und keine soziale Kontrolle bleiben verbindlich.
+Diese Mechaniken DÜRFEN die Quest-Basis nicht verletzen: Freiwilligkeit, Sichtbarkeit, Zustimmung, kein Ranking von Menschen und keine soziale Kontrolle bleiben verbindlich.
 
-## 18. Offene Fragen
+## 17. Offene Fragen
 
 - Wird `self-confirmation` für öffentliche Badges grundsätzlich ausgeschlossen oder nur als schwächeres Signal markiert?
 - Welche System-/Agenten-DID darf automatische Badges signieren?
@@ -315,4 +344,3 @@ Diese Mechaniken DÜRFEN das Basisprotokoll nicht verletzen: Freiwilligkeit, Sic
 - Wird `badge` ein eigener Item-Typ, eine Attestation-View oder beides?
 - Welche minimalen Quest-Felder braucht RLS v0.1?
 - Wie werden Quest-Forks im Datenmodell referenziert?
-- Welche Storyline ist der erste konkrete Game-Slice?
