@@ -138,8 +138,6 @@ Eine Quest KANN einen Host oder eine begleitende Person haben, muss es aber nich
 | Host-Quest | Eine Person oder Gruppe begleitet Durchführung und Abschluss. |
 | Systemquest | App oder Agent schlägt eine allgemeine Handlung vor. |
 | Offene Quest | Die Quest kann ohne konkreten Host durchgeführt werden. |
-| Gruppenquest | Eine Gruppe trägt die Durchführung gemeinsam. |
-| Projektquest | Die Quest gehört zu einem Projekt oder Commons. |
 
 Auch hostlose Quests brauchen klare Regeln, wie Abschluss und Sichtbarkeit funktionieren.
 
