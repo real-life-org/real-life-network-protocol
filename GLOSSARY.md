@@ -50,6 +50,14 @@ Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, K
 
 Vorgeschlagene Handlung, die Netzwerkaufbau unterstützen kann. Eine Quest ist immer Einladung, niemals Pflicht.
 
+## Real Life Game
+
+Spielerische Ausbaustufe des Real Life Networks. Die reale Welt wird als kooperatives Spielfeld verstanden, in dem Menschen ihr Leben, ihre Beziehungen, Orte, Projekte, Ressourcen und Commons aktiv gestalten.
+
+## Badge
+
+Sichtbare Anerkennung für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Im Basisprotokoll ist ein portables Badge eine WoT-Attestation oder aus einer WoT-Attestation ableitbar.
+
 ## Verifikation
 
 Digitale oder analoge Bestätigung einer realen Begegnung oder Identitätsbeziehung. Verifikation bedeutet nicht allgemeine Vertrauenswürdigkeit.

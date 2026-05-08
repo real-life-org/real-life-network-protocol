@@ -41,6 +41,17 @@ Eine Umsetzung ist `rlnp-quests@0.1`-konform, wenn sie:
 - keine Menschen aufgrund abgeschlossener Quests hierarchisiert,
 - den Zweck jeder Quest auf Beziehung, Commons, lokale Resilienz oder gemeinsames Handeln zurückführt.
 
+### `rlnp-game@0.1`
+
+Eine Umsetzung ist `rlnp-game@0.1`-konform, wenn sie:
+
+- die reale Welt als kooperatives Spielfeld rahmt, ohne Teilnahme zur Pflicht zu machen,
+- Quest-Autorenschaft, Sichtbarkeit, Completion und Badge-Vergabe nachvollziehbar modelliert,
+- portable Badges als WoT-Attestations oder daraus ableitbare Views behandelt,
+- hostlose Systemquests trotzdem einer erkennbaren System-/Agenten-Identität zuordnet,
+- XP, Level, Skill-Trees oder Avatar-Items nicht als Voraussetzung für Basis-Interoperabilität verlangt,
+- keine globalen Rankings von Menschen erzeugt.
+
 ### `rlnp-agent@0.1`
 
 Eine Umsetzung ist `rlnp-agent@0.1`-konform, wenn sie:

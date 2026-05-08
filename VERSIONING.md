@@ -17,6 +17,7 @@ Konformität wird über Profile ausgedrückt:
 - `rlnp-core@0.1` — Prinzipien, Entitäten und soziale Kernoperationen
 - `rlnp-rollout@0.1` — minimale Pilot-/Festival-Rollout-Fähigkeit
 - `rlnp-quests@0.1` — Quest-Modell als freiwillige Einladungen
+- `rlnp-game@0.1` — Real-Life-Game-Grundmechanik auf Basis von WoT, RLS und RLNP
 - `rlnp-agent@0.1` — KI-Agenten-Handlungsrahmen
 - `rlnp-data@0.1` — Datenmodell und Relationen für App-Implementierungen
 

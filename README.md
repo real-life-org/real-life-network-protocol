@@ -41,7 +41,7 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 | [02-entities](02-entities/) | Soziale Entitäten des Netzwerks |
 | [03-social-operations](03-social-operations/) | Kernoperationen des Netzwerkaufbaus |
 | [04-practices-and-rituals](04-practices-and-rituals/) | Wiederkehrende Formate und Rituale |
-| [05-quests](05-quests/) | Freiwillige Einladungen und Benutzerführung |
+| [05-quests](05-quests/) | Freiwillige Einladungen, Quest-Katalog und Real-Life-Game-Grundmechanik |
 | [06-data-model](06-data-model/) | App- und Graphmodell für soziale Operationen |
 | [07-agent-protocol](07-agent-protocol/) | Handlungsrahmen für KI-Agenten |
 | [08-rollout](08-rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
@@ -56,7 +56,7 @@ Der erste Fokus ist ein praktischer Rollout-Slice für Pax/Festival-Kontexte:
 
 1. [Pax-MVP-Slice definieren](08-rollout/pax-rollout-slice.md)
 2. [soziale Operationen auf App-Flows und Datenmodelle mappen](06-data-model/operations-mapping.md)
-3. [Quest-Katalog v0.1 schärfen](05-quests/quest-katalog.md)
+3. [Quest-Katalog v0.1 und Real-Life-Game-Grundmechanik schärfen](05-quests/)
 4. Vernetzungszelt-Playbook erstellen
 5. Agenten-Handlungsrahmen spezifizieren
 
