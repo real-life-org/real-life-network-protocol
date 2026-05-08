@@ -178,10 +178,13 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
     "title": "Lerne eine Person mit ähnlichem Interesse kennen",
     "description": "Finde jemanden im Pax-Space, dessen Vision dich berührt, und führe ein echtes Gespräch.",
     "status": "published",
+    "optional": true,
     "operation": "op.people.discover",
     "intent": "relationship",
-    "optional": true,
-    "tags": ["begegnung", "pax-2026"]
+    "tags": ["begegnung", "pax-2026"],
+    "visibility": {
+      "mode": "space"
+    }
   },
   "relations": [
     { "predicate": "visibleIn", "target": "space:pax-2026" }
@@ -193,6 +196,8 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 
 - `optional` MUSS für protokollkonforme Quests wahr sein.
 - Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht persönlichen Fortschritt.
+- Quest-Klassifizierung SOLLTE über `operation`, `intent`, `tags` oder `templateId` erfolgen, nicht über eine harte Quest-Typ-Taxonomie.
+- `visibility` im `data`-Objekt beschreibt die gewünschte App-/Sharing-Sichtbarkeit; technische Durchsetzung kann zusätzlich über Connector-Berechtigungen erfolgen.
 
 ### 7.3 `quest-run`
 
@@ -207,10 +212,14 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "suggested",
+    "status": "completed",
+    "visibility": {
+      "mode": "private"
+    },
     "completion": {
-      "kind": "self-confirmed",
-      "evidence": "none"
+      "method": "self-confirmation",
+      "evidence": "none",
+      "completedAt": "2026-05-07T10:20:00Z"
     }
   },
   "relations": [
@@ -222,6 +231,7 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
 
 **Normen:**
 
+- Die ausführende Person MUSS über die `actor`-Relation erkennbar sein; `createdBy` ist nur die Identität, die das Item erstellt hat.
 - QuestRun-Status DARF NICHT als Leistungsskala verwendet werden.
 - `completion` DARF keine riskanten oder übergriffigen Nachweise verlangen.
 - QuestRuns sind Einladungshilfe und Dokumentation, kein Menschen-Score.
@@ -258,6 +268,7 @@ Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablau
 | `attests` | Attestation-View | Profile/Identity/Item | Aussage über Beitrag/Gabe/Fähigkeit |
 | `runsQuest` | QuestRun | Quest | Run gehört zu dieser Quest |
 | `actor` | QuestRun | Profile/Identity | Mensch, der den Run ausführt |
+| `forkedFrom` | Quest | Quest | Quest ist lokale Kopie oder Anpassung |
 | `relatedTo` | Item | Item | allgemeiner Bezug |
 | `followUpFor` | FollowUp-Item | Verification-Attestation/Event/Quest | Anschluss an vorherige Erfahrung |
 | `documentedBy` | Event/Verification-Attestation/Project | Post/Media | Dokumentation eines Geschehens |

@@ -154,81 +154,165 @@ Danach kann sie sichtbar gemacht werden für:
 
 Dieses Muster folgt dem Real-Life-Stack-Prinzip, dass Items Sichtbarkeit und Sharing-Kontext haben können. Eine Quest DARF NICHT automatisch öffentlich werden, nur weil sie erstellt wurde.
 
-## 8. Quest-Typen
+## 8. Klassifizierung, Tags und Templates
 
-Die folgenden Quest-Typen sind im Basisprotokoll erlaubt. Sie sind keine abschließende Taxonomie.
+Das Basisprotokoll definiert keine feste Quest-Typ-Taxonomie.
 
-| Typ | Beschreibung | Beispiel |
-|---|---|---|
-| `personal` | Eine Person tut etwas für sich. | "Schreibe auf, was du wirklich lernen willst." |
-| `help` | Eine Person hilft einer anderen. | "Hilf Mira beim Aufbau der Küche." |
-| `group` | Mehrere Menschen tun etwas gemeinsam. | "Kocht zusammen für den Kreis." |
-| `event` | Handlung ist an eine Veranstaltung gebunden. | "Hilf am Samstag beim Aufbau." |
-| `learning` | Fähigkeit wird geübt oder geteilt. | "Lerne die Grundlagen des Lötens." |
-| `project` | Aufgabe in einem Projekt. | "Erstelle den ersten Beetplan." |
-| `role` | Verantwortung oder Rolle wird übernommen. | "Übernimm für ein Treffen die Moderation." |
-| `stewardship` | Pflege von Ort, Ressource oder Commons. | "Bring das Zelt trocken zurück." |
-| `documentation` | Sichtbarmachung dessen, was passiert ist. | "Schreibe einen kurzen Erfahrungsbericht." |
-| `gratitude` | Dank oder Wertschätzung wird ausgedrückt. | "Danke einer Person per Attestation." |
-| `system` | Allgemeine Handlungseinladung durch App oder Agent. | "Verifiziere eine reale Begegnung per QR." |
+Für Interoperabilität ist nur entscheidend:
 
-Erlebnisorientierte Quests, Wanderungen, Klettertage oder Gruppenspiele können im Basisprotokoll als `event`, `group` oder `personal` beschrieben und mit Tags versehen werden. Das Game-Repo kann daraus später Adventures oder andere Spielrahmen ableiten.
+- Eine Quest ist als freiwillige Handlungseinladung modelliert.
+- Ein QuestRun ist die konkrete Durchführung durch einen Menschen.
+- Completion und Verifikation beziehen sich auf den QuestRun.
+- Sichtbarkeit, Ort, Zeit und Kontext bleiben explizit.
 
-## 9. Minimale Quest-Item-View
+Apps, Agenten und Playbooks DÜRFEN Quests klassifizieren. Diese Klassifizierung SOLLTE aber als optionale Metadaten modelliert werden, nicht als harte Protokollklasse.
+
+| Ebene | Feld | Bedeutung | Beispiel |
+|---|---|---|---|
+| Operation | `data.operation` | Bezug zu einer sozialen Operation | `op.people.discover` |
+| Intention | `data.intent` | sozialer Zweck oder Wirkung | `relationship`, `commons`, `learning` |
+| Tags | `data.tags[]` | Suche, Filter, einfache Sortierung | `begegnung`, `pax-2026` |
+| Template | `data.templateId` | wiederverwendbare Vorlage | `pax-meet-person` |
+
+Häufige Quest-Templates können sein:
+
+- persönlicher Schritt,
+- Hilfe oder gegenseitige Unterstützung,
+- gemeinsame Handlung,
+- Event- oder Ortsbezug,
+- Lernen oder Üben,
+- Projekt- oder Commons-Aufgabe,
+- Rolle oder Verantwortung,
+- Dokumentation,
+- Dank oder Wertschätzung,
+- allgemeiner System- oder Agentenvorschlag.
+
+Diese Begriffe DÜRFEN als Tags, Templates oder UI-Gruppen verwendet werden. Sie DÜRFEN NICHT vorausgesetzt werden, damit eine Quest protokollkonform ist.
+
+Erlebnisorientierte Quests, Wanderungen, Klettertage oder Gruppenspiele bleiben im Basisprotokoll normale Handlungseinladungen mit Ort, Zeit, Kontext und Tags. Das Game-Repo kann daraus später Adventures oder andere Spielrahmen ableiten.
+
+## 9. Minimale RLS-Item-Felder
 
 Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Suggestions abbilden. Persistenz ist für Pax v0.1 optional.
 
+Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOLLTEN sie als RLS-Item-Views modelliert werden. Die folgenden Felder sind die minimale interoperable Sicht, keine vollständige neue RLS-Schema-Festlegung.
+
+### 9.1 Quest
+
+| Feld | Pflicht | Bedeutung |
+|---|---|---|
+| `type: "quest"` | ja | RLS-Item-Typ |
+| `schema: "rlnp:quest"` | empfohlen | semantische Kennzeichnung |
+| `schemaVersion: 1` | empfohlen | Version der RLNP-Quest-View |
+| `createdBy` | ja | Identität, die die Quest erstellt hat |
+| `data.title` | ja | kurze Handlungseinladung |
+| `data.description` | empfohlen | Kontext, Sinn und mögliche Durchführung |
+| `data.status` | ja | `draft`, `published`, `paused` oder `archived` |
+| `data.optional: true` | ja | UI-Guard gegen Pflichtlogik |
+| `data.operation` | empfohlen | soziale Operation, die unterstützt wird |
+| `data.tags[]` | optional | Suche, Filter, einfache Klassifizierung |
+| `data.intent` | optional | sozialer Zweck oder erwarteter Netzwerk-Effekt |
+| `data.templateId` | optional | wiederverwendbare Vorlage |
+| `data.visibility.mode` | empfohlen | gewünschte Sichtbarkeit: `private`, `contacts`, `space`, `public` |
+| `data.location` | optional | Ort, Region oder grober Kartenkontext |
+| `data.time` | optional | Termin, Zeitraum, Phase oder Rhythmus |
+
+Empfohlene Relations:
+
+| Predicate | Ziel | Bedeutung |
+|---|---|---|
+| `visibleIn` | Space | Quest ist in diesem Space sichtbar |
+| `partOf` | Event/Project/Commons/Space | Quest gehört zu einem Kontext |
+| `locatedAt` / `locatedNear` | Place/Region | Quest hat Ortsbezug |
+| `forkedFrom` | Quest | Quest ist eine lokale Kopie oder Anpassung |
+
 ```json
 {
+  "id": "quest:pax:meet-similar-interest",
   "type": "quest",
+  "createdAt": "2026-05-07T10:05:00Z",
+  "createdBy": "did:key:z6Mk...agent-or-host",
   "schema": "rlnp:quest",
   "schemaVersion": 1,
-  "visibility": {
-    "mode": "private"
-  },
-  "createdBy": "did:example:alice",
-  "status": "published",
   "data": {
     "title": "Finde eine Person mit ähnlichem Interesse",
     "description": "Schau dir Profile im Pax-Space an und lade eine Person zu einem echten Gespräch ein.",
-    "operation": "op.people.discover",
-    "questType": "personal",
-    "phase": "during-event",
+    "status": "published",
     "optional": true,
+    "operation": "op.people.discover",
+    "intent": "relationship",
     "tags": ["begegnung", "pax-2026"],
-    "context": {
-      "spaceId": "pax-2026"
-    }
-  }
-}
-```
-
-Ein QuestRun verweist per Relations auf die Quest und den Menschen:
-
-```json
-{
-  "type": "quest-run",
-  "schema": "rlnp:quest-run",
-  "schemaVersion": 1,
-  "createdBy": "did:example:bob",
-  "visibility": {
-    "mode": "private"
-  },
-  "data": {
-    "status": "suggested",
-    "completion": {
-      "method": "self-confirmation",
-      "evidence": "none"
+    "visibility": {
+      "mode": "space"
+    },
+    "time": {
+      "phase": "during-event"
+    },
+    "location": {
+      "label": "Pax Friedensfestival",
+      "region": "pax-2026"
     }
   },
   "relations": [
-    { "predicate": "runsQuest", "target": "item:quest-pax-find-similar-interest" },
-    { "predicate": "actor", "target": "global:did:example:bob" }
+    { "predicate": "visibleIn", "target": "space:pax-2026" }
   ]
 }
 ```
 
-Diese Views sind keine abschließende RLS-Schema-Festlegung. Sie beschreiben die Mindestinformationen, die eine App braucht, um Quest-Definition, QuestRun, Sichtbarkeit und Completion nicht zu vermischen.
+### 9.2 QuestRun
+
+Ein QuestRun verweist per Relations auf die Quest und den Menschen. `createdBy` beschreibt, wer das Item erstellt hat; die ausführende Person steht in der `actor`-Relation.
+
+| Feld | Pflicht | Bedeutung |
+|---|---|---|
+| `type: "quest-run"` | ja | RLS-Item-Typ |
+| `schema: "rlnp:quest-run"` | empfohlen | semantische Kennzeichnung |
+| `schemaVersion: 1` | empfohlen | Version der RLNP-QuestRun-View |
+| `createdBy` | ja | Identität, App oder Agent, die den Run angelegt hat |
+| `data.status` | ja | QuestRun-Status |
+| `data.visibility.mode` | empfohlen | Sichtbarkeit dieses persönlichen Runs |
+| `data.completion.method` | ab `completed` | Completion-Methode |
+| `data.completion.evidence` | optional | lokaler Nachweistyp oder Hinweis |
+| `data.completion.completedAt` | optional | Zeitpunkt der lokalen Completion |
+| `data.location` | optional | Ort oder Region der Durchführung |
+| `data.time` | optional | Zeitpunkt, Zeitraum oder Phase der Durchführung |
+
+Erforderliche Relations:
+
+| Predicate | Ziel | Bedeutung |
+|---|---|---|
+| `runsQuest` | Quest | Run gehört zu dieser Quest |
+| `actor` | Profile/Identity | Mensch, der den Run ausführt |
+
+Optionale Kontext-Relations entsprechen der Quest: `partOf`, `locatedAt`, `locatedNear`.
+
+```json
+{
+  "id": "quest-run:pax:meet-similar-interest:mira",
+  "type": "quest-run",
+  "createdAt": "2026-05-07T10:06:00Z",
+  "createdBy": "did:key:z6Mk...mira",
+  "schema": "rlnp:quest-run",
+  "schemaVersion": 1,
+  "data": {
+    "status": "completed",
+    "visibility": {
+      "mode": "private"
+    },
+    "completion": {
+      "method": "self-confirmation",
+      "evidence": "none",
+      "completedAt": "2026-05-07T10:20:00Z"
+    }
+  },
+  "relations": [
+    { "predicate": "runsQuest", "target": "item:quest:pax:meet-similar-interest" },
+    { "predicate": "actor", "target": "global:did:key:z6Mk...mira" }
+  ]
+}
+```
+
+Diese Mindestfelder helfen Apps, Agenten und RLS-Connectoren dabei, Quest-Definition, persönliche Durchführung, Sichtbarkeit und Completion nicht zu vermischen.
 
 ## 10. Completion und Verifikation
 
@@ -395,7 +479,6 @@ Diese Mechaniken DÜRFEN die Quest-Basis nicht verletzen: Freiwilligkeit, Sichtb
 
 ## 17. Offene Fragen
 
-- Welche minimalen Quest-Felder braucht RLS v0.1?
-- Wie werden Quest-Forks im Datenmodell referenziert?
+- Welche Quest-Templates werden für Pax v0.1 als UI-Karten gebraucht?
 - Welche System-/Agenten-DIDs dürfen automatische oder agentische Badge-Attestations signieren?
 - Welche Badge-Regeln werden im ersten Pax-/RLN-Kontext gebraucht?

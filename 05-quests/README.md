@@ -14,4 +14,4 @@ Sprachlich gilt: Quests sind Teil des Real Life Network Protocol; das Real Life 
 Nächster Schritt:
 
 - App-Card-Texte, Agenten-Trigger und Crew-Fallbacks für die P0-Quests ableiten.
-- Minimale RLS-Item-Felder für Quest, QuestRun, Badge und Completion schärfen.
+- Erste Quest-Templates für Pax v0.1 als UI-Karten ableiten.

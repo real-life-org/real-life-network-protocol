@@ -51,18 +51,29 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
 
 ```json
 {
+  "id": "quest:pax:meet-similar-interest",
   "type": "quest",
+  "createdAt": "2026-05-07T10:05:00Z",
+  "createdBy": "did:example:agent-or-host",
   "schema": "rlnp:quest",
   "schemaVersion": 1,
-  "status": "published",
   "data": {
     "title": "Finde eine Person mit ähnlichem Interesse",
     "description": "Schau dir Profile im Pax-Space an und lade eine Person zu einem echten Gespräch ein.",
-    "operation": "op.people.discover",
-    "phase": "during-event",
+    "status": "published",
     "optional": true,
-    "tags": ["begegnung", "pax-2026"]
-  }
+    "operation": "op.people.discover",
+    "tags": ["begegnung", "pax-2026"],
+    "visibility": {
+      "mode": "space"
+    },
+    "time": {
+      "phase": "during-event"
+    }
+  },
+  "relations": [
+    { "predicate": "visibleIn", "target": "space:pax-2026" }
+  ]
 }
 ```
 
@@ -70,19 +81,25 @@ Ein QuestRun verweist per Relations auf diese Quest:
 
 ```json
 {
+  "id": "quest-run:pax:meet-similar-interest:alice",
   "type": "quest-run",
+  "createdAt": "2026-05-07T10:06:00Z",
+  "createdBy": "did:example:alice",
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
-  "createdBy": "did:example:alice",
   "data": {
-    "status": "suggested",
+    "status": "completed",
+    "visibility": {
+      "mode": "private"
+    },
     "completion": {
-      "kind": "self-confirmed",
-      "evidence": "none"
+      "method": "self-confirmation",
+      "evidence": "none",
+      "completedAt": "2026-05-07T10:20:00Z"
     }
   },
   "relations": [
-    { "predicate": "runsQuest", "target": "item:q.pax.015" },
+    { "predicate": "runsQuest", "target": "item:quest:pax:meet-similar-interest" },
     { "predicate": "actor", "target": "global:did:example:alice" }
   ]
 }

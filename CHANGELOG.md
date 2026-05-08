@@ -16,3 +16,5 @@
 - Badges als visuell dargestellte WoT-Attestations präzisiert; Self-confirmation erzeugt keinen portablen Badge.
 - Pax v0.1 auf lokale Handlungseinladungen/Suggestions begrenzt; vollwertige Quest-/QuestRun-Items bleiben optional.
 - Orts-, Zeit- und Kontextbezug von Quests und QuestRuns geschärft: Kontext bevorzugt per Relation, Ort/Zeit steuern Auffindbarkeit statt Sichtbarkeit.
+- Quest-Typen geglättet: keine harte Taxonomie im Basisprotokoll; Klassifizierung läuft über Operationen, Intentionen, Tags und Templates.
+- Minimale RLS-Item-Felder für `quest` und `quest-run` festgezogen und Beispiele auf `data.status`, `data.visibility` und `completion.method` vereinheitlicht.

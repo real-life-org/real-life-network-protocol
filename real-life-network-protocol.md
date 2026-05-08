@@ -403,13 +403,17 @@ Ein Vernetzungszelt ist ein temporärer Space auf Festivals oder Veranstaltungen
 
 ## 11. Quests und Gamification
 
-Quests sind vorgeschlagene Handlungen, die Netzwerkaufbau ermöglichen.
+Quests sind freiwillige Handlungseinladungen, die Netzwerkaufbau ermöglichen.
 
 Eine Quest MUSS als Einladung gestaltet sein. Sie DARF NICHT Pflicht, Rangordnung oder sozialen Druck erzeugen.
 
-### 11.1 Quest-Typen
+Eine Quest beschreibt die wiederverwendbare Einladung. Ein QuestRun beschreibt die konkrete Durchführung durch einen Menschen.
 
-Beispiele:
+### 11.1 Klassifizierung
+
+Das Basisprotokoll definiert keine feste Quest-Typ-Taxonomie. Apps und Agenten können Quests über Operationen, Intentionen, Tags oder Templates gruppieren.
+
+Beispiele für Handlungseinladungen:
 
 - Lerne eine neue Person kennen.
 - Lade jemanden zu einem Essen ein.
@@ -422,19 +426,38 @@ Beispiele:
 - Starte mit anderen ein kleines Projekt.
 - Lade zum Vollmondfeuer ein.
 
-### 11.2 Quest-Felder
+### 11.2 Minimale Quest-Felder
 
 Eine Quest SOLLTE enthalten:
 
 - Titel
-- Anlass
-- vorgeschlagene Handlung
-- erwarteter Netzwerk-Effekt
-- freiwillige Sichtbarkeit
+- Beschreibung
+- Status der Veröffentlichung
+- optionaler Bezug zu einer sozialen Operation
+- Tags oder Template-Hinweise
+- Sichtbarkeit
+- Ort, Zeit oder Kontext, wenn relevant
+
+Ein QuestRun SOLLTE enthalten:
+
+- Status der persönlichen Durchführung
+- Relation zur Quest
+- Relation zum Menschen, der sie ausführt
+- Completion-Methode, wenn abgeschlossen
+- Sichtbarkeit des persönlichen Runs
+- Ort, Zeit oder Kontext, wenn relevant
+
+Weitere Felder stehen in [05-quests/quest-mechanik.md](05-quests/quest-mechanik.md).
+
+### 11.3 Leitplanken
+
+Eine Quest SOLLTE außerdem kenntlich machen:
+
+- sozialen Zweck oder erwarteten Netzwerk-Effekt
 - mögliche nächste Schritte
 - Sicherheits- und Kontext-Hinweise
 
-### 11.3 Metriken
+### 11.4 Metriken
 
 Metriken dürfen Orientierung geben. Sie DÜRFEN NICHT den Wert eines Menschen bestimmen.
 
@@ -540,7 +563,7 @@ Ein Artefakt ist mit dem Real Life Network Protocol kompatibel, wenn es:
 ## 16. Offene Fragen für v0.2
 
 - Welche Datenmodelle ergeben sich direkt aus den Grundentitäten?
-- Welche Quest-Typen sind für den ersten App-Einsatz am wichtigsten?
+- Welche Quest-Templates sind für den ersten App-Einsatz am wichtigsten?
 - Welche Agentenrollen sollen zuerst spezifiziert werden?
 - Wie wird Zustimmung für Dokumentation praktisch modelliert?
 - Welche Schutzmechanismen sind für Jugendliche angemessen?

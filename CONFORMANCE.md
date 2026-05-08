@@ -45,6 +45,7 @@ Eine Umsetzung ist `rlnp-quests@0.1`-konform, wenn sie:
 - Self-confirmation nicht als portable Badge-Attestation ausgibt,
 - hostlose Systemquests trotzdem einer erkennbaren System-/Agenten-Identität zuordnet,
 - den Zweck jeder Quest auf Beziehung, Commons, lokale Resilienz oder gemeinsames Handeln zurückführt,
+- keine feste Quest-Typ-Taxonomie als Voraussetzung für Interoperabilität verlangt,
 - keine Game-Mechaniken wie XP, Level, Skill-Trees, Avatar-Items, Storylines oder Campaigns als Voraussetzung für Basis-Interoperabilität verlangt.
 
 ### `rlnp-agent@0.1`
@@ -61,7 +62,7 @@ Eine Umsetzung ist `rlnp-agent@0.1`-konform, wenn sie:
 Eine Umsetzung ist `rlnp-data@0.1`-konform, wenn sie:
 
 - WoT-Verifikationen und Attestations als WoT-Trust-VC-JWS behandelt, nicht als eigenes RLNP-Claim-JSON,
-- Profile und Quests als generische Real-Life-Stack-Items oder kompatible Item-Views modelliert,
+- Profile, Quests und QuestRuns als generische Real-Life-Stack-Items oder kompatible Item-Views modelliert,
 - Angebote und Bedürfnisse in Pax v0.1 als einfache Profil-Tags behandeln kann, auch wenn sie zunächst aus dem WoT-Profil kommen und in der RLS-Referenz noch nicht vollständig implementiert sind,
 - vereinfachte `SignedClaim`-, Kontakt- oder UI-Objekte als Projektionen ausweist, nicht als portable Quelle der Wahrheit.
 
