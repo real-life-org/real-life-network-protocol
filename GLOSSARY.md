@@ -52,7 +52,27 @@ Freiwillige Handlungseinladung zu einer konkreten realen Handlung im Kontext des
 
 ## QuestRun
 
-Konkrete Durchführung einer Quest durch einen Menschen. Mehrere Menschen können dieselbe Quest unabhängig voneinander durchführen. Completion und Verifikation beziehen sich auf einen QuestRun, nicht auf die Quest als globale Handlungseinladung.
+Konkrete Durchführung einer Quest durch einen Menschen. Mehrere Menschen können dieselbe Quest unabhängig voneinander durchführen. Lokale Completion, Evidence und Attestations beziehen sich auf einen QuestRun, nicht auf die Quest als globale Handlungseinladung.
+
+## Evidence
+
+Spur oder Selbst-Claim zu einem QuestRun, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. Evidence kann eine Attestation vorbereiten, ist aber selbst kein portabler Beleg und kein Badge.
+
+## Required Evidence
+
+Evidence, die eine Quest für eine spätere Completion-Attestation verlangt oder empfiehlt. Required Evidence beschreibt Nachweis-Erwartungen, erzeugt aber selbst keine portable Wahrheit.
+
+## Attestation Policy
+
+Regeln einer Quest, welche Attestations als gültige Completion für einen QuestRun zählen. Das Web of Trust bleibt offen für andere Attestations; die Policy entscheidet nur über Quest-Completion.
+
+## Completion Attestation Template
+
+Claim- und Display-Vorlage, die eine Quest für spätere Completion-Attestations bereitstellen kann. Die Vorlage ist kein Badge; erst die signierte WoT-Attestation erzeugt eine portable Badge-View.
+
+## Safety Requirement
+
+Sicherheits-, Alters-, Begleitungs-, Sichtbarkeits- oder Kontextregel einer Quest. Safety Requirements sollen vor Annahme oder Durchführung verständlich sichtbar sein.
 
 ## Real Life Game
 
@@ -68,7 +88,7 @@ Digitale oder analoge Bestätigung einer realen Begegnung oder Identitätsbezieh
 
 ## Attestation
 
-Signierte oder dokumentierte Aussage über einen konkreten Beitrag, eine Gabe, eine Fähigkeit oder eine beobachtete Handlung in einem Kontext.
+Signierte WoT-Aussage über einen konkreten Beitrag, eine Gabe, eine Fähigkeit, eine Rolle, ein Ergebnis oder eine beobachtete Handlung in einem Kontext. Portable Belege und Badges entstehen aus Attestations, nicht aus bloßer Evidence.
 
 ## Space
 

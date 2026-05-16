@@ -184,6 +184,34 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
     "tags": ["begegnung", "pax-2026"],
     "visibility": {
       "mode": "space"
+    },
+    "requiredEvidence": [
+      {
+        "type": "self-claim",
+        "required": false,
+        "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
+      }
+    ],
+    "attestationPolicy": {
+      "allowedAttesters": [
+        { "role": "peer", "minCount": 1 },
+        { "role": "host" }
+      ]
+    },
+    "completionAttestationTemplate": {
+      "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
+      "display": {
+        "label": "Echte Begegnung",
+        "color": "#4F7CFF",
+        "shape": "circle"
+      }
+    },
+    "safetyRequirements": [
+      {
+        "type": "consent",
+        "required": true,
+        "label": "Teile Gesprächsinhalte nur mit Zustimmung der beteiligten Person."
+      }
     }
   },
   "relations": [
@@ -198,10 +226,11 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 - Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht persönlichen Fortschritt.
 - Quest-Klassifizierung SOLLTE über `operation`, `intent`, `tags` oder `templateId` erfolgen, nicht über eine harte Quest-Typ-Taxonomie.
 - `visibility` im `data`-Objekt beschreibt die gewünschte App-/Sharing-Sichtbarkeit; technische Durchsetzung kann zusätzlich über Connector-Berechtigungen erfolgen.
+- `attestationPolicy`, `requiredEvidence`, `completionAttestationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik, nicht zur Game-Schicht.
 
 ### 7.3 `quest-run`
 
-QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Status, Sichtbarkeit, Completion und Verifikation haben können.
+QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Status, Sichtbarkeit, lokale Completion, Evidence und Attestations haben können.
 
 ```json
 {
@@ -212,14 +241,16 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "completed",
+    "status": "evidence-submitted",
     "visibility": {
       "mode": "private"
     },
     "completion": {
-      "method": "self-confirmation",
-      "evidence": "none",
-      "completedAt": "2026-05-07T10:20:00Z"
+      "claimedAt": "2026-05-07T10:20:00Z",
+      "evidence": {
+        "type": "self-claim",
+        "summary": "Mira hat das Gespräch lokal als erledigt markiert."
+      }
     }
   },
   "relations": [
@@ -233,7 +264,7 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
 
 - Die ausführende Person MUSS über die `actor`-Relation erkennbar sein; `createdBy` ist nur die Identität, die das Item erstellt hat.
 - QuestRun-Status DARF NICHT als Leistungsskala verwendet werden.
-- `completion` DARF keine riskanten oder übergriffigen Nachweise verlangen.
+- `completion` und `evidence` DÜRFEN keine riskanten oder übergriffigen Nachweise verlangen.
 - QuestRuns sind Einladungshilfe und Dokumentation, kein Menschen-Score.
 
 ### 7.4 `offer` und `need` als Tags
@@ -273,7 +304,7 @@ Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablau
 | `followUpFor` | FollowUp-Item | Verification-Attestation/Event/Quest | Anschluss an vorherige Erfahrung |
 | `documentedBy` | Event/Verification-Attestation/Project | Post/Media | Dokumentation eines Geschehens |
 
-**Norm:** Relationen MÜSSEN beschreiben, was passiert ist oder vorgeschlagen wird. Sie DÜRFEN NICHT implizieren, dass ein Mensch wertvoller ist als ein anderer.
+**Norm:** Relationen MÜSSEN beschreiben, was passiert ist oder vorgeschlagen wird. Sie DÜRFEN NICHT implizieren, dass ein Mensch wertvoller ist als ein anderer. Eine portable QuestRun-Completion SOLLTE durch eine `attests`-Relation von einer Attestation-View auf den QuestRun, Beitrag oder das Ergebnis sichtbar werden.
 
 ## 9. Claim Mapping
 

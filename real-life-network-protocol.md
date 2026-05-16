@@ -437,13 +437,14 @@ Eine Quest SOLLTE enthalten:
 - Tags oder Template-Hinweise
 - Sichtbarkeit
 - Ort, Zeit oder Kontext, wenn relevant
+- Required Evidence, Attestation Policy, Completion-Attestation-Template und Safety Requirements, wenn die Completion besondere Regeln braucht
 
 Ein QuestRun SOLLTE enthalten:
 
 - Status der persönlichen Durchführung
 - Relation zur Quest
 - Relation zum Menschen, der sie ausführt
-- Completion-Methode, wenn abgeschlossen
+- lokale Completion, Evidence und Attestation-Status, wenn relevant
 - Sichtbarkeit des persönlichen Runs
 - Ort, Zeit oder Kontext, wenn relevant
 

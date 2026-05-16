@@ -67,6 +67,34 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
     "visibility": {
       "mode": "space"
     },
+    "requiredEvidence": [
+      {
+        "type": "self-claim",
+        "required": false,
+        "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
+      }
+    ],
+    "attestationPolicy": {
+      "allowedAttesters": [
+        { "role": "peer", "minCount": 1 },
+        { "role": "host" }
+      ]
+    },
+    "completionAttestationTemplate": {
+      "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
+      "display": {
+        "label": "Echte Begegnung",
+        "color": "#4F7CFF",
+        "shape": "circle"
+      }
+    },
+    "safetyRequirements": [
+      {
+        "type": "consent",
+        "required": true,
+        "label": "Teile Gesprächsinhalte nur mit Zustimmung der beteiligten Person."
+      }
+    },
     "time": {
       "phase": "during-event"
     }
@@ -88,14 +116,16 @@ Ein QuestRun verweist per Relations auf diese Quest:
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "completed",
+    "status": "evidence-submitted",
     "visibility": {
       "mode": "private"
     },
     "completion": {
-      "method": "self-confirmation",
-      "evidence": "none",
-      "completedAt": "2026-05-07T10:20:00Z"
+      "claimedAt": "2026-05-07T10:20:00Z",
+      "evidence": {
+        "type": "self-claim",
+        "summary": "Alice hat das Gespräch lokal als erledigt markiert."
+      }
     }
   },
   "relations": [
@@ -105,7 +135,7 @@ Ein QuestRun verweist per Relations auf diese Quest:
 }
 ```
 
-**Norm:** Eine Quest-Completion ist ein lokaler Bedienzustand oder eine freiwillige Dokumentation eines konkreten QuestRuns. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis und kein sozialer Score.
+**Norm:** Eine lokale Quest-Completion oder eingereichte Evidence ist ein Bedienzustand oder eine freiwillige Dokumentation eines konkreten QuestRuns. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis, kein sozialer Score und kein portabler Beleg. Portable Completion und Badges entstehen erst durch WoT-Attestations.
 
 ## 5. Katalog
 

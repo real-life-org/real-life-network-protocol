@@ -81,7 +81,7 @@ Darum MUSS zwischen zwei Ebenen unterschieden werden:
 | Quest | Die wiederverwendbare Handlungseinladung. | "Verifiziere eine reale Begegnung per QR." |
 | QuestRun | Die konkrete Durchführung einer Quest durch einen Menschen. | "Anton hat diese Quest abgeschlossen." |
 
-Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed` oder `verified` beschreibt immer einen konkreten QuestRun, nicht die Quest als solche.
+Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed`, `evidence-submitted`, `attestation-requested` oder `attested` beschreibt immer einen konkreten QuestRun, nicht die Quest als solche.
 
 ### 4.1 Quest-Status
 
@@ -104,14 +104,15 @@ Der QuestRun-Status beschreibt den Fortschritt eines Menschen zu einer Quest.
 | `dismissed` | Ausgeblendet oder abgelehnt. |
 | `accepted` | Person möchte sie angehen. |
 | `in-progress` | Durchführung hat begonnen. |
-| `completed` | Abschluss wurde lokal markiert oder dokumentiert. |
-| `verification-requested` | Bestätigung wurde angefragt, z.B. durch Host, Gruppe oder Dokumentation. |
-| `verified` | Abschluss wurde bestätigt, z.B. per QR, Host, Gruppe oder Attestation. |
+| `completed` | Abschluss wurde lokal markiert. |
+| `evidence-submitted` | Eine Spur oder ein Selbst-Claim wurde eingereicht, aber noch nicht attestiert. |
+| `attestation-requested` | Eine Attestation wurde angefragt, z.B. bei Host, Gruppe, Mentor oder System. |
+| `attested` | Es gibt mindestens eine gültige WoT-Attestation, die diesen QuestRun oder Beitrag belegt. |
 | `abandoned` | Begonnen, aber bewusst nicht weitergeführt. |
 
 Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
 
-- Vorschlag, Annahme, Completion und Verifikation gehören zum QuestRun.
+- Vorschlag, Annahme, lokale Completion, Evidence und Attestations gehören zum QuestRun.
 - Veröffentlichung, Pausierung und Archivierung gehören zur Quest.
 - Aggregierte Aussagen wie "12 Menschen haben diese Quest abgeschlossen" sind abgeleitete Views aus sichtbaren QuestRuns oder Attestations.
 - Eine Agenten-Empfehlung DARF einen lokalen QuestRun oder eine Suggestion erzeugen, aber nicht den globalen Quest-Status verändern.
@@ -162,7 +163,7 @@ Für Interoperabilität ist nur entscheidend:
 
 - Eine Quest ist als freiwillige Handlungseinladung modelliert.
 - Ein QuestRun ist die konkrete Durchführung durch einen Menschen.
-- Completion und Verifikation beziehen sich auf den QuestRun.
+- Completion, Evidence und Attestations beziehen sich auf den QuestRun.
 - Sichtbarkeit, Ort, Zeit und Kontext bleiben explizit.
 
 Apps, Agenten und Playbooks DÜRFEN Quests klassifizieren. Diese Klassifizierung SOLLTE aber als optionale Metadaten modelliert werden, nicht als harte Protokollklasse.
@@ -216,6 +217,10 @@ Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOL
 | `data.visibility.mode` | empfohlen | gewünschte Sichtbarkeit: `private`, `contacts`, `space`, `public` |
 | `data.location` | optional | Ort, Region oder grober Kartenkontext |
 | `data.time` | optional | Termin, Zeitraum, Phase oder Rhythmus |
+| `data.requiredEvidence[]` | optional | Evidence, die für eine Attestation nötig oder empfohlen ist |
+| `data.attestationPolicy` | optional | Regeln, welche Attestations als gültige Completion für diese Quest zählen |
+| `data.completionAttestationTemplate` | optional | Claim- und Display-Vorlage für spätere Completion-Attestations |
+| `data.safetyRequirements[]` | optional | Sicherheits-, Alters-, Begleitungs-, Sichtbarkeits- oder Kontextregeln |
 
 Empfohlene Relations:
 
@@ -245,6 +250,34 @@ Empfohlene Relations:
     "visibility": {
       "mode": "space"
     },
+    "requiredEvidence": [
+      {
+        "type": "self-claim",
+        "required": false,
+        "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
+      }
+    ],
+    "attestationPolicy": {
+      "allowedAttesters": [
+        { "role": "peer", "minCount": 1 },
+        { "role": "host" }
+      ]
+    },
+    "completionAttestationTemplate": {
+      "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
+      "display": {
+        "label": "Echte Begegnung",
+        "color": "#4F7CFF",
+        "shape": "circle"
+      }
+    },
+    "safetyRequirements": [
+      {
+        "type": "consent",
+        "required": true,
+        "label": "Teile Gesprächsinhalte nur mit Zustimmung der beteiligten Person."
+      }
+    ],
     "time": {
       "phase": "during-event"
     },
@@ -259,6 +292,13 @@ Empfohlene Relations:
 }
 ```
 
+**Normen:**
+
+- `requiredEvidence` beschreibt, welche Spur für eine spätere Attestation nötig oder hilfreich ist. Evidence ist noch kein portabler Beleg.
+- `attestationPolicy` beschreibt, welche Attestations für diesen QuestRun als gültige Completion zählen. Das Web of Trust bleibt offen: Andere Menschen können trotzdem Attestations ausstellen, sie zählen dann aber nicht automatisch als Quest-Completion.
+- `completionAttestationTemplate` ist eine Vorlage für Completion-Attestations. Die tatsächlich portable Anerkennung entsteht erst durch die signierte Attestation.
+- `safetyRequirements` MÜSSEN vor oder während der Quest verständlich sichtbar sein, wenn sie für Teilnahme, Evidence oder Attestation relevant sind.
+
 ### 9.2 QuestRun
 
 Ein QuestRun verweist per Relations auf die Quest und den Menschen. `createdBy` beschreibt, wer das Item erstellt hat; die ausführende Person steht in der `actor`-Relation.
@@ -271,9 +311,9 @@ Ein QuestRun verweist per Relations auf die Quest und den Menschen. `createdBy` 
 | `createdBy` | ja | Identität, App oder Agent, die den Run angelegt hat |
 | `data.status` | ja | QuestRun-Status |
 | `data.visibility.mode` | empfohlen | Sichtbarkeit dieses persönlichen Runs |
-| `data.completion.method` | ab `completed` | Completion-Methode |
-| `data.completion.evidence` | optional | lokaler Nachweistyp oder Hinweis |
-| `data.completion.completedAt` | optional | Zeitpunkt der lokalen Completion |
+| `data.completion.claimedAt` | optional | Zeitpunkt der lokalen Completion oder Selbstmarkierung |
+| `data.completion.evidence` | optional | eingereichte Spur, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis |
+| `data.completion.attestationRequestedAt` | optional | Zeitpunkt, an dem eine Attestation angefragt wurde |
 | `data.location` | optional | Ort oder Region der Durchführung |
 | `data.time` | optional | Zeitpunkt, Zeitraum oder Phase der Durchführung |
 
@@ -286,6 +326,8 @@ Erforderliche Relations:
 
 Optionale Kontext-Relations entsprechen der Quest: `partOf`, `locatedAt`, `locatedNear`.
 
+Attestations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene WoT-Attestation bzw. Attestation-View modelliert werden und per `attests`-Relation auf den QuestRun, den Beitrag oder das Ergebnis zeigen.
+
 ```json
 {
   "id": "quest-run:pax:meet-similar-interest:mira",
@@ -295,14 +337,16 @@ Optionale Kontext-Relations entsprechen der Quest: `partOf`, `locatedAt`, `locat
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "completed",
+    "status": "evidence-submitted",
     "visibility": {
       "mode": "private"
     },
     "completion": {
-      "method": "self-confirmation",
-      "evidence": "none",
-      "completedAt": "2026-05-07T10:20:00Z"
+      "claimedAt": "2026-05-07T10:20:00Z",
+      "evidence": {
+        "type": "self-claim",
+        "summary": "Mira hat das Gespräch lokal als erledigt markiert."
+      }
     }
   },
   "relations": [
@@ -314,27 +358,139 @@ Optionale Kontext-Relations entsprechen der Quest: `partOf`, `locatedAt`, `locat
 
 Diese Mindestfelder helfen Apps, Agenten und RLS-Connectoren dabei, Quest-Definition, persönliche Durchführung, Sichtbarkeit und Completion nicht zu vermischen.
 
-## 10. Completion und Verifikation
+## 10. Completion, Evidence und Attestation
 
-Quest-Abschluss meint den Abschluss eines konkreten QuestRuns. Er kann je nach Quest unterschiedlich belegt werden.
+Quest-Abschluss meint immer den Abschluss eines konkreten QuestRuns. Das Protokoll unterscheidet drei Ebenen:
 
-| Completion-Methode | Bedeutung | Geeignet für |
-|---|---|---|
-| `qr-verification` | QR-Code wird vor Ort gescannt. | Teilnahme, Begegnung, Check-in |
-| `host-confirmation` | Host bestätigt Abschluss. | Workshops, Einsätze, Lernquests |
-| `mutual-confirmation` | Beteiligte bestätigen einander. | Hilfe, Gruppenquests, Zusammenarbeit |
-| `attestation` | Eine Person oder ein System stellt eine signierte Aussage aus. | Badge, Beitrag, Rolle, Dank |
-| `documentation-plus-confirmation` | Foto/Video/Text lädt andere zur Bestätigung ein. | sichtbare Ergebnisse, Projekte, Orte |
-| `system-event` | App erkennt ein Ereignis. | "5 Menschen verifiziert", "Event erstellt" |
-| `self-confirmation` | Person bestätigt lokal für sich selbst. | private Reflexion, persönliche Schritte |
+| Ebene | Bedeutung |
+|---|---|
+| Lokale Completion | Die ausführende Person oder App markiert, dass ein QuestRun für sie abgeschlossen ist. |
+| Evidence | Eine Spur oder ein Selbst-Claim wird eingereicht, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. |
+| Attestation | Eine signierte WoT-Attestation bestätigt eine konkrete Aussage über QuestRun, Beitrag, Rolle, Teilnahme oder Ergebnis. |
 
-**Normen:**
+Eine lokale Completion und eingereichte Evidence sind noch kein portabler Beleg. Ein QuestRun gilt nur dann als belegte oder portable Completion, wenn mindestens eine gültige WoT-Attestation existiert, die auf den QuestRun, den Beitrag oder das Ergebnis verweist.
 
-- Foto- oder Videodokumentation ist zunächst eine Einladung an andere, den Abschluss zu bestätigen. Sie ist nicht automatisch ein öffentlicher Beweis.
-- Selbstbestätigung KANN einen QuestRun auf `completed` setzen.
-- Selbstbestätigung erzeugt keine portable Attestation und kein öffentliches Badge.
-- Öffentliche oder portable Anerkennung SOLLTE über Attestations laufen.
-- Completion-Daten gehören zum QuestRun und MÜSSEN Sichtbarkeit und Zustimmung respektieren.
+### 10.1 Evidence-Arten
+
+Evidence kann je nach Quest unterschiedlich aussehen:
+
+| Evidence-Art | Bedeutung |
+|---|---|
+| `self-claim` | Person erklärt lokal, dass sie etwas getan hat. |
+| `text` | Textnotiz oder Reflexion. |
+| `media` | Foto, Video oder Audio. |
+| `qr-scan` | QR-Scan als Spur einer realen Begegnung, Teilnahme oder eines Check-ins. |
+| `system-event` | App oder System hat ein Ereignis beobachtet. |
+| `external-document` | Link oder Verweis auf externes Dokument. |
+
+Evidence ist eine Einladung zur Prüfung oder Erinnerung. Sie DARF NICHT automatisch als öffentliche Wahrheit, portable Anerkennung oder Badge behandelt werden.
+
+### 10.2 Attester
+
+Eine Attestation kann aus verschiedenen Rollen kommen:
+
+| Attester | Bedeutung |
+|---|---|
+| Host | Host, Crew, Lehrkraft, Mentor oder Veranstalter bestätigt eine beobachtete Handlung. |
+| Peer oder Gruppe | Beteiligte bestätigen einander oder einen gemeinsamen Beitrag. |
+| Expert:in | Eine Person mit anerkannter fachlicher Rolle bestätigt eine Fähigkeit oder ein Ergebnis. |
+| System oder Agent | Eine erkennbare System- oder Agenten-DID attestiert nach nachvollziehbarer Regel. |
+
+Die konkreten Regeln, welche Attestations für die Completion einer Quest zählen, KÖNNEN in `data.attestationPolicy` stehen. Die Basisnorm bleibt: Attestations MÜSSEN konkret, beobachtbar, signiert und kontextbezogen sein.
+
+### 10.3 Attestation Policy
+
+Eine Quest KANN eine `attestationPolicy` definieren. Diese Policy begrenzt nicht, wer im Web of Trust eine Attestation ausstellen darf. Sie beschreibt nur, welche Attestations für diesen QuestRun als gültige Quest-Completion gelten.
+
+```json
+{
+  "attestationPolicy": {
+    "allowedAttesters": [
+      { "role": "host" },
+      { "role": "peer", "minCount": 2 },
+      { "role": "system", "ruleId": "pax-qr-checkin" }
+    ],
+    "requiresAcceptedEvidence": true
+  }
+}
+```
+
+`allowedAttesters.role` ist ein Kontextbegriff. Häufige Rollen sind `host`, `peer`, `group`, `mentor`, `expert`, `system`, `agent` oder `issuer`. Ein konkreter Space, eine Veranstaltung, ein Projekt, eine Schule oder ein Host-Tool kann diese Rollen auf DIDs, Gruppen oder Issuer-Listen abbilden.
+
+### 10.4 Required Evidence
+
+Eine Quest KANN `requiredEvidence` definieren. Diese Anforderungen beschreiben, welche Evidence eingereicht werden muss oder empfohlen ist, bevor eine Attestation angefragt oder ausgestellt wird.
+
+```json
+{
+  "requiredEvidence": [
+    {
+      "type": "media",
+      "required": true,
+      "label": "Foto des fertigen Werkstücks"
+    },
+    {
+      "type": "text",
+      "required": false,
+      "label": "Kurze Reflexion: Was war schwierig?"
+    }
+  ]
+}
+```
+
+Evidence-Anforderungen DÜRFEN keine riskanten, beschämenden oder übergriffigen Nachweise verlangen.
+
+### 10.5 Completion Attestation Template
+
+Eine Quest KANN eine `completionAttestationTemplate` definieren. Sie beschreibt, welche Claim- und Display-Vorlage eine gültige Completion-Attestation verwenden soll.
+
+```json
+{
+  "completionAttestationTemplate": {
+    "claim": "{actor} hat den Hochbeet-Rahmen verschraubt.",
+    "display": {
+      "label": "Rahmen verschraubt",
+      "color": "#8B5A2B",
+      "shape": "circle"
+    }
+  }
+}
+```
+
+Die Vorlage selbst ist kein Badge. Erst eine signierte WoT-Attestation mit dieser oder einer daraus abgeleiteten Darstellung kann als portable Badge-View erscheinen.
+
+### 10.6 Safety Requirements
+
+Eine Quest KANN `safetyRequirements` definieren. Diese Anforderungen beschreiben Sicherheits-, Alters-, Begleitungs-, Sichtbarkeits- oder Kontextregeln.
+
+```json
+{
+  "safetyRequirements": [
+    {
+      "type": "tool",
+      "required": true,
+      "label": "Akkuschrauber nur nach Einweisung nutzen."
+    },
+    {
+      "type": "supervision",
+      "required": true,
+      "label": "Für Minderjährige nur mit erwachsener Begleitung."
+    }
+  ]
+}
+```
+
+Häufige Typen sind `age`, `tool`, `place`, `supervision`, `consent`, `visibility`, `privacy`, `legal` und `cost`. Apps SOLLTEN diese Regeln vor Annahme der Quest sichtbar machen.
+
+### 10.7 Normen
+
+- Öffentliche, portable oder Badge-relevante Completion MUSS über WoT-Attestations laufen.
+- Ein Selbst-Claim oder eine hochgeladene Spur ist keine Self-Attestation.
+- Foto-, Video- oder Textdokumentation ist zunächst Evidence und kann andere zur Attestation einladen.
+- QR-Scans, Host-Bestätigungen, gegenseitige Bestätigungen und Systemereignisse sind keine eigenen Wahrheitsarten; sie sind Evidence, Trigger oder Issuer-Rollen für Attestations.
+- Eine System- oder Agenten-Attestation MUSS eine erkennbare DID, eine nachvollziehbare Regel und einen auslösenden Trigger haben.
+- Completion-Daten, Evidence und Attestations MÜSSEN Sichtbarkeit, Zustimmung und Kontext respektieren.
+- `attestationPolicy`, `requiredEvidence`, `completionAttestationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik des Basisprotokolls. Sie sind keine Game-Mechaniken.
 
 ## 11. Badges als Attestations
 
@@ -354,11 +510,11 @@ Ein Badge kann ausdrücken:
 
 Ein portables Badge MUSS eine WoT-Attestation sein. Eine reine UI-Darstellung ohne signierte Attestation ist kein portables Badge.
 
-Ein Badge entsteht durch Bestätigung:
+Ein Badge entsteht durch eine WoT-Attestation:
 
-- durch eine menschliche Identität,
-- durch eine Agenten-Identität,
-- durch eine System-Identität.
+- ausgestellt durch eine menschliche Identität,
+- ausgestellt durch eine Agenten-Identität,
+- ausgestellt durch eine System-Identität.
 
 Wenn ein Badge automatisch oder agentisch vergeben wird, MUSS klar sein:
 
