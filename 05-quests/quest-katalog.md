@@ -43,7 +43,7 @@ erscheinen.
 
 Die Operationen `op.app.open`, `op.identity.create`, `op.space.join`, `op.profile.create`, `op.visibility.set`, `op.people.discover`, `op.verification.create`, `op.offer.need.publish`, `op.quest.suggest` und `op.followup.create` gehören zum Pax-P0-Mapping.
 
-Weitere Operationen in diesem Katalog, z.B. `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../03-social-operations](../03-social-operations/) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
+Weitere Operationen in diesem Katalog, z.B. `op.confirmation.create`, `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../03-social-operations](../03-social-operations/) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
 
 ## 4. Minimale Quest- und QuestRun-View
 
@@ -74,13 +74,14 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
         "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
       }
     ],
-    "attestationPolicy": {
-      "allowedAttesters": [
+    "confirmationPolicy": {
+      "allowedConfirmers": [
         { "role": "peer", "minCount": 1 },
         { "role": "host" }
-      ]
+      ],
+      "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
     },
-    "completionAttestationTemplate": {
+    "completionConfirmationTemplate": {
       "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
       "display": {
         "label": "Echte Begegnung",
@@ -135,7 +136,7 @@ Ein QuestRun verweist per Relations auf diese Quest:
 }
 ```
 
-**Norm:** Eine lokale Quest-Completion oder eingereichte Evidence ist ein Bedienzustand oder eine freiwillige Dokumentation eines konkreten QuestRuns. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis, kein sozialer Score und kein portabler Beleg. Portable Completion und Badges entstehen erst durch WoT-Attestations.
+**Norm:** Eine lokale Quest-Completion oder eingereichte Evidence ist ein Bedienzustand oder eine freiwillige Dokumentation eines konkreten QuestRuns. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis, kein sozialer Score und kein bestätigter oder portabler Beleg. Bestätigte Completion entsteht durch eine gültige Confirmation; portable Completion und portable Badges brauchen eine signierte Attestation.
 
 ## 5. Katalog
 
@@ -178,12 +179,12 @@ Ein QuestRun verweist per Relations auf diese Quest:
 
 | ID | Einladung | Operation | Auslöser | Abschluss | Leitplanke |
 |---|---|---|---|---|---|
-| `q.pax.021` | Verifiziert euch per QR, wenn ihr eure Begegnung festhalten wollt. | `op.verification.create` | reale Begegnung hat stattgefunden | Verification-Attestation VC-JWS erstellt | Verifikation bestätigt Begegnung, nicht globale Vertrauenswürdigkeit |
+| `q.pax.021` | Verifiziert euch per QR, wenn ihr eure Begegnung festhalten wollt. | `op.verification.create` | reale Begegnung hat stattgefunden | Verification-Confirmation erstellt; bei WoT als VC-JWS | Verifikation bestätigt Begegnung, nicht globale Vertrauenswürdigkeit |
 | `q.pax.022` | Lass dir erklären, was QR-Verifikation bedeutet. | `op.verification.create` | erste Verifikation | Erklärung gelesen oder Crew gefragt | Keine Kryptographie-Vorlesung im Flow |
-| `q.pax.023` | Bestätige eine eingehende Gegenverifikation. | `op.verification.create` | eingehende Verification-Attestation | Gegenverifikation erstellt oder abgelehnt | Ablehnen bleibt möglich |
+| `q.pax.023` | Bestätige eine eingehende Gegenverifikation. | `op.verification.create` | eingehende Verification-Confirmation | Gegenverifikation erstellt oder abgelehnt | Ablehnen bleibt möglich |
 | `q.pax.024` | Ergänze optional Kontext zur Begegnung. | `op.verification.create` | Verifikation abgeschlossen | Ort/Event/Notiz lokal oder als Metadaten gesetzt | Kontext darf privat bleiben |
-| `q.pax.025` | Sende eine konkrete Attestation für einen beobachteten Beitrag. | `op.attestation.create` | Person hat real etwas beigetragen | Attestation-VC-JWS erstellt | Nur konkret Beobachtetes attestieren |
-| `q.pax.026` | Entscheide, ob du eine erhaltene Attestation anzeigen möchtest. | `op.attestation.visibility.set` | Attestation empfangen | Sichtbarkeit lokal gesetzt | Empfängerprinzip respektieren |
+| `q.pax.025` | Sende eine konkrete Confirmation für einen beobachteten Beitrag. | `op.confirmation.create` | Person hat real etwas beigetragen | Confirmation erstellt; bei WoT als Attestation-VC-JWS | Nur konkret Beobachtetes bestätigen |
+| `q.pax.026` | Entscheide, ob du eine erhaltene Confirmation anzeigen möchtest. | `op.confirmation.visibility.set` | Confirmation empfangen | Sichtbarkeit lokal gesetzt | Empfängerprinzip respektieren |
 
 ### 5.5 Ressourcen, Orte und Veranstaltungen
 

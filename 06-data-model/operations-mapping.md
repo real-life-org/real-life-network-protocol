@@ -2,7 +2,7 @@
 
 **Status:** Entwurf v0.1
 **Datum:** 2026-05-07
-**Scope:** Mapping der Pax-v0.1-Operationen auf App-Flows, Datenobjekte, Relationen, Claims, Quests, Agentenhilfe und Metriken.
+**Scope:** Mapping der Pax-v0.1-Operationen auf App-Flows, Datenobjekte, Relationen, Confirmations, Quests, Agentenhilfe und Metriken.
 
 ---
 
@@ -28,8 +28,9 @@ Eine Implementierung dieses Mappings MUSS:
 4. Quests als Einladungen formulieren.
 5. Metriken nur als Netzwerk-Signale verwenden, nicht als Ranking von Menschen.
 6. Agentenvorschläge erklärbar, ablehnbar und kontextbezogen machen.
-7. WoT-Verifikationen und Attestations im kanonischen WoT-Trust-Format verwenden, statt eigene Claim-JSONs zu definieren.
-8. App-seitige Entitäten als generische Real-Life-Stack-Items modellieren, sofern sie keine WoT-Identität oder kein WoT-VC-JWS sind.
+7. Confirmations als backend-agnostische bestätigte Aussagen modellieren und ihre Trust-Stufe sichtbar machen.
+8. WoT-Verifikationen und WoT-Attestations im kanonischen WoT-Trust-Format verwenden, wenn eine Confirmation portable und signiert sein soll.
+9. App-seitige Entitäten als generische Real-Life-Stack-Items oder Views modellieren, sofern sie keine WoT-Identität oder kein WoT-VC-JWS sind.
 
 ## 3. Operation Index
 
@@ -42,6 +43,8 @@ Eine Implementierung dieses Mappings MUSS:
 | `op.visibility.set` | Sichtbarkeit setzen | Auffindbarkeit mit Zustimmung | ja |
 | `op.people.discover` | Menschen entdecken | Begegnung wahrscheinlicher machen | ja |
 | `op.verification.create` | Menschen verifizieren | Reale Begegnung bestätigen | ja |
+| `op.confirmation.create` | Beitrag bestätigen | Beobachtete Handlung oder Completion bestätigen | nein |
+| `op.confirmation.visibility.set` | Confirmation-Sichtbarkeit setzen | Empfängerprinzip und Kontext respektieren | nein |
 | `op.offer.need.publish` | Angebote/Bedürfnisse teilen | Kooperation und Ressourcenteilung ermöglichen | ja |
 | `op.quest.suggest` | Nächsten Schritt vorschlagen | Einladung zu sinnvoller Handlung | ja |
 | `op.followup.create` | Verbunden bleiben | Anschluss nach Festival sichern | ja |
@@ -76,13 +79,15 @@ QR/Link
 | `op.visibility.set` | Visibility Settings | Space-Sichtbarkeit und Karten-/Regionsauffindbarkeit wählen | private bleiben, Region statt genauer Ort | keine Sichtbarkeit -> nicht auffindbar |
 | `op.people.discover` | Map/List/Search | Profil/Eintrag öffnen | filtern, merken, ausblenden | keine Treffer -> Crew/Agent kann analoge Einladung geben |
 | `op.verification.create` | QR Challenge / Scanner | reale Begegnung per QR bestätigen | Gegenverifikation, Ort/Event als Kontext, manuelle Code-Eingabe | Fehler -> später erneut versuchen |
+| `op.confirmation.create` | Confirmation Flow | beobachteten Beitrag bestätigen | Evidence ansehen, Trust-Stufe anzeigen, später signieren | Keine Bestätigung ohne Beobachtung oder ausreichenden Kontext |
+| `op.confirmation.visibility.set` | Confirmation Visibility | erhaltene Confirmation anzeigen oder verbergen | privat halten, kontextbezogen teilen | Sichtbarkeit bleibt Entscheidung der empfangenden Person |
 | `op.offer.need.publish` | Profile or Marketplace Edit | Angebot/Bedürfnis eintragen | Tags, Sichtbarkeit, Ablaufdatum | leer lassen -> kein Druck |
 | `op.quest.suggest` | Quest Suggestion Card | Einladung annehmen | ablehnen, später, ausblenden | Ablehnung wird nicht negativ gewertet |
 | `op.followup.create` | Follow-up View | Kontakt halten / nächsten Schritt speichern | Nachricht, lokaler Kreis, Event | kein Follow-up -> Beziehung bleibt als Kontakt |
 
 ## 6. Data Object Catalog
 
-Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie direkt als Item-Typen, als Felder bestehender Typen oder als abgeleitete Views umsetzen. Kanonische WoT-Objekte bleiben dabei WoT-Objekte; App-Views dürfen sie anzeigen, aber nicht als alternatives Protokollformat ersetzen.
+Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie direkt als Item-Typen, als Felder bestehender Typen oder als abgeleitete Views umsetzen. Confirmations sind die backend-agnostische RLNP-Sicht auf bestätigte Aussagen. Kanonische WoT-Objekte bleiben dabei WoT-Objekte; App-Views dürfen sie anzeigen, aber nicht als alternatives Protokollformat ersetzen.
 
 | Objekt | Zweck | Bestehendes Primitive | Gap / Empfehlung |
 |---|---|---|---|
@@ -95,9 +100,10 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
 | `OfferTag` | etwas, das jemand geben/teilen kann | WoT Profile `offers[]`; Ziel: RLS `data.offers[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
 | `NeedTag` | etwas, das jemand sucht/braucht | WoT Profile `needs[]`; Ziel: RLS `data.needs[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
-| `VerificationAttestation` | bestätigte Begegnung/Identität | WoT Trust 002 VC-JWS | kanonisch VC-JWS, RLS/SignedClaim nur View |
+| `VerificationConfirmation` | bestätigte Begegnung/Identität | Confirmation-View; bei WoT Trust 002 VC-JWS | backend-agnostische View, portable Form bleibt WoT VC-JWS |
 | `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
-| `Attestation` | Beitrag/Gabe/Fähigkeit attestieren | WoT Trust 001 VC-JWS | P1 für Pax, kanonisch VC-JWS |
+| `Confirmation` | Beitrag, Gabe, Fähigkeit, Teilnahme oder Completion bestätigen | RLS/RLNP Confirmation-View | kann lokal, server-confirmed oder signed-attested sein |
+| `Attestation` | portable signierte Confirmation | WoT Trust 001/002 VC-JWS | P1 für Pax, kanonisch VC-JWS wenn WoT genutzt wird |
 | `Quest` | freiwillige Einladung zu einer Handlung | RLS generisches Item | `type: "quest"` oder task-kompatible View |
 | `QuestRun` | konkrete Durchführung einer Quest durch einen Menschen | RLS generisches Item mit Relations | `type: "quest-run"`; verweist per `runsQuest` auf Quest und per `actor` auf DID/Profile |
 | `FollowUp` | nächster Schritt nach Begegnung/Festival | RLS generisches Item (`task`, `event`, `post`, `quest`) | leichter Item-Schnitt statt Sonderformat |
@@ -192,13 +198,14 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
         "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
       }
     ],
-    "attestationPolicy": {
-      "allowedAttesters": [
+    "confirmationPolicy": {
+      "allowedConfirmers": [
         { "role": "peer", "minCount": 1 },
         { "role": "host" }
-      ]
+      ],
+      "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
     },
-    "completionAttestationTemplate": {
+    "completionConfirmationTemplate": {
       "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
       "display": {
         "label": "Echte Begegnung",
@@ -226,11 +233,11 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 - Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht persönlichen Fortschritt.
 - Quest-Klassifizierung SOLLTE über `operation`, `intent`, `tags` oder `templateId` erfolgen, nicht über eine harte Quest-Typ-Taxonomie.
 - `visibility` im `data`-Objekt beschreibt die gewünschte App-/Sharing-Sichtbarkeit; technische Durchsetzung kann zusätzlich über Connector-Berechtigungen erfolgen.
-- `attestationPolicy`, `requiredEvidence`, `completionAttestationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik, nicht zur Game-Schicht.
+- `confirmationPolicy`, `requiredEvidence`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik, nicht zur Game-Schicht.
 
 ### 7.3 `quest-run`
 
-QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Status, Sichtbarkeit, lokale Completion, Evidence und Attestations haben können.
+QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Status, Sichtbarkeit, lokale Completion, Evidence und Confirmations haben können.
 
 ```json
 {
@@ -294,27 +301,55 @@ Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablau
 | `partOf` | Quest/QuestRun/Item | Event/Project/Commons/Space | gehört zu einem Kontext |
 | `offeredBy` | P1 Offer-Item | Profile | Angebot gehört zu Person/Agent |
 | `neededBy` | P1 Need-Item | Profile | Bedürfnis gehört zu Person/Agent |
-| `metAt` | Verification-Attestation-View | Event/Place | Ort oder Event der QR-verifizierten Begegnung |
-| `verified` | Verification-Attestation-View | Profile/Identity | bestätigte Identitätsbeziehung |
-| `attests` | Attestation-View | Profile/Identity/Item | Aussage über Beitrag/Gabe/Fähigkeit |
+| `metAt` | Verification-Confirmation-View | Event/Place | Ort oder Event der QR-verifizierten Begegnung |
+| `verified` | Verification-Confirmation-View | Profile/Identity | bestätigte Identitätsbeziehung |
+| `attests` | Confirmation-View oder Attestation-View | Profile/Identity/Item | Aussage über Beitrag/Gabe/Fähigkeit |
 | `runsQuest` | QuestRun | Quest | Run gehört zu dieser Quest |
 | `actor` | QuestRun | Profile/Identity | Mensch, der den Run ausführt |
 | `forkedFrom` | Quest | Quest | Quest ist lokale Kopie oder Anpassung |
 | `relatedTo` | Item | Item | allgemeiner Bezug |
-| `followUpFor` | FollowUp-Item | Verification-Attestation/Event/Quest | Anschluss an vorherige Erfahrung |
-| `documentedBy` | Event/Verification-Attestation/Project | Post/Media | Dokumentation eines Geschehens |
+| `followUpFor` | FollowUp-Item | Verification-Confirmation/Event/Quest | Anschluss an vorherige Erfahrung |
+| `documentedBy` | Event/Verification-Confirmation/Project | Post/Media | Dokumentation eines Geschehens |
 
-**Norm:** Relationen MÜSSEN beschreiben, was passiert ist oder vorgeschlagen wird. Sie DÜRFEN NICHT implizieren, dass ein Mensch wertvoller ist als ein anderer. Eine portable QuestRun-Completion SOLLTE durch eine `attests`-Relation von einer Attestation-View auf den QuestRun, Beitrag oder das Ergebnis sichtbar werden.
+**Norm:** Relationen MÜSSEN beschreiben, was passiert ist oder vorgeschlagen wird. Sie DÜRFEN NICHT implizieren, dass ein Mensch wertvoller ist als ein anderer. Eine bestätigte QuestRun-Completion SOLLTE durch eine `attests`-Relation von einer Confirmation-View auf den QuestRun, Beitrag oder das Ergebnis sichtbar werden. Portable Completion braucht eine signierte Attestation-View.
 
-## 9. Claim Mapping
+## 9. Confirmation und Attestation Mapping
 
-### 9.1 Verification-Attestation
+### 9.1 Backend-agnostische Confirmation-View
+
+RLNP definiert keine eigene portable Claim-Serialisierung. Für App- und Connector-Views braucht es trotzdem eine neutrale Sicht auf bestätigte Aussagen.
+
+```ts
+type ConfirmationTrustLevel =
+  | "demo"
+  | "local"
+  | "server-confirmed"
+  | "signed-attested"
+
+type ConfirmationView = {
+  id: string
+  subjectId: string
+  issuerId?: string
+  claim: string
+  schema?: string
+  tags?: string[]
+  relations?: Relation[]
+  createdAt: string
+  trustLevel: ConfirmationTrustLevel
+  source?: string
+  isAccepted?: boolean
+}
+```
+
+Eine Confirmation-View ist keine neue Quelle der Wahrheit. Sie ist die RLNP-/RLS-Projektion einer bestätigten Aussage aus einem konkreten Backend: lokale Daten, Serverzustand, Space-Host, Systemregel oder signierte WoT-Attestation.
+
+### 9.2 Verification-Confirmation
 
 Verifikation bestätigt Begegnung oder Identitätsbeziehung.
 
 Für Pax v0.1 ist QR-Verifikation der Mechanismus, durch den reale Begegnungen im Netzwerk festgehalten werden.
 
-Kanonisch ist dafür die WoT-Trust-002-Verification-Attestation: ein VC-JWS mit `typ: "vc+jwt"`. Der folgende JSON-Block zeigt nur den signierten Payload vor JWS-Serialisierung.
+Backend-agnostisch ist das eine Verification-Confirmation. Wenn WoT genutzt wird und die Verifikation portabel sein soll, ist die kanonische Form eine WoT-Trust-002-Verification-Attestation: ein VC-JWS mit `typ: "vc+jwt"`. Der folgende JSON-Block zeigt nur den signierten Payload vor JWS-Serialisierung.
 
 ```json
 {
@@ -339,11 +374,11 @@ Kanonisch ist dafür die WoT-Trust-002-Verification-Attestation: ein VC-JWS mit 
 }
 ```
 
-`credentialSubject.tags` und `credentialSubject.context` sind RLNP-/App-Erweiterungen. Implementierungen MÜSSEN den WoT-Trust-Kern auch dann akzeptieren, wenn sie diese Erweiterungen nicht semantisch verstehen. Eine Real-Life-Stack-UI DARF daraus eine vereinfachte `SignedClaim`-/Kontakt-View ableiten; die portable Quelle der Wahrheit bleibt der VC-JWS.
+`credentialSubject.tags` und `credentialSubject.context` sind RLNP-/App-Erweiterungen. Implementierungen MÜSSEN den WoT-Trust-Kern auch dann akzeptieren, wenn sie diese Erweiterungen nicht semantisch verstehen. Eine Real-Life-Stack-UI DARF daraus eine vereinfachte Confirmation-/Kontakt-View ableiten; die portable Quelle der Wahrheit bleibt der VC-JWS.
 
-### 9.2 Attestation
+### 9.3 Attestation
 
-Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
+Attestations sind portable, signierte Confirmations. Sie sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 
 ```json
 {
@@ -367,7 +402,7 @@ Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 }
 ```
 
-**Norm:** Attestations SOLLTEN konkret, beobachtbar und kontextbezogen sein. Sie MÜSSEN als WoT-Trust-001-VC-JWS erzeugt, transportiert und verifiziert werden; vereinfachte App-Objekte sind nur Projektionen.
+**Norm:** Confirmations SOLLTEN konkret, beobachtbar und kontextbezogen sein. Wenn eine Confirmation als WoT-Attestation ausgestellt wird, MUSS sie als WoT-Trust-001/002-VC-JWS erzeugt, transportiert und verifiziert werden; vereinfachte App-Objekte sind nur Projektionen.
 
 ## 10. Visibility Model
 
@@ -397,7 +432,7 @@ Attestations sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
 | Angebot eintragen | `op.offer.need.publish` | Profil vorhanden | Offer-Tag im Profil sichtbar | Beispiele anbieten |
 | Bedürfnis eintragen | `op.offer.need.publish` | Profil vorhanden | Need-Tag im Profil sichtbar | ermutigen, konkret zu werden |
 | Person kennenlernen | `op.people.discover` | Matching-Signal | Begegnung selbst bestätigt | passende Person vorschlagen |
-| Verifizieren | `op.verification.create` | reale Begegnung | Verification-Attestation-VC-JWS erstellt | QR-Flow erklären |
+| Verifizieren | `op.verification.create` | reale Begegnung | Verification-Confirmation erstellt; bei WoT als VC-JWS | QR-Flow erklären |
 | Nächsten Schritt speichern | `op.followup.create` | Begegnung/Match | Follow-up-Item erstellt | lokale Anschlussoption |
 
 ## 12. Agent Support Contract
@@ -423,7 +458,7 @@ Ein Agent DARF NICHT:
 - Menschen ranken,
 - Druck erzeugen,
 - intime oder sensible Schlüsse ohne explizite Grundlage ziehen,
-- eine Verifikation, Attestation oder Einladung im Namen eines Menschen ohne Zustimmung auslösen.
+- eine Verifikation, Confirmation, Attestation oder Einladung im Namen eines Menschen ohne Zustimmung auslösen.
 
 ## 13. Metrics
 
@@ -447,7 +482,7 @@ Für Pax v0.1 ist folgender pragmatischer Schnitt ausreichend:
 
 1. `profile` erweitern statt sofort eigene `offer`/`need` Items erzwingen.
 2. `space invite` und `group membership` für Pax-Space nutzen.
-3. WoT Trust 002 Verification-Attestations als VC-JWS für QR-Verifikation verwenden; `SignedClaim` ist nur eine App-Projection.
+3. QR-Verifikation als Verification-Confirmation behandeln; bei WoT Trust 002 als VC-JWS ausstellen; `SignedClaim` ist nur eine alte App-Projection.
 4. Handlungseinladungen als lokale/sichtbare Suggestions abbilden; vollwertige `quest`-/`quest-run`-Items sind für Pax v0.1 optional.
 5. Map in v0.1 darf eine Listen-/Regionenansicht sein, solange Begegnung und Auffindbarkeit funktionieren.
 6. Metrics nur lokal/aggregiert für Pilot-Lernen verwenden.

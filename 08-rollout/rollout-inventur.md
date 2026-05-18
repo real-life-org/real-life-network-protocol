@@ -81,7 +81,7 @@ Der nächste sinnvolle Schritt ist deshalb kein weiterer großer Visionstext, so
 **Vorhanden**
 
 - App-Shell mit Workspaces/Spaces, Modul-Tabs und Bottom Navigation.
-- DataInterface mit generischen Items, Relationen, Gruppen, Auth, Contacts, Signed Claims und Profil-Fähigkeiten.
+- DataInterface mit generischen Items, Relationen, Gruppen, Auth, Contacts, derzeitigen Signed Claims und Profil-Fähigkeiten.
 - Item-Typen im Code: `task`, `event`, `post`, `place`, `feature`, `profile`, Reactions und Kommentare.
 - Profilfelder im Code: Name, Bio, Avatar, Skills, Offers, Needs.
 - Referenz-App mit Feed, Kanban, Kalender, einfacher Kartenansicht, Profil-Dialog, Kontakt-Dialogen, Verifikation, Gruppenverwaltung und WoT-Connector.
@@ -103,7 +103,7 @@ Der nächste sinnvolle Schritt ist deshalb kein weiterer großer Visionstext, so
 
 - Das generische `Item`-Modell mit `type`, `data` und `relations` ist flexibel genug, um soziale Entitäten abzubilden.
 - Relationen können Items, Profile, Spaces und Cross-Space-Bezüge verbinden.
-- Signed Claims können Verifikationen und Attestations repräsentieren.
+- Signed Claims können Verifikationen und Attestations derzeit repräsentieren, sollten aber als App-Projection Richtung Confirmation-View weiterentwickelt werden.
 - Groups/Spaces sind als kollaborative Räume vorhanden.
 
 **Fehlt**
@@ -170,7 +170,7 @@ Der nächste sinnvolle Schritt ist deshalb kein weiterer großer Visionstext, so
 | Menschen kennenlernen | Vision, Handbuch, Kreis- und Festivalpraxis | Onboarding-Dramaturgie, Kontakt-/Nachfass-Flow, App-Einstieg |
 | Menschen einladen | Prinzip Einladung statt Überzeugung | Einladungsvorlagen, Ablehnen-ohne-Druck-UX, Quest-Sprache |
 | Menschen verifizieren | WoT-Spec, QR-Verifikation, App-Komponenten | Festival-tauglicher Flow, Fehlerfälle, Erklärung für Laien |
-| Beiträge attestieren | WoT-Attestations, Claims, Profil-Sichtbarkeit | UX für konkrete Beiträge, Akzeptieren/Sichtbarkeit, soziale Leitplanken |
+| Beiträge bestätigen | Confirmations, WoT-Attestations, Profil-Sichtbarkeit | UX für konkrete Beiträge, Akzeptieren/Sichtbarkeit, soziale Leitplanken |
 | Veranstaltungen ausrichten | Kalender-Docs, Event-Typ, Handbuch | Vollständiger Event-Flow, Teilnahme, Nachbereitung, Ritualvorlagen |
 | Kreis starten | Handbuch | Starter-Kit, erste 4 Treffen, App- und Agentenunterstützung |
 | Ressourcen teilen/nachfragen | Handbuch, Profil-Offer-/Need-Tags, Marketplace-Idee | Resource-/Need-/Offer-Typen, Suche, Pflege, Verfügbarkeit |

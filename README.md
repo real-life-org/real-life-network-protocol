@@ -14,7 +14,7 @@ Dieses Repository ist die Werkbank für das Real Life Network Protocol.
 
 Es beschreibt nicht nur Werte oder Kultur, sondern wiederholbare soziale Operationen:
 
-- Menschen kennenlernen, einladen, verifizieren und attestieren
+- Menschen kennenlernen, einladen, verifizieren, bestätigen und attestieren
 - Veranstaltungen, Kreise und Rituale hosten
 - Ressourcen teilen und Commons schaffen
 - Projekte, Orte und lokale Strukturen aufbauen

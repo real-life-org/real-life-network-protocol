@@ -1,7 +1,7 @@
 # Examples
 
-Konkrete Beispielabläufe für soziale Operationen, RLS-Items, WoT-VC-JWS-Projektionen, Quests und Agentenhandlungen.
+Konkrete Beispielabläufe für soziale Operationen, RLS-Items, Confirmation-Views, WoT-VC-JWS-Projektionen, Quests und Agentenhandlungen.
 
-Beispiele für Verifikationen und Attestations müssen zwischen kanonischem VC-JWS-Payload und vereinfachter App-View unterscheiden.
+Beispiele für Confirmations, Verifikationen und Attestations müssen zwischen backend-agnostischer App-View und kanonischem VC-JWS-Payload unterscheiden.
 
 Noch offen.

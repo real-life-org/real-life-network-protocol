@@ -44,7 +44,7 @@ Bestehende Gruppe, Gemeinschaft oder Organisation, die eigene Identität und Aut
 
 ## Dokumentation
 
-Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, Kalender-Einträge, Erfahrungsberichte, Attestations oder Learnings.
+Sichtbarmachung dessen, was geschieht: Texte, Fotos, Videos, Karten-Einträge, Kalender-Einträge, Erfahrungsberichte, Confirmations, Attestations oder Learnings.
 
 ## Quest
 
@@ -52,23 +52,27 @@ Freiwillige Handlungseinladung zu einer konkreten realen Handlung im Kontext des
 
 ## QuestRun
 
-Konkrete Durchführung einer Quest durch einen Menschen. Mehrere Menschen können dieselbe Quest unabhängig voneinander durchführen. Lokale Completion, Evidence und Attestations beziehen sich auf einen QuestRun, nicht auf die Quest als globale Handlungseinladung.
+Konkrete Durchführung einer Quest durch einen Menschen. Mehrere Menschen können dieselbe Quest unabhängig voneinander durchführen. Lokale Completion, Evidence und Confirmations beziehen sich auf einen QuestRun, nicht auf die Quest als globale Handlungseinladung.
 
 ## Evidence
 
-Spur oder Selbst-Claim zu einem QuestRun, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. Evidence kann eine Attestation vorbereiten, ist aber selbst kein portabler Beleg und kein Badge.
+Spur oder Selbst-Claim zu einem QuestRun, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. Evidence kann eine Confirmation vorbereiten, ist aber selbst kein bestätigter oder portabler Beleg und kein Badge.
 
 ## Required Evidence
 
-Evidence, die eine Quest für eine spätere Completion-Attestation verlangt oder empfiehlt. Required Evidence beschreibt Nachweis-Erwartungen, erzeugt aber selbst keine portable Wahrheit.
+Evidence, die eine Quest für eine spätere Completion-Confirmation verlangt oder empfiehlt. Required Evidence beschreibt Nachweis-Erwartungen, erzeugt aber selbst keine bestätigte oder portable Wahrheit.
 
-## Attestation Policy
+## Confirmation
 
-Regeln einer Quest, welche Attestations als gültige Completion für einen QuestRun zählen. Das Web of Trust bleibt offen für andere Attestations; die Policy entscheidet nur über Quest-Completion.
+Bestätigte Aussage über eine Handlung, Teilnahme, Begegnung, Rolle, Fähigkeit, Ressource oder Completion in einem konkreten Kontext. Eine Confirmation kann lokal, serverseitig, durch einen Host, durch ein System oder durch eine signierte Attestation entstehen.
 
-## Completion Attestation Template
+## Confirmation Policy
 
-Claim- und Display-Vorlage, die eine Quest für spätere Completion-Attestations bereitstellen kann. Die Vorlage ist kein Badge; erst die signierte WoT-Attestation erzeugt eine portable Badge-View.
+Regeln einer Quest, welche Confirmations als gültige Completion für einen QuestRun zählen. Die Policy begrenzt nicht, welche anderen Confirmations oder Attestations Menschen ausstellen dürfen; sie entscheidet nur über Quest-Completion.
+
+## Completion Confirmation Template
+
+Claim- und Display-Vorlage, die eine Quest für spätere Completion-Confirmations bereitstellen kann. Die Vorlage ist kein Badge; erst eine konkrete Confirmation erzeugt eine Badge- oder Completion-View. Portable Badge-Views brauchen eine signierte Attestation.
 
 ## Safety Requirement
 
@@ -80,7 +84,7 @@ Spielerische Gestaltungsschicht auf dem Real Life Network. Das Game nutzt Quests
 
 ## Badge
 
-Visuell dargestellte WoT-Attestation für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Die Darstellung kann `emoji`, `color` und `shape` aus der [RLS Display Extension](https://github.com/real-life-org/wot-spec/blob/main/04-rls-extensions/R01-badges.md) verwenden.
+Visuelle Darstellung einer Confirmation oder Attestation für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Die Darstellung kann `emoji`, `color` und `shape` aus der [RLS Display Extension](https://github.com/real-life-org/wot-spec/blob/main/04-rls-extensions/R01-badges.md) verwenden. Ein portables Badge braucht eine signierte Attestation.
 
 ## Verifikation
 
@@ -88,7 +92,7 @@ Digitale oder analoge Bestätigung einer realen Begegnung oder Identitätsbezieh
 
 ## Attestation
 
-Signierte WoT-Aussage über einen konkreten Beitrag, eine Gabe, eine Fähigkeit, eine Rolle, ein Ergebnis oder eine beobachtete Handlung in einem Kontext. Portable Belege und Badges entstehen aus Attestations, nicht aus bloßer Evidence.
+Portable, signierte Confirmation über einen konkreten Beitrag, eine Gabe, eine Fähigkeit, eine Rolle, ein Ergebnis oder eine beobachtete Handlung in einem Kontext. In der aktuellen WoT-Integration ist eine Attestation typischerweise ein WoT-Trust-VC-JWS.
 
 ## Space
 

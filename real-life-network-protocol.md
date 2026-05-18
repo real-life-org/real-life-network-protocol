@@ -28,7 +28,7 @@ Das Real Life Network gelingt, wenn an vielen Orten lokale Gemeinschaften lebend
 - Regionen werden vernetzter, resilienter und weniger abhängig von globalen Strukturen.
 - Menschen gehen weniger fremdbestimmter Arbeit nach und mehr dem, was sich für sie lebendig und sinnvoll anfühlt.
 
-Sichtbare Ausdrücke dieses Gelingens sind Begegnungen, Verifikationen, Attestations, Veranstaltungen, geteilte Ressourcen, dokumentierte Geschichten, gestartete Projekte, entstehende Orte und gepflegte Commons.
+Sichtbare Ausdrücke dieses Gelingens sind Begegnungen, Verifikationen, Confirmations, Attestations, Veranstaltungen, geteilte Ressourcen, dokumentierte Geschichten, gestartete Projekte, entstehende Orte und gepflegte Commons.
 
 ## 3. Normative Sprache
 
@@ -51,7 +51,7 @@ Das Protokoll DARF NICHT dazu verwendet werden, den Wert eines Menschen zu bewer
 
 Das Protokoll DARF NICHT formelle Mitgliedschaft als Voraussetzung für Teilnahme setzen.
 
-Das Protokoll DARF NICHT Menschen zu Beiträgen, Verifikationen, Attestations, Sichtbarkeit oder Öffentlichkeit drängen.
+Das Protokoll DARF NICHT Menschen zu Beiträgen, Verifikationen, Confirmations, Attestations, Sichtbarkeit oder Öffentlichkeit drängen.
 
 Das Protokoll SOLLTE keine lokalen Praktiken ersetzen. Es beschreibt Muster, die lokale Gruppen frei anpassen dürfen.
 
@@ -83,7 +83,7 @@ Ressourcen können geteilt, gepflegt und gemeinsam angeschafft werden. Ein Commo
 
 ### 5.7 Sichtbarkeit mit Zustimmung
 
-Dokumentation, Profile, Attestations, Ressourcen und Projekte SOLLTEN sichtbar machen, was lebt. Systeme MÜSSEN dabei Zustimmung, Kontext und lokale Privatsphäre respektieren.
+Dokumentation, Profile, Confirmations, Attestations, Ressourcen und Projekte SOLLTEN sichtbar machen, was lebt. Systeme MÜSSEN dabei Zustimmung, Kontext und lokale Privatsphäre respektieren.
 
 ### 5.8 Einladung statt Missionierung
 
@@ -143,7 +143,7 @@ Eine Initiative ist eine bereits bestehende Gruppe, Gemeinschaft oder Organisati
 
 ### 6.11 Dokumentation
 
-Dokumentation macht sichtbar, was geschieht. Sie kann aus Texten, Fotos, Videos, Karten-Einträgen, Kalender-Einträgen, Erfahrungsberichten, Attestations oder Learnings bestehen.
+Dokumentation macht sichtbar, was geschieht. Sie kann aus Texten, Fotos, Videos, Karten-Einträgen, Kalender-Einträgen, Erfahrungsberichten, Confirmations, Attestations oder Learnings bestehen.
 
 ### 6.12 Quest
 
@@ -212,11 +212,11 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 2. Beide bestätigen, dass sie einander als diese Person erlebt haben.
 3. Optional wird dies digital verifiziert.
 
-**Outputs:** Verifizierte Beziehung, höheres Vertrauen in Identität, mögliche spätere Attestation.
+**Outputs:** Verifizierte Beziehung, höheres Vertrauen in Identität, mögliche spätere Confirmation oder Attestation.
 
 **Norm:** Verifikation bedeutet nicht, dass eine Person allgemein vertrauenswürdig ist. Sie bedeutet nur, dass eine Begegnung oder Identitätsbeziehung bestätigt wurde.
 
-### 8.4 Beiträge und Begabungen attestieren
+### 8.4 Beiträge und Begabungen bestätigen
 
 **Zweck:** Sichtbar machen, was Menschen beitragen, können oder in Beziehung zeigen.
 
@@ -226,12 +226,12 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 2. Sie formuliert eine kontextbezogene Aussage.
 3. Die empfangende Person entscheidet, ob und wie sie diese Aussage sichtbar macht.
 
-**Outputs:** Attestation, Sichtbarkeit von Fähigkeiten, soziale Anerkennung, Orientierung für Kooperation.
+**Outputs:** Confirmation oder Attestation, Sichtbarkeit von Fähigkeiten, soziale Anerkennung, Orientierung für Kooperation.
 
 **Normen:**
 
-- Attestations SOLLTEN konkret, beobachtbar und kontextbezogen sein.
-- Attestations DÜRFEN NICHT als globale Bewertung eines Menschen verstanden werden.
+- Confirmations SOLLTEN konkret, beobachtbar und kontextbezogen sein.
+- Confirmations und Attestations DÜRFEN NICHT als globale Bewertung eines Menschen verstanden werden.
 - Systeme MÜSSEN respektieren, dass empfangende Personen über Sichtbarkeit entscheiden.
 
 ### 8.5 Veranstaltung ausrichten
@@ -280,7 +280,7 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 2. Andere können darauf reagieren.
 3. Aus Austausch kann Beziehung, Commons oder Projekt entstehen.
 
-**Outputs:** Angebot, Nachfrage, geteilte Nutzung, mögliche Attestation.
+**Outputs:** Angebot, Nachfrage, geteilte Nutzung, mögliche Confirmation oder Attestation.
 
 **Beispiele:** Werkzeug verleihen, Raum anbieten, Hilfe bei Transport suchen, Wissen teilen, Zeit anbieten.
 
@@ -313,7 +313,7 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 3. Sie handeln gemeinsam.
 4. Fortschritt, Bedarf und Learnings können dokumentiert werden.
 
-**Outputs:** Projekt, Beteiligte, Aufgaben, Ressourcenbedarf, Dokumentation, mögliche Attestations.
+**Outputs:** Projekt, Beteiligte, Aufgaben, Ressourcenbedarf, Dokumentation, mögliche Confirmations oder Attestations.
 
 **Agentenunterstützung:** Agenten dürfen vorschlagen, wenn mehrere Menschen in einer Region oder einem Thema reif für ein Projekt wirken.
 
@@ -340,7 +340,7 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 2. Beteiligte stimmen der passenden Sichtbarkeit zu.
 3. Das Artefakt wird im passenden Kontext geteilt.
 
-**Outputs:** Foto, Video, Text, Karten-Eintrag, Kalender-Eintrag, Erfahrungsbericht, Attestation, Learnings.
+**Outputs:** Foto, Video, Text, Karten-Eintrag, Kalender-Eintrag, Erfahrungsbericht, Confirmation, Attestation, Learnings.
 
 **Norm:** Dokumentation SOLLTE dienen, nicht inszenieren. Sie DARF Menschen nicht ohne Zustimmung exponieren.
 
@@ -437,14 +437,14 @@ Eine Quest SOLLTE enthalten:
 - Tags oder Template-Hinweise
 - Sichtbarkeit
 - Ort, Zeit oder Kontext, wenn relevant
-- Required Evidence, Attestation Policy, Completion-Attestation-Template und Safety Requirements, wenn die Completion besondere Regeln braucht
+- Required Evidence, Confirmation Policy, Completion-Confirmation-Template und Safety Requirements, wenn die Completion besondere Regeln braucht
 
 Ein QuestRun SOLLTE enthalten:
 
 - Status der persönlichen Durchführung
 - Relation zur Quest
 - Relation zum Menschen, der sie ausführt
-- lokale Completion, Evidence und Attestation-Status, wenn relevant
+- lokale Completion, Evidence und Confirmation-Status, wenn relevant
 - Sichtbarkeit des persönlichen Runs
 - Ort, Zeit oder Kontext, wenn relevant
 
@@ -465,7 +465,7 @@ Metriken dürfen Orientierung geben. Sie DÜRFEN NICHT den Wert eines Menschen b
 Mögliche Metriken:
 
 - Anzahl direkter Beziehungen
-- eingehende und ausgehende Attestations
+- eingehende und ausgehende Confirmations oder Attestations
 - besuchte oder gehostete Veranstaltungen
 - geteilte Ressourcen
 - dokumentierte Bedürfnisse
