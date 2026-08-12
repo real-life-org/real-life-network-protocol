@@ -43,7 +43,7 @@ erscheinen.
 
 Die Operationen `op.app.open`, `op.identity.create`, `op.space.join`, `op.profile.create`, `op.visibility.set`, `op.people.discover`, `op.verification.create`, `op.offer.need.publish`, `op.quest.suggest` und `op.followup.create` gehören zum Pax-P0-Mapping.
 
-Weitere Operationen in diesem Katalog, z.B. `op.confirmation.create`, `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../03-social-operations](../03-social-operations/) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
+Weitere Operationen in diesem Katalog, z.B. `op.confirmation.create`, `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../real-life-network-protocol.md](../real-life-network-protocol.md) (Abschnitt 8) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
 
 ## 4. Minimale Quest- und QuestRun-View
 

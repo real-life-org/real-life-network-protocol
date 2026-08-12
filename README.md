@@ -38,14 +38,9 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 
 | Bereich | Zweck |
 |---|---|
-| [real-life-network-protocol.md](real-life-network-protocol.md) | Initiale Gesamtspezifikation |
-| [01-principles](01-principles/) | Grundprinzipien und Nicht-Ziele |
-| [02-entities](02-entities/) | Soziale Entitäten des Netzwerks |
-| [03-social-operations](03-social-operations/) | Kernoperationen des Netzwerkaufbaus |
-| [04-practices-and-rituals](04-practices-and-rituals/) | Wiederkehrende Formate und Rituale |
+| [real-life-network-protocol.md](real-life-network-protocol.md) | Die Gesamtspezifikation: Prinzipien, Entitäten, soziale Operationen, Praktiken, Agenten |
 | [05-quests](05-quests/) | Freiwillige Handlungseinladungen, Quest-Katalog und Quest-Mechanik |
 | [06-data-model](06-data-model/) | App- und Graphmodell für soziale Operationen |
-| [07-agent-protocol](07-agent-protocol/) | Handlungsrahmen für KI-Agenten im Netzwerk |
 | [08-rollout](08-rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
 | [schemas](schemas/) | Maschinenlesbare Schemata |
 | [playbooks](playbooks/) | Praktische Anleitungen für Hosts, Crews und Kreise |

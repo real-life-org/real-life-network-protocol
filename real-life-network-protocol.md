@@ -482,29 +482,13 @@ Beispiele für Handlungseinladungen:
 - Starte mit anderen ein kleines Projekt.
 - Lade zum Vollmondfeuer ein.
 
-### 11.2 Minimale Quest-Felder
+### 11.2 Was eine Quest beschreibt
 
-Eine Quest SOLLTE enthalten:
+Eine Quest sagt, wozu sie einlädt und wer sie gestellt hat. Sie hält fest, wer sie sehen kann, und, wo es darauf ankommt, an welchem Ort und zu welcher Zeit. Wenn ihr Abschluss besondere Regeln braucht, gehören auch die dazu.
 
-- Titel
-- Beschreibung
-- Status der Veröffentlichung
-- optionaler Bezug zu einer sozialen Operation
-- Tags oder Template-Hinweise
-- Sichtbarkeit
-- Ort, Zeit oder Kontext, wenn relevant
-- Evidence Policy, Confirmation Policy, Completion-Confirmation-Template und Safety Requirements, wenn die Completion besondere Regeln braucht
+Ein QuestRun hält fest, wie ein einzelner Mensch sie durchführt: dass er sie übernommen hat, wie weit er ist, wer das sehen kann und was davon bezeugt wurde.
 
-Ein QuestRun SOLLTE enthalten:
-
-- Status der persönlichen Durchführung
-- Relation zur Quest
-- Relation zum Menschen, der sie ausführt
-- lokale Completion, Evidence und Confirmation-Status, wenn relevant
-- Sichtbarkeit des persönlichen Runs
-- Ort, Zeit oder Kontext, wenn relevant
-
-Weitere Felder stehen in [05-quests/quest-mechanik.md](05-quests/quest-mechanik.md).
+Die genauen Felder und Formate beider stehen in [05-quests/quest-mechanik.md](05-quests/quest-mechanik.md).
 
 ### 11.3 Leitplanken
 
