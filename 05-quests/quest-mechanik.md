@@ -116,6 +116,7 @@ Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen 
 - Veröffentlichung, Pausierung und Archivierung gehören zur Quest.
 - Aggregierte Aussagen wie "12 Menschen haben diese Quest abgeschlossen" sind abgeleitete Views aus sichtbaren QuestRuns oder Confirmations.
 - Eine Agenten-Empfehlung DARF einen lokalen QuestRun oder eine Suggestion erzeugen, aber nicht den globalen Quest-Status verändern.
+- Eine explizite Confirmation Request muss nicht modelliert werden. Ein QuestRun mit `completed` ohne gültige Confirmation oder mit neuer Evidence kann als "wartet auf Bestätigung" dargestellt werden.
 
 ## 5. Autorenschaft
 
@@ -217,7 +218,7 @@ Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOL
 | `data.visibility.mode` | empfohlen | gewünschte Sichtbarkeit: `private`, `contacts`, `space`, `public` |
 | `data.location` | optional | Ort, Region oder grober Kartenkontext |
 | `data.time` | optional | Termin, Zeitraum, Phase oder Rhythmus |
-| `data.requiredEvidence[]` | optional | Evidence, die für eine Confirmation nötig oder empfohlen ist |
+| `data.evidencePolicy` | optional | Regeln, ob Evidence erforderlich ist und welche Typen akzeptiert werden |
 | `data.confirmationPolicy` | optional | Regeln, welche Confirmations als gültige Completion für diese Quest zählen |
 | `data.completionConfirmationTemplate` | optional | Claim- und Display-Vorlage für spätere Completion-Confirmations |
 | `data.safetyRequirements[]` | optional | Sicherheits-, Alters-, Begleitungs-, Sichtbarkeits- oder Kontextregeln |
@@ -250,13 +251,10 @@ Empfohlene Relations:
     "visibility": {
       "mode": "space"
     },
-    "requiredEvidence": [
-      {
-        "type": "self-claim",
-        "required": false,
-        "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
-      }
-    ],
+    "evidencePolicy": {
+      "required": false,
+      "acceptedTypes": ["self-claim", "text"]
+    },
     "confirmationPolicy": {
       "allowedConfirmers": [
         { "role": "peer", "minCount": 1 },
@@ -295,7 +293,7 @@ Empfohlene Relations:
 
 **Normen:**
 
-- `requiredEvidence` beschreibt, welche Spur für eine spätere Confirmation nötig oder hilfreich ist. Evidence ist noch kein bestätigter oder portabler Beleg.
+- `evidencePolicy` beschreibt, ob Evidence für eine spätere Confirmation erforderlich ist und welche Evidence-Typen akzeptiert werden. Sie ist keine konkrete Evidence.
 - `confirmationPolicy` beschreibt, welche Confirmations für diesen QuestRun als gültige Completion zählen. Andere Menschen oder Systeme können trotzdem weitere Confirmations oder Attestations ausstellen, sie zählen dann aber nicht automatisch als Quest-Completion.
 - `completionConfirmationTemplate` ist eine Vorlage für Completion-Confirmations. Eine portable Anerkennung entsteht erst, wenn die Confirmation signiert und transportierbar ist.
 - `safetyRequirements` MÜSSEN vor oder während der Quest verständlich sichtbar sein, wenn sie für Teilnahme, Evidence oder Confirmation relevant sind.
@@ -313,8 +311,9 @@ Ein QuestRun verweist per Relations auf die Quest und den Menschen. `createdBy` 
 | `data.status` | ja | QuestRun-Status |
 | `data.visibility.mode` | empfohlen | Sichtbarkeit dieses persönlichen Runs |
 | `data.completion.claimedAt` | optional | Zeitpunkt der lokalen Completion oder Selbstmarkierung |
-| `data.completion.evidence` | optional | eingereichte Spur, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis |
-| `data.completion.confirmationRequestedAt` | optional | Zeitpunkt, an dem eine Confirmation angefragt wurde |
+| `data.completion.claim` | optional | Selbstbeschreibung der ausgeführten Handlung |
+| `data.completion.evidenceRefs[]` | optional | Verweise auf eingereichte Spuren, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis |
+| `data.completion.confirmationRequestedAt` | optional | Zeitpunkt einer expliziten Confirmation-Anfrage, falls die App diesen Zustand speichert |
 | `data.location` | optional | Ort oder Region der Durchführung |
 | `data.time` | optional | Zeitpunkt, Zeitraum oder Phase der Durchführung |
 
@@ -344,10 +343,8 @@ Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene
     },
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
-      "evidence": {
-        "type": "self-claim",
-        "summary": "Mira hat das Gespräch lokal als erledigt markiert."
-      }
+      "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
+      "evidenceRefs": []
     }
   },
   "relations": [
@@ -413,8 +410,7 @@ Eine Quest KANN eine `confirmationPolicy` definieren. Diese Policy begrenzt nich
       { "role": "peer", "minCount": 2 },
       { "role": "system", "ruleId": "pax-qr-checkin" }
     ],
-    "acceptedTrustLevels": ["server-confirmed", "signed-attested"],
-    "requiresAcceptedEvidence": true
+    "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
   }
 }
 ```
@@ -423,28 +419,24 @@ Eine Quest KANN eine `confirmationPolicy` definieren. Diese Policy begrenzt nich
 
 `acceptedTrustLevels` beschreibt, welche technische Beweiskraft eine Quest für ihre Completion akzeptiert. Typische Stufen sind `local`, `server-confirmed` und `signed-attested`. Eine UI MUSS diese Stufen unterscheiden und darf serverseitige Bestätigung nicht als portable signierte Attestation darstellen.
 
-### 10.4 Required Evidence
+### 10.4 Evidence Policy
 
-Eine Quest KANN `requiredEvidence` definieren. Diese Anforderungen beschreiben, welche Evidence eingereicht werden muss oder empfohlen ist, bevor eine Confirmation angefragt oder ausgestellt wird.
+Eine Quest KANN `evidencePolicy` definieren. Diese Policy beschreibt, ob eine Confirmation für diese Quest Evidence braucht und welche Evidence-Typen akzeptiert werden.
+
+`evidencePolicy` ist keine konkrete Evidence. Konkrete Evidence entsteht erst am QuestRun oder im Kontext eines Ergebnisses.
 
 ```json
 {
-  "requiredEvidence": [
-    {
-      "type": "media",
-      "required": true,
-      "label": "Foto des fertigen Werkstücks"
-    },
-    {
-      "type": "text",
-      "required": false,
-      "label": "Kurze Reflexion: Was war schwierig?"
-    }
-  ]
+  "evidencePolicy": {
+    "required": false,
+    "acceptedTypes": ["photo", "video", "text"]
+  }
 }
 ```
 
-Evidence-Anforderungen DÜRFEN keine riskanten, beschämenden oder übergriffigen Nachweise verlangen.
+Wenn `required` fehlt oder `false` ist, kann eine Confirmation auch auf direkter Beobachtung, Peer-Witness, Host-Kontext oder einer anderen nachvollziehbaren Grundlage beruhen.
+
+Evidence Policies DÜRFEN keine riskanten, beschämenden oder übergriffigen Nachweise verlangen oder nahelegen.
 
 ### 10.5 Completion Confirmation Template
 
@@ -497,7 +489,7 @@ Häufige Typen sind `age`, `tool`, `place`, `supervision`, `consent`, `visibilit
 - QR-Scans, Host-Bestätigungen, gegenseitige Bestätigungen und Systemereignisse sind keine eigenen Wahrheitsarten; sie sind Evidence, Trigger oder Confirmer-/Issuer-Rollen für Confirmations.
 - Eine System- oder Agenten-Confirmation MUSS eine erkennbare Identität, eine nachvollziehbare Regel und einen auslösenden Trigger haben. Wenn sie `signed-attested` sein soll, MUSS sie signiert sein.
 - Completion-Daten, Evidence und Confirmations MÜSSEN Sichtbarkeit, Zustimmung und Kontext respektieren.
-- `confirmationPolicy`, `requiredEvidence`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik des Basisprotokolls. Sie sind keine Game-Mechaniken.
+- `evidencePolicy`, `confirmationPolicy`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik des Basisprotokolls. Sie sind keine Game-Mechaniken.
 
 ## 11. Badges als Confirmation-Display
 

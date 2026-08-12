@@ -67,13 +67,10 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
     "visibility": {
       "mode": "space"
     },
-    "requiredEvidence": [
-      {
-        "type": "self-claim",
-        "required": false,
-        "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
-      }
-    ],
+    "evidencePolicy": {
+      "required": false,
+      "acceptedTypes": ["self-claim", "text"]
+    },
     "confirmationPolicy": {
       "allowedConfirmers": [
         { "role": "peer", "minCount": 1 },

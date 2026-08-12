@@ -44,7 +44,7 @@ Eine Umsetzung ist `rlnp-quests@0.1`-konform, wenn sie:
 - portable Badges als visuell dargestellte signierte Attestations behandelt,
 - Selbst-Claims oder hochgeladene Evidence nicht als portable Completion, Badge oder Self-Attestation ausgibt,
 - QR-Scans, Host-Bestätigungen, gegenseitige Bestätigungen und Systemereignisse als Evidence, Trigger oder Confirmer-/Issuer-Rollen für Confirmations behandelt, nicht als eigene portable Wahrheitsarten,
-- `confirmationPolicy`, `requiredEvidence`, `completionConfirmationTemplate` und `safetyRequirements` als Quest-Completion-Logik behandelt, nicht als Game-Mechaniken,
+- `evidencePolicy`, `confirmationPolicy`, `completionConfirmationTemplate` und `safetyRequirements` als Quest-Completion-Logik behandelt, nicht als Game-Mechaniken,
 - nur solche Confirmations als Quest-Completion zählt, die zu einer vorhandenen `confirmationPolicy` passen,
 - hostlose Systemquests trotzdem einer erkennbaren System-/Agenten-Identität zuordnet,
 - den Zweck jeder Quest auf Beziehung, Commons, lokale Resilienz oder gemeinsames Handeln zurückführt,

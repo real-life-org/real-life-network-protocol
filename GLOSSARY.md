@@ -58,9 +58,9 @@ Konkrete Durchführung einer Quest durch einen Menschen. Mehrere Menschen könne
 
 Spur oder Selbst-Claim zu einem QuestRun, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. Evidence kann eine Confirmation vorbereiten, ist aber selbst kein bestätigter oder portabler Beleg und kein Badge.
 
-## Required Evidence
+## Evidence Policy
 
-Evidence, die eine Quest für eine spätere Completion-Confirmation verlangt oder empfiehlt. Required Evidence beschreibt Nachweis-Erwartungen, erzeugt aber selbst keine bestätigte oder portable Wahrheit.
+Quest-seitige Regel, ob Evidence für eine spätere Confirmation erforderlich ist und welche Evidence-Typen akzeptiert werden. Evidence Policy ist keine konkrete Evidence und erzeugt keine bestätigte oder portable Wahrheit.
 
 ## Confirmation
 

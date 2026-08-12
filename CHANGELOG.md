@@ -19,5 +19,6 @@
 - Quest-Typen geglättet: keine harte Taxonomie im Basisprotokoll; Klassifizierung läuft über Operationen, Intentionen, Tags und Templates.
 - Minimale RLS-Item-Felder für `quest` und `quest-run` festgezogen und Beispiele auf `data.status`, `data.visibility`, lokale Completion und Evidence vereinheitlicht.
 - Completion-Logik geschärft: lokale Completion, Evidence, Confirmation und portable Attestation getrennt.
-- Quest-seitige Completion-Regeln ergänzt: `confirmationPolicy`, `requiredEvidence`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur RLNP-Quest-Logik, nicht zur Game-Schicht.
+- Quest-seitige Completion-Regeln ergänzt: `evidencePolicy`, `confirmationPolicy`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur RLNP-Quest-Logik, nicht zur Game-Schicht.
+- Quest-Evidence geglättet: konkrete Evidence gehört zum QuestRun oder Werk-Kontext; Quests definieren nur eine Evidence Policy mit optionalem `required` und akzeptierten Typen.
 - Auf [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) als eigenes Repository für agentische Spec- und Softwarearbeit verwiesen.

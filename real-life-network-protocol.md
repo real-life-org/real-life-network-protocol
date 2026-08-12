@@ -437,7 +437,7 @@ Eine Quest SOLLTE enthalten:
 - Tags oder Template-Hinweise
 - Sichtbarkeit
 - Ort, Zeit oder Kontext, wenn relevant
-- Required Evidence, Confirmation Policy, Completion-Confirmation-Template und Safety Requirements, wenn die Completion besondere Regeln braucht
+- Evidence Policy, Confirmation Policy, Completion-Confirmation-Template und Safety Requirements, wenn die Completion besondere Regeln braucht
 
 Ein QuestRun SOLLTE enthalten:
 

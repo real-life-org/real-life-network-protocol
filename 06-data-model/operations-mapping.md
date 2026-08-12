@@ -191,13 +191,10 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
     "visibility": {
       "mode": "space"
     },
-    "requiredEvidence": [
-      {
-        "type": "self-claim",
-        "required": false,
-        "label": "Kurze Notiz, mit wem das Gespräch geführt wurde."
-      }
-    ],
+    "evidencePolicy": {
+      "required": false,
+      "acceptedTypes": ["self-claim", "text"]
+    },
     "confirmationPolicy": {
       "allowedConfirmers": [
         { "role": "peer", "minCount": 1 },
@@ -233,7 +230,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 - Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht persönlichen Fortschritt.
 - Quest-Klassifizierung SOLLTE über `operation`, `intent`, `tags` oder `templateId` erfolgen, nicht über eine harte Quest-Typ-Taxonomie.
 - `visibility` im `data`-Objekt beschreibt die gewünschte App-/Sharing-Sichtbarkeit; technische Durchsetzung kann zusätzlich über Connector-Berechtigungen erfolgen.
-- `confirmationPolicy`, `requiredEvidence`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik, nicht zur Game-Schicht.
+- `evidencePolicy`, `confirmationPolicy`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik, nicht zur Game-Schicht.
 
 ### 7.3 `quest-run`
 
