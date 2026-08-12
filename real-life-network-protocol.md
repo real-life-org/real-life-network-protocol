@@ -115,6 +115,21 @@ Ein KI-Agent ist eine nicht-menschliche Entität, die mit eigener Identität am 
 
 Ein Kreis ist ein wiederkehrender Begegnungsraum. Er kann lokal, thematisch oder projektbezogen sein. Ein Kreis braucht keine formelle Mitgliedschaft.
 
+Kreise sind unterschiedlich dicht. Zwei Dinge wählt jeder Kreis für sich selbst, und sie hängen nicht voneinander ab:
+
+- **Form** — wie viel Verbindlichkeit er sich gibt: von formlos über einen festen Rhythmus und gemeinsame Regeln bis zu Rollen, die Menschen übernehmen.
+- **Zugang** — wie man dazukommt: von ausgerufen, sodass kommen kann wer mag, bis zu auf Einladung.
+
+Beides darf sich ändern. Ein Kreis, der offen beginnt, kann sich später Form geben, und ein Kreis mit viel Form kann sich wieder öffnen.
+
+Kreise verbinden sich durch Menschen. Wer in zwei Kreisen ist, trägt zwischen ihnen, was beide angeht. Dafür braucht es keinen übergeordneten Kreis. Wo zwei Kreise dauerhaft zusammenarbeiten, SOLLTE mehr als ein Mensch in beiden sein, damit die Verbindung nicht an einer einzelnen Person hängt.
+
+Ein Kreis arbeitet gut, solange jeder auf jeden eingehen kann. Wächst er darüber hinaus, kann er sich teilen. Bleiben Menschen in beiden Teilen, sind die neuen Kreise von selbst verbunden.
+
+Aus Kreisen können neue Kreise entstehen. Der Ursprungskreis erhält dadurch keine Weisungsbefugnis. Jeder Kreis gibt sich seine eigene Form und kann sich jederzeit lösen.
+
+Ein Kreis kann sich eine Rechtsform geben, wenn er im bestehenden System handeln muss: Geld annehmen, Aufträge übernehmen, Spenden sammeln, Infrastruktur betreiben. Die Rechtsform ist ein Gefäß, kein Kreis. Ihre Organe sind Rollen des Kreises: übernommen, bezeugt und zurückgebbar.
+
 ### 6.5 Veranstaltung
 
 Eine Veranstaltung ist ein konkreter Anlass, bei dem Menschen zusammenkommen. Beispiele: Essen, Vollmondfeuer, Redekreis, Workshop, Festival-Zelt, Projekt-Tag, Garten-Tag.
@@ -148,6 +163,18 @@ Dokumentation macht sichtbar, was geschieht. Sie kann aus Texten, Fotos, Videos,
 ### 6.12 Quest
 
 Eine Quest ist eine vorgeschlagene Handlung, die Netzwerkaufbau unterstützen kann. Eine Quest ist immer Einladung, niemals Pflicht.
+
+### 6.13 Rolle
+
+Eine Rolle ist Verantwortung, die ein Mensch gegenüber einem Kreis übernimmt. Sie sagt zu, dass etwas geschieht — nicht, dass eine Person alles selbst tut. Wer eine Rolle trägt, darf delegieren, einladen und andere dafür gewinnen.
+
+Eine Rolle entsteht, wenn ein Kreis benennt, was dauerhaft gebraucht wird. Sie wird lebendig, wenn ein Mensch sie übernimmt. Beides ist freiwillig.
+
+Eine Rolle ist zurückgebbar. Sie zurückzugeben ist ein normaler Vorgang und kein Scheitern.
+
+Eine Rolle sagt nichts über den Wert eines Menschen. Sie beschreibt, wofür jemand gerade einsteht.
+
+Wie ein Mensch sich selbst beschreibt, ist keine Rolle. Eine Selbstbeschreibung ist ein Angebot: unverbindlich, jederzeit änderbar und niemandem gegenüber zugesagt.
 
 ## 7. Soziale Operationen
 
@@ -357,6 +384,35 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 **Outputs:** Neue Beziehung, Brücke zwischen Kreisen, Projektchance, Netzwerkverdichtung.
 
 **Norm:** Verbindung SOLLTE als Einladung und nicht als Verpflichtung formuliert werden.
+
+### 8.13 Rollen benennen und übernehmen
+
+**Zweck:** Dauerhafte Verantwortung sichtbar machen und freiwillig binden, damit andere sich darauf verlassen können.
+
+**Inputs:** Ein Kreis, ein wiederkehrender Bedarf, ein Mensch, der ihn tragen möchte.
+
+**Ablauf:**
+
+1. Ein Kreis benennt, was dauerhaft gebraucht wird, und beschreibt es als Rolle: wozu sie da ist und was sie sicherstellt.
+2. Die Rolle wird sichtbar gemacht und bleibt offen, bis jemand sie übernimmt.
+3. Ein Mensch übernimmt sie und sagt das dem Kreis gegenüber ausdrücklich zu.
+4. Die Menschen des Kreises nehmen die Zusage an. Wer dabei ist, bezeugt sie.
+5. Wer die Rolle nicht mehr tragen will oder kann, gibt sie zurück. Danach ist sie wieder offen.
+
+**Outputs:** Getragene Rolle, Zeugnisse der Menschen, die dabei waren, Verlässlichkeit für alle, die darauf bauen.
+
+**Nächste Schritte:** Aufgaben aus der Rolle heraus stellen, weitere Rollen benennen, eine Rolle auf mehrere Schultern verteilen.
+
+**Agentenunterstützung:** Agenten dürfen offene Rollen sichtbar machen und Menschen darauf aufmerksam machen, deren Weg dazu passt. Sie SOLLTEN das als Einladung formulieren.
+
+**Normen:**
+
+- Eine Rolle MUSS freiwillig übernommen werden.
+- Ein Kreis bezeugt nicht als Ganzes. Es bezeugen die Menschen, die dabei waren.
+- Systeme MÜSSEN das Zurückgeben einer Rolle so leicht machen wie das Übernehmen.
+- Eine Rolle DARF NICHT als Rang oder Auszeichnung dargestellt werden.
+
+**Risiken:** Rollen können zu Ämtern erstarren, wenn niemand sie zurückgibt. Ein Kreis SOLLTE seine Rollen von Zeit zu Zeit gemeinsam ansehen.
 
 ## 9. Praktiken und Rituale
 

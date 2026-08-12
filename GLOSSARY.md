@@ -16,7 +16,11 @@ Nicht-menschliche Entität mit eigener erkennbarer Identität, die erinnern, dok
 
 ## Kreis
 
-Wiederkehrender Begegnungsraum. Ein Kreis kann lokal, thematisch oder projektbezogen sein und braucht keine formelle Mitgliedschaft.
+Wiederkehrender Begegnungsraum. Ein Kreis kann lokal, thematisch oder projektbezogen sein und braucht keine formelle Mitgliedschaft. Jeder Kreis wählt für sich, wie viel Form er sich gibt (formlos bis Rollen) und wie der Zugang ist (ausgerufen bis auf Einladung); beides ist unabhängig und veränderbar. Kreise verbinden sich durch Menschen, die in mehreren Kreisen sind, nicht durch übergeordnete Kreise.
+
+## Rolle
+
+Verantwortung, die ein Mensch gegenüber einem Kreis übernimmt. Eine Rolle sagt zu, dass etwas geschieht, nicht dass eine Person alles selbst tut; sie ist freiwillig, zurückgebbar und sagt nichts über den Wert eines Menschen. Wie ein Mensch sich selbst beschreibt, ist keine Rolle, sondern ein unverbindliches Angebot.
 
 ## Veranstaltung
 

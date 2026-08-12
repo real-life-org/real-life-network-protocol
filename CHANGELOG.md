@@ -22,3 +22,6 @@
 - Quest-seitige Completion-Regeln ergänzt: `evidencePolicy`, `confirmationPolicy`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur RLNP-Quest-Logik, nicht zur Game-Schicht.
 - Quest-Evidence geglättet: konkrete Evidence gehört zum QuestRun oder Werk-Kontext; Quests definieren nur eine Evidence Policy mit optionalem `required` und akzeptierten Typen.
 - Auf [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) als eigenes Repository für agentische Spec- und Softwarearbeit verwiesen.
+- Kreis (§6.4) ausgebaut: Form und Zugang als zwei unabhängige, veränderbare Wahlmöglichkeiten jedes Kreises; Kopplung entsteht durch Menschen in mehreren Kreisen statt durch übergeordnete Kreise; Teilung bei Wachstum; kein Durchgriff des Ursprungskreises; ein Kreis kann sich eine Rechtsform als Gefäß geben, deren Organe Rollen des Kreises sind.
+- Rolle als Grundentität (§6.13) und Glossareintrag ergänzt: übernommene Verantwortung gegenüber einem Kreis, freiwillig und zurückgebbar, abgegrenzt von der Selbstbeschreibung eines Menschen.
+- Soziale Operation „Rollen benennen und übernehmen" (§8.13) ergänzt und damit die letzte fehlende Operation des Handschlag-Paars geschlossen. Norm: Ein Kreis bezeugt nicht als Ganzes, es bezeugen die Menschen, die dabei waren.
