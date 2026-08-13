@@ -66,13 +66,21 @@ Spur oder Selbst-Claim zu einem QuestRun, z.B. Foto, Text, QR-Scan, Dokumentatio
 
 Quest-seitige Regel, ob Evidence für eine spätere Confirmation erforderlich ist und welche Evidence-Typen akzeptiert werden. Evidence Policy ist keine konkrete Evidence und erzeugt keine bestätigte oder portable Wahrheit.
 
+## Bezeugen
+
+Aussprechen, was man an einem anderen Menschen erlebt hat: eine Handlung, eine Teilnahme, eine Begegnung, eine Rolle, eine Fähigkeit, eine übernommene Aufgabe. Bezeugen ist Anerkennung, keine Abnahme, und es setzt nicht voraus, dass die bezeugte Person selbst etwas eingetragen hat. Technisch heißt das Ergebnis Confirmation, in seiner portablen Form Attestation.
+
+## Fertig
+
+Die Selbstauskunft eines Menschen, dass er etwas getan hat. Sie gilt sofort und braucht keine Zustimmung. „Fertig" und „bezeugt" sind zwei verschiedene Dinge: Das eine sagt ein Mensch über sich, das andere sagt ein anderer über ihn. Keines ersetzt oder bedingt das andere.
+
 ## Confirmation
 
-Bestätigte Aussage über eine Handlung, Teilnahme, Begegnung, Rolle, Fähigkeit, Ressource oder Completion in einem konkreten Kontext. Eine Confirmation kann lokal, serverseitig, durch einen Host, durch ein System oder durch eine signierte Attestation entstehen.
+Die technische Form dessen, was jemand bezeugt hat: eine Aussage über eine Handlung, Teilnahme, Begegnung, Rolle, Fähigkeit, Ressource oder eine übernommene Aufgabe in einem konkreten Kontext. Sie ist entweder **behauptet**, dann muss man dem Aussteller oder seinem Server glauben, oder **prüfbar**, dann ist sie signiert und unabhängig nachrechenbar. Feinere Abstufungen dazwischen legt die technische Spezifikation fest, nicht dieses Protokoll.
 
 ## Confirmation Policy
 
-Regeln einer Quest, welche Confirmations als gültige Completion für einen QuestRun zählen. Die Policy begrenzt nicht, welche anderen Confirmations oder Attestations Menschen ausstellen dürfen; sie entscheidet nur über Quest-Completion.
+Optionale Verabredung einer Quest, dass für eine Sache mehrere oder bestimmte Zeugen gewünscht sind — etwa bei der Übernahme einer Rolle. Fehlt sie, gilt der Sichtbarkeitskreis: Wer den Vorgang sieht, darf bezeugen. Sie ist eine Verabredung über Sorgfalt, kein Berechtigungssystem, und sie begrenzt nicht, wer bezeugen darf.
 
 ## Completion Confirmation Template
 
@@ -105,3 +113,7 @@ Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder eine
 ## Vernetzungszelt
 
 Temporärer Begegnungs- und Experimentierraum auf Festivals oder Veranstaltungen, in dem Menschen das Netzwerk kennenlernen, Beziehungen knüpfen und Werkzeuge ausprobieren.
+
+## Technische Spezifikation
+
+Die Spezifikation, die Identität, Begegnung, Gruppen-Autorität und Transport festlegt: Formate, Signaturen und Prüfbarkeit. Sie steht neben diesem Protokoll, nicht darunter: Dieses Protokoll ist normativ für die Bedeutung eines Vorgangs, die technische Spezifikation für seine Konstruktion. Sie wird derzeit neu gefasst. Dieses Protokoll bindet sich deshalb an keine Fassung und an kein Format, sondern nennt Anforderungen; welches Format sie erfüllt, steht dort.

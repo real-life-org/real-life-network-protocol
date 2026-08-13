@@ -243,23 +243,37 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 
 **Norm:** Verifikation bedeutet nicht, dass eine Person allgemein vertrauenswürdig ist. Sie bedeutet nur, dass eine Begegnung oder Identitätsbeziehung bestätigt wurde.
 
-### 8.4 Beiträge und Begabungen bestätigen
+### 8.4 Bezeugen
 
-**Zweck:** Sichtbar machen, was Menschen beitragen, können oder in Beziehung zeigen.
+**Zweck:** Würdigen, was ein Mensch getan oder eingebracht hat, und es über den Moment hinaus sichtbar, teilbar und mitnehmbar machen.
+
+Das Netzwerk wächst durch reale Begegnungen, reale Handlungen und reale Beiträge. Bezeugen ist der Weg, auf dem das nicht flüchtig bleibt. Die Verifikation sagt, dass ein Mensch wirklich da war; das Bezeugen sagt, was er eingebracht hat und was ihn ausmacht. Aus beidem zusammen wächst Vertrauen, und mit ihm das Netzwerk.
+
+Bezeugt werden kann alles, was ein Mensch erlebt hat: ein Beitrag, eine Gabe, eine Fähigkeit, die Teilnahme an einer Veranstaltung, eine übernommene Aufgabe, eine Rolle gegenüber einem Kreis, eine Begegnung. Für die Begegnung gilt zusätzlich 8.3.
+
+**Inputs:** Ein Mensch, der etwas erlebt hat, und etwas, das geschehen ist.
 
 **Ablauf:**
 
-1. Eine Person erlebt einen Beitrag, eine Gabe oder eine konkrete Handlung.
-2. Sie formuliert eine kontextbezogene Aussage.
-3. Die empfangende Person entscheidet, ob und wie sie diese Aussage sichtbar macht.
+1. Ein Mensch erlebt etwas.
+2. Er formuliert eine konkrete, kontextbezogene Aussage darüber.
+3. Die Person, um die es geht, entscheidet, ob sie diese Aussage in ihrem Profil zeigt.
 
-**Outputs:** Confirmation oder Attestation, Sichtbarkeit von Fähigkeiten, soziale Anerkennung, Orientierung für Kooperation.
+**Outputs:** Was bezeugt wurde, Sichtbarkeit von Beiträgen und Fähigkeiten, Anerkennung, Orientierung für Zusammenarbeit.
+
+**Nächste Schritte:** Zusammenarbeit anbieten, eine Rolle vorschlagen, eine Geschichte dokumentieren.
 
 **Normen:**
 
-- Confirmations SOLLTEN konkret, beobachtbar und kontextbezogen sein.
-- Confirmations und Attestations DÜRFEN NICHT als globale Bewertung eines Menschen verstanden werden.
-- Systeme MÜSSEN respektieren, dass empfangende Personen über Sichtbarkeit entscheiden.
+- Was jemand bezeugt, SOLLTE konkret, beobachtbar und kontextbezogen sein.
+- Bezeugen darf, wer das Geschehene und seinen Kontext ohnehin sehen kann. Es MUSS dafür keine Sonderrolle und keine Berechtigungsliste geben.
+- Bezeugen ist Anerkennung, keine Abnahme. Systeme DÜRFEN es NICHT als Prüfung, Freigabe oder Qualitätstor gestalten.
+- Bezeugen setzt nicht voraus, dass die bezeugte Person selbst etwas eingetragen hat. Wer etwas getan hat, MUSS dafür kein Werkzeug benutzt haben.
+- Was ein Mensch über sich selbst sagt, gilt. Systeme DÜRFEN eine Selbstauskunft NICHT davon abhängig machen, dass jemand sie bezeugt.
+- Was unbezeugt bleibt, DARF NICHT als offen, überfällig oder gescheitert dargestellt werden. Wer nicht bezeugt wird, hat nichts falsch gemacht.
+- Eine Spur — ein Foto, eine Notiz, ein Scan — ist eine Einladung zur Erinnerung, kein Beweis.
+- Was bezeugt wurde, DARF NICHT als globale Bewertung eines Menschen verstanden werden.
+- Systeme MÜSSEN respektieren, dass die bezeugte Person entscheidet, ob das Bezeugte in ihrem Profil erscheint. Über die Aussage selbst entscheidet sie nicht: Wer sie ausgesprochen hat, behält sie.
 
 ### 8.5 Veranstaltung ausrichten
 
@@ -399,7 +413,7 @@ Eine soziale Operation SOLLTE folgende Felder beschreiben:
 4. Die Menschen des Kreises nehmen die Zusage an. Wer dabei ist, bezeugt sie.
 5. Wer die Rolle nicht mehr tragen will oder kann, gibt sie zurück. Danach ist sie wieder offen.
 
-**Outputs:** Getragene Rolle, Zeugnisse der Menschen, die dabei waren, Verlässlichkeit für alle, die darauf bauen.
+**Outputs:** Getragene Rolle, bezeugt von den Menschen, die dabei waren, Verlässlichkeit für alle, die darauf bauen.
 
 **Nächste Schritte:** Aufgaben aus der Rolle heraus stellen, weitere Rollen benennen, eine Rolle auf mehrere Schultern verteilen.
 

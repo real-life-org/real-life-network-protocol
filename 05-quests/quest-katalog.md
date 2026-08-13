@@ -76,7 +76,7 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
         { "role": "peer", "minCount": 1 },
         { "role": "host" }
       ],
-      "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
+      "acceptedTrustLevels": ["verifiable"]
     },
     "completionConfirmationTemplate": {
       "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
@@ -114,16 +114,14 @@ Ein QuestRun verweist per Relations auf diese Quest:
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "evidence-submitted",
+    "status": "completed",
     "visibility": {
       "mode": "private"
     },
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
-      "evidence": {
-        "type": "self-claim",
-        "summary": "Alice hat das Gespräch lokal als erledigt markiert."
-      }
+      "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
+      "evidenceRefs": []
     }
   },
   "relations": [
@@ -133,7 +131,7 @@ Ein QuestRun verweist per Relations auf diese Quest:
 }
 ```
 
-**Norm:** Eine lokale Quest-Completion oder eingereichte Evidence ist ein Bedienzustand oder eine freiwillige Dokumentation eines konkreten QuestRuns. Sie ist kein globaler Quest-Status, kein Vertrauensbeweis, kein sozialer Score und kein bestätigter oder portabler Beleg. Bestätigte Completion entsteht durch eine gültige Confirmation; portable Completion und portable Badges brauchen eine signierte Attestation.
+**Norm:** Eine Fertig-Meldung gilt für sich und braucht keine Bestätigung. Sie ist aber kein globaler Quest-Status, kein Vertrauensbeweis und kein sozialer Score, und sie ist für Dritte nicht überprüfbar. Soll eine Aussage über den QuestRun portabel und unabhängig prüfbar sein, braucht sie eine signierte Attestation; dasselbe gilt für portable Badges.
 
 ## 5. Katalog
 

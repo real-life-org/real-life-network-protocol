@@ -102,7 +102,7 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `NeedTag` | etwas, das jemand sucht/braucht | WoT Profile `needs[]`; Ziel: RLS `data.needs[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
 | `VerificationConfirmation` | bestätigte Begegnung/Identität | Confirmation-View | backend-agnostische View; die portable Form legt die technische Spezifikation fest |
 | `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
-| `Confirmation` | Beitrag, Gabe, Fähigkeit, Teilnahme oder Completion bestätigen | RLS/RLNP Confirmation-View | kann lokal, server-confirmed oder signed-attested sein |
+| `Confirmation` | Beitrag, Gabe, Fähigkeit, Teilnahme oder Abschluss bezeugen | RLS/RLNP Confirmation-View | ist entweder behauptet oder prüfbar |
 | `Attestation` | portable signierte Confirmation | Format der technischen Spezifikation | P1 für Pax |
 | `Quest` | freiwillige Einladung zu einer Handlung | RLS generisches Item | `type: "quest"` oder task-kompatible View |
 | `QuestRun` | konkrete Durchführung einer Quest durch einen Menschen | RLS generisches Item mit Relations | `type: "quest-run"`; verweist per `runsQuest` auf Quest und per `actor` auf DID/Profile |
@@ -200,7 +200,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
         { "role": "peer", "minCount": 1 },
         { "role": "host" }
       ],
-      "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
+      "acceptedTrustLevels": ["verifiable"]
     },
     "completionConfirmationTemplate": {
       "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
@@ -245,16 +245,14 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "evidence-submitted",
+    "status": "completed",
     "visibility": {
       "mode": "private"
     },
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
-      "evidence": {
-        "type": "self-claim",
-        "summary": "Mira hat das Gespräch lokal als erledigt markiert."
-      }
+      "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
+      "evidenceRefs": []
     }
   },
   "relations": [
@@ -318,10 +316,8 @@ RLNP definiert keine eigene portable Claim-Serialisierung. Für App- und Connect
 
 ```ts
 type ConfirmationTrustLevel =
-  | "demo"
-  | "local"
-  | "server-confirmed"
-  | "signed-attested"
+  | "asserted"    // man muss dem Aussteller oder seinem Server glauben
+  | "verifiable"  // signiert und unabhängig nachrechenbar
 
 type ConfirmationView = {
   id: string

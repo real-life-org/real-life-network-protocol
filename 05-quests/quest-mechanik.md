@@ -81,7 +81,7 @@ Darum MUSS zwischen zwei Ebenen unterschieden werden:
 | Quest | Die wiederverwendbare Handlungseinladung. | "Verifiziere eine reale Begegnung per QR." |
 | QuestRun | Die konkrete Durchführung einer Quest durch einen Menschen. | "Anton hat diese Quest abgeschlossen." |
 
-Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed`, `evidence-submitted`, `confirmation-requested` oder `confirmed` beschreibt immer einen konkreten QuestRun, nicht die Quest als solche.
+Eine Quest DARF NICHT global als `completed` gelten, nur weil eine Person sie abgeschlossen hat. `completed` beschreibt immer einen konkreten QuestRun, nicht die Quest als solche. Dasselbe gilt für Bezeugungen: Sie betreffen einen konkreten Run oder Beitrag, nie die Quest.
 
 ### 4.1 Quest-Status
 
@@ -104,11 +104,12 @@ Der QuestRun-Status beschreibt den Fortschritt eines Menschen zu einer Quest.
 | `dismissed` | Ausgeblendet oder abgelehnt. |
 | `accepted` | Person möchte sie angehen. |
 | `in-progress` | Durchführung hat begonnen. |
-| `completed` | Abschluss wurde lokal markiert. |
-| `evidence-submitted` | Eine Spur oder ein Selbst-Claim wurde eingereicht, aber noch nicht bestätigt. |
-| `confirmation-requested` | Eine Confirmation wurde angefragt, z.B. bei Host, Gruppe, Mentor, Backend oder System. |
-| `confirmed` | Es gibt mindestens eine gültige Confirmation, die diesen QuestRun oder Beitrag belegt. |
+| `completed` | Die Person hat gemeldet, dass sie fertig ist. |
 | `abandoned` | Begonnen, aber bewusst nicht weitergeführt. |
+
+Der QuestRun-Status beschreibt ausschließlich den Weg der handelnden Person. **Was andere über sie bezeugen, ist kein Zustand ihres QuestRuns.** Bezeugungen stehen daneben und werden per Relation zugeordnet; sie führen den Run in keinen höheren Zustand und setzen keinen Eintrag der Person voraus (siehe RLNP §8.4).
+
+Die Fertig-Meldung gilt für sich. Eine Umsetzung DARF sie NICHT davon abhängig machen, dass jemand bezeugt hat.
 
 Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
 
@@ -116,7 +117,7 @@ Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen 
 - Veröffentlichung, Pausierung und Archivierung gehören zur Quest.
 - Aggregierte Aussagen wie "12 Menschen haben diese Quest abgeschlossen" sind abgeleitete Views aus sichtbaren QuestRuns oder Confirmations.
 - Eine Agenten-Empfehlung DARF einen lokalen QuestRun oder eine Suggestion erzeugen, aber nicht den globalen Quest-Status verändern.
-- Eine explizite Confirmation Request muss nicht modelliert werden. Ein QuestRun mit `completed` ohne gültige Confirmation oder mit neuer Evidence kann als "wartet auf Bestätigung" dargestellt werden.
+- Eine explizite Confirmation Request muss nicht modelliert werden. Ein QuestRun ohne Bezeugung kann als "wartet auf Bestätigung" dargestellt werden — als freundliche Sichtbarkeit für die, die danken wollen, nicht als offener Vorgang.
 
 ## 5. Autorenschaft
 
@@ -219,7 +220,7 @@ Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOL
 | `data.location` | optional | Ort, Region oder grober Kartenkontext |
 | `data.time` | optional | Termin, Zeitraum, Phase oder Rhythmus |
 | `data.evidencePolicy` | optional | Regeln, ob Evidence erforderlich ist und welche Typen akzeptiert werden |
-| `data.confirmationPolicy` | optional | Regeln, welche Confirmations als gültige Completion für diese Quest zählen |
+| `data.confirmationPolicy` | optional | Verabredung, dass mehrere oder bestimmte Zeugen gewünscht sind; fehlt sie, gilt der Sichtbarkeitskreis |
 | `data.completionConfirmationTemplate` | optional | Claim- und Display-Vorlage für spätere Completion-Confirmations |
 | `data.safetyRequirements[]` | optional | Sicherheits-, Alters-, Begleitungs-, Sichtbarkeits- oder Kontextregeln |
 
@@ -260,7 +261,7 @@ Empfohlene Relations:
         { "role": "peer", "minCount": 1 },
         { "role": "host" }
       ],
-      "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
+      "acceptedTrustLevels": ["verifiable"]
     },
     "completionConfirmationTemplate": {
       "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
@@ -294,7 +295,7 @@ Empfohlene Relations:
 **Normen:**
 
 - `evidencePolicy` beschreibt, ob Evidence für eine spätere Confirmation erforderlich ist und welche Evidence-Typen akzeptiert werden. Sie ist keine konkrete Evidence.
-- `confirmationPolicy` beschreibt, welche Confirmations für diesen QuestRun als gültige Completion zählen. Andere Menschen oder Systeme können trotzdem weitere Confirmations oder Attestations ausstellen, sie zählen dann aber nicht automatisch als Quest-Completion.
+- `confirmationPolicy` beschreibt, dass für diesen Vorgang mehrere oder bestimmte Zeugen gewünscht sind. Sie ist optional; fehlt sie, darf bezeugen, wer den Vorgang und seinen Kontext sieht. Sie begrenzt nicht, wer bezeugen darf, und ein Vorgang ohne passende Bezeugung gilt nicht als offen oder gescheitert.
 - `completionConfirmationTemplate` ist eine Vorlage für Completion-Confirmations. Eine portable Anerkennung entsteht erst, wenn die Confirmation signiert und transportierbar ist.
 - `safetyRequirements` MÜSSEN vor oder während der Quest verständlich sichtbar sein, wenn sie für Teilnahme, Evidence oder Confirmation relevant sind.
 
@@ -337,7 +338,7 @@ Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene
   "schema": "rlnp:quest-run",
   "schemaVersion": 1,
   "data": {
-    "status": "evidence-submitted",
+    "status": "completed",
     "visibility": {
       "mode": "private"
     },
@@ -358,16 +359,16 @@ Diese Mindestfelder helfen Apps, Agenten und RLS-Connectoren dabei, Quest-Defini
 
 ## 10. Completion, Evidence und Confirmation
 
-Quest-Abschluss meint immer den Abschluss eines konkreten QuestRuns. Das Protokoll unterscheidet vier Ebenen:
+Quest-Abschluss meint immer den Abschluss eines konkreten QuestRuns. Das Protokoll unterscheidet, **was ein Mensch über sich selbst sagt** und **was andere über ihn bezeugen**. Beides steht nebeneinander, keines bedingt das andere (RLNP §8.4).
 
 | Ebene | Bedeutung |
 |---|---|
-| Lokale Completion | Die ausführende Person oder App markiert, dass ein QuestRun für sie abgeschlossen ist. |
-| Evidence | Eine Spur oder ein Selbst-Claim wird eingereicht, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. |
-| Confirmation | Eine Person, ein Host, ein Backend, ein System oder eine signierte Attestation bestätigt eine konkrete Aussage über QuestRun, Beitrag, Rolle, Teilnahme oder Ergebnis. |
+| Fertig-Meldung | Die ausführende Person markiert, dass sie fertig ist. Sie gilt für sich und braucht keine Bestätigung. |
+| Evidence | Eine Spur wird eingereicht, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. Sie ist eine Einladung zur Erinnerung, kein Beweis. |
+| Confirmation | Ein Mensch, ein System oder ein Backend bezeugt eine konkrete Aussage über QuestRun, Beitrag, Rolle, Teilnahme oder Ergebnis. |
 | Attestation | Eine portable, signierte Confirmation. Ihr Format legt die technische Spezifikation fest. |
 
-Eine lokale Completion und eingereichte Evidence sind noch kein bestätigter Beleg. Ein QuestRun gilt als bestätigte Completion, wenn mindestens eine gültige Confirmation existiert, die auf den QuestRun, den Beitrag oder das Ergebnis verweist und zur `confirmationPolicy` passt. Portable Completion braucht eine signierte Attestation.
+Bezeugen darf, wer den QuestRun und seinen Kontext ohnehin sehen kann; es braucht dafür keine Sonderrolle. Soll eine Aussage über den QuestRun **portabel und unabhängig prüfbar** sein, braucht sie eine signierte Attestation. Das ist eine Aussage über Beweiskraft, nicht über Fertigkeit: Eine Fertig-Meldung ohne Bezeugung ist vollständig, sie ist nur nicht portabel.
 
 ### 10.1 Evidence-Arten
 
@@ -396,11 +397,13 @@ Eine Confirmation kann aus verschiedenen Rollen kommen:
 | System oder Agent | Ein erkennbares System oder eine Agenten-Identität bestätigt nach nachvollziehbarer Regel. |
 | Backend oder Space | Ein Server, Space oder Connector bestätigt einen Zustand innerhalb seines Geltungsbereichs. |
 
-Die konkreten Regeln, welche Confirmations für die Completion einer Quest zählen, KÖNNEN in `data.confirmationPolicy` stehen. Die Basisnorm bleibt: Confirmations MÜSSEN konkret, beobachtbar, kontextbezogen und mit ihrer Trust-Stufe ehrlich gekennzeichnet sein.
+Keine dieser Rollen ist Voraussetzung: Bezeugen darf, wer den Vorgang und seinen Kontext ohnehin sieht. Die Tabelle beschreibt, aus welchen Richtungen eine Bezeugung typischerweise kommt, nicht wer dazu berechtigt ist. Die Basisnorm bleibt: Confirmations MÜSSEN konkret, beobachtbar, kontextbezogen und mit ihrer Trust-Stufe ehrlich gekennzeichnet sein.
 
 ### 10.3 Confirmation Policy
 
-Eine Quest KANN eine `confirmationPolicy` definieren. Diese Policy begrenzt nicht, wer außerhalb der Quest eine Confirmation oder Attestation ausstellen darf. Sie beschreibt nur, welche Confirmations für diesen QuestRun als gültige Quest-Completion gelten.
+Eine Quest KANN eine `confirmationPolicy` definieren. **Fehlt sie, gilt der Sichtbarkeitskreis**: Wer den QuestRun und seinen Kontext sieht, darf bezeugen. Das ist der Normalfall.
+
+Gesetzt wird eine Policy nur dort, wo ein Kreis **bewusst mehrere Zeugen verabredet hat** — etwa bei der Übernahme einer Rolle, die von mehreren Menschen bezeugt werden soll. Sie ist eine Verabredung über Sorgfalt, kein Berechtigungssystem: Sie begrenzt nicht, wer bezeugen darf, und ein Beitrag ohne passende Bezeugung DARF NICHT als offen, überfällig oder gescheitert dargestellt werden.
 
 ```json
 {
@@ -410,14 +413,14 @@ Eine Quest KANN eine `confirmationPolicy` definieren. Diese Policy begrenzt nich
       { "role": "peer", "minCount": 2 },
       { "role": "system", "ruleId": "pax-qr-checkin" }
     ],
-    "acceptedTrustLevels": ["server-confirmed", "signed-attested"]
+    "acceptedTrustLevels": ["verifiable"]
   }
 }
 ```
 
 `allowedConfirmers.role` ist ein Kontextbegriff. Häufige Rollen sind `host`, `peer`, `group`, `mentor`, `expert`, `system`, `agent`, `backend`, `space` oder `issuer`. Ein konkreter Space, eine Veranstaltung, ein Projekt, eine Schule oder ein Host-Tool kann diese Rollen auf DIDs, Gruppen, Backend-Rechte oder Issuer-Listen abbilden.
 
-`acceptedTrustLevels` beschreibt, welche technische Beweiskraft eine Quest für ihre Completion akzeptiert. Typische Stufen sind `local`, `server-confirmed` und `signed-attested`. Eine UI MUSS diese Stufen unterscheiden und darf serverseitige Bestätigung nicht als portable signierte Attestation darstellen.
+`acceptedTrustLevels` beschreibt, welche Beweiskraft verlangt wird. Es gibt genau zwei Stufen: `asserted` — man muss dem Aussteller oder seinem Server glauben — und `verifiable` — signiert und unabhängig nachrechenbar. Eine UI MUSS beide unterscheiden und DARF eine bloß behauptete Aussage NICHT als prüfbare darstellen. Feinere Abstufungen legt die technische Spezifikation fest, nicht dieses Dokument.
 
 ### 10.4 Evidence Policy
 
@@ -440,7 +443,7 @@ Evidence Policies DÜRFEN keine riskanten, beschämenden oder übergriffigen Nac
 
 ### 10.5 Completion Confirmation Template
 
-Eine Quest KANN eine `completionConfirmationTemplate` definieren. Sie beschreibt, welche Claim- und Display-Vorlage eine gültige Completion-Confirmation verwenden soll.
+Eine Quest KANN eine `completionConfirmationTemplate` definieren. Sie beschreibt, welche Claim- und Display-Vorlage eine Bezeugung dieses Abschlusses verwenden kann. Sie ist ein Formulierungsvorschlag, keine Bedingung.
 
 ```json
 {
@@ -482,12 +485,12 @@ Häufige Typen sind `age`, `tool`, `place`, `supervision`, `consent`, `visibilit
 
 ### 10.7 Normen
 
-- Öffentliche oder Badge-relevante Completion MUSS auf einer gültigen Confirmation beruhen und ihre Trust-Stufe sichtbar machen.
-- Portable Completion und portable Badges brauchen eine `signed-attested` Confirmation, also eine signierte Attestation.
-- Ein Selbst-Claim oder eine hochgeladene Spur ist keine Self-Attestation und keine bestätigte Completion.
+- Eine Aussage, die über den eigenen Kreis hinaus gezeigt wird, MUSS ihre Beweiskraft sichtbar machen: behauptet oder prüfbar.
+- Portable Aussagen und portable Badges brauchen eine `verifiable` Confirmation, also eine signierte Attestation.
+- Ein Selbst-Claim oder eine hochgeladene Spur ist keine Self-Attestation. Er ist als Aussage über sich selbst vollständig gültig, aber für Dritte nicht prüfbar.
 - Foto-, Video- oder Textdokumentation ist zunächst Evidence und kann andere zur Confirmation einladen.
 - QR-Scans, Host-Bestätigungen, gegenseitige Bestätigungen und Systemereignisse sind keine eigenen Wahrheitsarten; sie sind Evidence, Trigger oder Confirmer-/Issuer-Rollen für Confirmations.
-- Eine System- oder Agenten-Confirmation MUSS eine erkennbare Identität, eine nachvollziehbare Regel und einen auslösenden Trigger haben. Wenn sie `signed-attested` sein soll, MUSS sie signiert sein.
+- Eine System- oder Agenten-Confirmation MUSS eine erkennbare Identität, eine nachvollziehbare Regel und einen auslösenden Trigger haben. Wenn sie `verifiable` sein soll, MUSS sie signiert sein.
 - Completion-Daten, Evidence und Confirmations MÜSSEN Sichtbarkeit, Zustimmung und Kontext respektieren.
 - `evidencePolicy`, `confirmationPolicy`, `completionConfirmationTemplate` und `safetyRequirements` gehören zur Quest-Completion-Logik des Basisprotokolls. Sie sind keine Game-Mechaniken.
 
@@ -507,7 +510,7 @@ Ein Badge kann ausdrücken:
 - hat Dank oder Wertschätzung erhalten,
 - hat eine Fähigkeit in einem Kontext gezeigt.
 
-Ein portables Badge MUSS auf einer `signed-attested` Confirmation beruhen, also auf einer signierten Attestation. Eine reine UI-Darstellung ohne signierte Confirmation ist kein portables Badge.
+Ein portables Badge MUSS auf einer `verifiable` Confirmation beruhen, also auf einer signierten Attestation. Eine reine UI-Darstellung ohne signierte Confirmation ist kein portables Badge.
 
 Ein Badge kann entstehen durch:
 
