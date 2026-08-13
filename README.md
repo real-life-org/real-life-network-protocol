@@ -28,11 +28,12 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 | Repository | Rolle |
 |---|---|
 | [real-life-org/real-life-org-docs](https://github.com/real-life-org/real-life-org-docs) | Narrative Orientierung, Handbuch, Organisation, Netzwerktexte |
-| [real-life-org/wot-spec](https://github.com/real-life-org/wot-spec) | Technische Spezifikation für Identität, Trust, Sync und Conformance |
 | [real-life-org/real-life-stack](https://github.com/real-life-org/real-life-stack) | App-/UI-Baukasten und technische Implementierung sozialer Werkzeuge |
 | [real-life-org/real-life-network-protocol](https://github.com/real-life-org/real-life-network-protocol) | Soziale Spezifikation für Netzwerkaufbau, Quests, Praktiken, Agenten und Rollout |
 | [real-life-org/real-life-game](https://github.com/real-life-org/real-life-game) | Spielgestaltung auf Basis der Quest-Schicht: Storylines, Adventures, Progression und Game-Mechaniken |
 | [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) | Agenten-Arbeitsprotokoll: Tasks, Runs, Reviews, Human Gates und Feedback in Specs |
+
+Daneben steht die **technische Spezifikation**: Identität, Begegnung, Gruppen-Autorität und Transport, also Formate, Signaturen und Prüfbarkeit. Sie wird derzeit neu gefasst. Dieses Protokoll bindet sich deshalb an kein Format, sondern nennt Anforderungen: was eine Aussage leisten muss, damit sie portabel, signiert und unabhängig prüfbar ist. Welches Format das erfüllt, steht dort, nicht hier.
 
 ## Spezifikations-Landkarte
 

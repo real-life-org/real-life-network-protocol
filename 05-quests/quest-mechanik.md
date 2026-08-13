@@ -326,7 +326,7 @@ Erforderliche Relations:
 
 Optionale Kontext-Relations entsprechen der Quest: `partOf`, `locatedAt`, `locatedNear`.
 
-Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene Confirmation-View modelliert werden und per `attests`-Relation auf den QuestRun, den Beitrag oder das Ergebnis zeigen. Signierte portable Confirmations können zusätzlich als WoT-Attestation bzw. Attestation-View vorliegen.
+Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene Confirmation-View modelliert werden und per `attests`-Relation auf den QuestRun, den Beitrag oder das Ergebnis zeigen. Signierte portable Confirmations können zusätzlich als Attestation bzw. Attestation-View vorliegen.
 
 ```json
 {
@@ -365,7 +365,7 @@ Quest-Abschluss meint immer den Abschluss eines konkreten QuestRuns. Das Protoko
 | Lokale Completion | Die ausführende Person oder App markiert, dass ein QuestRun für sie abgeschlossen ist. |
 | Evidence | Eine Spur oder ein Selbst-Claim wird eingereicht, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis. |
 | Confirmation | Eine Person, ein Host, ein Backend, ein System oder eine signierte Attestation bestätigt eine konkrete Aussage über QuestRun, Beitrag, Rolle, Teilnahme oder Ergebnis. |
-| Attestation | Eine portable, signierte Confirmation. Im WoT-Kontext ist das typischerweise ein WoT-Trust-VC-JWS. |
+| Attestation | Eine portable, signierte Confirmation. Ihr Format legt die technische Spezifikation fest. |
 
 Eine lokale Completion und eingereichte Evidence sind noch kein bestätigter Beleg. Ein QuestRun gilt als bestätigte Completion, wenn mindestens eine gültige Confirmation existiert, die auf den QuestRun, den Beitrag oder das Ergebnis verweist und zur `confirmationPolicy` passt. Portable Completion braucht eine signierte Attestation.
 
@@ -483,7 +483,7 @@ Häufige Typen sind `age`, `tool`, `place`, `supervision`, `consent`, `visibilit
 ### 10.7 Normen
 
 - Öffentliche oder Badge-relevante Completion MUSS auf einer gültigen Confirmation beruhen und ihre Trust-Stufe sichtbar machen.
-- Portable Completion und portable Badges brauchen eine `signed-attested` Confirmation. In der WoT-Integration ist das eine WoT-Attestation.
+- Portable Completion und portable Badges brauchen eine `signed-attested` Confirmation, also eine signierte Attestation.
 - Ein Selbst-Claim oder eine hochgeladene Spur ist keine Self-Attestation und keine bestätigte Completion.
 - Foto-, Video- oder Textdokumentation ist zunächst Evidence und kann andere zur Confirmation einladen.
 - QR-Scans, Host-Bestätigungen, gegenseitige Bestätigungen und Systemereignisse sind keine eigenen Wahrheitsarten; sie sind Evidence, Trigger oder Confirmer-/Issuer-Rollen für Confirmations.
@@ -495,7 +495,7 @@ Häufige Typen sind `age`, `tool`, `place`, `supervision`, `consent`, `visibilit
 
 Ein Badge ist eine visuelle Darstellung einer Confirmation oder Attestation.
 
-Die visuelle Darstellung folgt der RLS Display Extension in [real-life-org/wot-spec](https://github.com/real-life-org/wot-spec/blob/main/04-rls-extensions/R01-badges.md), z.B. über `display.emoji`, `display.color` und `display.shape`.
+Die visuelle Darstellung folgt der Display-Erweiterung der technischen Spezifikation, z.B. über `display.emoji`, `display.color` und `display.shape`.
 
 Ein Badge kann ausdrücken:
 
@@ -507,7 +507,7 @@ Ein Badge kann ausdrücken:
 - hat Dank oder Wertschätzung erhalten,
 - hat eine Fähigkeit in einem Kontext gezeigt.
 
-Ein portables Badge MUSS auf einer `signed-attested` Confirmation beruhen. In der WoT-Integration ist das eine WoT-Attestation. Eine reine UI-Darstellung ohne signierte Confirmation ist kein portables Badge.
+Ein portables Badge MUSS auf einer `signed-attested` Confirmation beruhen, also auf einer signierten Attestation. Eine reine UI-Darstellung ohne signierte Confirmation ist kein portables Badge.
 
 Ein Badge kann entstehen durch:
 

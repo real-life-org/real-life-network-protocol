@@ -9,7 +9,7 @@ Aktueller Startpunkt:
 Aktuelle Modellierungsentscheidung:
 
 - Confirmations sind backend-agnostische bestätigte Aussagen mit sichtbarer Trust-Stufe.
-- WoT-Verifikationen und Attestations bleiben VC-JWS nach `wot-spec`, wenn eine Confirmation portable und signiert sein soll.
+- Eine Confirmation, die portabel und signiert sein soll, wird als Attestation im Format der technischen Spezifikation ausgestellt.
 - Profile und Quests werden als generische Real-Life-Stack-Items modelliert.
 - Offers und Needs sind für Pax v0.1 einfache Tags im Profil. In WoT sind sie bereits Profilfelder; in RLS sind sie Ziel-/Interface-Felder, aber noch nicht vollständig in der Referenzimplementierung umgesetzt.
 

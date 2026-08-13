@@ -88,7 +88,7 @@ Spielerische Gestaltungsschicht auf dem Real Life Network. Das Game nutzt Quests
 
 ## Badge
 
-Visuelle Darstellung einer Confirmation oder Attestation für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Die Darstellung kann `emoji`, `color` und `shape` aus der [RLS Display Extension](https://github.com/real-life-org/wot-spec/blob/main/04-rls-extensions/R01-badges.md) verwenden. Ein portables Badge braucht eine signierte Attestation.
+Visuelle Darstellung einer Confirmation oder Attestation für Teilnahme, Beitrag, Rolle, erfüllte Quest, gezeigte Fähigkeit oder Dank. Die Darstellung kann `emoji`, `color` und `shape` aus der Display-Erweiterung der technischen Spezifikation verwenden. Ein portables Badge braucht eine signierte Attestation.
 
 ## Verifikation
 
@@ -96,7 +96,7 @@ Digitale oder analoge Bestätigung einer realen Begegnung oder Identitätsbezieh
 
 ## Attestation
 
-Portable, signierte Confirmation über einen konkreten Beitrag, eine Gabe, eine Fähigkeit, eine Rolle, ein Ergebnis oder eine beobachtete Handlung in einem Kontext. In der aktuellen WoT-Integration ist eine Attestation typischerweise ein WoT-Trust-VC-JWS.
+Portable, signierte Confirmation über einen konkreten Beitrag, eine Gabe, eine Fähigkeit, eine Rolle, ein Ergebnis oder eine beobachtete Handlung in einem Kontext. Eine Attestation ist signiert, portabel und unabhängig prüfbar; welches Format sie dafür verwendet, legt die technische Spezifikation fest.
 
 ## Space
 

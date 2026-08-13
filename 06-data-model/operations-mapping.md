@@ -29,8 +29,8 @@ Eine Implementierung dieses Mappings MUSS:
 5. Metriken nur als Netzwerk-Signale verwenden, nicht als Ranking von Menschen.
 6. Agentenvorschläge erklärbar, ablehnbar und kontextbezogen machen.
 7. Confirmations als backend-agnostische bestätigte Aussagen modellieren und ihre Trust-Stufe sichtbar machen.
-8. WoT-Verifikationen und WoT-Attestations im kanonischen WoT-Trust-Format verwenden, wenn eine Confirmation portable und signiert sein soll.
-9. App-seitige Entitäten als generische Real-Life-Stack-Items oder Views modellieren, sofern sie keine WoT-Identität oder kein WoT-VC-JWS sind.
+8. Für portable, signierte Confirmations das Format der technischen Spezifikation verwenden und kein eigenes erfinden.
+9. App-seitige Entitäten als generische Real-Life-Stack-Items oder Views modellieren, sofern sie keine Identität und keine signierte Attestation der technischen Spezifikation sind.
 
 ## 3. Operation Index
 
@@ -87,7 +87,7 @@ QR/Link
 
 ## 6. Data Object Catalog
 
-Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie direkt als Item-Typen, als Felder bestehender Typen oder als abgeleitete Views umsetzen. Confirmations sind die backend-agnostische RLNP-Sicht auf bestätigte Aussagen. Kanonische WoT-Objekte bleiben dabei WoT-Objekte; App-Views dürfen sie anzeigen, aber nicht als alternatives Protokollformat ersetzen.
+Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie direkt als Item-Typen, als Felder bestehender Typen oder als abgeleitete Views umsetzen. Confirmations sind die backend-agnostische RLNP-Sicht auf bestätigte Aussagen. Kanonische Objekte der technischen Spezifikation bleiben, was sie sind; App-Views dürfen sie anzeigen, aber nicht als alternatives Protokollformat ersetzen.
 
 | Objekt | Zweck | Bestehendes Primitive | Gap / Empfehlung |
 |---|---|---|---|
@@ -100,10 +100,10 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
 | `OfferTag` | etwas, das jemand geben/teilen kann | WoT Profile `offers[]`; Ziel: RLS `data.offers[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
 | `NeedTag` | etwas, das jemand sucht/braucht | WoT Profile `needs[]`; Ziel: RLS `data.needs[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
-| `VerificationConfirmation` | bestätigte Begegnung/Identität | Confirmation-View; bei WoT Trust 002 VC-JWS | backend-agnostische View, portable Form bleibt WoT VC-JWS |
+| `VerificationConfirmation` | bestätigte Begegnung/Identität | Confirmation-View | backend-agnostische View; die portable Form legt die technische Spezifikation fest |
 | `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
 | `Confirmation` | Beitrag, Gabe, Fähigkeit, Teilnahme oder Completion bestätigen | RLS/RLNP Confirmation-View | kann lokal, server-confirmed oder signed-attested sein |
-| `Attestation` | portable signierte Confirmation | WoT Trust 001/002 VC-JWS | P1 für Pax, kanonisch VC-JWS wenn WoT genutzt wird |
+| `Attestation` | portable signierte Confirmation | Format der technischen Spezifikation | P1 für Pax |
 | `Quest` | freiwillige Einladung zu einer Handlung | RLS generisches Item | `type: "quest"` oder task-kompatible View |
 | `QuestRun` | konkrete Durchführung einer Quest durch einen Menschen | RLS generisches Item mit Relations | `type: "quest-run"`; verweist per `runsQuest` auf Quest und per `actor` auf DID/Profile |
 | `FollowUp` | nächster Schritt nach Begegnung/Festival | RLS generisches Item (`task`, `event`, `post`, `quest`) | leichter Item-Schnitt statt Sonderformat |
@@ -338,7 +338,7 @@ type ConfirmationView = {
 }
 ```
 
-Eine Confirmation-View ist keine neue Quelle der Wahrheit. Sie ist die RLNP-/RLS-Projektion einer bestätigten Aussage aus einem konkreten Backend: lokale Daten, Serverzustand, Space-Host, Systemregel oder signierte WoT-Attestation.
+Eine Confirmation-View ist keine neue Quelle der Wahrheit. Sie ist die RLNP-/RLS-Projektion einer bestätigten Aussage aus einem konkreten Backend: lokale Daten, Serverzustand, Space-Host, Systemregel oder signierte Attestation.
 
 ### 9.2 Verification-Confirmation
 
@@ -346,60 +346,15 @@ Verifikation bestätigt Begegnung oder Identitätsbeziehung.
 
 Für Pax v0.1 ist QR-Verifikation der Mechanismus, durch den reale Begegnungen im Netzwerk festgehalten werden.
 
-Backend-agnostisch ist das eine Verification-Confirmation. Wenn WoT genutzt wird und die Verifikation portabel sein soll, ist die kanonische Form eine WoT-Trust-002-Verification-Attestation: ein VC-JWS mit `typ: "vc+jwt"`. Der folgende JSON-Block zeigt nur den signierten Payload vor JWS-Serialisierung.
+Backend-agnostisch ist das eine Verification-Confirmation. Soll die Verifikation portabel und unabhängig prüfbar sein, wird sie als signierte Attestation ausgestellt. Sie hält dann mindestens fest, wer bestätigt, wen es betrifft, was bestätigt wird, wann es war und in welchem Kontext.
 
-```json
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://web-of-trust.de/vocab/v1"
-  ],
-  "id": "urn:uuid:ver-<nonce>-<did-suffix>",
-  "type": ["VerifiableCredential", "WotAttestation"],
-  "issuer": "did:key:z6Mk...alice",
-  "credentialSubject": {
-    "id": "did:key:z6Mk...bob",
-    "claim": "in-person verifiziert",
-    "tags": ["verification", "pax-2026"],
-    "context": "Pax Friedensfestival 2026"
-  },
-  "validFrom": "2026-05-07T10:10:00Z",
-  "iss": "did:key:z6Mk...alice",
-  "sub": "did:key:z6Mk...bob",
-  "nbf": 1778148600,
-  "jti": "urn:uuid:ver-<nonce>-<did-suffix>"
-}
-```
-
-`credentialSubject.tags` und `credentialSubject.context` sind RLNP-/App-Erweiterungen. Implementierungen MÜSSEN den WoT-Trust-Kern auch dann akzeptieren, wenn sie diese Erweiterungen nicht semantisch verstehen. Eine Real-Life-Stack-UI DARF daraus eine vereinfachte Confirmation-/Kontakt-View ableiten; die portable Quelle der Wahrheit bleibt der VC-JWS.
+**Norm:** Das Format signierter Attestationen legt die technische Spezifikation fest. Dieses Dokument DARF kein eigenes Format definieren und SOLLTE auch keines fest verdrahten, solange die technische Spezifikation neu gefasst wird. Eine Real-Life-Stack-UI DARF eine vereinfachte Confirmation- oder Kontakt-View ableiten; die portable Quelle der Wahrheit bleibt die signierte Attestation.
 
 ### 9.3 Attestation
 
-Attestations sind portable, signierte Confirmations. Sie sind für Pax v0.1 nicht zwingend, aber anschlussfähig.
+Attestations sind portable, signierte Confirmations. Sie sind für Pax v0.1 nicht zwingend, aber anschlussfähig. Eine Attestation über einen Beitrag hält dieselben Angaben fest wie eine Verification-Confirmation; nur ist die bestätigte Aussage ein konkreter Beitrag statt einer Begegnung, zum Beispiel „Mira hat beim gemeinsamen Abendessen für die Gruppe gekocht".
 
-```json
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://web-of-trust.de/vocab/v1"
-  ],
-  "id": "urn:uuid:attestation-id",
-  "type": ["VerifiableCredential", "WotAttestation"],
-  "issuer": "did:key:z6Mk...jonas",
-  "credentialSubject": {
-    "id": "did:key:z6Mk...mira",
-    "claim": "Mira hat beim gemeinsamen Abendessen für die Gruppe gekocht.",
-    "tags": ["attestation", "contribution", "cooking", "pax-2026"]
-  },
-  "validFrom": "2026-05-07T20:00:00Z",
-  "iss": "did:key:z6Mk...jonas",
-  "sub": "did:key:z6Mk...mira",
-  "nbf": 1778184000,
-  "jti": "urn:uuid:attestation-id"
-}
-```
-
-**Norm:** Confirmations SOLLTEN konkret, beobachtbar und kontextbezogen sein. Wenn eine Confirmation als WoT-Attestation ausgestellt wird, MUSS sie als WoT-Trust-001/002-VC-JWS erzeugt, transportiert und verifiziert werden; vereinfachte App-Objekte sind nur Projektionen.
+**Norm:** Confirmations SOLLTEN konkret, beobachtbar und kontextbezogen sein. Eine Confirmation, die portabel sein soll, MUSS als signierte Attestation im Format der technischen Spezifikation erzeugt, transportiert und geprüft werden; vereinfachte App-Objekte sind nur Projektionen.
 
 ## 10. Visibility Model
 
@@ -429,7 +384,7 @@ Attestations sind portable, signierte Confirmations. Sie sind für Pax v0.1 nich
 | Angebot eintragen | `op.offer.need.publish` | Profil vorhanden | Offer-Tag im Profil sichtbar | Beispiele anbieten |
 | Bedürfnis eintragen | `op.offer.need.publish` | Profil vorhanden | Need-Tag im Profil sichtbar | ermutigen, konkret zu werden |
 | Person kennenlernen | `op.people.discover` | Matching-Signal | Begegnung selbst bestätigt | passende Person vorschlagen |
-| Verifizieren | `op.verification.create` | reale Begegnung | Verification-Confirmation erstellt; bei WoT als VC-JWS | QR-Flow erklären |
+| Verifizieren | `op.verification.create` | reale Begegnung | Verification-Confirmation erstellt; portabel als signierte Attestation | QR-Flow erklären |
 | Nächsten Schritt speichern | `op.followup.create` | Begegnung/Match | Follow-up-Item erstellt | lokale Anschlussoption |
 
 ## 12. Agent Support Contract
@@ -479,7 +434,7 @@ Für Pax v0.1 ist folgender pragmatischer Schnitt ausreichend:
 
 1. `profile` erweitern statt sofort eigene `offer`/`need` Items erzwingen.
 2. `space invite` und `group membership` für Pax-Space nutzen.
-3. QR-Verifikation als Verification-Confirmation behandeln; bei WoT Trust 002 als VC-JWS ausstellen; `SignedClaim` ist nur eine alte App-Projection.
+3. QR-Verifikation als Verification-Confirmation behandeln; portabel als signierte Attestation ausstellen; `SignedClaim` ist nur eine alte App-Projection.
 4. Handlungseinladungen als lokale/sichtbare Suggestions abbilden; vollwertige `quest`-/`quest-run`-Items sind für Pax v0.1 optional.
 5. Map in v0.1 darf eine Listen-/Regionenansicht sein, solange Begegnung und Auffindbarkeit funktionieren.
 6. Metrics nur lokal/aggregiert für Pilot-Lernen verwenden.

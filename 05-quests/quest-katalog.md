@@ -176,11 +176,11 @@ Ein QuestRun verweist per Relations auf diese Quest:
 
 | ID | Einladung | Operation | Auslöser | Abschluss | Leitplanke |
 |---|---|---|---|---|---|
-| `q.pax.021` | Verifiziert euch per QR, wenn ihr eure Begegnung festhalten wollt. | `op.verification.create` | reale Begegnung hat stattgefunden | Verification-Confirmation erstellt; bei WoT als VC-JWS | Verifikation bestätigt Begegnung, nicht globale Vertrauenswürdigkeit |
+| `q.pax.021` | Verifiziert euch per QR, wenn ihr eure Begegnung festhalten wollt. | `op.verification.create` | reale Begegnung hat stattgefunden | Verification-Confirmation erstellt; portabel als signierte Attestation | Verifikation bestätigt Begegnung, nicht globale Vertrauenswürdigkeit |
 | `q.pax.022` | Lass dir erklären, was QR-Verifikation bedeutet. | `op.verification.create` | erste Verifikation | Erklärung gelesen oder Crew gefragt | Keine Kryptographie-Vorlesung im Flow |
 | `q.pax.023` | Bestätige eine eingehende Gegenverifikation. | `op.verification.create` | eingehende Verification-Confirmation | Gegenverifikation erstellt oder abgelehnt | Ablehnen bleibt möglich |
 | `q.pax.024` | Ergänze optional Kontext zur Begegnung. | `op.verification.create` | Verifikation abgeschlossen | Ort/Event/Notiz lokal oder als Metadaten gesetzt | Kontext darf privat bleiben |
-| `q.pax.025` | Sende eine konkrete Confirmation für einen beobachteten Beitrag. | `op.confirmation.create` | Person hat real etwas beigetragen | Confirmation erstellt; bei WoT als Attestation-VC-JWS | Nur konkret Beobachtetes bestätigen |
+| `q.pax.025` | Sende eine konkrete Confirmation für einen beobachteten Beitrag. | `op.confirmation.create` | Person hat real etwas beigetragen | Confirmation erstellt; portabel als signierte Attestation | Nur konkret Beobachtetes bestätigen |
 | `q.pax.026` | Entscheide, ob du eine erhaltene Confirmation anzeigen möchtest. | `op.confirmation.visibility.set` | Confirmation empfangen | Sichtbarkeit lokal gesetzt | Empfängerprinzip respektieren |
 
 ### 5.5 Ressourcen, Orte und Veranstaltungen
