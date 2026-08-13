@@ -305,6 +305,10 @@ Eigene Offer-/Need-Items sind P1/P2, sobald Verfügbarkeit, mehrere Owner, Ablau
 
 RLNP definiert keine eigene portable Claim-Serialisierung. Für App- und Connector-Views braucht es trotzdem eine neutrale Sicht auf bestätigte Aussagen.
 
+Zwei Beteiligte sind zu unterscheiden, und die Feldnamen sind dabei irreführend: **`issuerId` ist der Mensch, der bezeugt** — er hat den Schlüssel und macht die Aussage. **`subjectId` ist, wer oder was bezeugt wird.** Das Wort `subject` stammt aus der Credential-Welt und meint dort das Beschriebene, nicht den Sprechenden; im deutschen Sprachgefühl wäre es das Objekt.
+
+**Norm:** Bezeugt wird ein Mensch, nicht eine Aufgabe. Bei einem Quest-Abschluss ist `subjectId` deshalb die Person, die ihn geleistet hat; die Quest selbst steht als Relation daneben. Wer bezeugt, ist immer eine Identität mit eigenem Schlüssel — ein Kreis bezeugt nicht als Ganzes (RLNP §8.13).
+
 ```ts
 type ConfirmationTrustLevel =
   | "asserted"    // man muss dem Aussteller oder seinem Server glauben
@@ -318,6 +322,8 @@ type ConfirmationTrustLevel =
 
 type ConfirmationView = {
   id: string
+  // ACHTUNG, Fremdwort-Falle: `subject` ist NICHT der Bezeugende.
+  // subjectId = wer oder was bezeugt wird; issuerId = wer bezeugt.
   subjectId: string
   issuerId?: string
   claim: string

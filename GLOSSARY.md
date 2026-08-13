@@ -68,7 +68,7 @@ Quest-seitige Regel, ob Evidence für eine spätere Confirmation erforderlich is
 
 ## Bezeugen
 
-Aussprechen, was man an einem anderen Menschen erlebt hat: eine Handlung, eine Teilnahme, eine Begegnung, eine Rolle, eine Fähigkeit, eine übernommene Aufgabe. Bezeugen ist Anerkennung, keine Abnahme, und es setzt nicht voraus, dass die bezeugte Person selbst etwas eingetragen hat. Technisch heißt das Ergebnis Confirmation, in seiner portablen Form Attestation.
+Aussprechen, was man an einem anderen Menschen erlebt hat: eine Handlung, eine Teilnahme, eine Begegnung, eine Rolle, eine Fähigkeit, eine übernommene Aufgabe. Bezeugt wird immer ein Mensch, nicht eine Sache; die Sache steht als Zusammenhang daneben. Bezeugen ist Anerkennung, keine Abnahme, und es setzt nicht voraus, dass die bezeugte Person selbst etwas eingetragen hat. Technisch heißt das Ergebnis Confirmation, in seiner portablen Form Attestation.
 
 ## Fertig
 
