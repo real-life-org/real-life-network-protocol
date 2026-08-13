@@ -103,6 +103,18 @@ Menschen entscheiden darüber, was als Nächstes geschieht, nicht über das, was
 
 Das ist keine Einschränkung, die man kleinreden sollte, sondern ein Schutz: Wer glaubt, etwas zurückholen zu können, teilt Dinge, die er sonst nicht geteilt hätte. Systeme MÜSSEN deshalb erkennbar machen, was widerruflich ist und was nicht, und DÜRFEN NICHT den Eindruck erwecken, eine Rücknahme mache etwas ungeschehen.
 
+### 5.12 Niemand wird zugeteilt
+
+Menschen finden ihren Platz, indem sie ihm folgen, nicht indem sie ihm zugewiesen werden. Daraus folgen drei Freiheiten, die nur zusammen tragen:
+
+- **Ausrufen statt besetzen.** Ein Kreis, eine Aufgabe, eine Rolle wird sichtbar gemacht, und wer sich gerufen fühlt, kommt. Niemand teilt zu.
+- **Mehreren Anziehungen folgen dürfen.** Niemand muss sich für einen Kreis entscheiden. Wen zwei Themen ziehen, der ist in beiden — und verbindet sie dadurch (6.4).
+- **Weiterziehen dürfen.** Wer an einem Ort weder lernt noch beiträgt, darf gehen, ohne Rechtfertigung und ohne Nachteil.
+
+Das trägt nur, solange sichtbar ist, was ruft. Ein Bedarf, den niemand kennt, ruft niemanden, und ein leiser Kreis verliert gegen einen lauten, auch wenn er der richtige wäre. Sichtbarmachen ist deshalb keine Nebentätigkeit, sondern die eigentliche Arbeit.
+
+Systeme SOLLTEN Kreise, Aufgaben und Rollen als Rufe darstellen, nicht als Zuweisungen. Sie DÜRFEN das Gehen nicht schwerer machen als das Kommen und DÜRFEN NICHT darstellen, dass jemand weitergezogen ist, als sei etwas offen geblieben.
+
 ## 6. Grundentitäten
 
 ### 6.1 Mensch
@@ -218,6 +230,26 @@ Sichtbarkeit ist keine Eigenschaft einer Sache. Sie folgt daraus, wo die Sache l
 **Wo interagiert wird, gibt es einen gemeinsamen Raum. Wo nur gesehen wird, genügt ein Spiegel.** Wer zusagen, antworten oder etwas anhängen können soll, braucht Zugang zu dem Ort, an dem die Sache liegt, nicht zu einer Kopie. Eine Einladung an mehrere Menschen, die miteinander etwas vorhaben, ist deshalb ein gemeinsamer Raum, auch wenn niemand ihn Gruppe nennen möchte.
 
 Systeme SOLLTEN erkennbar machen, wen etwas erreicht, bevor es geteilt wird. Sichtbarkeit lässt sich für die Zukunft zurücknehmen; was veröffentlicht war, war veröffentlicht, und Systeme DÜRFEN NICHT den Eindruck erwecken, es ließe sich zurückholen.
+
+### 6.17 Selbstbeschreibung
+
+Eine Selbstbeschreibung ist, wofür ein Mensch im Netzwerk ansprechbar sein möchte: Gärtnerin, Erzähler, jemand mit einem Lieferwagen. Sie ist ein **stehendes Angebot** — unverbindlich, jederzeit änderbar, mehrfach möglich und niemandem gegenüber zugesagt.
+
+Sie ordnet ein, was einem Menschen vorgeschlagen wird, und schließt nichts aus: Wer sich als Gärtnerin beschreibt, darf trotzdem kochen.
+
+Selbstbeschreibungen sind die Angebotsseite des Netzwerks, sichtbar gemachte Bedarfe die Nachfrageseite. Aus beidem zusammen entsteht ein Marktplatz, ohne dass jemand einen bauen muss.
+
+Eine Selbstbeschreibung ist keine Rolle und begründet keine Verantwortung (6.13). Systeme DÜRFEN sie NICHT als Qualifikation, Nachweis oder Rang darstellen. Ein Spiel DARF ihr ein eigenes Wort geben, etwa Charakter; das Vokabular kommt aus dem Game Pack, nicht aus diesem Protokoll.
+
+### 6.18 Das Versprechen
+
+Zwischen Mitwirken und Tragen liegt eine Linie. Sie wird **gesetzt, nicht gefunden**: Man erkennt sie nicht daran, wie viel jemand tut, sondern daran, dass er es ausspricht.
+
+Ein Versprechen ist die ausdrückliche Zusage eines Menschen an einen Kreis, dass andere sich auf ihn verlassen dürfen. Es wird vor den Menschen des Kreises gegeben und von denen bezeugt, die dabei sind (8.13). Es ist jederzeit zurückgebbar.
+
+Vorher ist alles frei: Wer mitwirkt, braucht keine Erlaubnis und schuldet nichts. Nachher darf ein Kreis sich auf etwas stützen. Das ist der ganze Unterschied, und deshalb zählt das Aussprechen mehr als der Umfang.
+
+Ein Versprechen gibt es in jedem Kreis, nicht nur dort, wo viel Form ist. Es DARF NICHT als Rang, Auszeichnung oder Stufe dargestellt werden. Wer keines gibt, gehört genauso dazu.
 
 ## 7. Soziale Operationen
 

@@ -110,6 +110,14 @@ Portable, signierte Confirmation über einen konkreten Beitrag, eine Gabe, eine 
 
 Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Ein Space kann Module, Mitglieder, Inhalte und eigene Identität haben. Eine Quest, ein Projekt oder eine Rolle KANN einen eigenen Space bekommen, muss es aber nicht: Der Space ist ein Gefäß für Verständigung, kein Zustand der Sache.
 
+## Selbstbeschreibung
+
+Wofür ein Mensch im Netzwerk ansprechbar sein möchte. Ein stehendes Angebot: unverbindlich, jederzeit änderbar, mehrfach möglich und niemandem gegenüber zugesagt. Sie ordnet ein, was jemandem vorgeschlagen wird, und schließt nichts aus. Keine Rolle und keine Qualifikation. Ein Spiel darf sie Charakter nennen.
+
+## Versprechen
+
+Die ausdrückliche Zusage eines Menschen an einen Kreis, dass andere sich auf ihn verlassen dürfen — bezeugt von denen, die dabei sind, und jederzeit zurückgebbar. Die Linie zwischen Mitwirken und Tragen wird durch das Aussprechen gesetzt, nicht am Umfang des Getanen erkannt. Wer kein Versprechen gibt, gehört genauso dazu.
+
 ## Sichtbarkeit
 
 Keine Eigenschaft einer Sache, sondern eine Folge davon, wo sie liegt: in einem Kreis, zusätzlich gespiegelt, oder veröffentlicht. Was getrennt geteilt werden soll, ist eine eigene Sache — deshalb ist ein Profil keine Sache, sondern die Sicht auf alles, was über einen Menschen den Betrachter erreicht hat.
