@@ -76,7 +76,7 @@ Die Selbstauskunft eines Menschen, dass er etwas getan hat. Sie gilt sofort und 
 
 ## Confirmation
 
-Die technische Form dessen, was jemand bezeugt hat: eine Aussage über eine Handlung, Teilnahme, Begegnung, Rolle, Fähigkeit, Ressource oder eine übernommene Aufgabe in einem konkreten Kontext. Sie ist entweder **behauptet**, dann muss man dem Aussteller oder seinem Server glauben, oder **prüfbar**, dann ist sie signiert und unabhängig nachrechenbar. Feinere Abstufungen dazwischen legt die technische Spezifikation fest, nicht dieses Protokoll.
+Die technische Form dessen, was jemand bezeugt hat: eine Aussage über eine Handlung, Teilnahme, Begegnung, Rolle, Fähigkeit, Ressource oder eine übernommene Aufgabe in einem konkreten Kontext. Sie ist entweder **behauptet**, dann muss man dem Aussteller oder seinem Server glauben, oder **prüfbar**, dann ist sie signiert und unabhängig nachrechenbar. Eine Umsetzung darf feiner unterscheiden — der Real Life Stack tut das —, solange die Zuordnung zu diesen beiden erhalten bleibt und nichts bloß Behauptetes als prüfbar erscheint.
 
 ## Confirmation Policy
 

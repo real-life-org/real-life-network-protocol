@@ -310,6 +310,12 @@ type ConfirmationTrustLevel =
   | "asserted"    // man muss dem Aussteller oder seinem Server glauben
   | "verifiable"  // signiert und unabhängig nachrechenbar
 
+// Der Real Life Stack führt heute feinere Stufen. Sie bilden auf diese zwei ab:
+//   demo, local, server-confirmed -> asserted
+//   signed-attested               -> verifiable
+// Eine Umsetzung DARF feiner unterscheiden, MUSS aber diese Abbildung erhalten
+// und DARF eine bloß behauptete Aussage nicht als prüfbare darstellen.
+
 type ConfirmationView = {
   id: string
   subjectId: string

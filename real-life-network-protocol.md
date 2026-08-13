@@ -97,6 +97,12 @@ Digitale Werkzeuge sind optional. Sie SOLLTEN analoge Begegnung verstärken, nic
 
 KI-Agenten dürfen Teil des Netzwerks sein, wenn sie eine erkennbare Identität haben, lokal eingebettet handeln und menschliche Selbstbestimmung respektieren.
 
+### 5.11 Kontrolle wirkt nach vorn
+
+Menschen entscheiden darüber, was als Nächstes geschieht, nicht über das, was schon geschehen ist. Sichtbarkeit lässt sich für die Zukunft zurücknehmen, aber was gelesen wurde, ist gelesen. Wer etwas über einen anderen ausgesprochen hat, behält seine Aussage, auch wenn sie nicht mehr angezeigt wird. Eine Kopie, die weitergegeben wurde, kommt nicht zurück.
+
+Das ist keine Einschränkung, die man kleinreden sollte, sondern ein Schutz: Wer glaubt, etwas zurückholen zu können, teilt Dinge, die er sonst nicht geteilt hätte. Systeme MÜSSEN deshalb erkennbar machen, was widerruflich ist und was nicht, und DÜRFEN NICHT den Eindruck erwecken, eine Rücknahme mache etwas ungeschehen.
+
 ## 6. Grundentitäten
 
 ### 6.1 Mensch
