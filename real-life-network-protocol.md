@@ -176,6 +176,29 @@ Eine Rolle sagt nichts über den Wert eines Menschen. Sie beschreibt, wofür jem
 
 Wie ein Mensch sich selbst beschreibt, ist keine Rolle. Eine Selbstbeschreibung ist ein Angebot: unverbindlich, jederzeit änderbar und niemandem gegenüber zugesagt.
 
+### 6.14 Quest, Projekt und Rolle sind dieselbe Sache
+
+Eine Quest, ein Projekt und eine Rolle sind nicht drei verschiedene Dinge, sondern übernommene Verantwortung mit zwei Schaltern: Geschieht sie einmal oder wiederkehrend, und trägt sie ein Mensch oder mehrere?
+
+| | eine Person | mehrere Menschen |
+|---|---|---|
+| **einmalig** | Quest | Projekt |
+| **wiederkehrend** | Rolle | Rolle auf mehreren Schultern |
+
+Die Übergänge gehen in beide Richtungen. Eine Quest, die immer wiederkehrt, kann zur Rolle werden. Eine Rolle, die zu groß wird, kann sich auf mehrere Schultern verteilen oder wieder zur einzelnen Quest schrumpfen. Systeme SOLLTEN diese Übergänge möglich machen, ohne dass etwas neu angelegt werden muss.
+
+Jede dieser Formen KANN einen eigenen Raum für Verständigung bekommen, muss es aber nicht. Der Raum ist ein Gefäß, kein Zustand der Sache.
+
+Ein Kreis gehört nicht in diese Tabelle. Er ist kein Auftrag, sondern der Begegnungsraum, in dem Quests, Projekte und Rollen entstehen.
+
+### 6.15 Koordinationsfläche
+
+Nicht jeder Bedarf braucht jemanden, der ihn übernimmt. Manche brauchen nur Sichtbarkeit, damit Menschen sich selbst abstimmen: wer von wo anreist, wer was mitbringt, wo wer schläft. Niemand bietet eine Mitfahrgelegenheit an; es bilden sich Fahrgemeinschaften.
+
+Eine Koordinationsfläche macht sichtbar, was mehrere Menschen betrifft, damit sie sich selbst abstimmen können. Sie kennt keine Zusage und keine Bestätigung, weil niemand sie übernimmt.
+
+Systeme SOLLTEN Koordinationsflächen von Quests unterscheiden und sie nicht als Aufgaben darstellen, die jemand erledigt.
+
 ## 7. Soziale Operationen
 
 Soziale Operationen sind der Kern dieses Protokolls. Sie beschreiben Handlungen, durch die das Netzwerk wächst.
@@ -479,6 +502,8 @@ Eine Quest MUSS als Einladung gestaltet sein. Sie DARF NICHT Pflicht, Rangordnun
 
 Eine Quest beschreibt die wiederverwendbare Einladung. Ein QuestRun beschreibt die konkrete Durchführung durch einen Menschen.
 
+Dieses Protokoll nennt sie Quest. Eine Oberfläche DARF ein anderes Wort verwenden, etwa Aufgabe. Das Vokabular kommt aus dem Game Pack, nicht aus dem Protokoll.
+
 ### 11.1 Klassifizierung
 
 Das Basisprotokoll definiert keine feste Quest-Typ-Taxonomie. Apps und Agenten können Quests über Operationen, Intentionen, Tags oder Templates gruppieren.
@@ -500,7 +525,11 @@ Beispiele für Handlungseinladungen:
 
 Eine Quest sagt, wozu sie einlädt und wer sie gestellt hat. Sie hält fest, wer sie sehen kann, und, wo es darauf ankommt, an welchem Ort und zu welcher Zeit. Wenn ihr Abschluss besondere Regeln braucht, gehören auch die dazu.
 
+Eine Quest KANN angeben, wie viele Menschen gebraucht werden. Diese Zahl ist Information, kein Türsteher: Systeme SOLLTEN sichtbar machen, wenn genug Menschen da sind, DÜRFEN eine weitere Zusage aber nicht verhindern. Ohne Angabe ist die Quest unbegrenzt.
+
 Ein QuestRun hält fest, wie ein einzelner Mensch sie durchführt: dass er sie übernommen hat, wie weit er ist, wer das sehen kann und was davon bezeugt wurde.
+
+Der Status einer Quest beschreibt ihre Veröffentlichung, nicht ihren Fortschritt. Wie weit sie gediehen ist, ergibt sich aus den Runs und SOLLTE nicht zusätzlich gespeichert werden.
 
 Die genauen Felder und Formate beider stehen in [05-quests/quest-mechanik.md](05-quests/quest-mechanik.md).
 

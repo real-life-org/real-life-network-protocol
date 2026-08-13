@@ -20,14 +20,7 @@ Quests sind keine Pflichten, keine Leistungsmessung und kein Ranking-System.
 
 ## 2. Quest-Regeln
 
-Jede Quest in diesem Katalog MUSS:
-
-1. freiwillig sein,
-2. ablehnbar oder ausblendbar sein,
-3. ohne negative Bewertung unvollendet bleiben dürfen,
-4. einen sozialen Zweck haben,
-5. klar machen, welche Daten sichtbar werden,
-6. keine riskanten, beschämenden oder übergriffigen Nachweise verlangen.
+Für jede Quest in diesem Katalog gelten die normativen Leitplanken aus [quest-mechanik.md](quest-mechanik.md), Abschnitt 3. Sie werden hier bewusst nicht wiederholt: Doppelt gepflegte Normen driften auseinander.
 
 Eine Quest DARF:
 

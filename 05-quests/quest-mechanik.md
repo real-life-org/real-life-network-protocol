@@ -111,6 +111,10 @@ Der QuestRun-Status beschreibt ausschließlich den Weg der handelnden Person. **
 
 Die Fertig-Meldung gilt für sich. Eine Umsetzung DARF sie NICHT davon abhängig machen, dass jemand bezeugt hat.
 
+Der Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht den Fortschritt. Wie weit eine Quest gediehen ist, ergibt sich aus ihren Runs — keine Zusage heißt offen, Zusagen ohne Fertig-Meldung heißen übernommen, alle fertig heißt abgeschlossen. Dieser abgeleitete Zustand SOLLTE NICHT zusätzlich gespeichert werden, sonst steht derselbe Sachverhalt zweimal im System und driftet auseinander.
+
+`data.capacity` sagt, wie viele Menschen gebraucht werden. Die Zahl ist reale Information, kein Türsteher: Eine Oberfläche SOLLTE sichtbar machen, wenn genug Menschen da sind, DARF eine weitere Zusage aber nicht verhindern. Ohne Angabe ist die Quest unbegrenzt. Die Kapazität steht am Item; für wiederverwendbare Quest-Vorlagen, die in mehreren Bögen laufen, kann sie später zusätzlich an der Relation stehen.
+
 Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
 
 - Vorschlag, Annahme, lokale Completion, Evidence und Confirmations gehören zum QuestRun.
@@ -219,6 +223,8 @@ Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOL
 | `data.visibility.mode` | empfohlen | gewünschte Sichtbarkeit: `private`, `contacts`, `space`, `public` |
 | `data.location` | optional | Ort, Region oder grober Kartenkontext |
 | `data.time` | optional | Termin, Zeitraum, Phase oder Rhythmus |
+| `data.capacity` | optional | wie viele Menschen gebraucht werden; ohne Angabe unbegrenzt |
+| `data.recurring` | optional | ob die Quest wiederkehrt; wiederkehrend plus eine Person ergibt eine Rolle (RLNP §6.14) |
 | `data.evidencePolicy` | optional | Regeln, ob Evidence erforderlich ist und welche Typen akzeptiert werden |
 | `data.confirmationPolicy` | optional | Verabredung, dass mehrere oder bestimmte Zeugen gewünscht sind; fehlt sie, gilt der Sichtbarkeitskreis |
 | `data.completionConfirmationTemplate` | optional | Claim- und Display-Vorlage für spätere Completion-Confirmations |

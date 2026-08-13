@@ -108,7 +108,11 @@ Portable, signierte Confirmation über einen konkreten Beitrag, eine Gabe, eine 
 
 ## Space
 
-Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Ein Space kann Module, Mitglieder, Inhalte und eigene Identität haben.
+Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen lokalen Kreis. Ein Space kann Module, Mitglieder, Inhalte und eigene Identität haben. Eine Quest, ein Projekt oder eine Rolle KANN einen eigenen Space bekommen, muss es aber nicht: Der Space ist ein Gefäß für Verständigung, kein Zustand der Sache.
+
+## Koordinationsfläche
+
+Sichtbare Übersicht über etwas, das mehrere Menschen betrifft, damit sie sich selbst abstimmen können — Anreise, Material, Schlafplätze. Sie kennt keine Zusage und keine Bestätigung, weil niemand sie übernimmt, und ist deshalb keine Quest.
 
 ## Vernetzungszelt
 
