@@ -5,7 +5,7 @@ Rollout-Slices, Pilotkontexte und Inventuren.
 Aktueller Startpunkt:
 
 - [rollout-inventur.md](rollout-inventur.md)
-- [pax-rollout-slice.md](pax-rollout-slice.md)
+- [festival-slice.md](festival-slice.md)
 
 Nächster Schritt:
 

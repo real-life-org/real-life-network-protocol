@@ -115,7 +115,7 @@ Der Quest-Status beschreibt Veröffentlichung und Verwendbarkeit, nicht den Fort
 
 `data.capacity` sagt, wie viele Menschen gebraucht werden. Die Zahl ist reale Information, kein Türsteher: Eine Oberfläche SOLLTE sichtbar machen, wenn genug Menschen da sind, DARF eine weitere Zusage aber nicht verhindern. Ohne Angabe ist die Quest unbegrenzt. Die Kapazität steht am Item; für wiederverwendbare Quest-Vorlagen, die in mehreren Bögen laufen, kann sie später zusätzlich an der Relation stehen.
 
-Nicht jede Umsetzung muss alle Status explizit speichern. Für Pax v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
+Nicht jede Umsetzung muss alle Status explizit speichern. Für Rollout v0.1 reichen lokale Vorschläge und einfache Abschlusszustände, solange klar bleibt:
 
 - Vorschlag, Annahme, lokale Completion, Evidence und Confirmations gehören zum QuestRun.
 - Veröffentlichung, Pausierung und Archivierung gehören zur Quest.
@@ -175,8 +175,8 @@ Apps, Agenten und Playbooks DÜRFEN Quests klassifizieren. Diese Klassifizierung
 |---|---|---|---|
 | Operation | `data.operation` | Bezug zu einer sozialen Operation | `op.people.discover` |
 | Intention | `data.intent` | sozialer Zweck oder Wirkung | `relationship`, `commons`, `learning` |
-| Tags | `data.tags[]` | Suche, Filter, einfache Sortierung | `begegnung`, `pax-2026` |
-| Template | `data.templateId` | wiederverwendbare Vorlage | `pax-meet-person` |
+| Tags | `data.tags[]` | Suche, Filter, einfache Sortierung | `begegnung`, `festival` |
+| Template | `data.templateId` | wiederverwendbare Vorlage | `fest-meet-person` |
 
 Häufige Quest-Templates können sein:
 
@@ -197,7 +197,7 @@ Erlebnisorientierte Quests, Wanderungen, Klettertage oder Gruppenspiele bleiben 
 
 ## 9. Minimale RLS-Item-Felder
 
-Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Suggestions abbilden. Persistenz ist für Pax v0.1 optional.
+Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Suggestions abbilden. Persistenz ist für Rollout v0.1 optional.
 
 Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOLLTEN sie als RLS-Item-Views modelliert werden. Die folgenden Felder sind die minimale interoperable Sicht, keine vollständige neue RLS-Schema-Festlegung.
 
@@ -238,7 +238,7 @@ Empfohlene Relations:
 
 ```json
 {
-  "id": "quest:pax:meet-similar-interest",
+  "id": "quest:fest:meet-similar-interest",
   "type": "quest",
   "createdAt": "2026-05-07T10:05:00Z",
   "createdBy": "did:key:z6Mk...agent-or-host",
@@ -246,12 +246,12 @@ Empfohlene Relations:
   "schemaVersion": 1,
   "data": {
     "title": "Finde eine Person mit ähnlichem Interesse",
-    "description": "Schau dir Profile im Pax-Space an und lade eine Person zu einem echten Gespräch ein.",
+    "description": "Schau dir Profile im Festival-Space an und lade eine Person zu einem echten Gespräch ein.",
     "status": "published",
     "optional": true,
     "operation": "op.people.discover",
     "intent": "relationship",
-    "tags": ["begegnung", "pax-2026"],
+    "tags": ["begegnung", "festival"],
     "evidencePolicy": {
       "required": false,
       "acceptedTypes": ["self-claim", "text"]
@@ -264,7 +264,7 @@ Empfohlene Relations:
       "acceptedTrustLevels": ["verifiable"]
     },
     "completionConfirmationTemplate": {
-      "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
+      "claim": "{actor} hat eine echte Begegnung im Festival-Space geführt.",
       "display": {
         "label": "Echte Begegnung",
         "color": "#4F7CFF",
@@ -282,12 +282,12 @@ Empfohlene Relations:
       "phase": "during-event"
     },
     "location": {
-      "label": "Pax Friedensfestival",
-      "region": "pax-2026"
+      "label": "Sommerfestival",
+      "region": "festival"
     }
   },
   "relations": [
-    { "predicate": "visibleIn", "target": "space:pax-2026" }
+    { "predicate": "visibleIn", "target": "space:festival" }
   ]
 }
 ```
@@ -331,7 +331,7 @@ Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene
 
 ```json
 {
-  "id": "quest-run:pax:meet-similar-interest:mira",
+  "id": "quest-run:fest:meet-similar-interest:mira",
   "type": "quest-run",
   "createdAt": "2026-05-07T10:06:00Z",
   "createdBy": "did:key:z6Mk...mira",
@@ -341,12 +341,12 @@ Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene
     "status": "completed",
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
-      "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
+      "claim": "Ich habe ein echtes Gespräch im Festival-Space geführt.",
       "evidenceRefs": []
     }
   },
   "relations": [
-    { "predicate": "runsQuest", "target": "item:quest:pax:meet-similar-interest" },
+    { "predicate": "runsQuest", "target": "item:quest:fest:meet-similar-interest" },
     { "predicate": "actor", "target": "global:did:key:z6Mk...mira" }
   ]
 }
@@ -408,7 +408,7 @@ Gesetzt wird eine Policy nur dort, wo ein Kreis **bewusst mehrere Zeugen verabre
     "allowedConfirmers": [
       { "role": "host" },
       { "role": "peer", "minCount": 2 },
-      { "role": "system", "ruleId": "pax-qr-checkin" }
+      { "role": "system", "ruleId": "fest-qr-checkin" }
     ],
     "acceptedTrustLevels": ["verifiable"]
   }
@@ -635,6 +635,6 @@ Diese Mechaniken DÜRFEN die Quest-Basis nicht verletzen: Freiwilligkeit, Sichtb
 
 ## 17. Offene Fragen
 
-- Welche Quest-Templates werden für Pax v0.1 als UI-Karten gebraucht?
+- Welche Quest-Templates werden für Rollout v0.1 als UI-Karten gebraucht?
 - Welche System-/Agenten-Identitäten dürfen automatische oder agentische Badge-Confirmations ausstellen oder signieren?
-- Welche Badge-Regeln werden im ersten Pax-/RLN-Kontext gebraucht?
+- Welche Badge-Regeln werden im ersten Festival-Kontext gebraucht?

@@ -2,7 +2,7 @@
 
 Spezifikation für dezentrale Gemeinschaftsbildung, Commons und gemeinsames Handeln.
 
-**Status:** Initialer Arbeitsstand  
+**Status:** Entwurf, in aktiver Arbeit  
 **Start:** 2026-05-07  
 **Ziel:** Das soziale Protokoll des Real Life Networks so beschreiben, dass Menschen, Apps und KI-Agenten damit praktisch arbeiten können.
 
@@ -35,14 +35,16 @@ Das Protokoll soll präzise genug sein, damit es in Apps, Datenmodellen, Playboo
 
 Daneben steht die **technische Spezifikation**: Identität, Begegnung, Gruppen-Autorität und Transport, also Formate, Signaturen und Prüfbarkeit. Sie wird derzeit neu gefasst. Dieses Protokoll bindet sich deshalb an kein Format, sondern nennt Anforderungen: was eine Aussage leisten muss, damit sie portabel, signiert und unabhängig prüfbar ist. Welches Format das erfüllt, steht dort, nicht hier.
 
+Die beiden stehen **nebeneinander, nicht übereinander**: Dieses Protokoll ist normativ für die **Bedeutung** eines Vorgangs — was ein Kreis, eine Rolle, eine Begegnung ist und welche Normen für sie gelten. Die technische Spezifikation ist normativ für die **Konstruktion**. Wo beide dasselbe Wort benutzen, gewinnt für die Bedeutung dieses Dokument, für die Umsetzung das andere.
+
 ## Spezifikations-Landkarte
 
 | Bereich | Zweck |
 |---|---|
 | [real-life-network-protocol.md](real-life-network-protocol.md) | Die Gesamtspezifikation: Prinzipien, Entitäten, soziale Operationen, Praktiken, Agenten |
-| [05-quests](05-quests/) | Freiwillige Handlungseinladungen, Quest-Katalog und Quest-Mechanik |
-| [06-data-model](06-data-model/) | App- und Graphmodell für soziale Operationen |
-| [08-rollout](08-rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
+| [quests](quests/) | Freiwillige Handlungseinladungen, Quest-Katalog und Quest-Mechanik |
+| [data-model](data-model/) | App- und Graphmodell für soziale Operationen |
+| [rollout](rollout/) | Rollout-Slices, Inventuren und Pilot-Playbooks |
 | [schemas](schemas/) | Maschinenlesbare Schemata |
 | [playbooks](playbooks/) | Praktische Anleitungen für Hosts, Crews und Kreise |
 | [examples](examples/) | Konkrete Beispielabläufe |
@@ -50,15 +52,15 @@ Daneben steht die **technische Spezifikation**: Identität, Begegnung, Gruppen-A
 
 ## Aktueller Arbeitsfokus
 
-Der erste Fokus ist ein praktischer Rollout-Slice für Pax/Festival-Kontexte:
+Die Gesamtspezifikation wurde im August 2026 überarbeitet: Kreis, Rolle, Bezeugen, Sichtbarkeit und das Feld haben ihre heutige Fassung bekommen. Woran als Nächstes gearbeitet wird:
 
-1. [Pax-MVP-Slice definieren](08-rollout/pax-rollout-slice.md)
-2. [soziale Operationen auf App-Flows und Datenmodelle mappen](06-data-model/operations-mapping.md)
-3. [Quest-Katalog v0.1 und Quest-Mechanik schärfen](05-quests/)
-4. Vernetzungszelt-Playbook erstellen
-5. Agenten-Handlungsrahmen mit [real-life-org/real-life-agent-protocol](https://github.com/real-life-org/real-life-agent-protocol) verbinden
+1. Die Naht zur technischen Spezifikation beschreiben: welcher Begriff dort ein Gegenstück hat, welcher noch keines, und welcher bewusst nie eines bekommt.
+2. Den Konfliktprozess (Abschnitt 13) ausarbeiten — er ist seit Mai unberührt.
+3. Selbstbeschreibungen in der Praxis erproben und das erste Vokabular mit dem Game Pack abstimmen.
+4. Playbooks schreiben: Vernetzungszelt, Kreis starten, Initiative andocken.
+5. Konformität prüfbar machen: Manifest, Schemata, Testfälle.
 
-Siehe [08-rollout/rollout-inventur.md](08-rollout/rollout-inventur.md).
+Der Ordner [rollout](rollout/) enthält den Stand aus dem Frühjahr, entstanden für ein konkretes Festival und inzwischen generisch formuliert. Er wird nach den Erfahrungen der Saison 2026 überarbeitet.
 
 ## Arbeitsweise
 
@@ -70,6 +72,8 @@ Dieses Repo folgt einem spec-first Ansatz:
 - Metriken dürfen Netzwerkaktivität sichtbar machen, aber Menschen nicht ranken.
 - Agenten dürfen unterstützen, erinnern, verbinden und reflektieren, aber nicht steuern.
 - Agentische Spec- und Softwarearbeit wird im [Real Life Agent Protocol](https://github.com/real-life-org/real-life-agent-protocol) beschrieben.
+
+Was sich beim Schreiben bewährt hat: Bevor eine Mechanik geändert wird, das **Wort** prüfen. Mehrere Widersprüche im Dokument sind nicht aus falschen Entscheidungen entstanden, sondern daraus, dass Implementierende der Alltagsbedeutung eines Begriffs gefolgt sind statt seiner Definition.
 
 ## Lizenz
 

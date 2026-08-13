@@ -583,7 +583,7 @@ Ein QuestRun hält fest, wie ein einzelner Mensch sie durchführt: dass er sie �
 
 Der Status einer Quest beschreibt ihre Veröffentlichung, nicht ihren Fortschritt. Wie weit sie gediehen ist, ergibt sich aus den Runs und SOLLTE nicht zusätzlich gespeichert werden.
 
-Die genauen Felder und Formate beider stehen in [05-quests/quest-mechanik.md](05-quests/quest-mechanik.md).
+Die genauen Felder und Formate beider stehen in [quests/quest-mechanik.md](quests/quest-mechanik.md).
 
 ### 11.3 Leitplanken
 

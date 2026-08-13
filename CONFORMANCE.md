@@ -67,7 +67,7 @@ Eine Umsetzung ist `rlnp-data@0.1`-konform, wenn sie:
 - Confirmations als backend-agnostische Views mit sichtbarer Trust-Stufe behandelt,
 - eine Confirmation, die portabel und unabhängig prüfbar sein soll, als signierte Attestation im Format der technischen Spezifikation ausstellt und kein eigenes Format erfindet,
 - Profile, Quests und QuestRuns als generische Real-Life-Stack-Items oder kompatible Item-Views modelliert,
-- Angebote und Bedürfnisse in Pax v0.1 als einfache Profil-Tags behandeln kann, auch wenn sie zunächst aus dem WoT-Profil kommen und in der RLS-Referenz noch nicht vollständig implementiert sind,
+- Angebote und Bedürfnisse in Rollout v0.1 als einfache Profil-Tags behandeln kann, auch wenn sie zunächst aus dem WoT-Profil kommen und in der RLS-Referenz noch nicht vollständig implementiert sind,
 - vereinfachte Confirmation-, Kontakt- oder UI-Objekte als Projektionen ausweist, nicht als portable Quelle der Wahrheit.
 
 ## Noch offen

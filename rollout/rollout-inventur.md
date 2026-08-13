@@ -1,8 +1,9 @@
 # Rollout-Inventur — Real Life Network Protocol
 
-**Status:** Entwurf v0.1  
-**Datum:** 2026-05-07  
+**Status:** Momentaufnahme vom 7. Mai 2026, historisch  
 **Zweck:** Bestandsaufnahme der vorhandenen Bausteine und der Lücken, die geschlossen werden müssen, damit das Real Life Network Protocol praktisch ausgerollt werden kann.
+
+> **Zum Lesen:** Dieses Dokument beschreibt einen Zeitpunkt und wird bewusst nicht fortgeschrieben. Vieles darin ist inzwischen erledigt oder anders entschieden. Es bleibt als Ausgangspunkt erhalten; eine neue Inventur nach der Festivalsaison 2026 ersetzt es.
 
 ---
 

@@ -1,22 +1,23 @@
-# Pax Rollout Slice
+# Festival-Slice
 
-**Status:** Entwurf v0.1
-**Datum:** 2026-05-07
-**Scope:** Minimaler sozialer und technischer Ablauf für Pax/Festival-Kontexte
+**Status:** Entwurf v0.1, geschrieben im Mai 2026 vor dem ersten Einsatz
+**Scope:** Minimaler sozialer und technischer Ablauf für Festival-Kontexte
+
+> **Zum Lesen:** Dieser Slice entstand für ein konkretes Festival und ist inzwischen generisch formuliert. Er ist noch nicht um die Erfahrungen aus der Saison 2026 ergänzt — was gut lief und was nicht, gehört bei der nächsten Überarbeitung hier hinein.
 
 ---
 
 ## 1. Zweck
 
-Dieser Slice beschreibt, welche minimalen sozialen Operationen auf Pax oder in vergleichbaren Festival-Kontexten zuverlässig funktionieren müssen.
+Dieser Slice beschreibt, welche minimalen sozialen Operationen auf einem Festival oder in vergleichbaren Begegnungs-Kontexten zuverlässig funktionieren müssen.
 
 Der Slice ist bewusst praktisch. Er beantwortet nicht alle Fragen des Real Life Network Protocols, sondern definiert den ersten realen Einsatzpfad:
 
-> Eine Person kommt ans Vernetzungszelt, öffnet die App, erzeugt eine eigene Identität, tritt dem Pax-Space bei, wird sichtbar, begegnet Menschen, verifiziert Beziehungen und bleibt nach dem Festival verbunden.
+> Eine Person kommt ans Vernetzungszelt, öffnet die App, erzeugt eine eigene Identität, tritt dem Festival-Space bei, wird sichtbar, begegnet Menschen, verifiziert Beziehungen und bleibt nach dem Festival verbunden.
 
 ## 2. Grundannahme
 
-Der Pax-Space ist nicht der erste Schritt.
+Der Festival-Space ist nicht der erste Schritt.
 
 Bevor eine Person einem Space beitreten kann, MUSS sie:
 
@@ -24,7 +25,7 @@ Bevor eine Person einem Space beitreten kann, MUSS sie:
 2. lokal eine eigene Identität erzeugen,
 3. mindestens verstehen, dass diese Identität ihr gehört.
 
-Erst danach DARF der Pax-Space-Beitritt stattfinden.
+Erst danach DARF der Festival-Space-Beitritt stattfinden.
 
 ## 3. Nicht-Ziele
 
@@ -85,20 +86,20 @@ Dieser Slice implementiert nicht:
 - Identität DARF NICHT an eine zentrale Registrierung gekoppelt sein.
 - Die UX MUSS deutlich machen, dass der Space-Beitritt nicht die Identität erzeugt, sondern die vorhandene Identität in einen Raum einlädt.
 
-### 4.4 Pax-Space beitreten
+### 4.4 Festival-Space beitreten
 
 **Zweck:** Die Person landet in dem gemeinsamen digitalen Raum für den Festival-Kontext.
 
-**Inputs:** lokale Identität, Pax-Space-Einladung, ggf. Space-Key oder Invite-Token.
+**Inputs:** lokale Identität, Festival-Space-Einladung, ggf. Space-Key oder Invite-Token.
 
 **Ablauf:**
 
-1. App erkennt den Pax-Space-Invite aus QR-Code oder Link.
-2. Person sieht: "Du trittst dem Pax-Space bei."
+1. App erkennt den Festival-Space-Invite aus QR-Code oder Link.
+2. Person sieht: "Du trittst dem Festival-Space bei."
 3. Person bestätigt freiwillig.
 4. App speichert Space-Mitgliedschaft und nötige Space-Daten.
 
-**Output:** Person ist Mitglied des Pax-Space.
+**Output:** Person ist Mitglied des Festival-Space.
 
 **Normen:**
 
@@ -120,7 +121,7 @@ Dieser Slice implementiert nicht:
 - Vision oder Interesse
 - optional Region/Ort
 
-**Output:** Profil ist im Pax-Space sichtbar, soweit die Person zustimmt.
+**Output:** Profil ist im Festival-Space sichtbar, soweit die Person zustimmt.
 
 **Normen:**
 
@@ -137,7 +138,7 @@ Dieser Slice implementiert nicht:
 2. App kann eine ungefähre Region, einen Festival-Ort oder keinen Ort verwenden.
 3. Angebote, Bedürfnisse und Interessen werden filterbar.
 
-**Output:** Person oder Profil ist im Pax-Kontext auffindbar.
+**Output:** Person oder Profil ist im Festival-Kontext auffindbar.
 
 **Norm:** Exakte Standortdaten DÜRFEN NICHT erzwungen werden.
 
@@ -174,7 +175,7 @@ Dieser Slice implementiert nicht:
 
 **Ablauf:**
 
-1. Person durchsucht oder sieht Profile, Angebote und Bedürfnisse im Pax-Space.
+1. Person durchsucht oder sieht Profile, Angebote und Bedürfnisse im Festival-Space.
 2. App oder Agent schlägt passende, freiwillige nächste Schritte vor.
 3. Menschen können sich treffen, helfen, Ressourcen teilen oder Projekte anstoßen.
 
@@ -182,23 +183,23 @@ Dieser Slice implementiert nicht:
 
 ### 4.10 Nach dem Festival verbunden bleiben
 
-**Zweck:** Pax erzeugt nicht nur Festivalkontakte, sondern lokale Anschlussfähigkeit.
+**Zweck:** Ein Festival erzeugt nicht nur Festivalkontakte, sondern lokale Anschlussfähigkeit.
 
 **Ablauf:**
 
-1. Person sieht nach dem Festival ihre Kontakte, Verifikationen und Pax-Space-Verbindungen.
+1. Person sieht nach dem Festival ihre Kontakte, Verifikationen und Festival-Space-Verbindungen.
 2. App oder Agent schlägt lokale oder thematische nächste Schritte vor.
 3. Crew kann Follow-up-Nachrichten, regionale Kreise oder Projektideen dokumentieren.
 
 **Output:** Beziehungen überdauern den Festivalkontext.
 
-## 5. P0-Operationen im Pax-Slice
+## 5. P0-Operationen im Festival-Slice
 
 | Reihenfolge | Operation | Muss funktionieren, wenn... | Minimaler Output |
 |---|---|---|---|
 | 1 | App laden/öffnen | Person scannt Stand-QR oder öffnet Link | App/Web-App läuft |
 | 2 | Identität erzeugen | keine lokale ID vorhanden ist | DID/Schlüssel lokal erzeugt |
-| 3 | Pax-Space beitreten | lokale ID vorhanden und Invite gültig ist | Space-Mitgliedschaft |
+| 3 | Festival-Space beitreten | lokale ID vorhanden und Invite gültig ist | Space-Mitgliedschaft |
 | 4 | Profil anlegen | Person im Space ansprechbar sein will | Minimalprofil |
 | 5 | Sichtbarkeit setzen | Person gefunden werden will | Map-/Listen-/Profil-Sichtbarkeit |
 | 6 | Menschen kennenlernen | passende Personen oder Interessen sichtbar sind | Begegnung oder Kontakt |
@@ -209,13 +210,13 @@ Dieser Slice implementiert nicht:
 
 ## 6. Operation-to-App-Mapping v0.1
 
-Das detaillierte Daten- und App-Mapping lebt in [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md).
+Das detaillierte Daten- und App-Mapping lebt in [../data-model/operations-mapping.md](../data-model/operations-mapping.md).
 
 | Operation | App-Flow | Datenobjekte | Agentenhilfe | Metrik |
 |---|---|---|---|---|
 | App laden/öffnen | QR -> Web/App -> Startscreen | none / install state | erklärt Pilot und Einstieg | gestartete Sessions |
 | Identität erzeugen | Onboarding -> Generate ID | DID, key material, device state | erklärt Selbstbesitz der ID | erzeugte IDs |
-| Pax-Space beitreten | Invite screen -> accept | space invite, membership | erklärt Space und Sichtbarkeit | Space-Mitglieder |
+| Festival-Space beitreten | Invite screen -> accept | space invite, membership | erklärt Space und Sichtbarkeit | Space-Mitglieder |
 | Profil anlegen | Profile wizard | profile item | hilft beim Formulieren | Profile mit Mindestfeldern |
 | Sichtbarkeit setzen | Visibility screen | profile visibility, map marker | erklärt Optionen | sichtbare Profile/Marker |
 | Menschen kennenlernen | Map/List/Profile browse | profile, relation hint | schlägt passende Begegnungen vor | neue Kontakte |
@@ -230,7 +231,7 @@ Die Stand-Crew SOLLTE für jede Phase eine einfache Antwort haben:
 
 - "Was ist das?" -> Ein Netzwerk für echte Begegnung, lokale Gemeinschaft und geteilte Ressourcen.
 - "Warum brauche ich eine ID?" -> Damit deine Beziehungen und Daten dir gehören und nicht einem zentralen Konto.
-- "Was ist der Pax-Space?" -> Der gemeinsame digitale Raum für Menschen, Begegnungen und Angebote auf diesem Festival.
+- "Was ist der Festival-Space?" -> Der gemeinsame digitale Raum für Menschen, Begegnungen und Angebote auf diesem Festival.
 - "Was ist sichtbar?" -> Nur das, was du einträgst und sichtbar machst.
 - "Muss ich mitmachen?" -> Nein. Es ist eine Einladung.
 
@@ -246,13 +247,13 @@ Die Stand-Crew SOLLTE für jede Phase eine einfache Antwort haben:
 | Recovery zu schwer | minimaler Pilot-Hinweis, später vertiefen |
 | Person will nicht sichtbar sein | Space beitreten ohne Map-/Profil-Öffentlichkeit |
 
-## 9. Erste Quests im Pax-Slice
+## 9. Erste Quests im Festival-Slice
 
 Diese Quests sind freiwillige Einladungen:
 
 1. Öffne die App.
 2. Erzeuge deine eigene ID.
-3. Tritt dem Pax-Space bei.
+3. Tritt dem Festival-Space bei.
 4. Ergänze dein Profil mit einem Satz, der dich bewegt.
 5. Trage ein Angebot ein.
 6. Trage ein Bedürfnis ein.
@@ -261,15 +262,15 @@ Diese Quests sind freiwillige Einladungen:
 9. Verifiziert euch gegenseitig.
 10. Lade jemanden zu einem Kreis, Essen oder Feuer ein.
 11. Dokumentiere ein Learning vom Festival.
-12. Finde nach Pax eine lokale Anschlussmöglichkeit.
+12. Finde nach dem Festival eine lokale Anschlussmöglichkeit.
 
-## 10. Definition of Done für Pax v0.1
+## 10. Definition of Done für Rollout v0.1
 
-Pax v0.1 ist rollout-ready, wenn:
+Rollout v0.1 ist rollout-ready, wenn:
 
 - eine fremde Person per QR in die App kommt,
 - ohne Vorwissen eine lokale Identität erzeugen kann,
-- dem Pax-Space freiwillig beitreten kann,
+- dem Festival-Space freiwillig beitreten kann,
 - ein Minimalprofil anlegen kann,
 - sichtbar oder bewusst unsichtbar bleiben kann,
 - mindestens eine andere Person finden und verifizieren kann,
@@ -282,6 +283,6 @@ Pax v0.1 ist rollout-ready, wenn:
 - Ist der primäre Einstieg Web-App, native App, F-Droid oder eine Auswahlseite?
 - Wie viel Recovery ist im Festival-Onboarding zumutbar?
 - Muss ein Minimalprofil vor Space-Beitritt existieren oder reicht ein späterer Profil-Step?
-- Welche Felder sind im Pax-Space öffentlich, space-intern oder privat?
-- Wie wird der Pax-Space vorbefüllt?
+- Welche Felder sind im Festival-Space öffentlich, space-intern oder privat?
+- Wie wird der Festival-Space vorbefüllt?
 - Wie werden analoge Kontakte nachträglich in digitale Verbindungen überführt?

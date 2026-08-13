@@ -2,7 +2,7 @@
 
 **Status:** Entwurf v0.1
 **Datum:** 2026-05-07
-**Scope:** Mapping der Pax-v0.1-Operationen auf App-Flows, Datenobjekte, Relationen, Confirmations, Quests, Agentenhilfe und Metriken.
+**Scope:** Mapping der Rollout-v0.1-Operationen auf App-Flows, Datenobjekte, Relationen, Confirmations, Quests, Agentenhilfe und Metriken.
 
 ---
 
@@ -12,7 +12,7 @@ Dieses Dokument übersetzt soziale Operationen in eine Form, die von Apps, Daten
 
 Es ist die Brücke zwischen:
 
-- [Pax Rollout Slice](../08-rollout/pax-rollout-slice.md)
+- [Festival-Slice](../rollout/festival-slice.md)
 - Real Life Stack App-Flows
 - Web of Trust Identität, Verifikation und Attestations
 - Quest-Systemen
@@ -34,11 +34,11 @@ Eine Implementierung dieses Mappings MUSS:
 
 ## 3. Operation Index
 
-| ID | Operation | Sozialer Zweck | P0 für Pax |
+| ID | Operation | Sozialer Zweck | P0 für das Festival |
 |---|---|---|---|
 | `op.app.open` | App laden/öffnen | Einstieg ins Werkzeug | ja |
 | `op.identity.create` | Lokale Identität erzeugen | Selbstbesitz und Trust-Fundament | ja |
-| `op.space.join` | Pax-Space beitreten | Gemeinsamer Festival-Kontext | ja |
+| `op.space.join` | Festival-Space beitreten | Gemeinsamer Festival-Kontext | ja |
 | `op.profile.create` | Minimalprofil anlegen | Wiedererkennung und Ansprechbarkeit | ja |
 | `op.share` | Etwas teilen: entscheiden, wo es liegt | Auffindbarkeit mit Zustimmung | ja |
 | `op.people.discover` | Menschen entdecken | Begegnung wahrscheinlicher machen | ja |
@@ -57,15 +57,15 @@ Reale Begegnungen werden nicht durch eine eigene `op.encounter.record`-Operation
 QR/Link
   -> App/Web-App öffnen
   -> lokale Identität erzeugen oder finden
-  -> Pax-Space-Invite anzeigen
-  -> Pax-Space freiwillig beitreten
+  -> Festival-Space-Invite anzeigen
+  -> Festival-Space freiwillig beitreten
   -> Minimalprofil anlegen
   -> Sichtbarkeit setzen
   -> Menschen/Angebote/Bedürfnisse entdecken
   -> reale Begegnung
   -> QR-Verifikation, wenn die Begegnung festgehalten werden soll
   -> Quest/Folgeeinladung
-  -> Follow-up nach Pax
+  -> Follow-up nach dem Festival
 ```
 
 ## 5. App-Flow Mapping
@@ -74,7 +74,7 @@ QR/Link
 |---|---|---|---|---|
 | `op.app.open` | QR Landing, App Start, Install/Open Choice | App/Web-App starten | Pilotinfo lesen, native App installieren | App lädt nicht -> Infoseite oder Crew-Demo |
 | `op.identity.create` | Onboarding: Create Identity | lokale ID erzeugen | bestehende ID verwenden, Recovery-Hinweis lesen | Abbruch -> kein Space-Beitritt |
-| `op.space.join` | Space Invite Screen | Pax-Space beitreten | mehr Info, später entscheiden | Ablehnen -> kein Makel, App bleibt nutzbar |
+| `op.space.join` | Space Invite Screen | Festival-Space beitreten | mehr Info, später entscheiden | Ablehnen -> kein Makel, App bleibt nutzbar |
 | `op.profile.create` | Profile Wizard | Rufname und erste Felder speichern | später ausfüllen, Avatar setzen | Skip -> Profil bleibt minimal/anonym |
 | `op.share` | Teilen-Dialog | Kreis wählen, in dem die Sache liegen soll | zusätzlich spiegeln, veröffentlichen, ungeteilt lassen | nicht geteilt -> bleibt beim Autor |
 | `op.people.discover` | Map/List/Search | Profil/Eintrag öffnen | filtern, merken, ausblenden | keine Treffer -> Crew/Agent kann analoge Einladung geben |
@@ -93,8 +93,8 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 |---|---|---|---|
 | `Identity` | lokale DID und Schlüssel | WoT Identity | vorhanden |
 | `DeviceState` | lokaler Onboarding-/Installationszustand | App-local storage | lokal, nicht Space-Daten |
-| `SpaceInvite` | Einladung in Pax-Space | WoT space invite | vorhanden/zu stabilisieren |
-| `SpaceMembership` | Mitgliedschaft im Pax-Space | WoT/RLS Group | vorhanden |
+| `SpaceInvite` | Einladung in Festival-Space | WoT space invite | vorhanden/zu stabilisieren |
+| `SpaceMembership` | Mitgliedschaft im Festival-Space | WoT/RLS Group | vorhanden |
 | `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | WoT Profile / RLS Item-View `type: "profile"` | RLS-Referenz setzt aktuell vor allem Name/Bio/Avatar um; Offers/Needs/Vision/Region/Sichtbarkeit ergänzen |
 | `Mirror` | Sache liegt zusätzlich in einem weiteren Kreis oder bei einem Menschen | autor-signierter Snapshot, ein Home, read-only | spezifiziert in `real-life-stack/docs/spec/09-mirror-bridge.md`; Ziel „einzelner Mensch" ist offen |
 | `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
@@ -103,7 +103,7 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `VerificationConfirmation` | bestätigte Begegnung/Identität | Confirmation-View | backend-agnostische View; die portable Form legt die technische Spezifikation fest |
 | `VerificationContext` | optionaler Ort/Event-Kontext einer QR-Verifikation | VC-Erweiterungsfeld oder lokale Metadaten | kein eigener P0-Typ |
 | `Confirmation` | Beitrag, Gabe, Fähigkeit, Teilnahme oder Abschluss bezeugen | RLS/RLNP Confirmation-View | ist entweder behauptet oder prüfbar |
-| `Attestation` | portable signierte Confirmation | Format der technischen Spezifikation | P1 für Pax |
+| `Attestation` | portable signierte Confirmation | Format der technischen Spezifikation | P1 für das Festival |
 | `Quest` | freiwillige Einladung zu einer Handlung | RLS generisches Item | `type: "quest"` oder task-kompatible View |
 | `QuestRun` | konkrete Durchführung einer Quest durch einen Menschen | RLS generisches Item mit Relations | `type: "quest-run"`; verweist per `runsQuest` auf Quest und per `actor` auf DID/Profile |
 | `FollowUp` | nächster Schritt nach Begegnung/Festival | RLS generisches Item (`task`, `event`, `post`, `quest`) | leichter Item-Schnitt statt Sonderformat |
@@ -128,11 +128,11 @@ interface Item {
 
 Die folgenden Beispiele sind deshalb keine neuen Top-Level-Protokollobjekte, sondern Real-Life-Stack-Item-Views. `title`, `description`, `offers`, `needs`, `visibility` und ähnliche Felder leben in `data`.
 
-Wichtig für Pax v0.1: Das RLS-`data-interface` kennt Profile als generische Items und `ProfileItemData` enthält optionale `offers`/`needs`. Die aktuelle RLS-Referenz-/WoT-Connector-Projection setzt das eigene Profil aber vor allem mit `name`, `bio` und `avatar` um. Die WoT-App hat `offers` und `needs` bereits als Profilfelder. Eine Pax-Implementierung SOLLTE diese WoT-Profilfelder verwenden und sie in eine RLS-kompatible Profile-Item-View mappen, sobald der Connector sie durchreicht.
+Wichtig für Rollout v0.1: Das RLS-`data-interface` kennt Profile als generische Items und `ProfileItemData` enthält optionale `offers`/`needs`. Die aktuelle RLS-Referenz-/WoT-Connector-Projection setzt das eigene Profil aber vor allem mit `name`, `bio` und `avatar` um. Die WoT-App hat `offers` und `needs` bereits als Profilfelder. Eine Festival-Implementierung SOLLTE diese WoT-Profilfelder verwenden und sie in eine RLS-kompatible Profile-Item-View mappen, sobald der Connector sie durchreicht.
 
 ### 7.1 `profile`
 
-Pax-v0.1 SOLLTE Profile als generische Item-View `type: "profile"` behandeln. Angebote und Bedürfnisse bleiben für P0 einfache Tags im Profil; praktisch kommen sie zunächst aus dem WoT-Profil und werden später in der RLS-Profile-View vollständig durchgereicht.
+Rollout-v0.1 SOLLTE Profile als generische Item-View `type: "profile"` behandeln. Angebote und Bedürfnisse bleiben für P0 einfache Tags im Profil; praktisch kommen sie zunächst aus dem WoT-Profil und werden später in der RLS-Profile-View vollständig durchgereicht.
 
 ```json
 {
@@ -158,9 +158,9 @@ Pax-v0.1 SOLLTE Profile als generische Item-View `type: "profile"` behandeln. An
 **Normen:**
 
 - `createdBy` MUSS die User-ID/DID des Profilinhabers sein.
-- `offers` und `needs` sind in Pax v0.1 einfache `string[]`-Tags, keine eigenen Items.
+- `offers` und `needs` sind in Rollout v0.1 einfache `string[]`-Tags, keine eigenen Items.
 - Wenn ein RLS-Connector `offers`/`needs` noch nicht implementiert, MUSS die App das als fehlende Fähigkeit behandeln und darf keine leeren Felder als bewusste Aussage der Person interpretieren.
-- `vision`, `region` und `locationPrecision` sind Pax-/RLNP-Erweiterungen im `data`-Objekt. `locationPrecision` sagt, wie genau der Ort gezeigt wird, nicht wer ihn sieht.
+- `vision`, `region` und `locationPrecision` sind RLNP-Erweiterungen im `data`-Objekt. `locationPrecision` sagt, wie genau der Ort gezeigt wird, nicht wer ihn sieht.
 - Das Profile-Item trägt **keine** Sichtbarkeitsangabe. Wen es erreicht, folgt daraus, in welche Spaces es geteilt und ob es veröffentlicht wurde (RLNP §6.16).
 - Was getrennt geteilt werden soll, ist ein eigenes Item. Kontaktdaten wie Telefonnummer oder Adresse gehören deshalb NICHT in dieses Profil-Item, sondern werden für sich geteilt. Ein Profil ist die Sicht auf alles, was den Betrachter erreicht hat, nicht ein Datensatz mit Berechtigungen.
 - Ein Connector DARF `User.displayName` und `User.avatarUrl` aus diesem Profil cachen; der Cache ist nicht die Quelle der Wahrheit.
@@ -171,7 +171,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
 
 ```json
 {
-  "id": "quest:pax:meet-similar-interest",
+  "id": "quest:fest:meet-similar-interest",
   "type": "quest",
   "createdAt": "2026-05-07T10:05:00Z",
   "createdBy": "did:key:z6Mk...agent-or-host",
@@ -179,12 +179,12 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
   "schemaVersion": 1,
   "data": {
     "title": "Lerne eine Person mit ähnlichem Interesse kennen",
-    "description": "Finde jemanden im Pax-Space, dessen Vision dich berührt, und führe ein echtes Gespräch.",
+    "description": "Finde jemanden im Festival-Space, dessen Vision dich berührt, und führe ein echtes Gespräch.",
     "status": "published",
     "optional": true,
     "operation": "op.people.discover",
     "intent": "relationship",
-    "tags": ["begegnung", "pax-2026"],
+    "tags": ["begegnung", "festival"],
     "evidencePolicy": {
       "required": false,
       "acceptedTypes": ["self-claim", "text"]
@@ -197,7 +197,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
       "acceptedTrustLevels": ["verifiable"]
     },
     "completionConfirmationTemplate": {
-      "claim": "{actor} hat eine echte Begegnung im Pax-Space geführt.",
+      "claim": "{actor} hat eine echte Begegnung im Festival-Space geführt.",
       "display": {
         "label": "Echte Begegnung",
         "color": "#4F7CFF",
@@ -213,7 +213,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
     ]
   },
   "relations": [
-    { "predicate": "visibleIn", "target": "space:pax-2026" }
+    { "predicate": "visibleIn", "target": "space:festival" }
   ]
 }
 ```
@@ -232,7 +232,7 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
 
 ```json
 {
-  "id": "quest-run:pax:meet-similar-interest:mira",
+  "id": "quest-run:fest:meet-similar-interest:mira",
   "type": "quest-run",
   "createdAt": "2026-05-07T10:06:00Z",
   "createdBy": "did:key:z6Mk...mira",
@@ -242,12 +242,12 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
     "status": "completed",
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
-      "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
+      "claim": "Ich habe ein echtes Gespräch im Festival-Space geführt.",
       "evidenceRefs": []
     }
   },
   "relations": [
-    { "predicate": "runsQuest", "target": "item:quest:pax:meet-similar-interest" },
+    { "predicate": "runsQuest", "target": "item:quest:fest:meet-similar-interest" },
     { "predicate": "actor", "target": "global:did:key:z6Mk...mira" }
   ]
 }
@@ -262,7 +262,7 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
 
 ### 7.4 `offer` und `need` als Tags
 
-Pax v0.1 definiert keine eigenen `offer`- oder `need`-Items. Angebote und Bedürfnisse sind zunächst einfache Tags im Profil. In der WoT-App sind sie bereits Teil des Profils; in RLS sind sie Ziel-Felder der Profile-Item-View und müssen in der Referenzimplementierung noch vollständig umgesetzt werden.
+Rollout v0.1 definiert keine eigenen `offer`- oder `need`-Items. Angebote und Bedürfnisse sind zunächst einfache Tags im Profil. In der WoT-App sind sie bereits Teil des Profils; in RLS sind sie Ziel-Felder der Profile-Item-View und müssen in der Referenzimplementierung noch vollständig umgesetzt werden.
 
 ```json
 {
@@ -343,7 +343,7 @@ Eine Confirmation-View ist keine neue Quelle der Wahrheit. Sie ist die RLNP-/RLS
 
 Verifikation bestätigt Begegnung oder Identitätsbeziehung.
 
-Für Pax v0.1 ist QR-Verifikation der Mechanismus, durch den reale Begegnungen im Netzwerk festgehalten werden.
+Für Rollout v0.1 ist QR-Verifikation der Mechanismus, durch den reale Begegnungen im Netzwerk festgehalten werden.
 
 Backend-agnostisch ist das eine Verification-Confirmation. Soll die Verifikation portabel und unabhängig prüfbar sein, wird sie als signierte Attestation ausgestellt. Sie hält dann mindestens fest, wer bestätigt, wen es betrifft, was bestätigt wird, wann es war und in welchem Kontext.
 
@@ -351,7 +351,7 @@ Backend-agnostisch ist das eine Verification-Confirmation. Soll die Verifikation
 
 ### 9.3 Attestation
 
-Attestations sind portable, signierte Confirmations. Sie sind für Pax v0.1 nicht zwingend, aber anschlussfähig. Eine Attestation über einen Beitrag hält dieselben Angaben fest wie eine Verification-Confirmation; nur ist die bestätigte Aussage ein konkreter Beitrag statt einer Begegnung, zum Beispiel „Mira hat beim gemeinsamen Abendessen für die Gruppe gekocht".
+Attestations sind portable, signierte Confirmations. Sie sind für Rollout v0.1 nicht zwingend, aber anschlussfähig. Eine Attestation über einen Beitrag hält dieselben Angaben fest wie eine Verification-Confirmation; nur ist die bestätigte Aussage ein konkreter Beitrag statt einer Begegnung, zum Beispiel „Mira hat beim gemeinsamen Abendessen für die Gruppe gekocht".
 
 **Norm:** Confirmations SOLLTEN konkret, beobachtbar und kontextbezogen sein. Eine Confirmation, die portabel sein soll, MUSS als signierte Attestation im Format der technischen Spezifikation erzeugt, transportiert und geprüft werden; vereinfachte App-Objekte sind nur Projektionen.
 
@@ -381,7 +381,7 @@ Sichtbarkeit ist keine Eigenschaft eines Items, sondern folgt daraus, wo es lieg
 |---|---|---|---|---|
 | App öffnen | `op.app.open` | QR gescannt | App gestartet | Einstieg erklären |
 | Eigene ID erzeugen | `op.identity.create` | keine ID vorhanden | DID vorhanden | Selbstbesitz erklären |
-| Pax-Space beitreten | `op.space.join` | Invite erkannt | Mitgliedschaft aktiv | Sichtbarkeit erklären |
+| Festival-Space beitreten | `op.space.join` | Invite erkannt | Mitgliedschaft aktiv | Sichtbarkeit erklären |
 | Profil ergänzen | `op.profile.create` | leeres Profil | Mindestfelder gesetzt | Formulierungsvorschlag |
 | Angebot eintragen | `op.offer.need.publish` | Profil vorhanden | Offer-Tag im Profil sichtbar | Beispiele anbieten |
 | Bedürfnis eintragen | `op.offer.need.publish` | Profil vorhanden | Need-Tag im Profil sichtbar | ermutigen, konkret zu werden |
@@ -422,7 +422,7 @@ Metriken sind Netzwerk-Signale, keine Leistungsbewertung.
 |---|---|---|---|
 | gestartete App-Sessions | `op.app.open` | Einstiegshürden erkennen | Tracking-Übergriff |
 | erzeugte IDs | `op.identity.create` | Onboarding-Fortschritt | falsche Erfolgsmetrik |
-| Pax-Space-Mitglieder | `op.space.join` | Pilotgröße | Wachstum um jeden Preis |
+| Festival-Space-Mitglieder | `op.space.join` | Pilotgröße | Wachstum um jeden Preis |
 | Profile mit Offer-/Need-Tags | `op.offer.need.publish` | Kooperationspotential | Selbstvermarktungsdruck |
 | Verifikationen | `op.verification.create` | reale Begegnungsdichte | Vertrauensmissverständnis |
 | Follow-ups | `op.followup.create` | Anschlussfähigkeit | soziale Kontrolle |
@@ -432,20 +432,20 @@ Metriken sind Netzwerk-Signale, keine Leistungsbewertung.
 
 ## 14. MVP Implementation Notes
 
-Für Pax v0.1 ist folgender pragmatischer Schnitt ausreichend:
+Für Rollout v0.1 ist folgender pragmatischer Schnitt ausreichend:
 
 1. `profile` erweitern statt sofort eigene `offer`/`need` Items erzwingen.
-2. `space invite` und `group membership` für Pax-Space nutzen.
+2. `space invite` und `group membership` für Festival-Space nutzen.
 3. QR-Verifikation als Verification-Confirmation behandeln; portabel als signierte Attestation ausstellen; `SignedClaim` ist nur eine alte App-Projection.
-4. Handlungseinladungen als lokale/sichtbare Suggestions abbilden; vollwertige `quest`-/`quest-run`-Items sind für Pax v0.1 optional.
+4. Handlungseinladungen als lokale/sichtbare Suggestions abbilden; vollwertige `quest`-/`quest-run`-Items sind für Rollout v0.1 optional.
 5. Map in v0.1 darf eine Listen-/Regionenansicht sein, solange Begegnung und Auffindbarkeit funktionieren.
 6. Metrics nur lokal/aggregiert für Pilot-Lernen verwenden.
 
 ## 15. Open Questions
 
 - Wann wachsen `offers[]` und `needs[]` von Profil-Tags zu eigenen Items?
-- Welche lokalen Suggestions sollen nach Pax in persistierte `quest`-/`quest-run`-Items überführt werden?
+- Welche lokalen Suggestions sollen nach dem Festival in persistierte `quest`-/`quest-run`-Items überführt werden?
 - Ab wann kann ein Spiegel einen einzelnen Menschen als Ziel haben? Das ist dieselbe Lücke wie 1:1-/1:n-Sharing im Stack und abtretbare Rechte für Nicht-Mitglieder in der technischen Spezifikation.
 - Wie wird `region` ohne exakte Standortdaten erfasst?
 - Wie werden analoge Kontakte ohne App nachträglich gemappt?
-- Welche Daten darf ein Agent im Pax-Space standardmäßig sehen?
+- Welche Daten darf ein Agent im Festival-Space standardmäßig sehen?
