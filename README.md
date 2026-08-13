@@ -77,4 +77,6 @@ Was sich beim Schreiben bewährt hat: Bevor eine Mechanik geändert wird, das **
 
 ## Lizenz
 
-Noch zu entscheiden.
+[Creative Commons Attribution 4.0](LICENSE) (CC BY 4.0) — dieselbe Lizenz wie die technische Spezifikation.
+
+Teilen und weiterverwenden ist ausdrücklich erwünscht, auch verändert und auch kommerziell. Die einzige Bedingung ist Namensnennung mit Hinweis auf Änderungen. Das passt zu einem Protokoll, das sich durch bestehende Netzwerke ausbreiten soll: Wer es an seine Gemeinschaft anpasst, soll das dürfen, ohne zu fragen.
