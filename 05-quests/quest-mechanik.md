@@ -150,16 +150,13 @@ Auch hostlose Quests brauchen klare Regeln, wie Abschluss und Sichtbarkeit funkt
 
 ## 7. Sichtbarkeit und Veröffentlichung
 
-Eine neu erstellte Quest SOLLTE zunächst privat sein.
+Eine neu erstellte Quest SOLLTE zunächst nur dort liegen, wo ihr Autor sie angelegt hat.
 
-Danach kann sie sichtbar gemacht werden für:
+Wen sie danach erreicht, folgt daraus, wo sie liegt (RLNP §6.16): in einem Kreis, zusätzlich in einen weiteren Kreis oder zu einem einzelnen Menschen gespiegelt, oder veröffentlicht. Eine Quest hat keine Sichtbarkeitsstufe; sie hat einen Ort.
 
-- nur mich,
-- einzelne Kontakte,
-- einen Space,
-- öffentlich.
+Eine Quest DARF NICHT automatisch geteilt oder veröffentlicht werden, nur weil sie erstellt wurde.
 
-Dieses Muster folgt dem Real-Life-Stack-Prinzip, dass Items Sichtbarkeit und Sharing-Kontext haben können. Eine Quest DARF NICHT automatisch öffentlich werden, nur weil sie erstellt wurde.
+Wer eine Quest übernehmen, sie fertig melden oder etwas an sie anhängen will, braucht Zugang zu ihrem Ursprungsort. Ein Spiegel trägt nichts zurück.
 
 ## 8. Klassifizierung, Tags und Templates
 
@@ -220,7 +217,7 @@ Wenn Quests persistiert oder zwischen Implementierungen ausgetauscht werden, SOL
 | `data.tags[]` | optional | Suche, Filter, einfache Klassifizierung |
 | `data.intent` | optional | sozialer Zweck oder erwarteter Netzwerk-Effekt |
 | `data.templateId` | optional | wiederverwendbare Vorlage |
-| `data.visibility.mode` | empfohlen | gewünschte Sichtbarkeit: `private`, `contacts`, `space`, `public` |
+| `visibleIn` (Relation) | empfohlen | die Kreise, in denen die Quest liegt oder gespiegelt ist; ohne sie liegt sie nur beim Autor |
 | `data.location` | optional | Ort, Region oder grober Kartenkontext |
 | `data.time` | optional | Termin, Zeitraum, Phase oder Rhythmus |
 | `data.capacity` | optional | wie viele Menschen gebraucht werden; ohne Angabe unbegrenzt |
@@ -255,9 +252,6 @@ Empfohlene Relations:
     "operation": "op.people.discover",
     "intent": "relationship",
     "tags": ["begegnung", "pax-2026"],
-    "visibility": {
-      "mode": "space"
-    },
     "evidencePolicy": {
       "required": false,
       "acceptedTypes": ["self-claim", "text"]
@@ -316,7 +310,7 @@ Ein QuestRun verweist per Relations auf die Quest und den Menschen. `createdBy` 
 | `schemaVersion: 1` | empfohlen | Version der RLNP-QuestRun-View |
 | `createdBy` | ja | Identität, App oder Agent, die den Run angelegt hat |
 | `data.status` | ja | QuestRun-Status |
-| `data.visibility.mode` | empfohlen | Sichtbarkeit dieses persönlichen Runs |
+| `visibleIn` (Relation) | empfohlen | die Kreise, in denen dieser persönliche Run sichtbar ist; ohne sie bleibt er beim Menschen, der ihn führt |
 | `data.completion.claimedAt` | optional | Zeitpunkt der lokalen Completion oder Selbstmarkierung |
 | `data.completion.claim` | optional | Selbstbeschreibung der ausgeführten Handlung |
 | `data.completion.evidenceRefs[]` | optional | Verweise auf eingereichte Spuren, z.B. Foto, Text, QR-Scan, Dokumentation oder Systemereignis |
@@ -345,9 +339,6 @@ Confirmations, die einen QuestRun oder einen Beitrag belegen, SOLLTEN als eigene
   "schemaVersion": 1,
   "data": {
     "status": "completed",
-    "visibility": {
-      "mode": "private"
-    },
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
       "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",

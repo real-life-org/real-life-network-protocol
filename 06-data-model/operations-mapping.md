@@ -40,7 +40,7 @@ Eine Implementierung dieses Mappings MUSS:
 | `op.identity.create` | Lokale Identität erzeugen | Selbstbesitz und Trust-Fundament | ja |
 | `op.space.join` | Pax-Space beitreten | Gemeinsamer Festival-Kontext | ja |
 | `op.profile.create` | Minimalprofil anlegen | Wiedererkennung und Ansprechbarkeit | ja |
-| `op.visibility.set` | Sichtbarkeit setzen | Auffindbarkeit mit Zustimmung | ja |
+| `op.share` | Etwas teilen: entscheiden, wo es liegt | Auffindbarkeit mit Zustimmung | ja |
 | `op.people.discover` | Menschen entdecken | Begegnung wahrscheinlicher machen | ja |
 | `op.verification.create` | Menschen verifizieren | Reale Begegnung bestätigen | ja |
 | `op.confirmation.create` | Beitrag bestätigen | Beobachtete Handlung oder Completion bestätigen | nein |
@@ -76,7 +76,7 @@ QR/Link
 | `op.identity.create` | Onboarding: Create Identity | lokale ID erzeugen | bestehende ID verwenden, Recovery-Hinweis lesen | Abbruch -> kein Space-Beitritt |
 | `op.space.join` | Space Invite Screen | Pax-Space beitreten | mehr Info, später entscheiden | Ablehnen -> kein Makel, App bleibt nutzbar |
 | `op.profile.create` | Profile Wizard | Rufname und erste Felder speichern | später ausfüllen, Avatar setzen | Skip -> Profil bleibt minimal/anonym |
-| `op.visibility.set` | Visibility Settings | Space-Sichtbarkeit und Karten-/Regionsauffindbarkeit wählen | private bleiben, Region statt genauer Ort | keine Sichtbarkeit -> nicht auffindbar |
+| `op.share` | Teilen-Dialog | Kreis wählen, in dem die Sache liegen soll | zusätzlich spiegeln, veröffentlichen, ungeteilt lassen | nicht geteilt -> bleibt beim Autor |
 | `op.people.discover` | Map/List/Search | Profil/Eintrag öffnen | filtern, merken, ausblenden | keine Treffer -> Crew/Agent kann analoge Einladung geben |
 | `op.verification.create` | QR Challenge / Scanner | reale Begegnung per QR bestätigen | Gegenverifikation, Ort/Event als Kontext, manuelle Code-Eingabe | Fehler -> später erneut versuchen |
 | `op.confirmation.create` | Confirmation Flow | beobachteten Beitrag bestätigen | Evidence ansehen, Trust-Stufe anzeigen, später signieren | Keine Bestätigung ohne Beobachtung oder ausreichenden Kontext |
@@ -96,7 +96,7 @@ Diese Objekte beschreiben die fachliche Ebene. Eine Implementierung darf sie dir
 | `SpaceInvite` | Einladung in Pax-Space | WoT space invite | vorhanden/zu stabilisieren |
 | `SpaceMembership` | Mitgliedschaft im Pax-Space | WoT/RLS Group | vorhanden |
 | `Profile` | Rufname, Bio, Avatar, Angebote, Bedürfnisse, Vision | WoT Profile / RLS Item-View `type: "profile"` | RLS-Referenz setzt aktuell vor allem Name/Bio/Avatar um; Offers/Needs/Vision/Region/Sichtbarkeit ergänzen |
-| `VisibilityPreference` | private/contacts/space/public Sichtbarkeit; separate Karten-/Regionsauffindbarkeit | RLS `data.visibility` / Connector-Berechtigung | explizit, aber connector-kompatibel modellieren |
+| `Mirror` | Sache liegt zusätzlich in einem weiteren Kreis oder bei einem Menschen | autor-signierter Snapshot, ein Home, read-only | spezifiziert in `real-life-stack/docs/spec/09-mirror-bridge.md`; Ziel „einzelner Mensch" ist offen |
 | `MapMarker` | auffindbarer Ort/Profil/Eintrag | RLS `place` / abgeleitete View | Profil-, Tag- und Ressourcenmarker klären |
 | `OfferTag` | etwas, das jemand geben/teilen kann | WoT Profile `offers[]`; Ziel: RLS `data.offers[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
 | `NeedTag` | etwas, das jemand sucht/braucht | WoT Profile `needs[]`; Ziel: RLS `data.needs[]` | P0 als einfache Tags, RLS-Referenz noch nachziehen |
@@ -150,12 +150,7 @@ Pax-v0.1 SOLLTE Profile als generische Item-View `type: "profile"` behandeln. An
     "needs": ["werkstattzugang", "menschen-in-leipzig"],
     "vision": "Ich will in meiner Region mehr gemeinsame Orte aufbauen.",
     "region": "Leipzig",
-    "visibility": {
-      "profile": "space",
-      "map": "region",
-      "offers": "space",
-      "needs": "space"
-    }
+    "locationPrecision": "region"
   }
 }
 ```
@@ -165,7 +160,9 @@ Pax-v0.1 SOLLTE Profile als generische Item-View `type: "profile"` behandeln. An
 - `createdBy` MUSS die User-ID/DID des Profilinhabers sein.
 - `offers` und `needs` sind in Pax v0.1 einfache `string[]`-Tags, keine eigenen Items.
 - Wenn ein RLS-Connector `offers`/`needs` noch nicht implementiert, MUSS die App das als fehlende Fähigkeit behandeln und darf keine leeren Felder als bewusste Aussage der Person interpretieren.
-- `vision`, `region` und `visibility` sind Pax-/RLNP-Erweiterungen im `data`-Objekt.
+- `vision`, `region` und `locationPrecision` sind Pax-/RLNP-Erweiterungen im `data`-Objekt. `locationPrecision` sagt, wie genau der Ort gezeigt wird, nicht wer ihn sieht.
+- Das Profile-Item trägt **keine** Sichtbarkeitsangabe. Wen es erreicht, folgt daraus, in welche Spaces es geteilt und ob es veröffentlicht wurde (RLNP §6.16).
+- Was getrennt geteilt werden soll, ist ein eigenes Item. Kontaktdaten wie Telefonnummer oder Adresse gehören deshalb NICHT in dieses Profil-Item, sondern werden für sich geteilt. Ein Profil ist die Sicht auf alles, was den Betrachter erreicht hat, nicht ein Datensatz mit Berechtigungen.
 - Ein Connector DARF `User.displayName` und `User.avatarUrl` aus diesem Profil cachen; der Cache ist nicht die Quelle der Wahrheit.
 
 ### 7.2 `quest`
@@ -188,9 +185,6 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
     "operation": "op.people.discover",
     "intent": "relationship",
     "tags": ["begegnung", "pax-2026"],
-    "visibility": {
-      "mode": "space"
-    },
     "evidencePolicy": {
       "required": false,
       "acceptedTypes": ["self-claim", "text"]
@@ -216,7 +210,7 @@ Quests SOLLTEN als generische RLS-Items modelliert werden. Wenn ein Connector no
         "required": true,
         "label": "Teile Gesprächsinhalte nur mit Zustimmung der beteiligten Person."
       }
-    }
+    ]
   },
   "relations": [
     { "predicate": "visibleIn", "target": "space:pax-2026" }
@@ -246,9 +240,6 @@ QuestRuns SOLLTEN als eigene RLS-Items modelliert werden, weil sie eigenen Statu
   "schemaVersion": 1,
   "data": {
     "status": "completed",
-    "visibility": {
-      "mode": "private"
-    },
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
       "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
@@ -354,20 +345,23 @@ Attestations sind portable, signierte Confirmations. Sie sind für Pax v0.1 nich
 
 ## 10. Visibility Model
 
-| Level | Bedeutung | Beispiel |
-|---|---|---|
-| `private` | nur lokal sichtbar | Entwurf, nicht veröffentlicht |
-| `contacts` | für verifizierte/aktive Kontakte sichtbar | Telefonnummer |
-| `space` | im Pax-Space sichtbar | Angebot, Bedürfnis, Vision |
-| `public` | öffentlich sichtbar | freiwillige Profilseite |
+Sichtbarkeit ist keine Eigenschaft eines Items, sondern folgt daraus, wo es liegt (RLNP §6.16). Ein Item hat deshalb keine Sichtbarkeitsstufe, sondern einen Ort:
 
-`region` ist ein Orts-/Auffindbarkeitsfeld, kein Visibility-Level.
+| Weg | Mechanismus | Stand |
+|---|---|---|
+| in einem Kreis | Item liegt in einer Group; Mitgliedschaft entscheidet | gebaut |
+| gespiegelt in einen weiteren Kreis | Mirror mit autor-signiertem Snapshot, ein Home, read-only | spezifiziert, siehe `real-life-stack/docs/spec/09-mirror-bridge.md` |
+| gespiegelt zu einem einzelnen Menschen | derselbe Mechanismus mit einem Menschen als Ziel | **offen** — dieselbe Lücke wie 1:1-/1:n-Sharing im Stack und abtretbare Rechte für Nicht-Mitglieder in der technischen Spezifikation |
+| veröffentlicht | ohne Identität und Zugehörigkeit lesbar; im Stack heute nur `getPublicProfile` | teilweise |
+
+`region` ist ein Orts- und Auffindbarkeitsfeld, keine Sichtbarkeitsangabe. Wie genau ein Ort gezeigt wird, gehört zur Ortsangabe, nicht zur Sichtbarkeit.
 
 **Normen:**
 
-- Sichtbarkeit MUSS vor oder beim Veröffentlichen erkennbar sein.
+- Sichtbarkeit MUSS vor oder beim Teilen erkennbar sein.
 - Exakte Standortdaten DÜRFEN NICHT Voraussetzung für Teilnahme sein.
-- Eine Person MUSS Sichtbarkeit später reduzieren können.
+- Sichtbarkeit MUSS sich für die Zukunft zurücknehmen lassen. Systeme DÜRFEN NICHT den Eindruck erwecken, Veröffentlichtes ließe sich zurückholen.
+- Wer auf ein Item antworten, zusagen oder etwas anhängen können soll, MUSS Zugang zu seinem Ursprungsort haben. Ein Spiegel trägt nichts zurück.
 
 ## 11. Quest Mapping
 
@@ -439,7 +433,7 @@ Für Pax v0.1 ist folgender pragmatischer Schnitt ausreichend:
 
 - Wann wachsen `offers[]` und `needs[]` von Profil-Tags zu eigenen Items?
 - Welche lokalen Suggestions sollen nach Pax in persistierte `quest`-/`quest-run`-Items überführt werden?
-- Welche Sichtbarkeitsstufen unterstützt der erste App-Slice wirklich?
+- Ab wann kann ein Spiegel einen einzelnen Menschen als Ziel haben? Das ist dieselbe Lücke wie 1:1-/1:n-Sharing im Stack und abtretbare Rechte für Nicht-Mitglieder in der technischen Spezifikation.
 - Wie wird `region` ohne exakte Standortdaten erfasst?
 - Wie werden analoge Kontakte ohne App nachträglich gemappt?
 - Welche Daten darf ein Agent im Pax-Space standardmäßig sehen?

@@ -34,7 +34,7 @@ erscheinen.
 
 ## 3. Operations-Namespace
 
-Die Operationen `op.app.open`, `op.identity.create`, `op.space.join`, `op.profile.create`, `op.visibility.set`, `op.people.discover`, `op.verification.create`, `op.offer.need.publish`, `op.quest.suggest` und `op.followup.create` gehören zum Pax-P0-Mapping.
+Die Operationen `op.app.open`, `op.identity.create`, `op.space.join`, `op.profile.create`, `op.share`, `op.people.discover`, `op.verification.create`, `op.offer.need.publish`, `op.quest.suggest` und `op.followup.create` gehören zum Pax-P0-Mapping.
 
 Weitere Operationen in diesem Katalog, z.B. `op.confirmation.create`, `op.event.create`, `op.project.start` oder `op.commons.create`, sind vorläufige P1/P2-Operationsnamen. Sie beschreiben den sozialen Zweck, müssen aber vor einer strikten Implementierung noch in [../real-life-network-protocol.md](../real-life-network-protocol.md) (Abschnitt 8) und [../06-data-model/operations-mapping.md](../06-data-model/operations-mapping.md) formalisiert werden.
 
@@ -57,9 +57,6 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
     "optional": true,
     "operation": "op.people.discover",
     "tags": ["begegnung", "pax-2026"],
-    "visibility": {
-      "mode": "space"
-    },
     "evidencePolicy": {
       "required": false,
       "acceptedTypes": ["self-claim", "text"]
@@ -85,7 +82,7 @@ Eine App DARF Quests als generische Real-Life-Stack-Items oder als lokale Sugges
         "required": true,
         "label": "Teile Gesprächsinhalte nur mit Zustimmung der beteiligten Person."
       }
-    },
+    ],
     "time": {
       "phase": "during-event"
     }
@@ -108,9 +105,6 @@ Ein QuestRun verweist per Relations auf diese Quest:
   "schemaVersion": 1,
   "data": {
     "status": "completed",
-    "visibility": {
-      "mode": "private"
-    },
     "completion": {
       "claimedAt": "2026-05-07T10:20:00Z",
       "claim": "Ich habe ein echtes Gespräch im Pax-Space geführt.",
@@ -136,7 +130,7 @@ Ein QuestRun verweist per Relations auf diese Quest:
 | `q.pax.002` | Erzeuge deine eigene lokale ID. | `op.identity.create` | keine lokale DID vorhanden | DID/Schlüssel lokal erzeugt | Kein zentrales Konto suggerieren |
 | `q.pax.003` | Lies kurz, was deine ID bedeutet. | `op.identity.create` | neue DID erzeugt | Hinweis wurde gesehen | Kurz, ehrlich, nicht technisch überladen |
 | `q.pax.004` | Tritt freiwillig dem Pax-Space bei. | `op.space.join` | gültiger Pax-Invite | Space-Mitgliedschaft aktiv | Ablehnen bleibt normal |
-| `q.pax.005` | Entscheide, ob du im Pax-Space sichtbar sein möchtest. | `op.visibility.set` | Space-Beitritt aktiv | Sichtbarkeitszustand gesetzt | Sichtbarkeit muss änderbar bleiben |
+| `q.pax.005` | Entscheide, ob du im Pax-Space sichtbar sein möchtest. | `op.share` | Space-Beitritt aktiv | Sichtbarkeitszustand gesetzt | Sichtbarkeit muss änderbar bleiben |
 | `q.pax.006` | Bitte die Crew um eine analoge Einführung, wenn etwas unklar ist. | `op.app.open` | Unsicherheit, technischer Fehler | Frage gestellt oder Hilfe erhalten | Kein Druck zur Selbstbedienung |
 
 ### 5.2 Profil, Angebote und Bedürfnisse
@@ -148,8 +142,8 @@ Ein QuestRun verweist per Relations auf diese Quest:
 | `q.pax.009` | Trage ein Angebot als Tag ein. | `op.offer.need.publish` | Profil vorhanden | `offers[]` enthält mindestens einen Tag | Tags bleiben einfache Profilfelder |
 | `q.pax.010` | Trage ein Bedürfnis oder eine Suche als Tag ein. | `op.offer.need.publish` | Profil vorhanden | `needs[]` enthält mindestens einen Tag | Bedürfnis darf offen und unfertig sein |
 | `q.pax.011` | Ergänze eine Vision oder ein Thema, das dich ruft. | `op.profile.create` | Profil vorhanden | Vision/Interesse sichtbar oder privat gespeichert | Kein Missionierungsdruck |
-| `q.pax.012` | Wähle eine grobe Region für lokale Auffindbarkeit. | `op.visibility.set` | Person will lokal auffindbar sein | Region oder Festival-Ort gesetzt | Region ist kein eigener Sichtbarkeitslevel |
-| `q.pax.013` | Prüfe, welche Profilfelder sichtbar sind. | `op.visibility.set` | Profil enthält Daten | Sichtbarkeit bewusst bestätigt | Keine stillen Veröffentlichungen |
+| `q.pax.012` | Wähle eine grobe Region für lokale Auffindbarkeit. | `op.share` | Person will lokal auffindbar sein | Region oder Festival-Ort gesetzt | Wie genau ein Ort gezeigt wird, ist keine Frage der Sichtbarkeit |
+| `q.pax.013` | Prüfe, wen dein Profil erreicht. | `op.share` | Profil enthält Daten | bewusst bestätigt, wo es liegt | Keine stillen Veröffentlichungen |
 
 ### 5.3 Menschen entdecken und begegnen
 

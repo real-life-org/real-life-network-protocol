@@ -199,6 +199,20 @@ Eine Koordinationsfläche macht sichtbar, was mehrere Menschen betrifft, damit s
 
 Systeme SOLLTEN Koordinationsflächen von Quests unterscheiden und sie nicht als Aufgaben darstellen, die jemand erledigt.
 
+### 6.16 Wie etwas sichtbar wird
+
+Sichtbarkeit ist keine Eigenschaft einer Sache. Sie folgt daraus, wo die Sache liegt. Es gibt drei Wege:
+
+- **In einem Kreis.** Was in einem Kreis liegt, sehen die Menschen dieses Kreises. Das ist der Normalfall und braucht keine weitere Einstellung.
+- **Gespiegelt.** Eine Sache lebt an einem Ort und kann zusätzlich anderswo erscheinen: in einem weiteren Kreis oder bei einem einzelnen Menschen. Ein Spiegel ist zum Lesen da; geändert wird nur am Ursprung.
+- **Veröffentlicht.** Eine Sache kann so hinausgestellt werden, dass sie ohne Identität und ohne Zugehörigkeit lesbar ist. Das ist kein Teilen, sondern Publizieren.
+
+**Was getrennt geteilt werden soll, ist getrennt.** Eine Telefonnummer, die nur Menschen bekommen sollen, denen man wirklich begegnet ist, ist nicht ein Feld eines öffentlichen Profils, sondern eine eigene Sache mit eigenem Weg. Ein Profil ist deshalb keine Sache, sondern die Sicht auf all das, was über einen Menschen den Betrachter erreicht hat. Zwei Menschen sehen verschiedene Profile — nicht weil ein Filter greift, sondern weil sie Verschiedenes erreicht hat.
+
+**Wo interagiert wird, gibt es einen gemeinsamen Raum. Wo nur gesehen wird, genügt ein Spiegel.** Wer zusagen, antworten oder etwas anhängen können soll, braucht Zugang zu dem Ort, an dem die Sache liegt, nicht zu einer Kopie. Eine Einladung an mehrere Menschen, die miteinander etwas vorhaben, ist deshalb ein gemeinsamer Raum, auch wenn niemand ihn Gruppe nennen möchte.
+
+Systeme SOLLTEN erkennbar machen, wen etwas erreicht, bevor es geteilt wird. Sichtbarkeit lässt sich für die Zukunft zurücknehmen; was veröffentlicht war, war veröffentlicht, und Systeme DÜRFEN NICHT den Eindruck erwecken, es ließe sich zurückholen.
+
 ## 7. Soziale Operationen
 
 Soziale Operationen sind der Kern dieses Protokolls. Sie beschreiben Handlungen, durch die das Netzwerk wächst.
