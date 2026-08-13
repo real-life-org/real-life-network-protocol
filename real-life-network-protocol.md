@@ -30,6 +30,8 @@ Das Real Life Network gelingt, wenn an vielen Orten lokale Gemeinschaften lebend
 
 Sichtbare Ausdrücke dieses Gelingens sind Begegnungen, Verifikationen, Confirmations, Attestations, Veranstaltungen, geteilte Ressourcen, dokumentierte Geschichten, gestartete Projekte, entstehende Orte und gepflegte Commons.
 
+Gewonnen wird dabei dreifach: Der einzelne Mensch wächst, die Gemeinschaft wird stärker, und die Erde hat etwas davon. Wo nur eines davon zutrifft, fehlt etwas.
+
 ## 3. Normative Sprache
 
 Diese Spezifikation verwendet die Begriffe **MUSS**, **DARF NICHT**, **SOLLTE** und **DARF**.
@@ -57,6 +59,19 @@ Das Protokoll SOLLTE keine lokalen Praktiken ersetzen. Es beschreibt Muster, die
 
 ## 5. Grundprinzipien
 
+### 5.0 Die vier Leitmotive
+
+Die folgenden vier Sätze sind keine Erfindung dieses Protokolls. Sie stammen aus dem Open Space, einer Form, die seit den 1980er Jahren mit fünf bis über tausend Menschen erprobt ist. Sie tragen alles Weitere:
+
+- **Wer auch immer kommt, es sind die richtigen Leute.** Kein Kreis muss vollständig besetzt sein. Die, die da sind, sind der Kreis.
+- **Was auch immer geschieht, es ist das Einzige, was geschehen konnte.** Kein Plan muss vorher stimmen. Was entsteht, entsteht aus dem, was die Anwesenden mitbringen.
+- **Es beginnt, wenn die Zeit reif ist.** Etwas fängt nicht auf Beschluss an, sondern wenn genug Menschen es tragen wollen.
+- **Vorbei ist vorbei.** Was seinen Zweck erfüllt hat, darf enden. Ein Kreis, der sich auflöst, ist gelungen, nicht gescheitert.
+
+Dazu das **Gesetz der zwei Füße**: Wer an einem Ort weder lernt noch beiträgt, ehre die Gruppe und gehe dorthin, wo er beides kann.
+
+Die folgenden Grundprinzipien sind die Ausarbeitung dieser fünf Sätze, besonders 5.12.
+
 ### 5.1 Freiwilligkeit
 
 Jede Teilnahme am Netzwerk ist freiwillig. Eine Einladung ist nur dann protokollkonform, wenn Ablehnung ohne sozialen Verlust möglich bleibt.
@@ -71,7 +86,7 @@ Strukturen entstehen aus Beziehungen. Eine App, ein Space, ein Projekt oder ein 
 
 ### 5.4 Lokale Autonomie
 
-Lokale Gruppen entscheiden selbst, welche Formen, Rituale, Regeln und Commons für sie passen. Das Netzwerk verbindet, ohne lokale Identität zu übernehmen.
+Lokale Gruppen entscheiden selbst, welche Formen, Rituale, Regeln, Commons und Werkzeuge für sie passen. Das Netzwerk verbindet, ohne lokale Identität zu übernehmen.
 
 ### 5.5 Eigenverantwortung
 
@@ -93,6 +108,12 @@ Das Netzwerk wächst durch Einladung, Beispiel und Erfahrung. Es DARF NICHT durc
 
 Digitale Werkzeuge sind optional. Sie SOLLTEN analoge Begegnung verstärken, nicht ersetzen.
 
+Es gibt Werkzeuge im Netz und Werkzeuge, die man in die Hand nimmt. Beide zählen. Die digitalen sind quelloffen, und jeder Kreis und jedes Netzwerk wählt selbst, welche davon zu ihm passen — so, wie es über seine Form, seinen Zugang und seine äußeren Gefäße entscheidet. Wer etwas braucht, das es noch nicht gibt, darf es beisteuern.
+
+Die Werkzeuge gehören allen. Das Netzwerk gehört niemandem.
+
+Werkzeuge sind Mittel zum Zweck. Der Zweck ist, das gemeinsame Leben tatsächlich zu gestalten.
+
 ### 5.10 KI-Agenten als eingebettete Teilnehmer
 
 KI-Agenten dürfen Teil des Netzwerks sein, wenn sie eine erkennbare Identität haben, lokal eingebettet handeln und menschliche Selbstbestimmung respektieren.
@@ -105,11 +126,11 @@ Das ist keine Einschränkung, die man kleinreden sollte, sondern ein Schutz: Wer
 
 ### 5.12 Niemand wird zugeteilt
 
-Menschen finden ihren Platz, indem sie ihm folgen, nicht indem sie ihm zugewiesen werden. Daraus folgen drei Freiheiten, die nur zusammen tragen:
+Menschen finden ihren Platz, indem sie ihm folgen, nicht indem sie ihm zugewiesen werden. Das ist die praktische Gestalt der Leitmotive (5.0). Daraus folgen drei Freiheiten, die nur zusammen tragen:
 
-- **Ausrufen statt besetzen.** Ein Kreis, eine Aufgabe, eine Rolle wird sichtbar gemacht, und wer sich gerufen fühlt, kommt. Niemand teilt zu.
+- **Ausrufen statt besetzen.** Ein Kreis, eine Aufgabe, eine Rolle wird sichtbar gemacht, und wer sich gerufen fühlt, kommt. Niemand teilt zu. Wer dann kommt, sind die richtigen Leute.
 - **Mehreren Anziehungen folgen dürfen.** Niemand muss sich für einen Kreis entscheiden. Wen zwei Themen ziehen, der ist in beiden — und verbindet sie dadurch (6.4).
-- **Weiterziehen dürfen.** Wer an einem Ort weder lernt noch beiträgt, darf gehen, ohne Rechtfertigung und ohne Nachteil.
+- **Weiterziehen dürfen.** Wer an einem Ort weder lernt noch beiträgt, darf gehen, ohne Rechtfertigung und ohne Nachteil. Das ist das Gesetz der zwei Füße.
 
 Das trägt nur, solange sichtbar ist, was ruft. Ein Bedarf, den niemand kennt, ruft niemanden, und ein leiser Kreis verliert gegen einen lauten, auch wenn er der richtige wäre. Sichtbarmachen ist deshalb keine Nebentätigkeit, sondern die eigentliche Arbeit.
 
@@ -120,6 +141,12 @@ Systeme SOLLTEN Kreise, Aufgaben und Rollen als Rufe darstellen, nicht als Zuwei
 ### 6.1 Mensch
 
 Ein Mensch ist die kleinste Einheit des Netzwerks. Ein Mensch wird Teil des Netzwerks, sobald er in Beziehung tritt: durch Begegnung, Einladung, Verifikation, Beitrag, Teilnahme, Dokumentation, Ressourcenteilen oder gemeinsames Handeln.
+
+Das heißt nicht, dass ein Mensch für sich allein steht. Wer jemand ist, zeigt sich in seinen Beziehungen: in denen, die ihm begegnet sind, und in dem, was sie an ihm erlebt haben. Ein Mensch ist im Netzwerk nicht durch einen Eintrag in einem Verzeichnis kenntlich, sondern durch die, die ihn kennen.
+
+*Ich bin, weil wir sind.*
+
+Deshalb gehört die Identität eines Menschen ihm selbst und keiner Stelle, die sie verwaltet. Und deshalb kann niemand einem anderen die Zugehörigkeit zusprechen oder entziehen: Sie besteht in den Beziehungen, nicht in einer Liste.
 
 ### 6.2 Beziehung
 
