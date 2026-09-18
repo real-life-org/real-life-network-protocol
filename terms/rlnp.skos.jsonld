@@ -42,13 +42,8 @@
    "dct:source": [
     "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#64-kreis"
    ],
-   "skos:editorialNote": "English text: draft, not normative"
-  },
-  {
-   "@id": "rlnp:Space",
-   "@type": "skos:Concept",
-   "skos:inScheme": "rlnp:",
-   "skos:prefLabel": [
+   "skos:editorialNote": "\"Space\" in the RLNP text refers to the Real Life Stack space: the construction of a circle. Not a concept of its own (decided 2026-09-18). English text: draft, not normative.",
+   "skos:altLabel": [
     {
      "@value": "Space",
      "@language": "de"
@@ -57,21 +52,7 @@
      "@value": "Space",
      "@language": "en"
     }
-   ],
-   "skos:definition": [
-    {
-     "@value": "Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen Kreis. Ein Gefäß für Verständigung, kein Zustand der Sache.",
-     "@language": "de"
-    },
-    {
-     "@value": "A digital or social room for a group, initiative, project or circle. A vessel for shared understanding, not a state of the thing itself.",
-     "@language": "en"
-    }
-   ],
-   "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/GLOSSARY.md#space"
-   ],
-   "skos:editorialNote": "English text: draft, not normative"
+   ]
   },
   {
    "@id": "rlnp:Spiegel",
