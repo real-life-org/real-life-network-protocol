@@ -266,35 +266,6 @@
     "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#613-rolle"
    ],
    "skos:editorialNote": "English text: draft, not normative"
-  },
-  {
-   "@id": "rlnp:Mitglied",
-   "@type": "skos:Concept",
-   "skos:inScheme": "rlnp:",
-   "skos:prefLabel": [
-    {
-     "@value": "Mitglied",
-     "@language": "de"
-    },
-    {
-     "@value": "Member",
-     "@language": "en"
-    }
-   ],
-   "skos:definition": [
-    {
-     "@value": "Vorgeschlagen: wer zu einem Space gehört. Gilt für den Space, nicht für das Netzwerk: Zugehörigkeit zum Netzwerk lebt in Beziehungen, nicht in Listen (6.1).",
-     "@language": "de"
-    },
-    {
-     "@value": "Proposed: who belongs to a space. Applies to the space, not to the network: belonging to the network lives in relationships, not in lists (6.1).",
-     "@language": "en"
-    }
-   ],
-   "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#64-kreis"
-   ],
-   "rl:status": "proposed"
   }
  ]
 }
