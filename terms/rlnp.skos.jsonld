@@ -40,7 +40,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.4"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#64-kreis"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -98,7 +98,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.16"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#616-wie-etwas-sichtbar-wird"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -127,7 +127,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.16"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#616-wie-etwas-sichtbar-wird"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -156,7 +156,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.1"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#61-mensch"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -185,7 +185,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.2"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#62-beziehung"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -214,7 +214,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#8.3"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#83-menschen-verifizieren"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -243,7 +243,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#8.4"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#84-bezeugen"
    ],
    "skos:altLabel": [
     {
@@ -282,7 +282,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.13"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#613-rolle"
    ],
    "skos:editorialNote": "English text: draft, not normative"
   },
@@ -311,7 +311,7 @@
     }
    ],
    "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.4"
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#64-kreis"
    ],
    "rl:status": "proposed"
   }
