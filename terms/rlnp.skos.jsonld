@@ -171,6 +171,35 @@
    "skos:editorialNote": "English text: draft, not normative"
   },
   {
+   "@id": "rlnp:Begegnung",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Begegnung",
+     "@language": "de"
+    },
+    {
+     "@value": "Encounter",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Zwei Menschen begegnen sich, real oder digital, tauschen aus, wer sie sind, und bleiben verbunden, wenn es stimmig ist. Der Grundstoff des Netzwerks: Ein Mensch wird Teil davon, sobald er in Beziehung tritt.",
+     "@language": "de"
+    },
+    {
+     "@value": "Two people meet, in person or digitally, exchange who they are, and stay connected if it fits. The raw material of the network: a person becomes part of it the moment they enter a relationship.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#81-menschen-kennenlernen"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
    "@id": "rlnp:Verifikation",
    "@type": "skos:Concept",
    "skos:inScheme": "rlnp:",
