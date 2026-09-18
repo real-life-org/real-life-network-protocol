@@ -157,11 +157,11 @@
    ],
    "skos:definition": [
     {
-     "@value": "Zwei Menschen begegnen sich, real oder digital, tauschen aus, wer sie sind, und bleiben verbunden, wenn es stimmig ist. Der Grundstoff des Netzwerks: Ein Mensch wird Teil davon, sobald er in Beziehung tritt.",
+     "@value": "Zwei Menschen begegnen sich, real oder digital, tauschen aus, wer sie sind, und bleiben verbunden, wenn es stimmig ist. Begegnung wiederholt sich und ist der Normalfall des Netzwerks: Ein Mensch wird Teil davon, sobald er in Beziehung tritt.",
      "@language": "de"
     },
     {
-     "@value": "Two people meet, in person or digitally, exchange who they are, and stay connected if it fits. The raw material of the network: a person becomes part of it the moment they enter a relationship.",
+     "@value": "Two people meet, in person or digitally, exchange who they are, and stay connected if it fits. Encounters repeat and are the normal case of the network: a person becomes part of it the moment they enter a relationship.",
      "@language": "en"
     }
    ],
@@ -186,11 +186,11 @@
    ],
    "skos:definition": [
     {
-     "@value": "Bestätigung einer realen Begegnung oder Identitätsbeziehung. Bedeutet nicht allgemeine Vertrauenswürdigkeit.",
+     "@value": "Der einmalige Akt, in dem zwei Menschen bestätigen, dass sie einander als diese Person erlebt haben, meist bei der ersten Begegnung; danach begegnet man sich einfach. Bedeutet nicht allgemeine Vertrauenswürdigkeit.",
      "@language": "de"
     },
     {
-     "@value": "Confirmation of a real encounter or identity relationship. Does not mean general trustworthiness.",
+     "@value": "The one-time act in which two people confirm that they have met each other as this person, usually at the first encounter; after that, they simply meet. Does not mean general trustworthiness.",
      "@language": "en"
     }
    ],
