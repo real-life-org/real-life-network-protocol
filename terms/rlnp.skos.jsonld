@@ -1,0 +1,319 @@
+{
+ "@context": "https://real-life.org/meta/v1/context.jsonld",
+ "@graph": [
+  {
+   "@id": "rlnp:",
+   "@type": "skos:ConceptScheme",
+   "dct:title": [
+    {
+     "@value": "Real Life Network Protocol · Bedeutung",
+     "@language": "de"
+    },
+    {
+     "@value": "Real Life Network Protocol · meaning",
+     "@language": "en"
+    }
+   ]
+  },
+  {
+   "@id": "rlnp:Kreis",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Kreis",
+     "@language": "de"
+    },
+    {
+     "@value": "Circle",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Wiederkehrender Begegnungsraum. Braucht keine formelle Mitgliedschaft; wählt Form und Zugang selbst. Kreise verbinden sich durch Menschen, nicht durch übergeordnete Kreise.",
+     "@language": "de"
+    },
+    {
+     "@value": "A recurring space of encounter. Needs no formal membership; chooses its own form and access. Circles connect through people, not through parent circles.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.4"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Space",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Space",
+     "@language": "de"
+    },
+    {
+     "@value": "Space",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Digitaler oder sozialer Raum für eine Gruppe, Initiative, ein Projekt oder einen Kreis. Ein Gefäß für Verständigung, kein Zustand der Sache.",
+     "@language": "de"
+    },
+    {
+     "@value": "A digital or social room for a group, initiative, project or circle. A vessel for shared understanding, not a state of the thing itself.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/GLOSSARY.md#space"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Spiegel",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Spiegel",
+     "@language": "de"
+    },
+    {
+     "@value": "Mirror",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Lesbare Kopie einer Sache an einem zweiten Ort. Die Sache lebt nur am Ursprung; ein Spiegel schreibt nie zurück. Wer mitwirken soll, braucht Zugang zum Ursprung.",
+     "@language": "de"
+    },
+    {
+     "@value": "A readable copy of a thing in a second place. The thing lives only at its origin; a mirror never writes back. Whoever is to take part needs access to the origin.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.16"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Sichtbarkeit",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Sichtbarkeit",
+     "@language": "de"
+    },
+    {
+     "@value": "Visibility",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Keine Eigenschaft einer Sache, sondern Folge davon, wo sie liegt: im Kreis, gespiegelt oder veröffentlicht.",
+     "@language": "de"
+    },
+    {
+     "@value": "Not a property of a thing but a consequence of where it lies: within a circle, mirrored, or published.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.16"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Mensch",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Mensch",
+     "@language": "de"
+    },
+    {
+     "@value": "Person",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Kleinste Einheit des Netzwerks. Kenntlich nicht durch einen Verzeichniseintrag, sondern durch die, die ihn kennen. Die Identität gehört ihm selbst.",
+     "@language": "de"
+    },
+    {
+     "@value": "The smallest unit of the network. Known not by a directory entry but by those who know them. Identity belongs to the person.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.1"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Beziehung",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Beziehung",
+     "@language": "de"
+    },
+    {
+     "@value": "Relationship",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Soziale Verbindung zwischen Menschen oder zwischen Menschen und Agenten. Entsteht durch Begegnung, Kommunikation, Zusammenarbeit oder geteilte Erfahrung.",
+     "@language": "de"
+    },
+    {
+     "@value": "A social connection between people, or between people and agents. Arises from encounter, communication, collaboration or shared experience.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.2"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Verifikation",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Verifikation",
+     "@language": "de"
+    },
+    {
+     "@value": "Verification",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Bestätigung einer realen Begegnung oder Identitätsbeziehung. Bedeutet nicht allgemeine Vertrauenswürdigkeit.",
+     "@language": "de"
+    },
+    {
+     "@value": "Confirmation of a real encounter or identity relationship. Does not mean general trustworthiness.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#8.3"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Bezeugen",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Bezeugen",
+     "@language": "de"
+    },
+    {
+     "@value": "Witnessing",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Würdigen, was ein Mensch getan oder eingebracht hat. Anerkennung, keine Abnahme. Die bezeugte Person entscheidet über die Anzeige, nicht über die Aussage.",
+     "@language": "de"
+    },
+    {
+     "@value": "Honouring what a person did or contributed. Recognition, not approval. The person witnessed decides about display, not about the statement.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#8.4"
+   ],
+   "skos:altLabel": [
+    {
+     "@value": "Confirmation",
+     "@language": "de"
+    },
+    {
+     "@value": "Attestation",
+     "@language": "de"
+    }
+   ],
+   "skos:editorialNote": "English text: draft. Confirmation and Attestation are separate RLNP glossary entries today and carry construction detail; proposal: aliases here, construction lives in RLTP."
+  },
+  {
+   "@id": "rlnp:Rolle",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Rolle",
+     "@language": "de"
+    },
+    {
+     "@value": "Role",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Verantwortung, die ein Mensch gegenüber einem Kreis übernimmt. Sagt zu, dass etwas geschieht. Freiwillig, zurückgebbar, kein Rang.",
+     "@language": "de"
+    },
+    {
+     "@value": "Responsibility a person takes on toward a circle. A promise that something happens. Voluntary, returnable, not a rank.",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.13"
+   ],
+   "skos:editorialNote": "English text: draft, not normative"
+  },
+  {
+   "@id": "rlnp:Mitglied",
+   "@type": "skos:Concept",
+   "skos:inScheme": "rlnp:",
+   "skos:prefLabel": [
+    {
+     "@value": "Mitglied",
+     "@language": "de"
+    },
+    {
+     "@value": "Member",
+     "@language": "en"
+    }
+   ],
+   "skos:definition": [
+    {
+     "@value": "Vorgeschlagen: wer zu einem Space gehört. Gilt für den Space, nicht für das Netzwerk: Zugehörigkeit zum Netzwerk lebt in Beziehungen, nicht in Listen (6.1).",
+     "@language": "de"
+    },
+    {
+     "@value": "Proposed: who belongs to a space. Applies to the space, not to the network: belonging to the network lives in relationships, not in lists (6.1).",
+     "@language": "en"
+    }
+   ],
+   "dct:source": [
+    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#6.4"
+   ],
+   "rl:status": "proposed"
+  }
+ ]
+}

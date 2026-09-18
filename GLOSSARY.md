@@ -137,3 +137,9 @@ Temporärer Begegnungs- und Experimentierraum auf Festivals oder Veranstaltungen
 ## Technische Spezifikation
 
 Die Spezifikation, die Identität, Begegnung, Gruppen-Autorität und Transport festlegt: Formate, Signaturen und Prüfbarkeit. Sie steht neben diesem Protokoll, nicht darunter: Dieses Protokoll ist normativ für die Bedeutung eines Vorgangs, die technische Spezifikation für seine Konstruktion. Sie wird derzeit neu gefasst. Dieses Protokoll bindet sich deshalb an keine Fassung und an kein Format, sondern nennt Anforderungen; welches Format sie erfüllt, steht dort.
+
+## Maschinenlesbare Form
+
+Die Begriffe dieses Glossars liegen zusätzlich als SKOS-Konzeptschema in [`terms/rlnp.skos.jsonld`](terms/rlnp.skos.jsonld) (JSON-LD, Namensraum `https://real-life.org/rlnp/v1#`, Name und Definition auf Deutsch und Englisch, Quelle je Begriff). Normativ bleibt dieses Dokument; die Datei ist seine Übersetzung für Maschinen. Die Verknüpfungen zu den Begriffen des Real Life Stack und des Real Life Trust Protocol liegen nicht hier, sondern im gemeinsamen Register [real-life-org/meta](https://github.com/real-life-org/meta); die Kennungen lösen unter <https://real-life.org/rlnp/v1/> auf.
+
+Stand: neun Begriffe aus der ersten Runde (Kreis, Space, Spiegel, Sichtbarkeit, Mensch, Beziehung, Verifikation, Bezeugen, Rolle) und ein Vorschlag (Mitglied, `rl:status: proposed`). Die übrigen Einträge folgen in Runden.
