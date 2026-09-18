@@ -55,35 +55,6 @@
    ]
   },
   {
-   "@id": "rlnp:Spiegel",
-   "@type": "skos:Concept",
-   "skos:inScheme": "rlnp:",
-   "skos:prefLabel": [
-    {
-     "@value": "Spiegel",
-     "@language": "de"
-    },
-    {
-     "@value": "Mirror",
-     "@language": "en"
-    }
-   ],
-   "skos:definition": [
-    {
-     "@value": "Lesbare Kopie einer Sache an einem zweiten Ort. Die Sache lebt nur am Ursprung; ein Spiegel schreibt nie zurück. Wer mitwirken soll, braucht Zugang zum Ursprung.",
-     "@language": "de"
-    },
-    {
-     "@value": "A readable copy of a thing in a second place. The thing lives only at its origin; a mirror never writes back. Whoever is to take part needs access to the origin.",
-     "@language": "en"
-    }
-   ],
-   "dct:source": [
-    "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#616-wie-etwas-sichtbar-wird"
-   ],
-   "skos:editorialNote": "English text: draft, not normative"
-  },
-  {
    "@id": "rlnp:Sichtbarkeit",
    "@type": "skos:Concept",
    "skos:inScheme": "rlnp:",
@@ -99,18 +70,18 @@
    ],
    "skos:definition": [
     {
-     "@value": "Keine Eigenschaft einer Sache, sondern Folge davon, wo sie liegt: im Kreis, gespiegelt oder veröffentlicht.",
+     "@value": "Keine Eigenschaft einer Sache, sondern Folge davon, wo sie liegt. Drei Reichweiten: in einem Kreis, in mehreren Kreisen, veröffentlicht. Wer eine Sache in Kreise stellt, entscheidet, in welchen sie liegt, und sieht vorher, wen sie erreicht.",
      "@language": "de"
     },
     {
-     "@value": "Not a property of a thing but a consequence of where it lies: within a circle, mirrored, or published.",
+     "@value": "Not a property of a thing but a consequence of where it lies. Three reaches: within one circle, within several circles, published. Whoever puts a thing into circles decides which ones, and sees beforehand whom it reaches.",
      "@language": "en"
     }
    ],
    "dct:source": [
     "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#616-wie-etwas-sichtbar-wird"
    ],
-   "skos:editorialNote": "English text: draft, not normative"
+   "skos:editorialNote": "Proposal to RLNP 6.16 (2026-09-18): name the second reach \"in mehreren Kreisen\" instead of \"gespiegelt\"; the mirror is the Stack's construction for backends partitioned by access boundary, not a social concept. English text: draft, not normative."
   },
   {
    "@id": "rlnp:Mensch",
