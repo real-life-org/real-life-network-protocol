@@ -31,11 +31,11 @@
    ],
    "skos:definition": [
     {
-     "@value": "Wiederkehrender Begegnungsraum. Braucht keine formelle Mitgliedschaft; wählt Form und Zugang selbst. Kreise verbinden sich durch Menschen, nicht durch übergeordnete Kreise.",
+     "@value": "Wiederkehrender Begegnungsraum. Wählt Form und Zugang selbst. Kreise verbinden sich durch Menschen, nicht durch übergeordnete Kreise.",
      "@language": "de"
     },
     {
-     "@value": "A recurring space of encounter. Needs no formal membership; chooses its own form and access. Circles connect through people, not through parent circles.",
+     "@value": "A recurring space of encounter. Chooses its own form and access. Circles connect through people, not through parent circles.",
      "@language": "en"
     }
    ],
