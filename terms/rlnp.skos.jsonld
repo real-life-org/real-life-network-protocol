@@ -70,18 +70,18 @@
    ],
    "skos:definition": [
     {
-     "@value": "Keine Eigenschaft einer Sache, sondern Folge davon, wo sie liegt. Drei Reichweiten: in einem Kreis, in mehreren Kreisen, veröffentlicht. Wer eine Sache in Kreise stellt, entscheidet, in welchen sie liegt, und sieht vorher, wen sie erreicht.",
+     "@value": "Keine Eigenschaft einer Sache, sondern Folge davon, wo sie liegt. Drei Wege: in einem Kreis; gespiegelt, also zusätzlich lesbar in einem weiteren Kreis oder bei einem einzelnen Menschen, geändert nur am Ursprung; veröffentlicht, lesbar ohne Identität und Zugehörigkeit. Wer eine Sache teilt, soll vorher sehen, wen sie erreicht.",
      "@language": "de"
     },
     {
-     "@value": "Not a property of a thing but a consequence of where it lies. Three reaches: within one circle, within several circles, published. Whoever puts a thing into circles decides which ones, and sees beforehand whom it reaches.",
+     "@value": "Not a property of a thing but a consequence of where it lies. Three ways: within one circle; mirrored, that is additionally readable in a further circle or by a single person, changed only at its origin; published, readable without identity or membership. Whoever shares a thing should see beforehand whom it reaches.",
      "@language": "en"
     }
    ],
    "dct:source": [
     "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#616-wie-etwas-sichtbar-wird"
    ],
-   "skos:editorialNote": "Proposal to RLNP 6.16 (2026-09-18): name the second reach \"in mehreren Kreisen\" instead of \"gespiegelt\"; the mirror is the Stack's construction for backends partitioned by access boundary, not a social concept. English text: draft, not normative."
+   "skos:editorialNote": "Proposal to RLNP 6.16 (2026-09-18): name the second way \"in mehreren Kreisen\" instead of \"gespiegelt\"; the mirror is the Stack's construction for backends partitioned by access boundary, not a social concept. The definition above follows 6.16 as it stands. English text: draft, not normative."
   },
   {
    "@id": "rlnp:Mensch",
@@ -186,18 +186,18 @@
    ],
    "skos:definition": [
     {
-     "@value": "Der einmalige Akt, in dem zwei Menschen bestätigen, dass sie einander als diese Person erlebt haben, meist bei der ersten Begegnung; danach begegnet man sich einfach. Bedeutet nicht allgemeine Vertrauenswürdigkeit.",
+     "@value": "Die Bestätigung zweier Menschen, dass sie einander als diese Person erlebt haben, bei einer Begegnung und optional digital verifiziert. Bedeutet nicht allgemeine Vertrauenswürdigkeit, sondern nur, dass eine Begegnung oder Identitätsbeziehung bestätigt wurde.",
      "@language": "de"
     },
     {
-     "@value": "The one-time act in which two people confirm that they have met each other as this person, usually at the first encounter; after that, they simply meet. Does not mean general trustworthiness.",
+     "@value": "Two people's confirmation that they have met each other as this person, at an encounter and optionally verified digitally. Does not mean general trustworthiness, only that an encounter or identity relationship has been confirmed.",
      "@language": "en"
     }
    ],
    "dct:source": [
     "https://github.com/real-life-org/real-life-network-protocol/blob/main/real-life-network-protocol.md#83-menschen-verifizieren"
    ],
-   "skos:editorialNote": "English text: draft, not normative"
+   "skos:editorialNote": "Proposal to RLNP 8.3 (2026-09-18): state that verification happens once per relationship, while encounters repeat; 8.3 does not say so today. English text: draft, not normative."
   },
   {
    "@id": "rlnp:Bezeugen",
